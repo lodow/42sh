@@ -1,0 +1,9 @@
+alias
+backquote
+variable
+config file
+changment de prompt
+pwd
+valeur de retour des programmes
+exit 42
+

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="minishell2" />
+		<Option makefile_is_custom="1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="all">
+				<Option output="./mysh" prefix_auto="1" extension_auto="1" />
+				<Option object_output="./" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<MakeCommands>
+					<Build command="$make -f $makefile $target" />
+					<CompileFile command="$make -f $makefile $file" />
+					<Clean command="$make -f $makefile clean" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make -q -f $makefile $target" />
+					<SilentBuild command="$make -s -f $makefile $target" />
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="Makefile" />
+		<Unit filename="alias.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="backquote.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="builtin.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="cat.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="clean_tab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="closefd_check.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="epur_str.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="get_file.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="get_file.h" />
+		<Unit filename="get_next_line.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="get_next_line.h" />
+		<Unit filename="getcheck_uin.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="include.h" />
+		<Unit filename="load_conf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="my_getnbr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="my_str_to_wordtab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="my_uint64_t_strbase.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="parse_env.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pipe_it.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pwd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="redirection.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="search_check_exec.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="signal_forward.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="son_exec.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="stc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="swap_ptr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="under_cmd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="variable.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="wait.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<lib_finder disable_auto="1" />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
