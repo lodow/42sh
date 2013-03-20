@@ -28,6 +28,8 @@ SRC= 	main.c \
 	son_exec.c \
 	under_cmd.c \
 	wait.c \
+	builtins_check.c \
+	job_builtins.c \
 	variable.c \
 	epur_str.c \
 	builtin.c \

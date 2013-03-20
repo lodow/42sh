@@ -42,35 +42,6 @@ void	print_env(char **envp)
     }
 }
 
-int	special_cmd(t_prg *cmd, char ***envp, int exec)
-{
-  void	(*(f[5]))(t_prg * cmd, char ***envp);
-  char	*builtin[5];
-  int	i;
-
-  i = 0;
-  builtin[0] = "exit";
-  f[0] = &builtin_exit;
-  builtin[1] = "cd";
-  f[1] = &builtin_cd;
-  builtin[2] = "env";
-  f[2] = &builtin_env;
-  builtin[3] = "unsetenv";
-  f[3] = &builtin_unsetenv;
-  builtin[4] = "setenv";
-  f[4] = &builtin_setenv;
-  while ((cmd->argv != NULL) && (i < 5))
-    if (my_strncmp(cmd->argv[0], builtin[i], -1) == 0)
-      {
-        if (exec)
-          f[i](cmd, envp);
-        return (1);
-      }
-    else
-      i++;
-  return (0);
-}
-
 int	is_executable(t_prg *cmd)
 {
   if ((cmd->argv == NULL) || (cmd->argv[0] == NULL)

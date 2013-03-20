@@ -10,14 +10,14 @@
 
 #include "include.h"
 
-void	print_prompt(char **envp)
+void	print_prompt(t_sh_info *shell)
 {
   char	*prompt;
   char	*ps1;
 
-  if ((ps1 = get_envvar("PS1", envp)) != NULL)
+  if ((ps1 = get_envvar("PS1", shell->envp)) != NULL)
     {
-      if ((prompt = check_vars_in_str(ps1, envp)) != NULL)
+      if ((prompt = check_vars_in_str(ps1, shell->envp)) != NULL)
         {
           my_putstr(prompt, 1, -1);
           free(prompt);
@@ -29,15 +29,15 @@ void	print_prompt(char **envp)
     my_putstr("$ ", 1, -1);
 }
 
-void		pipeline_cced(char *lign, char ***envp)
+void		pipeline_cced(char *lign, t_sh_info *shell)
 {
   t_pipeline	*pipeline;
 
-  pipeline = lign_into_pipeligne(lign, *envp);
+  pipeline = lign_into_pipeligne(lign, shell);
   if ((pipeline != NULL) && (is_pipeline_exec_a(pipeline) != 0))
     {
       check_and_set_redirection(pipeline);
-      if (pipe_exec_pipeline(pipeline, envp) != -1)
+      if (pipe_exec_pipeline(pipeline, shell) != -1)
         {
           if (pipeline->drd != -1)
             cat_t_str(0, pipeline->drd, pipeline->checkstrdrd);
@@ -48,7 +48,7 @@ void		pipeline_cced(char *lign, char ***envp)
   free(lign);
 }
 
-void	lign_t_multiple_pipeline(char *lign, char ***envp)
+void	lign_t_multiple_pipeline(char *lign, t_sh_info *shell)
 {
   char	**lines;
   int	i;
@@ -58,24 +58,24 @@ void	lign_t_multiple_pipeline(char *lign, char ***envp)
   if (lines != NULL)
     while (lines[i] != NULL)
       {
-        pipeline_cced(lines[i], envp);
+        pipeline_cced(lines[i], shell);
         i++;
       }
   free(lines);
   free(lign);
 }
 
-void		getlaunch_prg(char ***envp)
+void		getlaunch_prg(t_sh_info *shell)
 {
   char		*lign;
 
-  print_prompt(*envp);
-  signal(SIGINT, &get_signal);
+  print_prompt(shell);
+  signal(SIGINT, &handle_signal);
+  signal(SIGSTOP, &handle_signal);
   while ((lign = get_next_line(0)) != NULL)
     {
-      if ((lign = check_and_load_backquote(lign, envp)) != NULL)
-        lign_t_multiple_pipeline(lign, envp);
-      signal(SIGINT, &get_signal);
-      print_prompt(*envp);
+      if ((lign = check_and_load_backquote(lign, shell)) != NULL)
+        lign_t_multiple_pipeline(lign, shell);
+      print_prompt(shell);
     }
 }

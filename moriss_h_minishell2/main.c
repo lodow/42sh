@@ -10,17 +10,17 @@
 
 #include "include.h"
 
-int	main(int argc, char **argv, char **envp)
+int		main(int argc, char **argv, char **envp)
 {
-  char	**subenvp;
+  t_sh_info	shell;
 
-  subenvp = cpy_env(envp);
-  subenvp = add_change_env(subenvp, "PS1", "${LOGNAME} ${PWD} $ ");
-  load_conf_file(".mysh", &subenvp);
-  if (subenvp != NULL)
+  shell.envp = cpy_env(envp);
+  shell.envp = add_change_env(shell.envp, "PS1", "${LOGNAME} ${PWD} $ ");
+  load_conf_file(".mysh", &(shell.envp));
+  if (shell.envp != NULL)
     {
-      getlaunch_prg(&subenvp);
-      destroy_envp(subenvp);
+      getlaunch_prg(&shell);
+      destroy_envp(shell.envp);
     }
   else
     my_putstr("Malloc failed\n", 2, -1);

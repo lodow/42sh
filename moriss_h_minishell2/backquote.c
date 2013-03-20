@@ -21,14 +21,14 @@ char	*retrieve_back_result(int fd, char *str)
   return (str);
 }
 
-char		*exec_line_a_g_res(char *line, char ***envp)
+char		*exec_line_a_g_res(char *line, t_sh_info *shell)
 {
   t_pipeline	*pipeline;
   int		pipefd[2];
   char		*str;
 
   str = NULL;
-  pipeline = lign_into_pipeligne(line, *envp);
+  pipeline = lign_into_pipeligne(line, shell);
   if ((is_pipeline_exec_a(pipeline) != 0) && (pipeline != NULL))
     {
       check_and_set_redirection(pipeline);
@@ -36,7 +36,7 @@ char		*exec_line_a_g_res(char *line, char ***envp)
       if (pipe(pipefd) != -1)
         {
           pipeline->fd.stdout = pipefd[PIPE_WRITE];
-          if (pipe_exec_pipeline(pipeline, envp) != -1)
+          if (pipe_exec_pipeline(pipeline, shell) != -1)
             {
               if (pipeline->drd != -1)
                 cat_t_str(0, pipeline->drd, pipeline->checkstrdrd);
@@ -49,7 +49,7 @@ char		*exec_line_a_g_res(char *line, char ***envp)
   return (str);
 }
 
-char	*check_and_load_backquote(char *line, char ***envp)
+char	*check_and_load_backquote(char *line, t_sh_info *shell)
 {
   char	**backtab;
   int	i;
@@ -62,7 +62,7 @@ char	*check_and_load_backquote(char *line, char ***envp)
     {
       if ((i % 2) == 1)
         {
-          if ((str = exec_line_a_g_res(backtab[i], envp)) != NULL)
+          if ((str = exec_line_a_g_res(backtab[i], shell)) != NULL)
             {
               free(backtab[i]);
               backtab[i] = str;

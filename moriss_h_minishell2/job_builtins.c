@@ -10,11 +10,17 @@
 
 #include "include.h"
 
-void	swap_ptr(void **ptr1, void **ptr2)
+void	builtin_fg(t_prg *cmd, t_sh_info *shell)
 {
-  void	*ptr;
 
-  ptr = (*ptr1);
-  (*ptr1) = (*ptr2);
-  (*ptr2) = ptr;
+}
+
+void	builtin_bg(t_prg *cmd, t_sh_info *shell)
+{
+
+}
+
+void	builtin_job(t_prg *cmd, t_sh_info *shell)
+{
+
 }

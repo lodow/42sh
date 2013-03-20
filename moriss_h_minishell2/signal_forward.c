@@ -10,7 +10,8 @@
 
 #include	"include.h"
 
-void	get_signal(int sig)
+void	handle_signal(int sig)
 {
-  signal(SIGINT, &get_signal);
+  signal(SIGINT, &handle_signal);
+  signal(SIGSTOP, &handle_signal);
 }

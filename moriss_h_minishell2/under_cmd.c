@@ -53,7 +53,7 @@ int	is_pipeline_exec_a(t_pipeline *pipeline)
   return (1);
 }
 
-t_pipeline	*lign_into_pipeligne(char *lign, char **envp)
+t_pipeline	*lign_into_pipeligne(char *lign, t_sh_info *shell)
 {
   char		**cmds;
   t_prg		*cmd;
@@ -71,7 +71,7 @@ t_pipeline	*lign_into_pipeligne(char *lign, char **envp)
     return (NULL);
   while ((cmds != NULL) && (i < pipeline->nb))
     {
-      if (((cmd = get_command(envp, cmds[i])) != NULL) && (cmd->line != NULL))
+      if (((cmd = get_command(shell, cmds[i])) != NULL) && (cmd->line != NULL))
         pipeline->prg_list[i] = cmd;
       i++;
     }
