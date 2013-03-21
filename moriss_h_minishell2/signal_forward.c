@@ -10,8 +10,22 @@
 
 #include	"include.h"
 
+void	stop_sign()
+{
+  char	*tmp;
+
+  if (kill(0, SIGSTOP) == -1)
+    {
+      tmp = strerror(errno);
+      my_putstr(tmp, 1, -1);
+      free(tmp);
+    }
+}
+
 void	handle_signal(int sig)
 {
+  if (sig == SIGSTOP)
+    stop_sign();
   signal(SIGINT, &handle_signal);
   signal(SIGSTOP, &handle_signal);
 }

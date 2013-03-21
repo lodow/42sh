@@ -17,6 +17,8 @@
 # include <signal.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <string.h>
+# include <errno.h>
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/time.h>
@@ -67,15 +69,11 @@ typedef struct	s_pipeline
   int		groupid;
 }		t_pipeline;
 
-typedef struct	s_jobs_status
-{
-
-}		t_jobs_status;
-
 typedef struct		s_sh_info
 {
   char			**envp;
-  t_jobs_status	jobs;
+  int			shell_grp;
+  t_pipeline		**process_group;
 }			t_sh_info;
 
 int			is_in_str(char c, char *str);

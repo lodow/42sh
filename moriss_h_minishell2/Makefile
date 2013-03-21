@@ -42,7 +42,7 @@ OBJ= $(SRC:.c=.o)
 
 NAME= mysh
 
-CFLAGS= -g -pg -Wall -ansi -Wfloat-equal -Wmissing-include-dirs \
+CFLAGS= -g -Wall -Wfloat-equal -Wmissing-include-dirs \
 	-Wclobbered -Wempty-body -Wignored-qualifiers \
 	-Wmissing-field-initializers -Wmissing-parameter-type \
 	-Wold-style-declaration -Woverride-init -Wsign-compare \

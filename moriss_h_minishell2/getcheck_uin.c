@@ -29,7 +29,7 @@ void	print_prompt(t_sh_info *shell)
     my_putstr("$ ", 1, -1);
 }
 
-void		pipeline_cced(char *lign, t_sh_info *shell)
+t_pipeline	*pipeline_cced(char *lign, t_sh_info *shell)
 {
   t_pipeline	*pipeline;
 
@@ -44,8 +44,8 @@ void		pipeline_cced(char *lign, t_sh_info *shell)
           while (wait_son(pipeline, 0, pipeline->nb, 1));
         }
     }
-  rm_pipeline(pipeline);
   free(lign);
+  return (pipeline);
 }
 
 void	lign_t_multiple_pipeline(char *lign, t_sh_info *shell)
@@ -58,9 +58,12 @@ void	lign_t_multiple_pipeline(char *lign, t_sh_info *shell)
   if (lines != NULL)
     while (lines[i] != NULL)
       {
-        pipeline_cced(lines[i], shell);
+        shell->process_group = (t_pipeline**)add_ptr_t_tab(
+                             (void**)shell->process_group,
+                             (void*)pipeline_cced(lines[i], shell));
         i++;
       }
+      //rm_pipeline(pipeline);
   free(lines);
   free(lign);
 }
@@ -70,6 +73,7 @@ void		getlaunch_prg(t_sh_info *shell)
   char		*lign;
 
   print_prompt(shell);
+  shell->process_group = NULL;
   signal(SIGINT, &handle_signal);
   signal(SIGSTOP, &handle_signal);
   while ((lign = get_next_line(0)) != NULL)
