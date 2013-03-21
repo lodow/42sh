@@ -4,7 +4,7 @@
 ## Login   <robert_r@epitech.net>
 ## 
 ## Started on  Fri Nov 30 10:59:19 2012 remi robert
-## Last update Wed Mar 20 14:27:28 2013 remi
+## Last update Thu Mar 21 11:16:39 2013 remi
 ##
 
 SRC=	main.c \
@@ -13,6 +13,13 @@ SRC=	main.c \
 	termcap/clear.c \
 	my_putstr.c \
 	termcap/curseur.c \
+	add_caractere_string.c \
+	return_string.c \
+	read_cmd.c \
+	free.c \
+	get_pos_curser.c \
+	my_strlen.c \
+	my_getnbr.c \
 
 OBJ=	 $(SRC:.c=.o)
 
