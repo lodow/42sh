@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Thu Mar 21 11:39:11 2013 remi
+** Last update Thu Mar 21 17:52:51 2013 remi
 */
 
 #ifndef MY_FUNC_H_
@@ -56,7 +56,7 @@ typedef struct		s_param
 /*
 ** add_caractere_string.c
 */
-void		add_caractere_string(t_string **, char);
+void		add_caractere_string(t_string **, char, int);
 
 /*
 ** return_string.c

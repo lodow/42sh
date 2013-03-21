@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed Mar 20 16:35:19 2013 remi
-** Last update Thu Mar 21 17:34:41 2013 remi
+** Last update Thu Mar 21 18:25:57 2013 remi
 */
 
 #include "my_func.h"
@@ -25,12 +25,23 @@ void	end_read(t_param *param)
 int	gere_keyboard(t_param *param, char *buff)
 {
   if (buff[0] != ESC || buff[1] == '\0' && buff[0] != '\n')
+    return (0);
+  if (buff[2] == LEFT)
     {
-      param->len_string = param->len_string + 1;
-      return (0);
+      curseur(param->curser.begin_x - 1, param->curser.begin_y);
+      param->current_pos = param->current_pos - 1;
     }
-  /* if (tab[2] == LEFT) */
-  /* if (tab[2] == RIGHT) */
+  return (1);
+  //if (tab[2] == RIGHT)
+}
+
+void	init_read_cmd(t_param *param)
+{
+  param->len_string = 0;
+  param->current_pos = 0;
+  get_pos_curser(&(param->curser.begin_x),
+		 &(param->curser.begin_y));
+  curseur(0, param->curser.begin_y);
 }
 
 void	read_cmd(t_param *param)
@@ -40,21 +51,19 @@ void	read_cmd(t_param *param)
 
   buff[1] = '\0';
   temp = 0;
-  param->len_string = 0;
-  param->current_pos = 0;
-  get_pos_curser(&(param->curser.begin_x), &(param->curser.begin_y));
-  curseur(0, param->curser.begin_y);
+  init_read_cmd(param);
   while (1)
     {
       buff[1] = '\0';
       read(0, buff, 5);
-      if (buff[1] == '\0' && buff[0] != '\n')
+      if (gere_keyboard(param, buff) == 0 &&
+	  buff[1] == '\0' && buff[0] != '\n')
 	{
 	  param->current_pos = param->current_pos + 1;
-	  add_caractere_string(&(param->ptr), buff[0]);
+	  add_caractere_string(&(param->ptr), buff[0], param->current_pos);
 	  param->len_string = param->len_string + 1;
+	  show_string(param->ptr, param->current_pos);
 	}
-      show_string(param->ptr, param->current_pos);
       if (buff[0] == '\n')
 	{
 	  end_read(param);
