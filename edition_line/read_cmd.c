@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed Mar 20 16:35:19 2013 remi
-** Last update Thu Mar 21 17:09:12 2013 remi
+** Last update Thu Mar 21 17:34:41 2013 remi
 */
 
 #include "my_func.h"
@@ -49,19 +49,12 @@ void	read_cmd(t_param *param)
       buff[1] = '\0';
       read(0, buff, 5);
       if (buff[1] == '\0' && buff[0] != '\n')
-	add_caractere_string(&(param->ptr), buff[0]);
-      if (param->current_pos >= return_x() - 1)
 	{
-	  if (temp == 0)
-	    param->curser.begin_y = param->curser.begin_y - 2;
-	  else
-	    param->curser.begin_y = param->curser.begin_y - 1;
-	  temp = 1;
-	  param->current_pos = 0;
+	  param->current_pos = param->current_pos + 1;
+	  add_caractere_string(&(param->ptr), buff[0]);
+	  param->len_string = param->len_string + 1;
 	}
-      curseur(0, param->curser.begin_y);
-      show_string(param->ptr);
-      param->current_pos = param->current_pos + 1;
+      show_string(param->ptr, param->current_pos);
       if (buff[0] == '\n')
 	{
 	  end_read(param);

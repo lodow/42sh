@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed Mar 20 16:06:52 2013 remi
-** Last update Thu Mar 21 16:59:44 2013 remi
+** Last update Thu Mar 21 17:35:20 2013 remi
 */
 
 #include "my_func.h"
@@ -15,14 +15,14 @@ void		show_string(t_string *ptr, int pos)
   t_string	*pcourant;
   int		indice;
 
-  if (ptr == NULL || pcourant->next == NULL)
+  if (ptr == NULL)
     return ;
   indice = 0;
   pcourant = ptr;
   my_putstr("[");
   while (pcourant != NULL)
     {
-      if (indice >= pos)
+      if (indice >= pos - 1)
 	my_putchar(pcourant->caractere);
       pcourant = pcourant->next;
       indice = indice + 1;
