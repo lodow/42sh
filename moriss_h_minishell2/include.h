@@ -148,4 +148,9 @@ void			builtin_env(t_prg *cmd, t_sh_info *shell);
 void			builtin_unsetenv(t_prg *cmd, t_sh_info *shell);
 void			builtin_setenv(t_prg *cmd, t_sh_info *shell);
 
+/*
+** Jobs
+*/
+int			group_pipeline_process(t_pipeline *pipeline);
+
 #endif
