@@ -34,3 +34,36 @@ int	group_pipeline_process(t_pipeline *pipeline)
   pipeline->pgid = pgid;
   return (0);
 }
+
+int		check_terminated_jobs(t_sh_info *shell)
+{
+  int		i;
+  int		j;
+  int		done;
+  int		prompt;
+  t_pipeline	*tmppipeline;
+
+  i = 0;
+  prompt = 1;
+  if (shell->process_group == NULL)
+    return (1);
+  while ((tmppipeline = shell->process_group[i]) != NULL)
+    {
+      j = 0;
+      done = 0;
+      while (j < tmppipeline->nb)
+        {
+          done += (tmppipeline->prg_list[j]->done - 1);
+          j++;
+        }
+      if (done == 0)
+        {
+          rm_pipeline(tmppipeline);
+          rm_ptr_f_tab((void**)shell->process_group, tmppipeline);
+        }
+      else if (tmppipeline->forground == 1)
+        prompt = 0;
+      i++;
+    }
+  return (prompt);
+}

@@ -66,15 +66,18 @@ typedef struct	s_pipeline
   int		drd;
   char		*checkstrdrd;
   int		nb;
+  char		*lign;
   t_prg		**prg_list;
   int		pgid;
+  int		running;
+  int		forground;
 }		t_pipeline;
 
 typedef struct		s_sh_info
 {
   char			**envp;
-  int			shell_grp;
   int			ttyfd;
+  pid_t			sh_pid;
   t_pipeline		**process_group;
 }			t_sh_info;
 
@@ -128,6 +131,7 @@ void			pwd_recalc(char *current_pwd, char *diff_pwd,
 char			*check_vars_in_str(char *str, char **envp);
 void			load_conf_file(const char *filename, char ***envp);
 void			alias_replace(char ***argv, char **envp);
+void			wait_all_jobs(t_pipeline **jobtab);
 
 /*
 ** Wordtab func
@@ -135,6 +139,7 @@ void			alias_replace(char ***argv, char **envp);
 char			**my_str_to_wordtab(char *str, char sepa, int delanhi);
 char			*backslash_nw_a_dup(char *str);
 void			**add_ptr_t_tab(void **tab, void *add);
+void			rm_ptr_f_tab(void **tab, void *ptr);
 
 /*
 ** Builtin func
@@ -152,5 +157,7 @@ void			builtin_setenv(t_prg *cmd, t_sh_info *shell);
 ** Jobs
 */
 int			group_pipeline_process(t_pipeline *pipeline);
+void			set_forground_process(pid_t pid);
+int			check_terminated_jobs(t_sh_info *shell);
 
 #endif

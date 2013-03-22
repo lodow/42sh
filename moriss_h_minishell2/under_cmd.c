@@ -25,6 +25,7 @@ void	rm_pipeline(t_pipeline *pipeline)
         }
       free(pipeline->checkstrdrd);
       free(pipeline->prg_list);
+      free(pipeline->lign);
       free(pipeline);
     }
 }

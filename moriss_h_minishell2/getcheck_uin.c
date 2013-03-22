@@ -39,13 +39,13 @@ t_pipeline	*pipeline_cced(char *lign, t_sh_info *shell)
       check_and_set_redirection(pipeline);
       if (pipe_exec_pipeline(pipeline, shell) != -1)
         {
+          pipeline->lign = lign;
           group_pipeline_process(pipeline);
           if (pipeline->drd != -1)
             cat_t_str(0, pipeline->drd, pipeline->checkstrdrd);
-          while (wait_son(pipeline, 0, pipeline->nb, 1));
+          /*          while (wait_son(pipeline, 0, pipeline->nb, 1));*/
         }
     }
-  free(lign);
   return (pipeline);
 }
 
@@ -63,9 +63,10 @@ void		lign_t_multiple_pipeline(char *lign, t_sh_info *shell)
         tmp = pipeline_cced(lines[i], shell);
         shell->process_group = (t_pipeline**)add_ptr_t_tab(
                                  (void**)shell->process_group, (void*)tmp);
+        while (check_terminated_jobs(shell) == 0)
+          wait_all_jobs(shell->process_group);
         i++;
       }
-  //rm_pipeline(pipeline);
   free(lines);
   free(lign);
 }

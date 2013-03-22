@@ -95,5 +95,7 @@ void	exec_process(t_prg *cmd, t_sh_info *shell, t_pipeline *pipeline)
           my_putstr("What are you trying to do ? Fool !\n", 1, -1);
           exit(-1);
         }
+      set_forground_process(cmd->pidf);
+      pipeline->forground = 1;
     }
 }

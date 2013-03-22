@@ -12,15 +12,34 @@
 
 void	builtin_fg(t_prg *cmd, t_sh_info *shell)
 {
+  int	pid;
 
+  pid = 0;
+  set_forground_process(pid);
 }
 
 void	builtin_bg(t_prg *cmd, t_sh_info *shell)
 {
-  kill(cmd->pidf, SIGCONT);
+  /*  kill(-cmd->pidf, SIGCONT);*/
 }
 
-void	builtin_jobs(t_prg *cmd, t_sh_info *shell)
+void		builtin_jobs(t_prg *cmd, t_sh_info *shell)
 {
+  int		i;
+  t_pipeline	*tmppipeline;
+  char		*tmp;
 
+  i = 0;
+  if (shell->process_group != NULL)
+    while ((tmppipeline = shell->process_group[i]) != NULL)
+      {
+        tmp = my_uint_strbase(i + 1, "0123456789");
+        my_putstr("[", 1, -1);
+        my_putstr(tmp, 1, -1);
+        my_putstr("] ", 1, -1);
+        my_putstr(tmppipeline->lign, 1, -1);
+        my_putstr("\n", 1, -1);
+        free(tmp);
+        i++;
+      }
 }

@@ -37,6 +37,8 @@ SRC= 	main.c \
 	backquote.c \
 	my_getnbr.c \
 	my_uint64_t_strbase.c \
+	tty.c \
+	rm_f_tab.c \
 	stc.c
 
 OBJ= $(SRC:.c=.o)

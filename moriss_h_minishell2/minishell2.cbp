@@ -98,6 +98,9 @@
 		<Unit filename="redirection.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="rm_f_tab.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="search_check_exec.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -111,6 +114,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="swap_ptr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tty.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="under_cmd.c">
