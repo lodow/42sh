@@ -30,6 +30,7 @@ SRC= 	main.c \
 	wait.c \
 	builtins_check.c \
 	job_builtins.c \
+	job.c \
 	variable.c \
 	epur_str.c \
 	builtin.c \

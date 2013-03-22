@@ -10,17 +10,3 @@
 
 #include "include.h"
 
-void	builtin_fg(t_prg *cmd, t_sh_info *shell)
-{
-
-}
-
-void	builtin_bg(t_prg *cmd, t_sh_info *shell)
-{
-  kill(cmd->pidf, SIGCONT);
-}
-
-void	builtin_jobs(t_prg *cmd, t_sh_info *shell)
-{
-
-}

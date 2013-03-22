@@ -48,22 +48,23 @@ t_pipeline	*pipeline_cced(char *lign, t_sh_info *shell)
   return (pipeline);
 }
 
-void	lign_t_multiple_pipeline(char *lign, t_sh_info *shell)
+void		lign_t_multiple_pipeline(char *lign, t_sh_info *shell)
 {
-  char	**lines;
-  int	i;
+  char		**lines;
+  t_pipeline	*tmp;
+  int		i;
 
   i = 0;
   lines = my_str_to_wordtab(lign, ';', 0);
   if (lines != NULL)
     while (lines[i] != NULL)
       {
+        tmp = pipeline_cced(lines[i], shell);
         shell->process_group = (t_pipeline**)add_ptr_t_tab(
-                             (void**)shell->process_group,
-                             (void*)pipeline_cced(lines[i], shell));
+                                 (void**)shell->process_group, (void*)tmp);
         i++;
       }
-      //rm_pipeline(pipeline);
+  //rm_pipeline(pipeline);
   free(lines);
   free(lign);
 }
@@ -74,8 +75,6 @@ void		getlaunch_prg(t_sh_info *shell)
 
   print_prompt(shell);
   shell->process_group = NULL;
-  signal(SIGINT, &handle_signal);
-  signal(SIGSTOP, &handle_signal);
   while ((lign = get_next_line(0)) != NULL)
     {
       if ((lign = check_and_load_backquote(lign, shell)) != NULL)

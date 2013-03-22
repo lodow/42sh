@@ -28,6 +28,7 @@
 # include "get_file.h"
 # include "get_next_line.h"
 
+# define NB_BUILTINS 8
 # define BUFFER 4096
 # define PIPE_READ 0
 # define PIPE_WRITE 1
@@ -66,13 +67,14 @@ typedef struct	s_pipeline
   char		*checkstrdrd;
   int		nb;
   t_prg		**prg_list;
-  int		groupid;
+  int		pgid;
 }		t_pipeline;
 
 typedef struct		s_sh_info
 {
   char			**envp;
   int			shell_grp;
+  int			ttyfd;
   t_pipeline		**process_group;
 }			t_sh_info;
 
@@ -137,7 +139,7 @@ void			**add_ptr_t_tab(void **tab, void *add);
 /*
 ** Builtin func
 */
-void			builtin_job(t_prg *cmd, t_sh_info *shell);
+void			builtin_jobs(t_prg *cmd, t_sh_info *shell);
 void			builtin_bg(t_prg *cmd, t_sh_info *shell);
 void			builtin_fg(t_prg *cmd, t_sh_info *shell);
 void			builtin_exit(t_prg *cmd, t_sh_info *shell);

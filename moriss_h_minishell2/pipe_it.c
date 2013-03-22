@@ -88,6 +88,7 @@ int	pipe_exec_pipeline(t_pipeline *pipeline, t_sh_info *shell)
 
   if (pipeline->nb > 0)
     {
+      pipeline->pgid = 0;
       cmd = pipeline->prg_list[0];
       cmd->fd.stdin = pipeline->fd.stdin;
       cmd->fd.stderr = pipeline->fd.stderr;

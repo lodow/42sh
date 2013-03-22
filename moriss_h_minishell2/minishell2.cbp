@@ -65,6 +65,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="include.h" />
+		<Unit filename="job.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="job_builtins.c">
 			<Option compilerVar="CC" />
 		</Unit>

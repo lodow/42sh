@@ -81,6 +81,10 @@ void	exec_process(t_prg *cmd, t_sh_info *shell, t_pipeline *pipeline)
       cmd->done = 0;
       if ((cmd->argv != NULL) && ((cmd->pidf = fork()) == 0))
         {
+          signal(SIGINT, SIG_DFL);
+          signal(SIGTTOU, SIG_DFL);
+          signal(SIGTTIN, SIG_DFL);
+          signal(SIGTSTP, SIG_DFL);
           dup2(cmd->fd.stdin, 0);
           dup2(cmd->fd.stdout, 1);
           dup2(cmd->fd.stderr, 2);
