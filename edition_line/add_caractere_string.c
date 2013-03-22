@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed Mar 20 16:06:52 2013 remi
-** Last update Thu Mar 21 18:04:32 2013 remi
+** Last update Fri Mar 22 12:51:03 2013 remi
 */
 
 #include "my_func.h"
@@ -19,7 +19,6 @@ void		show_string(t_string *ptr, int pos)
     return ;
   indice = 0;
   pcourant = ptr;
-  my_putstr("[");
   while (pcourant != NULL)
     {
       if (indice >= pos)
@@ -27,7 +26,6 @@ void		show_string(t_string *ptr, int pos)
       pcourant = pcourant->next;
       indice = indice + 1;
     }
-  my_putstr("]");
 }
 
 void	add_caractere_string(t_string **ptr, char caractere, int pos)
@@ -49,7 +47,7 @@ void	add_caractere_string(t_string **ptr, char caractere, int pos)
     return ;
   pcourant = *ptr;
   indice = 0;
-  while (pcourant->next != NULL && indice != pos)
+  while (pcourant->next != NULL && indice != pos - 1)
     {
       pcourant = pcourant->next;
       indice = indice + 1;

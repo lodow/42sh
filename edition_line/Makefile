@@ -4,7 +4,7 @@
 ## Login   <robert_r@epitech.net>
 ## 
 ## Started on  Fri Nov 30 10:59:19 2012 remi robert
-## Last update Thu Mar 21 11:16:39 2013 remi
+## Last update Fri Mar 22 13:07:09 2013 remi
 ##
 
 SRC=	main.c \
@@ -20,6 +20,7 @@ SRC=	main.c \
 	get_pos_curser.c \
 	my_strlen.c \
 	my_getnbr.c \
+	suppr_caractere_string.c \
 
 OBJ=	 $(SRC:.c=.o)
 
