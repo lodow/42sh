@@ -34,16 +34,16 @@ t_pipeline	*pipeline_cced(char *lign, t_sh_info *shell)
   t_pipeline	*pipeline;
 
   pipeline = lign_into_pipeligne(lign, shell);
+  pipeline->lign = lign;
   if ((pipeline != NULL) && (is_pipeline_exec_a(pipeline) != 0))
     {
       check_and_set_redirection(pipeline);
       if (pipe_exec_pipeline(pipeline, shell) != -1)
         {
-          pipeline->lign = lign;
           group_pipeline_process(pipeline);
+          set_forground_pgrp(pipeline->pgid);
           if (pipeline->drd != -1)
             cat_t_str(0, pipeline->drd, pipeline->checkstrdrd);
-          /*          while (wait_son(pipeline, 0, pipeline->nb, 1));*/
         }
     }
   return (pipeline);

@@ -81,13 +81,13 @@ void	exec_process(t_prg *cmd, t_sh_info *shell, t_pipeline *pipeline)
       cmd->done = 0;
       if ((cmd->argv != NULL) && ((cmd->pidf = fork()) == 0))
         {
+          dup2(cmd->fd.stdin, 0);
+          dup2(cmd->fd.stdout, 1);
+          dup2(cmd->fd.stderr, 2);
           signal(SIGINT, SIG_DFL);
           signal(SIGTTOU, SIG_DFL);
           signal(SIGTTIN, SIG_DFL);
           signal(SIGTSTP, SIG_DFL);
-          dup2(cmd->fd.stdin, 0);
-          dup2(cmd->fd.stdout, 1);
-          dup2(cmd->fd.stderr, 2);
           close_all_pipe(pipeline);
           execve(cmd->prg, cmd->argv, shell->envp);
           if (cmd->fd.stdin != 0)
@@ -95,7 +95,7 @@ void	exec_process(t_prg *cmd, t_sh_info *shell, t_pipeline *pipeline)
           my_putstr("What are you trying to do ? Fool !\n", 1, -1);
           exit(-1);
         }
-      set_forground_process(cmd->pidf);
       pipeline->forground = 1;
+      pipeline->running = 1;
     }
 }

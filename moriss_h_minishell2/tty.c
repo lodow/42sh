@@ -10,12 +10,12 @@
 
 #include "include.h"
 
-void	set_forground_process(pid_t pid)
+void	set_forground_pgrp(pid_t pid)
 {
   if (isatty(0))
-    tcsetpgrp(0, getpgid(pid));
+    tcsetpgrp(0, pid);
   if (isatty(1))
-    tcsetpgrp(1, getpgid(pid));
+    tcsetpgrp(1, pid);
   if (isatty(2))
-    tcsetpgrp(2, getpgid(pid));
+    tcsetpgrp(2, pid);
 }

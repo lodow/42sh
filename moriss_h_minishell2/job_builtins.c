@@ -15,7 +15,7 @@ void	builtin_fg(t_prg *cmd, t_sh_info *shell)
   int	pid;
 
   pid = 0;
-  set_forground_process(pid);
+  set_forground_pgrp(pid);
 }
 
 void	builtin_bg(t_prg *cmd, t_sh_info *shell)

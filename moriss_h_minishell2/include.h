@@ -157,7 +157,7 @@ void			builtin_setenv(t_prg *cmd, t_sh_info *shell);
 ** Jobs
 */
 int			group_pipeline_process(t_pipeline *pipeline);
-void			set_forground_process(pid_t pid);
+void			set_forground_pgrp(pid_t pid);
 int			check_terminated_jobs(t_sh_info *shell);
 
 #endif

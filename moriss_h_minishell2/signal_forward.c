@@ -12,6 +12,8 @@
 
 void	handle_signal(int sig)
 {
+  if (sig == SIGTSTP)
+    set_forground_pgrp(getpgid(getpid()));
   signal(SIGTTOU, &handle_signal);
   signal(SIGTTIN, &handle_signal);
   signal(SIGINT, &handle_signal);
