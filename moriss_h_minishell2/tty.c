@@ -12,10 +12,23 @@
 
 void	set_forground_pgrp(pid_t pid)
 {
-  if (isatty(0))
-    tcsetpgrp(0, pid);
-  if (isatty(1))
-    tcsetpgrp(1, pid);
-  if (isatty(2))
-    tcsetpgrp(2, pid);
+  int	err;
+
+  err = 0;
+  if (pid != -1)
+    {
+      signal(SIGTTOU, SIG_IGN);
+      if (isatty(0))
+        err += tcsetpgrp(0, pid);
+      if (isatty(1))
+        err += tcsetpgrp(1, pid);
+      if (isatty(2))
+        err += tcsetpgrp(2, pid);
+      if (err != 0)
+        {
+          my_putstr("Can't set tcsetpgrp, error: ", 2, -1);
+          my_putstr(strerror(errno), 2, -1);
+        }
+      signal(SIGTTOU, SIG_DFL);
+    }
 }

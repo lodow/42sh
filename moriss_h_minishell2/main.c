@@ -10,15 +10,6 @@
 
 #include "include.h"
 
-void	print_error(int err)
-{
-  char	*tmp;
-
-  tmp = strerror(err);
-  my_putstr(tmp, 2, -1);
-  free(tmp);
-}
-
 int	open_tty_fd()
 {
   return (open("/dev/tty", O_RDWR));
@@ -35,7 +26,7 @@ int		main(int argc, char **argv, char **envp)
   if ((shell.ttyfd = open_tty_fd()) == -1)
     {
       my_putstr("Can't open tty error: \n", 2, -1);
-      print_error(errno);
+      my_putstr(strerror(errno), 2, -1);
       return (-1);
     }
   signal(SIGTTOU, &handle_signal);
