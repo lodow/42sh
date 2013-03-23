@@ -78,6 +78,7 @@ typedef struct		s_sh_info
   char			**envp;
   int			ttyfd;
   pid_t			sh_pid;
+  pid_t			sh_session;
   t_pipeline		**process_group;
 }			t_sh_info;
 

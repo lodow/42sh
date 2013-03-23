@@ -85,10 +85,10 @@ void	exec_process(t_prg *cmd, t_sh_info *shell, t_pipeline *pipeline)
           signal(SIGTTOU, SIG_DFL);
           signal(SIGTTIN, SIG_DFL);
           signal(SIGTSTP, SIG_DFL);
+          setpgid(0, 0);
           dup2(cmd->fd.stdin, 0);
           dup2(cmd->fd.stdout, 1);
           dup2(cmd->fd.stderr, 2);
-          setpgid(0, 0);
           close_all_pipe(pipeline);
           execve(cmd->prg, cmd->argv, shell->envp);
           if (cmd->fd.stdin != 0)

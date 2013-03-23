@@ -65,9 +65,7 @@ void		lign_t_multiple_pipeline(char *lign, t_sh_info *shell)
                                  (void**)shell->process_group, (void*)tmp);
         while ((check_terminated_jobs(shell) == 0)
                && (tcgetpgrp(1) != getpgid(shell->sh_pid)))
-          {
-            wait_all_jobs(shell->process_group);
-          }
+          wait_all_jobs(shell->process_group);
         set_forground_pgrp(getpgid(getpid()));
         i++;
       }

@@ -19,6 +19,7 @@ int		main(int argc, char **argv, char **envp)
 {
   t_sh_info	shell;
 
+  shell.sh_session = setsid();
   shell.sh_pid = getpid();
   shell.envp = cpy_env(envp);
   shell.envp = add_change_env(shell.envp, "PS1", "${LOGNAME} ${PWD} $ ");

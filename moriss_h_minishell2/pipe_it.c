@@ -69,7 +69,6 @@ int	pipe_it(t_pipeline *pipeline, t_prg *cmd, t_sh_info *shell)
       cmd->fd.stdout = pipefd[PIPE_WRITE];
       exec_process(cmd, shell, pipeline);
       close_cmd_stdfds(lastcmd);
-      wait_son(pipeline, i - 10, i - 3, 0);
       lastcmd = cmd;
       cmd = pipeline->prg_list[i];
       cmd->fd.stdin = pipefd[PIPE_READ];
