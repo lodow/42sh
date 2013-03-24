@@ -56,9 +56,10 @@ int	group_pipeline_process(t_pipeline *pipeline)
 
 void		update_jobs_status(t_sh_info *shell, int sig)
 {
-  if (sig == SIGTSTP)
+  if ((sig == SIGTSTP) && (shell->forground != NULL))
     {
       shell->forground->running = 0;
+      shell->forground = NULL;
     }
 }
 
