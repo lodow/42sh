@@ -70,7 +70,6 @@ typedef struct	s_pipeline
   t_prg		**prg_list;
   int		pgid;
   int		running;
-  int		forground;
 }		t_pipeline;
 
 typedef struct		s_sh_info
@@ -78,7 +77,9 @@ typedef struct		s_sh_info
   char			**envp;
   int			ttyfd;
   pid_t			sh_pid;
+  pid_t			sh_pgid;
   pid_t			sh_session;
+  t_pipeline		*forground;
   t_pipeline		**process_group;
 }			t_sh_info;
 
@@ -160,5 +161,8 @@ void			builtin_setenv(t_prg *cmd, t_sh_info *shell);
 int			group_pipeline_process(t_pipeline *pipeline);
 void			set_forground_pgrp(pid_t pid);
 int			check_terminated_jobs(t_sh_info *shell);
+int			init_shell_f_jobs(t_sh_info *shell);
+t_sh_info		*get_sh_info(t_sh_info *sh);
+void			update_jobs_status(t_sh_info *shell, int sig);
 
 #endif

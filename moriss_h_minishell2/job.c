@@ -10,6 +10,25 @@
 
 #include "include.h"
 
+int	init_shell_f_jobs(t_sh_info *shell)
+{
+  int	err;
+
+  err = 0;
+  if ((shell->sh_pid = getpid() == -1)
+      || (shell->sh_pgid = getpgid(shell->sh_pid) == -1))
+    err = -1;
+  /*if ((shell->ttyfd = open("/dev/tty", O_RDWR)) == -1)
+    {
+      my_putstr("Can't open tty error: \n", 2, -1);
+      my_putstr(strerror(errno), 2, -1);
+      err = -1;
+    }*/
+  get_sh_info(shell);
+  shell->forground = NULL;
+  return (err);
+}
+
 int	group_pipeline_process(t_pipeline *pipeline)
 {
   int	i;
@@ -33,6 +52,14 @@ int	group_pipeline_process(t_pipeline *pipeline)
     }
   pipeline->pgid = pgid;
   return (0);
+}
+
+void		update_jobs_status(t_sh_info *shell, int sig)
+{
+  if (sig == SIGTSTP)
+    {
+      shell->forground->running = 0;
+    }
 }
 
 int		check_terminated_jobs(t_sh_info *shell)
@@ -61,7 +88,7 @@ int		check_terminated_jobs(t_sh_info *shell)
           rm_pipeline(tmppipeline);
           rm_ptr_f_tab((void**)shell->process_group, tmppipeline);
         }
-      else if (tmppipeline->forground == 1)
+      else if (tmppipeline->running == 1)
         prompt = 0;
       i++;
     }

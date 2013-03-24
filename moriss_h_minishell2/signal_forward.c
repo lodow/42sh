@@ -10,10 +10,21 @@
 
 #include	"include.h"
 
-void	handle_signal(int sig)
+t_sh_info		*get_sh_info(t_sh_info *sh)
 {
-  if (sig == SIGTSTP)
-    set_forground_pgrp(getpgid(getpid()));
+  static t_sh_info	*shell;
+
+  if (sh != NULL)
+    shell = sh;
+  return (shell);
+}
+
+void		handle_signal(int sig)
+{
+  t_sh_info	*shell;
+
+  shell = get_sh_info(NULL);
+  update_jobs_status(shell, sig);
   signal(SIGTTOU, &handle_signal);
   signal(SIGTTIN, &handle_signal);
   signal(SIGINT, &handle_signal);
