@@ -5,12 +5,35 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:44:01 2013 maxime lavandier
-** Last update Tue Mar 19 11:03:30 2013 maxime lavandier
+** Last update Wed Mar 20 16:11:18 2013 maxime lavandier
 */
 
 char	**create_basic_env()
 {
 
+}
+
+int	get_path(t_sh *spt, char **env)
+{
+  int	i;
+
+  i = 0;
+  if (env == 0)
+    return (-1);
+  while (env[i] && my_strncmp(env[i], "PATH=", 5) != 0)
+    i++;
+  if (!env[i] || my_strlen(env[i]) < 5)
+    {
+      my_putstr("No PATH in the environement\n", 2);
+      spt->path = NULL;
+      return (0);
+    }
+  if ((spt->path = my_str_to_wordtab(&(env[i][5]), ':', ':')) == NULL)
+    {
+      my_putstr("Failed to transform the path to a tab\n", 2);
+      return (-1);
+    }
+  return (0);
 }
 
 char	**copy_env(char **main_env)
@@ -35,7 +58,7 @@ char	**copy_env(char **main_env)
   return (env);
 }
 
-char	**check_env(char **main_env)
+char	**check_env(char **main_env, t_sh *spt)
 {
   char **env;
 
@@ -43,5 +66,7 @@ char	**check_env(char **main_env)
     env = create_basic_env();
   else
     env = copy_env(main_env);
+  if (get_path(spt, env) == -1)
+    spt->path = NULL;
   return (env);
 }

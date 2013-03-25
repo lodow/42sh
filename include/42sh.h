@@ -5,5 +5,16 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Tue Mar 19 10:39:44 2013 maxime lavandier
+** Last update Wed Mar 20 14:27:54 2013 maxime lavandier
 */
+
+#ifndef		42SH_H
+#define		42SH_H
+
+typedef struct	s_sh
+{
+  char		**path;
+  char		**env;
+}		t_sh;
+
+#endif
