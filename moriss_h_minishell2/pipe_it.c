@@ -54,7 +54,7 @@ void	close_all_pipe(t_pipeline *pipeline)
     }
 }
 
-int	pipe_it(t_pipeline *pipeline, t_prg *cmd, char ***envp)
+int	pipe_it(t_pipeline *pipeline, t_prg *cmd, t_sh_info *shell)
 {
   int	i;
   int	pipefd[2];
@@ -67,9 +67,8 @@ int	pipe_it(t_pipeline *pipeline, t_prg *cmd, char ***envp)
       if (pipe(pipefd) == -1)
         return (-1);
       cmd->fd.stdout = pipefd[PIPE_WRITE];
-      exec_process(cmd, envp, pipeline);
+      exec_process(cmd, shell, pipeline);
       close_cmd_stdfds(lastcmd);
-      wait_son(pipeline, i - 10, i - 3, 0);
       lastcmd = cmd;
       cmd = pipeline->prg_list[i];
       cmd->fd.stdin = pipefd[PIPE_READ];
@@ -77,22 +76,23 @@ int	pipe_it(t_pipeline *pipeline, t_prg *cmd, char ***envp)
       cmd->fd.stdout = pipeline->fd.stdout;
       i++;
     }
-  exec_process(cmd, envp, pipeline);
+  exec_process(cmd, shell, pipeline);
   close_cmd_stdfds(cmd);
   return (0);
 }
 
-int	pipe_exec_pipeline(t_pipeline *pipeline, char ***envp)
+int	pipe_exec_pipeline(t_pipeline *pipeline, t_sh_info *shell)
 {
   t_prg	*cmd;
 
   if (pipeline->nb > 0)
     {
+      pipeline->pgid = 0;
       cmd = pipeline->prg_list[0];
       cmd->fd.stdin = pipeline->fd.stdin;
       cmd->fd.stderr = pipeline->fd.stderr;
       cmd->fd.stdout = pipeline->fd.stdout;
-      return (pipe_it(pipeline, cmd, envp));
+      return (pipe_it(pipeline, cmd, shell));
     }
   return (0);
 }

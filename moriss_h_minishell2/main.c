@@ -10,17 +10,23 @@
 
 #include "include.h"
 
-int	main(int argc, char **argv, char **envp)
+int		main(int argc, char **argv, char **envp)
 {
-  char	**subenvp;
+  t_sh_info	shell;
 
-  subenvp = cpy_env(envp);
-  subenvp = add_change_env(subenvp, "PS1", "${LOGNAME} ${PWD} $ ");
-  load_conf_file(".mysh", &subenvp);
-  if (subenvp != NULL)
+  if (init_shell_f_jobs(&shell) == -1)
+    return (-1);
+  shell.envp = cpy_env(envp);
+  shell.envp = add_change_env(shell.envp, "PS1", "${LOGNAME} ${PWD} $ ");
+  load_conf_file(".mysh", &(shell.envp));
+  signal(SIGTTOU, &handle_signal);
+  signal(SIGTTIN, &handle_signal);
+  signal(SIGINT, &handle_signal);
+  signal(SIGTSTP, &handle_signal);
+  if (shell.envp != NULL)
     {
-      getlaunch_prg(&subenvp);
-      destroy_envp(subenvp);
+      getlaunch_prg(&shell);
+      destroy_envp(shell.envp);
     }
   else
     my_putstr("Malloc failed\n", 2, -1);

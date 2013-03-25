@@ -58,3 +58,17 @@ int	wait_son(t_pipeline *prgl, int start, int nb, int closeb)
     }
   return (0);
 }
+
+void	wait_all_jobs(t_pipeline **jobtab)
+{
+  int	i;
+
+  i = 0;
+  if (jobtab == NULL)
+    return ;
+  while (jobtab[i] != NULL)
+    {
+      wait_son(jobtab[i], 0, jobtab[i]->nb, 1);
+      i++;
+    }
+}

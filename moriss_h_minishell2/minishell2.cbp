@@ -38,6 +38,9 @@
 		<Unit filename="builtin.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="builtins_check.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="cat.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -62,6 +65,12 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="include.h" />
+		<Unit filename="job.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="job_builtins.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="load_conf.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -89,6 +98,9 @@
 		<Unit filename="redirection.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="rm_f_tab.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="search_check_exec.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -102,6 +114,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="swap_ptr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tty.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="under_cmd.c">

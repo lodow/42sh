@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Feb 19 11:20:55 2013 luc sinet
-** Last update Mon Mar 11 11:10:03 2013 luc sinet
+** Last update Thu Feb 21 21:57:19 2013 luc sinet
 */
 
 #include "get_next_line.h"
@@ -81,11 +81,6 @@ char		*get_next_line(const int fd)
     {
       if ((s_read = read(fd, buf, SIZE)) <= 0)
 	{
-	  if (s_read == 0 && line[0])
-	    {
-	      buf[0] = '\0';
-	      return (line);
-	    }
 	  free(line);
 	  return (NULL);
 	}

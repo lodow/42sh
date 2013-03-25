@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Wed Mar 20 14:27:54 2013 maxime lavandier
+** Last update Mon Mar 25 13:31:46 2013 maxime lavandier
 */
 
 #ifndef		42SH_H

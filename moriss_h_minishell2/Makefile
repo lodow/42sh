@@ -28,19 +28,24 @@ SRC= 	main.c \
 	son_exec.c \
 	under_cmd.c \
 	wait.c \
+	builtins_check.c \
+	job_builtins.c \
+	job.c \
 	variable.c \
 	epur_str.c \
 	builtin.c \
 	backquote.c \
 	my_getnbr.c \
 	my_uint64_t_strbase.c \
+	tty.c \
+	rm_f_tab.c \
 	stc.c
 
 OBJ= $(SRC:.c=.o)
 
 NAME= mysh
 
-CFLAGS= -g -pg -Wall -ansi -Wfloat-equal -Wmissing-include-dirs \
+CFLAGS= -g -Wall -Wfloat-equal -Wmissing-include-dirs \
 	-Wclobbered -Wempty-body -Wignored-qualifiers \
 	-Wmissing-field-initializers -Wmissing-parameter-type \
 	-Wold-style-declaration -Woverride-init -Wsign-compare \

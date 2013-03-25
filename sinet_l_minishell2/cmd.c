@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Feb 15 15:33:29 2013 luc sinet
-** Last update Sun Mar 10 22:38:34 2013 luc sinet
+** Last update Fri Mar  8 19:44:04 2013 luc sinet
 */
 
 #include <unistd.h>
@@ -68,7 +68,7 @@ int	run_cmd(t_sh *spt, char **cmd)
   fullpath = NULL;
   if (!cmd[0] || !cmd[0][0])
     return (-1);
-  if (builtins(spt, cmd, cmd[0]) == -1 &&
+  if (builtins(spt, cmd) == -1 &&
       (fullpath = get_access(spt, cmd[0], cmd)) == NULL)
     return (not_found(cmd[0]));
   else if (fullpath != NULL)

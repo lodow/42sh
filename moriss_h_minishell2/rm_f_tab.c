@@ -10,11 +10,18 @@
 
 #include "include.h"
 
-void	swap_ptr(void **ptr1, void **ptr2)
+void	rm_ptr_f_tab(void **tab, void *ptr)
 {
-  void	*ptr;
+  int	i;
 
-  ptr = (*ptr1);
-  (*ptr1) = (*ptr2);
-  (*ptr2) = ptr;
+  i = 0;
+  if ((tab == NULL) || (ptr == NULL))
+    return ;
+  while ((tab[i] != NULL) && (tab[i] != ptr))
+    i++;
+  while (tab[i] != NULL)
+    {
+      tab[i] = tab[i + 1];
+      i++;
+    }
 }

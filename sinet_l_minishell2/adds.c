@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Feb 15 11:23:38 2013 luc sinet
-** Last update Sun Mar 10 22:39:07 2013 luc sinet
+** Last update Sat Mar  9 13:32:36 2013 luc sinet
 */
 
 #include "main.h"
@@ -39,7 +39,7 @@ char	*get_prompt(t_sh *spt, char **env)
   return (spt->prompt);
 }
 
-int	builtins(t_sh *spt, char **cmd, char *command)
+int	builtins(t_sh *spt, char **cmd)
 {
   char	*buf[5];
   int	(*bptr[5])(t_sh *spt, char **cmd);
@@ -56,7 +56,7 @@ int	builtins(t_sh *spt, char **cmd, char *command)
   buf[2] = "unsetenv";
   buf[3] = "cd";
   buf[4] = "exit";
-  while (i < 5 && my_strcmp(command, buf[i]))
+  while (i < 5 && my_strcmp(cmd[0], buf[i]))
     i++;
   if (i == 5)
     return (-1);

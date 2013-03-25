@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Feb 28 16:48:04 2013 luc sinet
-** Last update Mon Mar 11 13:37:01 2013 luc sinet
+** Last update Sun Mar 10 21:35:35 2013 luc sinet
 */
 
 #include <unistd.h>
@@ -102,7 +102,7 @@ int	r_pipe(t_sh *spt, char **cmd, char *fullpath, int ffd)
       rpipe(spt, cmd, 0);
       exit(0);
     }
-  /* else */
-  /*   waitpid(pid, NULL, 0); */
+  else
+    waitpid(pid, NULL, 0);
   return (0);
 }
