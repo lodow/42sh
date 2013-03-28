@@ -39,6 +39,7 @@ SRC= 	main.c \
 	my_uint64_t_strbase.c \
 	tty.c \
 	rm_f_tab.c \
+	dliste.c \
 	stc.c
 
 OBJ= $(SRC:.c=.o)

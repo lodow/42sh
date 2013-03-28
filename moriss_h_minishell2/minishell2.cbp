@@ -50,6 +50,10 @@
 		<Unit filename="closefd_check.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="dliste.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="dliste.h" />
 		<Unit filename="epur_str.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -64,6 +68,10 @@
 		<Unit filename="getcheck_uin.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="history.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="history.h" />
 		<Unit filename="include.h" />
 		<Unit filename="job.c">
 			<Option compilerVar="CC" />

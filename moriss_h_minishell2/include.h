@@ -27,6 +27,7 @@
 # include <dirent.h>
 # include "get_file.h"
 # include "get_next_line.h"
+# include "dliste.h"
 
 # define NB_BUILTINS 8
 # define BUFFER 4096
