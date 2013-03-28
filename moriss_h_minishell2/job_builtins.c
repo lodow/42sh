@@ -22,13 +22,14 @@ void	builtin_fg(t_prg *cmd, t_sh_info *shell)
       return ;
     }
   while ((shell->process_group[i] != NULL)
-         && (i < my_getnbr(cmd->argv[1] - 1)))
+         && (i < my_getnbr(cmd->argv[1]) - 1))
     i++;
   if (shell->process_group[i] != NULL)
     {
       pgid = shell->process_group[i]->pgid;
       shell->forground = shell->process_group[i];
       shell->process_group[i]->running = 1;
+      setpgid(shell->sh_pid, shell->forground->pgid);
       set_forground_pgrp(pgid);
       kill(-pgid, SIGCONT);
     }
@@ -46,13 +47,15 @@ void	builtin_bg(t_prg *cmd, t_sh_info *shell)
       return ;
     }
   while ((shell->process_group[i] != NULL)
-         && (i < my_getnbr(cmd->argv[1] - 1)))
+         && (i < my_getnbr(cmd->argv[1]) - 1))
     i++;
   if (shell->process_group[i] != NULL)
     {
       pgid = shell->process_group[i]->pgid;
       shell->process_group[i]->running = 1;
-      kill(-pgid, SIGTTIN);
+      printf ("bg pgid=%d\n", pgid);
+/*      kill(-pgid, SIGTTIN);*/
+/*      kill(-pgid, SIGTTOU);*/
       kill(-pgid, SIGCONT);
     }
 }
