@@ -13,27 +13,28 @@ char	**create_basic_env()
 
 }
 
-int	get_path(t_sh *spt, char **env)
+char	*get_envvar(char *var, char **env)
 {
-  int	i;
+  int	varlen;
+  char	*varegal;
 
-  i = 0;
-  if (env == 0)
-    return (-1);
-  while (env[i] && my_strncmp(env[i], "PATH=", 5) != 0)
-    i++;
-  if (!env[i] || my_strlen(env[i]) < 5)
+  varlen = my_strlen(var);
+  if ((varegal = malloc((varlen + 2) * sizeof(char))) == NULL)
+    return (NULL);
+  my_strncpy(varegal, var, -1);
+  varegal[varlen] = '=';
+  varegal[varlen + 1] = '\0';
+  while ((env != NULL) && (env[0] != NULL))
     {
-      my_putstr("No PATH in the environement\n", 2);
-      spt->path = NULL;
-      return (0);
+      if (my_strncmp(varegal, env[0], varlen + 1) == 0)
+        {
+          free(varegal);
+          return (&(env[0][varlen + 1]));
+        }
+      env = &env[1];
     }
-  if ((spt->path = my_str_to_wordtab(&(env[i][5]), ':', ':')) == NULL)
-    {
-      my_putstr("Failed to transform the path to a tab\n", 2);
-      return (-1);
-    }
-  return (0);
+  free(varegal);
+  return (NULL);
 }
 
 char	**copy_env(char **main_env)

@@ -5,18 +5,21 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 11:04:35 2013 maxime lavandier
-** Last update Tue Mar 19 11:06:20 2013 maxime lavandier
+** Last update Fri Mar 29 10:19:24 2013 Hugues
 */
 
-void	free_env(char **env)
+void	free_ptr_tab(void **tab)
 {
   int	i;
 
   i = 0;
-  if (env != 0)
+  if (tab != NULL)
     {
-      while (env[i] != 0)
-	free(env[i++]);
-      free(env);
+      while (tab[i] != '\0')
+	{
+	  free(tab[i]);
+	  i++;
+	}
+      free(tab);
     }
 }
