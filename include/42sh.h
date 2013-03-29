@@ -11,6 +11,8 @@
 #ifndef		42SH_H
 # define		42SH_H
 
+# define NB_BUILTINS 10
+
 typedef struct	s_fds
 {
   int		stdin;
@@ -43,8 +45,15 @@ typedef struct	s_pipe
   int		running;
 }		t_pipe;
 
+typedef struct	s_func_ptr
+{
+  char		*str;
+  void		*func;
+}		t_func_ptr;
+
 typedef struct	s_sh
 {
+  t_func_ptr	builtins[NB_BUILTINS];
   t_pid		pid;
   char		**path;
   char		**env;
