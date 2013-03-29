@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:31:22 2013 maxime lavandier
-** Last update Wed Mar 20 20:04:49 2013 maxime lavandier
+** Last update Fri Mar 29 12:40:10 2013 maxime lavandier
 */
 
 #include "../include/42sh.h"
@@ -46,6 +46,22 @@ char	**handle_cmd(char *str, char **path, char **env)
   else
     return (func[i](str, path, env));
 }
+
+
+void	mysh(char **env)
+{
+  char	*line;
+
+
+  while (1)
+    {
+      line = remi_func();
+      if (line == 0)
+	return ;
+      hugues_func(line, env);
+    }
+}
+
 
 int	main(int ac, char **av, char **main_env)
 {
