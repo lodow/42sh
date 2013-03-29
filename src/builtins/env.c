@@ -8,3 +8,9 @@
 ** Last update Mon Oct  8 16:20:21 2012 hugues morisset
 */
 
+#include "../../include/42sh.h"
+
+void	builtin_env(t_sh *shell, t_cmd *cmd)
+{
+
+}

@@ -8,8 +8,12 @@
 ** Last update Fri Mar 29 11:00:59 2013 maxime lavandier
 */
 
-#ifndef		42SH_H
-# define		42SH_H
+#ifndef		SH42_H
+# define		SH42_H
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 # define NB_BUILTINS 10
 
@@ -60,5 +64,45 @@ typedef struct	s_sh
   t_pipe	**pipes;
   t_pipe	*forground;
 }		t_sh;
+
+/*
+** Builtins
+*/
+void	init_builtins(t_sh *shell);
+void	builtin_exit(t_sh *shell, t_cmd *cmd);
+void	builtin_cd(t_sh *shell, t_cmd *cmd);
+void	builtin_env(t_sh *shell, t_cmd *cmd);
+void	builtin_unsetenv(t_sh *shell, t_cmd *cmd);
+void	builtin_setenv(t_sh *shell, t_cmd *cmd);
+void	builtin_echo(t_sh *shell, t_cmd *cmd);
+void	builtin_robert(t_sh *shell, t_cmd *cmd);
+void	builtin_fg(t_sh *shell, t_cmd *cmd);
+void	builtin_bg(t_sh *shell, t_cmd *cmd);
+void	builtin_jobs(t_sh *shell, t_cmd *cmd);
+
+/*
+** Env
+*/
+char	*get_envvar(char *var, char **env);
+char	**cpy_env(char **envp);
+void	rm_env(char **envp, char *env);
+char	**add_change_env(char **env, char *var, char *value);
+
+/*
+** Ptr tab
+*/
+void	**add_ptr_t_tab(void **tab, void *add);
+void	free_ptr_tab(void **tab);
+
+/*
+** Stc
+*/
+int	my_strlen(char *str);
+void	my_putstr(char *str, int fd, int strlen);
+void	my_strncpy(char *dest, char *src, int n);
+char	*my_strdup(char *str);
+int	is_in_str(char c, char *str);
+int	my_strncmp(char *s1, char *s2, int n);
+void	swap_ptr(void **ptr1, void **ptr2);
 
 #endif

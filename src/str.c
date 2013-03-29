@@ -8,9 +8,15 @@
 ** Last update Mon Oct  8 16:20:21 2012 hugues morisset
 */
 
-#include "../../include/42sh.h"
+#include "../include/42sh.h"
 
-void	builtin_robert(t_sh *shell, t_cmd *cmd)
+int	my_strlen(char *str)
 {
+  char	*tmp;
 
+  tmp = str;
+  if (tmp != NULL)
+    while (tmp[0] != '\0')
+      tmp++;
+  return (tmp - str);
 }

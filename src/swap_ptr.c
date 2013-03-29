@@ -8,9 +8,13 @@
 ** Last update Mon Oct  8 16:20:21 2012 hugues morisset
 */
 
-#include "../../include/42sh.h"
+#include "../include/42sh.h"
 
-void	builtin_robert(t_sh *shell, t_cmd *cmd)
+void	swap_ptr(void **ptr1, void **ptr2)
 {
+  void	*ptr;
 
+  ptr = (*ptr1);
+  (*ptr1) = (*ptr2);
+  (*ptr2) = ptr;
 }

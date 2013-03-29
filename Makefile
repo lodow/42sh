@@ -8,7 +8,23 @@
 ## Last update Mon Oct 22 10:39:42 2012 hugues morisset
 ##
 
-SRC= 	src/main.c
+SRC= 	src/main.c \
+		src/stc.c \
+		src/str.c \
+		src/swap_ptr.c \
+		src/env/env.c \
+		src/builtins/builtins.c \
+		src/builtins/fg.c \
+		src/builtins/bg.c \
+		src/builtins/jobs.c \
+		src/builtins/robert.c \
+		src/builtins/cd.c \
+		src/builtins/echo.c \
+		src/builtins/env.c \
+		src/builtins/setenv.c \
+		src/builtins/unsetenv.c \
+		src/builtins/exit.c \
+		src/ptr_tab.c
 
 OBJ= $(SRC:.c=.o)
 
