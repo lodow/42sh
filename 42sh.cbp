@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="42sh" />
+		<Option makefile_is_custom="1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="all">
+				<Option output="./robertSH" prefix_auto="1" extension_auto="1" />
+				<Option object_output="./" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<MakeCommands>
+					<Build command="$make -f $makefile $target" />
+					<CompileFile command="$make -f $makefile $file" />
+					<Clean command="$make -f $makefile clean" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make -q -f $makefile $target" />
+					<SilentBuild command="$make -s -f $makefile $target" />
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="Makefile" />
+		<Unit filename="include/42sh.h" />
+		<Unit filename="src/builtins/bg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/builtins/builtins.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/builtins/cd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/builtins/echo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/builtins/env.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/builtins/exit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/builtins/fg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/builtins/jobs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/builtins/robert.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/builtins/setenv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/builtins/unsetenv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/env/env.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/list/dlist.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ptr_tab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/stc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/str.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/swap_ptr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<lib_finder disable_auto="1" />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

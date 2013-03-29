@@ -18,8 +18,8 @@ void	builtin_fg(t_prg *cmd, t_sh_info *shell)
   i = 0;
   if (cmd->argv[1] == NULL)
     {
-      my_putstr("Please choose wich jobs\n", 2, -1);
       return ;
+      my_putstr("Please choose wich jobs\n", 2, -1);
     }
   while ((shell->process_group[i] != NULL)
          && (i < my_getnbr(cmd->argv[1]) - 1))
