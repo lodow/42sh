@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Mon Mar 25 13:31:46 2013 maxime lavandier
+** Last update Fri Mar 29 11:00:59 2013 maxime lavandier
 */
 
 #ifndef		42SH_H
@@ -48,8 +48,8 @@ typedef struct	s_sh
   t_pid		pid;
   char		**path;
   char		**env;
-  t_pipe		**pipes;
-  t_pipe		*forground;
+  t_pipe	**pipes;
+  t_pipe	*forground;
 }		t_sh;
 
 #endif
