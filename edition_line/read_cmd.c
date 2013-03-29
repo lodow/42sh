@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed Mar 20 16:35:19 2013 remi
-** Last update Fri Mar 22 13:23:58 2013 remi
+** Last update Fri Mar 22 13:42:42 2013 remi
 */
 
 #include "my_func.h"
@@ -63,30 +63,32 @@ void	read_cmd(t_param *param)
 {
   char	buff[5];
   int	temp;
+  int	ret;
 
   buff[1] = '\0';
   temp = 0;
   init_read_cmd(param);
-  while (1)
+  ret = 1;
+  while (ret > 0)
     {
       buff[1] = '\0';
-      read(0, buff, 5);
+      ret = read(0, buff, 5);
       if (gere_keyboard(&param, buff) == 0 &&
-	  buff[1] == '\0' && buff[0] != '\n')
-	{
-	  add_caractere_string(&(param->ptr), buff[0], param->current_pos);
-	  param->len_string = param->len_string + 1;
-	  curseur((param)->curser.begin_x +
-		  (param)->current_pos, (param)->curser.begin_y);
-	  show_string(param->ptr, param->current_pos);
-	  param->current_pos = param->current_pos + 1;
-	  curseur((param)->curser.begin_x +
-		  (param)->current_pos, (param)->curser.begin_y);
-	}
+      	  buff[1] == '\0' && buff[0] != '\n')
+      	{
+      	  add_caractere_string(&(param->ptr), buff[0], param->current_pos);
+      	  param->len_string = param->len_string + 1;
+      	  curseur((param)->curser.begin_x +
+      		  (param)->current_pos, (param)->curser.begin_y);
+      	  show_string(param->ptr, param->current_pos);
+      	  param->current_pos = param->current_pos + 1;
+      	  curseur((param)->curser.begin_x +
+      		  (param)->current_pos, (param)->curser.begin_y);
+      	}
       if (buff[0] == '\n')
-	{
-	  end_read(param);
-	  return ;
-	}
+      	{
+      	  end_read(param);
+      	  return ;
+      	}
     }
 }
