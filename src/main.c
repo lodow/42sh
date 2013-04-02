@@ -45,6 +45,7 @@ int	main(int ac, char **av, char **main_env)
   t_sh	shell;
 
   init_shell(&shell, main_env);
+  shell.env = add_change_env(shell.env, "PS1", "${LOGNAME} ${PWD} $ ");
   if (shell.env != NULL)
     {
       user_loop(&shell);

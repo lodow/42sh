@@ -113,6 +113,9 @@
 		<Unit filename="src/tty.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/variable.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<envvars />
 			<code_completion />

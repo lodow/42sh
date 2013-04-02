@@ -149,4 +149,9 @@ int	group_process_group(t_pipe *pipeline);
 */
 void	user_loop(t_sh *shell);
 
+/*
+** Env var
+*/
+char	*check_vars_in_str(char *str, char **envp);
+
 #endif

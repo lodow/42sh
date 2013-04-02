@@ -29,6 +29,7 @@ SRC= 	src/main.c \
 		src/builtins/unsetenv.c \
 		src/builtins/exit.c \
 		src/get_next_line.c \
+		src/variable.c \
 		src/ptr_tab.c
 
 OBJ= $(SRC:.c=.o)
