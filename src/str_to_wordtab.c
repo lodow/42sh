@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Fri Mar 29 14:51:55 2013 maxime lavandier
+** Last update Tue Apr  2 11:09:22 2013 maxime lavandier
 */
 
 /*
@@ -63,7 +63,8 @@ void	fill_tab_inib(char *str, char *delim, char **tab)
     {
       if (str[max] == '"' && (max == 0 || str[max - 1] != '\\'))
 	quote *= -1;
-      if ((strncmp(&(str[max]))) == 0 && quote == -1)
+      if ((strncmp(&(str[max]))) == 0 && quote == -1 &&
+	  (max == 0 || str[max - 1] != '\\'))
 	{
 	  strncpy(tab[i], &(str[min]), max - min);
 	  i++;
