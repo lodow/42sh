@@ -11,6 +11,10 @@
 SRC= 	src/main.c \
 		src/stc.c \
 		src/str.c \
+		src/shell.c \
+		src/my_str_to_wordtab.c \
+		src/signal.c \
+		src/job.c \
 		src/swap_ptr.c \
 		src/env/env.c \
 		src/builtins/builtins.c \
@@ -24,12 +28,12 @@ SRC= 	src/main.c \
 		src/builtins/setenv.c \
 		src/builtins/unsetenv.c \
 		src/builtins/exit.c \
+		src/get_next_line.c \
 		src/ptr_tab.c
 
 OBJ= $(SRC:.c=.o)
 
-NAME= mysh
-
+NAME= robertSH
 CFLAGS= -g -Wall -Wfloat-equal -Wmissing-include-dirs \
 	-Wclobbered -Wempty-body -Wignored-qualifiers \
 	-Wmissing-field-initializers -Wmissing-parameter-type \

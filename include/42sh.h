@@ -11,11 +11,34 @@
 #ifndef		SH42_H
 # define		SH42_H
 
-# include <unistd.h>
-# include <stdlib.h>
 # include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <signal.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <string.h>
+# include <errno.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/time.h>
+# include <sys/resource.h>
+# include <sys/wait.h>
+# include <dirent.h>
+# include "get_file.h"
 
 # define NB_BUILTINS 10
+
+# define PIPE_READ 0
+# define PIPE_WRITE 1
+
+# define SETFLAG(x, y) ((x) |= (y))
+# define UNSETFLAG(x, y) ((x) &= ~(y))
+# define SWITCHFLAG(x, y) ((x) ^= (y))
+# define GETFLAG(x, y) ((x) & (y))
+# define FLAGPOS(x) (1 << (x))
+
+# define GET_USER_LINE get_next_line(0)
 
 typedef struct	s_fds
 {
@@ -61,7 +84,7 @@ typedef struct	s_sh
   t_pid		pid;
   char		**path;
   char		**env;
-  t_pipe	**pipes;
+  t_pipe	**process_group;
   t_pipe	*forground;
 }		t_sh;
 
@@ -104,5 +127,26 @@ char	*my_strdup(char *str);
 int	is_in_str(char c, char *str);
 int	my_strncmp(char *s1, char *s2, int n);
 void	swap_ptr(void **ptr1, void **ptr2);
+
+/*
+** Str to wordtab
+*/
+char	**my_str_to_wordtab(char *str, char sepa, int delanhi);
+
+/*
+** Signals
+*/
+t_sh	*get_sh_info(t_sh *sh);
+
+/*
+** Jobs
+*/
+void	update_jobs_status(t_sh *shell, int sig);
+int	group_process_group(t_pipe *pipeline);
+
+/*
+** User funcs
+*/
+void	user_loop(t_sh *shell);
 
 #endif
