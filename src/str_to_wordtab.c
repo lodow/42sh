@@ -36,7 +36,7 @@ char	**malloc_tab(char *str, char *delim)
   while (str[i] != 0)
     {
       if (strncmp(delim, &(str[i]), len_delim) == 0)
-	nbr++;
+        nbr++;
       i++;
     }
   if ((tab = malloc((nbr + 2) * sizeof(char *))) == 0)
@@ -63,16 +63,16 @@ void	fill_tab_inib(char *str, char *delim, char **tab)
   while (str[max] != 0)
     {
       if (str[max] == '"' && (max == 0 || str[max - 1] != '\\'))
-	quote *= -1;
+        quote *= -1;
       if ((strncmp(&(str[max]), delim, len_delim)) == 0 && quote == -1 &&
-	  (max == 0 || str[max - 1] != '\\'))
-	{
-	  strncpy(tab[i], &(str[min]), max - min);
-	  i++;
-	  min = max = max + len_delim;
-	}
+          (max == 0 || str[max - 1] != '\\'))
+        {
+          strncpy(tab[i], &(str[min]), max - min);
+          i++;
+          min = max = max + len_delim;
+        }
       else
-	max++;
+        max++;
     }
   if (max != min)
     strncpy(tab[i++], &(str[min]), max - min);
@@ -91,13 +91,13 @@ void	fill_tab(char *str, char *delim, char **tab)
   while (str[max] != 0)
     {
       if ((strncmp(&(str[max]), delim, len_delim)) == 0)
-	{
-	  strncpy(tab[i], &(str[min]), max - min);
-	  i++;
-	  min = max = max + len_delim;
-	}
+        {
+          strncpy(tab[i], &(str[min]), max - min);
+          i++;
+          min = max = max + len_delim;
+        }
       else
-	max++;
+        max++;
     }
   if (max != min)
     strncpy(tab[i++], &(str[min]), max - min);
@@ -118,20 +118,4 @@ char	**str_to_wordtab(char *str, char *delim, char inibiteur)
   else
     fill_tab(str, delim, tab);
   return (tab);
-}
-
-
-int	main(int argc, char *argv[])
-{
-  int	i;
-  char	**tab;
-
-  i = 0;
-  tab = str_to_wordtab(argv[1], " ", 1);
-  while (tab[i] != 0)
-    {
-      printf ("%s\n", tab[i]);
-      i++;
-    }
-  return 0;
 }

@@ -34,6 +34,29 @@ void	**add_ptr_t_tab(void **tab, void *add)
   return (newtab);
 }
 
+void	**concat_ptr_tab(void **tab1, void **tab2)
+{
+  void	**final_tab;
+  int	i;
+
+  final_tab = NULL;
+  i = 0;
+  if (tab1 == NULL || tab2 == NULL)
+    return (NULL);
+  while (tab1[i] != NULL)
+    {
+      final_tab = add_ptr_t_tab(final_tab, tab1[i]);
+      i++;
+    }
+  i = 0;
+  while (tab2[i] != NULL)
+    {
+      final_tab = add_ptr_t_tab(final_tab, tab2[i]);
+      i++;
+    }
+  return (final_tab);
+}
+
 void	free_ptr_tab(void **tab)
 {
   int	i;

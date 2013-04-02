@@ -31,6 +31,9 @@
 		<Unit filename="Makefile" />
 		<Unit filename="include/42sh.h" />
 		<Unit filename="include/get_file.h" />
+		<Unit filename="src/alias.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/builtins/bg.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -64,7 +67,13 @@
 		<Unit filename="src/builtins/unsetenv.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/cmd.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/env/env.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/fd.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/get_file.c">
@@ -89,7 +98,10 @@
 		<Unit filename="src/my_putchar.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/my_str_to_wordtab.c">
+		<Unit filename="src/parse_cmd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/process_group.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/ptr_tab.c">
@@ -107,7 +119,13 @@
 		<Unit filename="src/str.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/str_to_wordtab.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/swap_ptr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/tr_str.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/tty.c">

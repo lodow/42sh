@@ -84,6 +84,7 @@ typedef struct	s_sh
   t_pid		pid;
   char		**path;
   char		**env;
+  char		**alias_tab;
   t_pipe	**process_group;
   t_pipe	*forground;
 }		t_sh;
@@ -116,6 +117,7 @@ char	**add_change_env(char **env, char *var, char *value);
 */
 void	**add_ptr_t_tab(void **tab, void *add);
 void	free_ptr_tab(void **tab);
+void	**concat_ptr_tab(void **tab1, void **tab2);
 
 /*
 ** Stc
@@ -127,11 +129,12 @@ char	*my_strdup(char *str);
 int	is_in_str(char c, char *str);
 int	my_strncmp(char *s1, char *s2, int n);
 void	swap_ptr(void **ptr1, void **ptr2);
+void	tr_str(char *str, char in, char to);
 
 /*
 ** Str to wordtab
 */
-char	**my_str_to_wordtab(char *str, char sepa, int delanhi);
+char	**str_to_wordtab(char *str, char *delim, char inibiteur);
 
 /*
 ** Signals
@@ -148,10 +151,22 @@ int	group_process_group(t_pipe *pipeline);
 ** User funcs
 */
 void	user_loop(t_sh *shell);
+void	parse_user_cmd(t_sh *shell, char *line);
 
 /*
 ** Env var
 */
 char	*check_vars_in_str(char *str, char **envp);
+
+/*
+** Commands
+*/
+t_pipe	*create_n_process_group(t_sh *shell, char *lign);
+t_cmd	*create_n_cmd(t_sh *shell, char *lign);
+
+/*
+** Fds
+*/
+void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr);
 
 #endif

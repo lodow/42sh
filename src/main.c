@@ -14,7 +14,7 @@ char	**get_path(char **envp)
 {
   char	**paths;
 
-  paths = my_str_to_wordtab(get_envvar("PATH", envp), ':', 1);
+  paths = str_to_wordtab(get_envvar("PATH", envp), ":", 0);
   if (paths == NULL)
     {
       // if you want to set a default path if none, it's here!
@@ -37,6 +37,9 @@ int	init_shell(t_sh *shell, char **main_env)
     return (-1);
   shell->process_group = NULL;
   shell->forground = NULL;
+  shell->env = add_change_env(shell.env, "PS1", "${LOGNAME} ${PWD} $ "); //default path
+  shell->alias_tab = NULL;
+  //Load a configu file here
   return (0);
 }
 
@@ -45,7 +48,6 @@ int	main(int ac, char **av, char **main_env)
   t_sh	shell;
 
   init_shell(&shell, main_env);
-  shell.env = add_change_env(shell.env, "PS1", "${LOGNAME} ${PWD} $ ");
   if (shell.env != NULL)
     {
       user_loop(&shell);

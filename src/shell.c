@@ -37,7 +37,7 @@ void	user_loop(t_sh *shell)
   while ((lign = GET_USER_LINE) != NULL)
     {
       prompt(shell);
-      my_putstr(lign, 1, -1);
+      parse_user_cmd(shell, lign);
       free(lign);
     }
 }
