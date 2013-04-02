@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed Mar 20 16:11:46 2013 remi
-** Last update Wed Mar 20 16:34:19 2013 remi
+** Last update Tue Apr  2 22:10:47 2013 remi robert
 */
 
 #include "my_func.h"
@@ -16,7 +16,7 @@ int		number_caractere(t_string *ptr)
   int		indice;
 
   if (ptr == NULL)
-    return (0);
+    return (FALSE);
   indice = 0;
   pcourant = ptr;
   while (pcourant != NULL)
@@ -34,7 +34,7 @@ char		*return_string(t_string *ptr)
   int		indice;
   t_string	*pcourant;
 
-  if (ptr == NULL || (nb_string = number_caractere(ptr)) == 0 ||
+  if (ptr == NULL || (nb_string = number_caractere(ptr)) == FALSE ||
       (str = malloc(nb_string)) == NULL)
     return (NULL);
   indice = 0;

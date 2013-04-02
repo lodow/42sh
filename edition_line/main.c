@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed Mar 20 14:13:14 2013 remi
-** Last update Tue Apr  2 11:47:13 2013 remi robert
+** Last update Tue Apr  2 22:04:04 2013 remi robert
 */
 
 #include "my_func.h"
@@ -24,7 +24,7 @@ int	init_tab_line(t_param *param)
 void	init_pos_line(t_param *param)
 {
   get_pos_curser(&(param->begin_pos.x), &(param->begin_pos.y));
-  param->current_pos.x = param->begin_pos.x;
+  param->current_pos.x = 0;/* param->begin_pos.x; */
   param->current_pos.y = param->begin_pos.y;
   curseur(param->current_pos.x, param->current_pos.y);
 }
@@ -39,6 +39,7 @@ int		main()
   init_pos_line(&param);
   if ((s = read_cmd(&param)) == NULL)
     {
+      printf("NULL\n");
       reset_mod(param.t);
       return (EXIT_FAILURE);
     }

@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Tue Apr  2 10:49:34 2013 remi robert
+** Last update Tue Apr  2 22:09:12 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -28,6 +28,11 @@
 # define RIGHT		67
 # define ESC		27
 # define SPACE		32
+# define SUPPR		'3'
+# define CRO		'['
+# define DEL		127
+# define OK		1
+# define FALSE		0
 
 typedef struct		s_string
 {
@@ -77,8 +82,8 @@ void		view_string(t_param *);
 int		get_len_string_with_pos(t_param *);
 t_string	*get_pos_string(t_string *, int);
 void		view_string(t_param *);
-void		gere_keyboard(t_param *, char *);
-void		set_pos_left(t_param *);
-void		set_pos_right(t_param *);
+void		gere_keyboard(t_param **, char *);
+void		set_pos_left(t_param **);
+void		set_pos_right(t_param **);
 
 #endif /* MY_FUNC_H_ */
