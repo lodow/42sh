@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 14:03:17 2013 remi robert
-** Last update Mon Apr  1 14:51:05 2013 remi robert
+** Last update Tue Apr  2 08:44:43 2013 remi robert
 */
 
 #include "my_func.h"
@@ -34,7 +34,7 @@ void		view_string(t_param *param)
 
   if (param == NULL || param->string == NULL)
     return ;
-  indice = get_len_string_with_pos(param) - 1;
+  indice = get_len_string_with_pos(param);
   if ((pcourant = get_pos_string(param->string, indice)) == NULL)
     return ;
   while (pcourant != NULL)
