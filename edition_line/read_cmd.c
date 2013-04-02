@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 12:32:15 2013 remi robert
-** Last update Tue Apr  2 08:50:23 2013 remi robert
+** Last update Tue Apr  2 10:49:50 2013 remi robert
 */
 
 #include "my_func.h"
@@ -27,7 +27,7 @@ void	gere_buff(char *buff, t_param *param)
 	  param->current_pos.x = 0;
 	  param->current_pos.y += 1;
 	}
-      add_caractere(&(param->string), buff[0]);
+      add_caractere(&(param->string), buff[0], param);
       view_string(param);
       return ;
     }

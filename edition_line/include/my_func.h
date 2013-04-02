@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Mon Apr  1 17:03:11 2013 remi robert
+** Last update Tue Apr  2 10:49:34 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -57,7 +57,7 @@ char		*read_cmd(t_param *);
 void		my_putchar(char);
 void		my_putstr(char *);
 int		init_tab_line(t_param *);
-void		add_caractere(t_string **, char);
+void		add_caractere(t_string **, char, t_param *);
 int		depassement(int);
 int		get_number(char *, int, int, int);
 int		my_getnbr(char *);
