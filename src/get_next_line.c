@@ -10,6 +10,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -39,10 +40,10 @@ void	decale_buff(char *buff, int nb)
     {
       indice = 1;
       while (buff[indice] != '\0')
-	{
-	  buff[indice - 1] = buff[indice];
-	  indice = indice + 1;
-	}
+        {
+          buff[indice - 1] = buff[indice];
+          indice = indice + 1;
+        }
       indice_loop = indice_loop + 1;
     }
   while (indice < 4095)

@@ -30,6 +30,7 @@
 		</Compiler>
 		<Unit filename="Makefile" />
 		<Unit filename="include/42sh.h" />
+		<Unit filename="include/get_file.h" />
 		<Unit filename="src/builtins/bg.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -66,16 +67,38 @@
 		<Unit filename="src/env/env.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/get_file.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/get_file.h" />
+		<Unit filename="src/get_next_line.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/job.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/list/dlist.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/my_getnbr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/my_putchar.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/my_str_to_wordtab.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/ptr_tab.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/shell.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/signal.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/stc.c">
@@ -85,6 +108,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/swap_ptr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/tty.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
