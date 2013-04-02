@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed Mar 20 14:13:14 2013 remi
-** Last update Tue Apr  2 09:03:53 2013 remi robert
+** Last update Tue Apr  2 11:47:13 2013 remi robert
 */
 
 #include "my_func.h"
@@ -42,7 +42,7 @@ int		main()
       reset_mod(param.t);
       return (EXIT_FAILURE);
     }
-  my_putstr("\n{");
+  my_putstr("\n\n\n{");
   my_putstr(s);
   my_putstr("}\n");
   free_string(param.string);

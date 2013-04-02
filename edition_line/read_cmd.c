@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 12:32:15 2013 remi robert
-** Last update Tue Apr  2 10:49:50 2013 remi robert
+** Last update Tue Apr  2 11:46:32 2013 remi robert
 */
 
 #include "my_func.h"
@@ -23,7 +23,6 @@ void	gere_buff(char *buff, t_param *param)
 	      param->begin_pos.y -= 1;
 	      param->current_pos.y -= 1;
 	    }
-	  /* param->len_string = 0; */
 	  param->current_pos.x = 0;
 	  param->current_pos.y += 1;
 	}
@@ -48,6 +47,7 @@ char	*read_cmd(t_param *param)
       if (buff[0] == '\n')
 	return (return_string(param->string));
       gere_buff(buff, param);
+      curseur(param->current_pos.x, param->current_pos.y);
     }
   return (NULL);
 }
