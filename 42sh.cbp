@@ -76,6 +76,9 @@
 		<Unit filename="src/env/env.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/exec_process.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/fd.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -102,6 +105,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/parse_cmd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/pipe.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/process_group.c">

@@ -12,7 +12,7 @@
 
 /*
 ** Return the full path of a command , return the command if didn't find it
-** fr trying to execute it from the current directory
+** for trying to execute it from the current directory
 */
 char	*exec_full_path(char *exec, char **paths)
 {

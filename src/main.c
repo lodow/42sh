@@ -32,8 +32,8 @@ int	init_shell(t_sh *shell, char **main_env)
 
   //shell->pid.sid = setsid(); <- not sure if it's a good idea.
   //if it is don't forget to check it
-  if ((shell->pid.pid = getpid() == -1)
-      || (shell->pid.pgid = getpgid(shell->pid.pgid) == -1))
+  if (((shell->pid.pid = getpid()) == -1)
+      || ((shell->pid.pgid = getpgid(shell->pid.pid)) == -1))
     return (-1);
   shell->process_group = NULL;
   shell->forground = NULL;

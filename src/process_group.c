@@ -10,6 +10,17 @@
 
 #include "../include/42sh.h"
 
+int	exec_process_group(t_sh *shell, t_pipe *grp)
+{
+  if (grp == NULL)
+    return (-1);
+//exec all here
+  exec_process(grp->cmds[0], shell, grp);
+  group_process_group(grp);
+  set_forground_process_g(shell, grp);
+  return (-1);
+}
+
 t_pipe	*create_n_process_group(t_sh *shell, char *lign)
 {
   char	**cmd_line;
@@ -34,4 +45,13 @@ t_pipe	*create_n_process_group(t_sh *shell, char *lign)
     }
   free(cmd_line);
   return (res);
+}
+
+void	free_process_group(t_pipe *grp)
+{
+  if (grp != NULL)
+    {
+      free(grp->line);
+      free_ptr_tab((void**)grp->cmds);
+    }
 }

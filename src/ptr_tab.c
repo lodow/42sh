@@ -57,6 +57,22 @@ void	**concat_ptr_tab(void **tab1, void **tab2)
   return (final_tab);
 }
 
+void	rm_ptr_f_tab(void **tab, void *ptr)
+{
+  int	i;
+
+  i = 0;
+  if ((tab == NULL) || (ptr == NULL))
+    return ;
+  while ((tab[i] != NULL) && (tab[i] != ptr))
+    i++;
+  while (tab[i] != NULL)
+    {
+      tab[i] = tab[i + 1];
+      i++;
+    }
+}
+
 void	free_ptr_tab(void **tab)
 {
   int	i;

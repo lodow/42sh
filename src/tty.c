@@ -10,20 +10,20 @@
 
 #include "../include/42sh.h"
 
-void	set_forground_pgrp(pid_t pid)
+void	set_forground_pgrp(pid_t pgid)
 {
   int	err;
 
   err = 0;
-  if (pid != -1)
+  if (pgid != -1)
     {
-      signal(SIGTTOU, SIG_IGN);
+      signal(SIGTTOU, SIG_IGN); //Find why we ahve todo that !
       if (isatty(0))
-        err += tcsetpgrp(0, pid);
+        err += tcsetpgrp(0, pgid);
       if (isatty(1))
-        err += tcsetpgrp(1, pid);
+        err += tcsetpgrp(1, pgid);
       if (isatty(2))
-        err += tcsetpgrp(2, pid);
+        err += tcsetpgrp(2, pgid);
       if (err != 0)
         {
           my_putstr("Can't set tcsetpgrp, error: ", 2, -1);
@@ -31,4 +31,13 @@ void	set_forground_pgrp(pid_t pid)
         }
       signal(SIGTTOU, SIG_DFL);
     }
+}
+
+void	set_forground_process_g(t_sh *shell, t_pipe *grp)
+{
+  shell->process_group = (t_pipe**)add_ptr_t_tab((void**)shell->process_group,
+                                       (void*)grp);
+  shell->forground = grp;
+  grp->running = 1;
+  set_forground_pgrp(grp->pid.pgid);
 }

@@ -116,6 +116,7 @@ char	**add_change_env(char **env, char *var, char *value);
 /*
 ** Ptr tab
 */
+void	rm_ptr_f_tab(void **tab, void *ptr);
 void	**add_ptr_t_tab(void **tab, void *add);
 void	free_ptr_tab(void **tab);
 void	**concat_ptr_tab(void **tab1, void **tab2);
@@ -147,6 +148,8 @@ t_sh	*get_sh_info(t_sh *sh);
 */
 void	update_jobs_status(t_sh *shell, int sig);
 int	group_process_group(t_pipe *pipeline);
+void	set_forground_pgrp(pid_t pgid);
+void	set_forground_process_g(t_sh *shell, t_pipe *grp);
 
 /*
 ** User funcs
@@ -165,6 +168,9 @@ char	*check_vars_in_str(char *str, char **envp);
 t_pipe	*create_n_process_group(t_sh *shell, char *lign);
 t_cmd	*create_n_cmd(t_sh *shell, char *lign);
 char	*exec_full_path(char *exec, char **paths);
+int	exec_process_group(t_sh *shell, t_pipe *grp);
+void	exec_process(t_cmd *cmd, t_sh *shell, t_pipe *pipeline);
+void	free_process_group(t_pipe *grp);
 
 /*
 ** Fds
