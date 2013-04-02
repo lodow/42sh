@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Feb  5 09:20:03 2013 remi robert
-** Last update Wed Mar 20 14:28:06 2013 remi
+** Last update Mon Apr  1 13:29:18 2013 remi robert
 */
 
-#include "../my_func.h"
+#include "my_func.h"
 
 int	clear_screem()
 {
@@ -16,4 +16,5 @@ int	clear_screem()
 
   s = tgetstr("cl", NULL);
   my_putstr(s);
+  return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 08:57:30 2013 remi robert
-** Last update Sat Feb 16 14:08:37 2013 remi robert
+** Last update Mon Apr  1 17:10:45 2013 remi robert
 */
 
 #include "my_func.h"
@@ -18,12 +18,7 @@ void	my_putchar(char c)
 
 void	my_putstr(char *str)
 {
-  int	indice;
-
-  indice = 0;
-  while (str[indice] != '\0')
-    {
-      my_putchar(str[indice]);
-      indice = indice + 1;
-    }
+  if (str == NULL)
+    return ;
+  write(1, str, my_strlen(str));
 }

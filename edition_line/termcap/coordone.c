@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Jan 15 20:15:34 2013 remi robert
-** Last update Wed Mar 20 14:28:02 2013 remi
+** Last update Mon Apr  1 13:18:32 2013 remi robert
 */
 
-#include "../my_func.h"
+#include "my_func.h"
 
 int			return_x()
 {

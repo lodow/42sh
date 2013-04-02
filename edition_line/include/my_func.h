@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Thu Mar 21 17:52:51 2013 remi
+** Last update Mon Apr  1 17:03:11 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -36,44 +36,49 @@ typedef struct		s_string
   struct s_string	*back;
 }			t_string;
 
-typedef struct	s_curser
+typedef struct	s_coordonnee
 {
-  int		begin_x;
-  int		begin_y;
   int		x;
   int		y;
-}		t_curser;
+}		t_coordonnee;
 
 typedef struct		s_param
 {
   struct termios	t;
-  struct s_curser	curser;
-  t_string		*ptr;
-  int			current_pos;
+  t_string		*string;
   int			len_string;
+  t_coordonnee		current_pos;
+  t_coordonnee		begin_pos;
 }			t_param;
 
-/*
-** add_caractere_string.c
-*/
-void		add_caractere_string(t_string **, char, int);
-
-/*
-** return_string.c
-*/
 int		number_caractere(t_string *);
 char		*return_string(t_string *);
-
-/*
-** termcap
-*/
+char		*read_cmd(t_param *);
+void		my_putchar(char);
+void		my_putstr(char *);
+int		init_tab_line(t_param *);
+void		add_caractere(t_string **, char);
+int		depassement(int);
+int		get_number(char *, int, int, int);
+int		my_getnbr(char *);
+int		my_strlen(char *);
+int		clear_screem(void);
+int		return_x(void);
+int		return_y(void);
+void		assign_value_pos(int *, int *, char *);
+void		get_pos_curser(int *, int *);
 void		reset_mod(struct termios);
 void		mod_raw(void);
 int		curseur(int, int);
-int		return_x(void);
-int		return_y(void);
-int		clear_screem(void);
-void		get_pos_curser(int *, int*);
-void		assign_value_pos(int *, int *, char *);
+void		ecrase_text(t_coordonnee, int);
+void		free_string(t_string *);
+void		init_pos_line(t_param *);
+void		view_string(t_param *);
+int		get_len_string_with_pos(t_param *);
+t_string	*get_pos_string(t_string *, int);
+void		view_string(t_param *);
+void		gere_keyboard(t_param *, char *);
+void		set_pos_left(t_param *);
+void		set_pos_right(t_param *);
 
 #endif /* MY_FUNC_H_ */

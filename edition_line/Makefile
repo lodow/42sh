@@ -4,44 +4,59 @@
 ## Login   <robert_r@epitech.net>
 ## 
 ## Started on  Fri Nov 30 10:59:19 2012 remi robert
-## Last update Fri Mar 22 13:07:09 2013 remi
+## Last update Mon Apr  1 17:05:09 2013 remi robert
 ##
 
-SRC=	main.c \
-	termcap/coordone.c \
-	termcap/mod_raw.c \
-	termcap/clear.c \
-	my_putstr.c \
-	termcap/curseur.c \
-	add_caractere_string.c \
-	return_string.c \
-	read_cmd.c \
-	free.c \
-	get_pos_curser.c \
-	my_strlen.c \
-	my_getnbr.c \
-	suppr_caractere_string.c \
+CC	=	gcc
 
-OBJ=	 $(SRC:.c=.o)
+TPATH	=	termcap/
 
-OBJLIB=	 $(SRCLIB:.c=.o)
+LIBPATH	=	lib/
 
-NAME=	mysh
+SRCPATH	=	./
 
-CFLAGS= -g
+SRC	=	$(SRCPATH)main.c				\
+		$(SRCPATH)add_caractere.c			\
+		$(SRCPATH)return_string.c			\
+		$(SRCPATH)read_cmd.c				\
+		$(SRCPATH)free.c				\
+		$(SRCPATH)view_string.c				\
+		$(SRCPATH)get_len_string_with_pos.c		\
+		$(SRCPATH)gere_keyboard.c			\
 
-$(NAME):$(OBJ) $(OBJLIB)
-	@echo -e "\n\E[33;01m";
-	cc  -o $(NAME) $(OBJ) $(OBJLIB) -ltermcap
-	@echo -e "\E[33;00m\E[44;01mCompilation Términée\E[33;00m\n";
+TSRC	=	$(TPATH)ecrase_text.c				\
+		$(TPATH)coordone.c				\
+		$(TPATH)mod_raw.c				\
+		$(TPATH)curseur.c				\
+		$(TPATH)get_pos_curser.c			\
+		$(TPATH)clear.c					\
 
-all:	$(NAME)
+LIBSRC	=	$(LIBPATH)my_putstr.c				\
+		$(LIBPATH)my_strlen.c				\
+		$(LIBPATH)my_getnbr.c				\
+
+OBJ	=	$(SRC:.c=.o)
+
+OBJLIB	=	$(LIBSRC:.c=.o)
+
+OBJT	=	$(TSRC:.c=.o)
+
+NAME	=	mysh
+
+CFLAGS	=	-g -Wall -Wextra -Iinclude -pedantic -ansi -ltermcap
+
+$(NAME):	$(OBJ) $(OBJLIB) $(OBJT)
+		$(CC) -o $(NAME) $(OBJ) $(OBJLIB) $(OBJT) $(CFLAGS)
+
+all:		$(NAME)
 
 clean:
-	rm -f *~
-	rm -f $(OBJ) $(OBJLIB) $(OBJLIST)
+		rm -f *~
+		rm -f $(OBJ) $(OBJLIB) $(OBJT)
 
-fclean:	clean
-	rm -f $(NAME)
+fclean:		clean
+		rm -f $(NAME)
 
-re:	fclean all
+re:		fclean all
+
+.PHONY:		all termcap lib clean fclean re
