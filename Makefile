@@ -28,8 +28,7 @@ SRC= 	src/main.c \
 
 OBJ= $(SRC:.c=.o)
 
-NAME= mysh
-
+NAME= robertSH
 CFLAGS= -g -Wall -Wfloat-equal -Wmissing-include-dirs \
 	-Wclobbered -Wempty-body -Wignored-qualifiers \
 	-Wmissing-field-initializers -Wmissing-parameter-type \

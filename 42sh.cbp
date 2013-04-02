@@ -75,6 +75,9 @@
 		<Unit filename="src/ptr_tab.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/shell.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/stc.c">
 			<Option compilerVar="CC" />
 		</Unit>
