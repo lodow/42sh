@@ -20,5 +20,8 @@ t_cmd	*create_n_cmd(t_sh *shell, char *lign)
   res->line = lign;
   tr_str(res->line, '\t', ' ');
   res->argv = str_to_wordtab(res->line, " ", 1);
-  return (NULL);
+  alias_replace(&(res->argv), shell->alias_tab);
+  res->cmd_fpath = exec_full_path(res->argv[0], shell->path);
+  // replace env var in argv here (using func check_vars_in_str)
+  return (res);
 }

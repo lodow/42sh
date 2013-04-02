@@ -10,8 +10,15 @@
 
 #include "../include/42sh.h"
 
+int	exec_process_group(t_pipe *grp)
+{
+  return (-1);
+}
+
 void	parse_user_cmd(t_sh *shell, char *line)
 {
+  t_pipe	*grp;
 
-
+  grp = create_n_process_group(shell, line);
+  exec_process_group(grp);
 }

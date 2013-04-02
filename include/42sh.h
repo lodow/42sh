@@ -58,6 +58,7 @@ typedef struct	s_cmd
 {
   char		*line;
   char		**argv;
+  char		*cmd_fpath;
   int		return_value;
   t_fds		fd;
   t_pid		pid;
@@ -163,10 +164,16 @@ char	*check_vars_in_str(char *str, char **envp);
 */
 t_pipe	*create_n_process_group(t_sh *shell, char *lign);
 t_cmd	*create_n_cmd(t_sh *shell, char *lign);
+char	*exec_full_path(char *exec, char **paths);
 
 /*
 ** Fds
 */
 void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr);
+
+/*
+** Alias
+*/
+void	alias_replace(char ***argv, char **alias);
 
 #endif

@@ -70,6 +70,9 @@
 		<Unit filename="src/cmd.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/cmd_full_path.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/env/env.c">
 			<Option compilerVar="CC" />
 		</Unit>

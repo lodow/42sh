@@ -16,6 +16,7 @@ SRC= 	src/main.c \
 		src/str_to_wordtab.c \
 		src/signal.c \
 		src/job.c \
+		src/fd.c \
 		src/swap_ptr.c \
 		src/env/env.c \
 		src/builtins/builtins.c \
@@ -31,7 +32,11 @@ SRC= 	src/main.c \
 		src/builtins/exit.c \
 		src/get_next_line.c \
 		src/variable.c \
-          src/parse_cmd.c \
+		src/alias.c \
+		src/parse_cmd.c \
+		src/process_group.c \
+		src/cmd.c \
+		src/cmd_full_path.c \
 		src/ptr_tab.c
 
 OBJ= $(SRC:.c=.o)
