@@ -8,12 +8,7 @@
 ** Last update Tue Mar 19 14:28:27 2013 remi
 */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include "../include/get_next_line.h"
 
 /*
 **      _    _
@@ -46,7 +41,7 @@ void	decale_buff(char *buff, int nb)
         }
       indice_loop = indice_loop + 1;
     }
-  while (indice < 4095)
+  while (indice < READ_SIZE - 1)
     {
       buff[indice] = '\0';
       indice = indice + 1;
@@ -81,16 +76,16 @@ char	*return_str(char *buff, int *indice_buff)
 
 char		*get_next_line(int fd)
 {
-  static char	buff[4096];
+  static char	buff[READ_SIZE];
   static int	indice = 0;
   int		ret;
 
-  ret = 4095;
+  ret = READ_SIZE - 1;
   if (fd == -1)
     return (NULL);
-  while (ret != 0 && ret == 4095 && indice <= 4095)
+  while (ret != 0 && ret == READ_SIZE - 1 && indice <= READ_SIZE - 1)
     {
-      ret = read(fd, &buff[indice], 4095 - indice);
+      ret = read(fd, &buff[indice], READ_SIZE - indice);
       indice = indice + ret;
       buff[indice] = '\0';
     }
