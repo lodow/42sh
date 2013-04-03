@@ -12,7 +12,7 @@
 
 void	parse_user_cmd(t_sh *shell, char *line)
 {
-  t_pipe	*grp;
+  t_grp	*grp;
 
   grp = create_n_process_group(shell, my_strdup(line));
   exec_process_group(shell, grp);

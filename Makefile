@@ -36,8 +36,8 @@ SRC= 	src/main.c \
 		src/parse_cmd.c \
 		src/process_group.c \
 		src/exec_process.c \
-		src/pipe.c \
 		src/tty.c \
+		src/pipe.c \
 		src/cmd.c \
 		src/cmd_full_path.c \
 		src/ptr_tab.c

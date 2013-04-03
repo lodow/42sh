@@ -31,6 +31,7 @@
 		<Unit filename="Makefile" />
 		<Unit filename="include/42sh.h" />
 		<Unit filename="include/get_file.h" />
+		<Unit filename="include/get_next_line.h" />
 		<Unit filename="src/alias.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -85,7 +86,6 @@
 		<Unit filename="src/get_file.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/get_file.h" />
 		<Unit filename="src/get_next_line.c">
 			<Option compilerVar="CC" />
 		</Unit>

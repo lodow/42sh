@@ -60,18 +60,17 @@ typedef struct	s_cmd
   char		**argv;
   char		*cmd_fpath;
   int		return_value;
-  t_fds		fd;
   t_pid		pid;
 }		t_cmd;
 
-typedef struct	s_pipe
+typedef struct	s_grp
 {
-  t_fds		fd;
   t_pid		pid;
+  t_fds		fd;
   char		*line;
   t_cmd		**cmds;
   int		running;
-}		t_pipe;
+}		t_grp;
 
 typedef struct	s_func_ptr
 {
@@ -86,8 +85,8 @@ typedef struct	s_sh
   char		**path;
   char		**env;
   char		**alias_tab;
-  t_pipe	**process_group;
-  t_pipe	*forground;
+  t_grp	**process_group;
+  t_grp	*forground;
 }		t_sh;
 
 /*
@@ -142,20 +141,26 @@ char	**str_to_wordtab(char *str, char *delim, char inibiteur);
 ** Signals
 */
 t_sh	*get_sh_info(t_sh *sh);
+void	sig_handler(int sig);
 
 /*
 ** Jobs
 */
 void	update_jobs_status(t_sh *shell, int sig);
-int	group_process_group(t_pipe *pipeline);
+int	group_process_group(t_grp *pipeline);
 void	set_forground_pgrp(pid_t pgid);
-void	set_forground_process_g(t_sh *shell, t_pipe *grp);
+void	set_forground_process_g(t_sh *shell, t_grp *grp);
 
 /*
 ** User funcs
 */
 void	user_loop(t_sh *shell);
 void	parse_user_cmd(t_sh *shell, char *line);
+
+/*
+** Pipes
+*/
+int	exec_a_pipe(t_sh *shell, t_grp *grp);
 
 /*
 ** Env var
@@ -165,17 +170,18 @@ char	*check_vars_in_str(char *str, char **envp);
 /*
 ** Commands
 */
-t_pipe	*create_n_process_group(t_sh *shell, char *lign);
+t_grp	*create_n_process_group(t_sh *shell, char *lign);
 t_cmd	*create_n_cmd(t_sh *shell, char *lign);
 char	*exec_full_path(char *exec, char **paths);
-int	exec_process_group(t_sh *shell, t_pipe *grp);
-void	exec_process(t_cmd *cmd, t_sh *shell, t_pipe *pipeline);
-void	free_process_group(t_pipe *grp);
+int	exec_process_group(t_sh *shell, t_grp *grp);
+void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell, t_grp *grp);
+void	free_process_group(t_grp *grp);
 
 /*
 ** Fds
 */
 void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr);
+void	close_fds(t_fds *fd);
 
 /*
 ** Alias

@@ -16,7 +16,6 @@ t_cmd	*create_n_cmd(t_sh *shell, char *lign)
 
   if ((res = malloc(1 * sizeof(t_cmd))) == NULL)
     return (NULL);
-  init_stdfd_t_def_val(&(res->fd), 0, 1, 2);
   res->line = lign;
   tr_str(res->line, '\t', ' ');
   res->argv = str_to_wordtab(res->line, " ", 1);

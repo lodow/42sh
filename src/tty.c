@@ -33,9 +33,9 @@ void	set_forground_pgrp(pid_t pgid)
     }
 }
 
-void	set_forground_process_g(t_sh *shell, t_pipe *grp)
+void	set_forground_process_g(t_sh *shell, t_grp *grp)
 {
-  shell->process_group = (t_pipe**)add_ptr_t_tab((void**)shell->process_group,
+  shell->process_group = (t_grp**)add_ptr_t_tab((void**)shell->process_group,
                                        (void*)grp);
   shell->forground = grp;
   grp->running = 1;

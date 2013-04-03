@@ -22,3 +22,13 @@ void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr)
   if (stderr != -1)
     fds->stderr = stderr;
 }
+
+void	close_fds(t_fds *fd)
+{
+  if (fd->stdin != 0)
+    close(fd->stdin);
+  if (fd->stdout != 1)
+    close(fd->stdout);
+  if (fd->stderr != 2)
+    close(fd->stderr);
+}

@@ -10,29 +10,30 @@
 
 #include "../include/42sh.h"
 
-int	exec_process_group(t_sh *shell, t_pipe *grp)
+int	exec_process_group(t_sh *shell, t_grp *grp)
 {
   if (grp == NULL)
     return (-1);
+    ///check if executale
 //exec all here
-  exec_process(grp->cmds[0], shell, grp);
+  exec_a_pipe(shell, grp);
   group_process_group(grp);
   set_forground_process_g(shell, grp);
   return (-1);
 }
 
-t_pipe	*create_n_process_group(t_sh *shell, char *lign)
+t_grp	*create_n_process_group(t_sh *shell, char *lign)
 {
   char	**cmd_line;
-  t_pipe	*res;
+  t_grp	*res;
   t_cmd	*tmp_cmd;
   int	i;
 
   i = 0;
-  if ((res = malloc(1 * sizeof(t_pipe))) == NULL)
+  if ((res = malloc(1 * sizeof(t_grp))) == NULL)
     return (NULL);
-  init_stdfd_t_def_val(&(res->fd), 0, 1, 2);
   res->line = lign;
+  init_stdfd_t_def_val(&(res->fd), 0, 1, 2);
   res->pid.sid = shell->pid.sid;
   res->cmds = NULL;
   res->running = 0;
@@ -43,11 +44,12 @@ t_pipe	*create_n_process_group(t_sh *shell, char *lign)
       res->cmds = (t_cmd**)add_ptr_t_tab((void**)res->cmds, (void*)tmp_cmd);
       i++;
     }
+    ///check here for redirection
   free(cmd_line);
   return (res);
 }
 
-void	free_process_group(t_pipe *grp)
+void	free_process_group(t_grp *grp)
 {
   if (grp != NULL)
     {

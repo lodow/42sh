@@ -47,6 +47,10 @@ int	main(int ac, char **av, char **main_env)
 {
   t_sh	shell;
 
+  signal(SIGTTOU, &sig_handler);
+  signal(SIGTTIN, &sig_handler);
+  signal(SIGINT, &sig_handler);
+  signal(SIGTSTP, &sig_handler);
   init_shell(&shell, main_env);
   if (shell.env != NULL)
     {

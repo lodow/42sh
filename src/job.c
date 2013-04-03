@@ -10,7 +10,7 @@
 
 #include "../include/42sh.h"
 
-int	group_process_group(t_pipe *pipeline)
+int	group_process_group(t_grp *pipeline)
 {
   int	i;
   int	pgid;

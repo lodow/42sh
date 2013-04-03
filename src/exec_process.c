@@ -10,7 +10,7 @@
 
 #include "../include/42sh.h"
 
-void	exec_process(t_cmd *cmd, t_sh *shell, t_pipe *grp)
+void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell, t_grp *grp)
 {
   cmd->pid.pid = -1;
   if ((shell->env != NULL)/* && (special_cmd(cmd, shell, 1) == 0)*/)
@@ -22,15 +22,16 @@ void	exec_process(t_cmd *cmd, t_sh *shell, t_pipe *grp)
           signal(SIGTTIN, SIG_DFL);
           signal(SIGTSTP, SIG_DFL);
           setpgid(0, 0);
-          dup2(cmd->fd.stdin, 0);
-          dup2(cmd->fd.stdout, 1);
-          dup2(cmd->fd.stderr, 2);
-          //close_all_pipe(pipeline);
+          dup2(fd->stdin, 0);
+          dup2(fd->stdout, 1);
+          dup2(fd->stderr, 2);
+          close_fds(fd);
           execve(cmd->cmd_fpath, cmd->argv, shell->env);
-      /*    if (cmd->fd.stdin != 0)
-            cat(0, 1);
-      */    my_putstr("What are you trying to do ? Fool !\n", 1, -1);
+          /*    if (cmd->fd.stdin != 0)
+                cat(0, 1);
+          */    my_putstr("What are you trying to do ? Fool !\n", 1, -1);
           exit(-1);
         }
+      close_fds(fd);
     }
 }
