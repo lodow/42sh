@@ -19,6 +19,4 @@ void	parse_user_cmd(t_sh *shell, char *line)
   SETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND));
   exec_process_group(shell, grp);
 
-  ///TMP
-  free_process_group(grp);
 }

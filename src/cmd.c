@@ -17,6 +17,8 @@ t_cmd	*create_n_cmd(t_sh *shell, char *lign)
   if ((res = malloc(1 * sizeof(t_cmd))) == NULL)
     return (NULL);
   res->line = lign;
+  res->pid.pid = -1;
+  res->return_value = 0;
   tr_str(res->line, '\t', ' ');
   res->argv = str_to_wordtab(res->line, " ", 1);
   alias_replace(&(res->argv), shell->alias_tab);
