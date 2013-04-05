@@ -90,6 +90,6 @@ void	wait_no_fg_grp(t_sh* shell)
 
   while ((fg = get_forground_grp(shell)) != NULL)
     {
-//Usleep ?
+    //usleep
     }
 }

@@ -156,7 +156,6 @@ void	set_forground_pgrp(pid_t pgid);
 void	set_forground_process_g(t_sh *shell, t_grp *grp);
 t_grp	*get_forground_grp(t_sh *shell);
 
-
 /*
 ** Wait and childs termination
 */
