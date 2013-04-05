@@ -14,8 +14,8 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
 {
   if (grp == NULL)
     return (-1);
-  ///check if executale
-//exec all here
+  if (is_grp_exec(grp) == 0)
+    return (-1);
   exec_a_pipe(shell, grp);
   group_process_group(grp);
   shell->process_group = (t_grp**)add_ptr_t_tab((void**)shell->process_group,
@@ -23,7 +23,7 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
   SETFLAG(grp->flags, FLAGPOS(FGRP_RUNNING));
   if (GETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND)))
     set_forground_process_g(shell, grp);
-  return (-1);
+  return (0);
 }
 
 t_grp	*create_n_process_group(t_sh *shell, char *lign)

@@ -89,6 +89,9 @@
 		<Unit filename="src/get_next_line.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/is_grp_exec.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/job.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -18,6 +18,7 @@ SRC= 	src/main.c \
 		src/signal.c \
 		src/job.c \
 		src/jobs_forground.c \
+		src/is_grp_exec.c \
 		src/fd.c \
 		src/swap_ptr.c \
 		src/env/env.c \

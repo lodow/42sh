@@ -187,6 +187,7 @@ char	*exec_full_path(char *exec, char **paths);
 int	exec_process_group(t_sh *shell, t_grp *grp);
 void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell, t_grp *grp);
 void	free_process_group(t_grp *grp);
+int	is_grp_exec(t_grp *grp);
 
 /*
 ** Fds
