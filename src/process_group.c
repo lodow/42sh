@@ -20,7 +20,9 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
   group_process_group(grp);
   shell->process_group = (t_grp**)add_ptr_t_tab((void**)shell->process_group,
                          (void*)grp);
-  set_forground_process_g(shell, grp);
+  SETFLAG(grp->flags, FLAGPOS(FGRP_RUNNING));
+  if (GETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND)))
+    set_forground_process_g(shell, grp);
   return (-1);
 }
 

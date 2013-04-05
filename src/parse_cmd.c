@@ -15,6 +15,8 @@ void	parse_user_cmd(t_sh *shell, char *line)
   t_grp	*grp;
 
   grp = create_n_process_group(shell, my_strdup(line));
+  ///Launch option flag set here
+  SETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND));
   exec_process_group(shell, grp);
 
   ///TMP

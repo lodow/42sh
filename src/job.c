@@ -39,8 +39,14 @@ int	group_process_group(t_grp *pipeline)
 
 void	update_jobs_status(t_sh *shell, int sig)
 {
+  t_grp	*fg_grp;
+
   if (sig == SIGTSTP)
     {
-
+      if ((fg_grp = get_forground_grp(shell)) != NULL)
+        {
+          UNSETFLAG(fg_grp->flags, FLAGPOS(FGRP_RUNNING));
+          UNSETFLAG(fg_grp->flags, FLAGPOS(FGRP_FORGROUND));
+        }
     }
 }
