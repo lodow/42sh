@@ -36,8 +36,9 @@ void	user_loop(t_sh *shell)
   prompt(shell);
   while ((lign = GET_USER_LINE) != NULL)
     {
-      prompt(shell);
       parse_user_cmd(shell, lign);
       free(lign);
+      wait_no_fg_grp(shell);
+      prompt(shell);
     }
 }

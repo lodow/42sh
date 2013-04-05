@@ -71,8 +71,25 @@ void	wait_all_jobs(t_sh *shell, t_grp **jobtab)
           SETFLAG(jobtab[i]->flags, FGRP_TERMINATED);
           if (jobtab[i] == forground_grp)
             set_forground_pgrp(shell->pid.pgid);
+          else
+            {
+              my_putstr(jobtab[i]->line, 2, -1);
+              my_putstr("Done\n", 2, -1);
+            }
+          UNSETFLAG(jobtab[i]->flags, FLAGPOS(FGRP_FORGROUND));
+          rm_ptr_f_tab((void**)shell->process_group, (void*)jobtab[i]);
           //delete it ?
         }
       i++;
+    }
+}
+
+void	wait_no_fg_grp(t_sh* shell)
+{
+  t_grp	*fg;
+
+  while ((fg = get_forground_grp(shell)) != NULL)
+    {
+//Usleep ?
     }
 }

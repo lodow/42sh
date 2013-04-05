@@ -161,12 +161,14 @@ t_grp	*get_forground_grp(t_sh *shell);
 ** Wait and childs termination
 */
 void	wait_all_jobs(t_sh *shell, t_grp **jobtab);
+void	wait_no_fg_grp(t_sh* shell);
 
 /*
 ** User funcs
 */
 void	user_loop(t_sh *shell);
 void	parse_user_cmd(t_sh *shell, char *line);
+void	prompt(t_sh *shell);
 
 /*
 ** Pipes

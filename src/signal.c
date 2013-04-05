@@ -27,6 +27,11 @@ void	sig_handler(int sig)
   update_jobs_status(shell, sig);
   if (sig == SIGCHLD)
     wait_all_jobs(shell, shell->process_group);
+  if (sig == SIGINT)
+    {
+      my_putstr("\n", 1, -1);
+      prompt(shell);
+    }
   signal(SIGTTOU, &sig_handler);
   signal(SIGTTIN, &sig_handler);
   signal(SIGINT, &sig_handler);
