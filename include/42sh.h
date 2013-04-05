@@ -40,6 +40,10 @@
 
 # define GET_USER_LINE get_next_line(0)
 
+#define FGRP_RUNNING 0
+#define FGRP_TERMINATED 1
+#define FGRP_FORGROUND 2
+
 typedef struct	s_fds
 {
   int		stdin;
@@ -69,7 +73,7 @@ typedef struct	s_grp
   t_fds		fd;
   char		*line;
   t_cmd		**cmds;
-  int		running;
+  int		flags;
 }		t_grp;
 
 typedef struct	s_func_ptr
@@ -85,8 +89,7 @@ typedef struct	s_sh
   char		**path;
   char		**env;
   char		**alias_tab;
-  t_grp	**process_group;
-  t_grp	*forground;
+  t_grp		**process_group;
 }		t_sh;
 
 /*
@@ -131,6 +134,7 @@ int	is_in_str(char c, char *str);
 int	my_strncmp(char *s1, char *s2, int n);
 void	swap_ptr(void **ptr1, void **ptr2);
 void	tr_str(char *str, char in, char to);
+char	*my_uint_strbase(unsigned int nb, char * base);
 
 /*
 ** Str to wordtab
@@ -150,6 +154,13 @@ void	update_jobs_status(t_sh *shell, int sig);
 int	group_process_group(t_grp *pipeline);
 void	set_forground_pgrp(pid_t pgid);
 void	set_forground_process_g(t_sh *shell, t_grp *grp);
+t_grp	*get_forground_grp(t_sh *shell);
+
+
+/*
+** Wait and childs termination
+*/
+void	wait_all_jobs(t_sh *shell, t_grp **jobtab);
 
 /*
 ** User funcs

@@ -25,8 +25,11 @@ void	sig_handler(int sig)
 
   shell = get_sh_info(NULL);
   update_jobs_status(shell, sig);
+  if (sig == SIGCHLD)
+    wait_all_jobs(shell, shell->process_group);
   signal(SIGTTOU, &sig_handler);
   signal(SIGTTIN, &sig_handler);
   signal(SIGINT, &sig_handler);
   signal(SIGTSTP, &sig_handler);
+  signal(SIGCHLD, &sig_handler);
 }

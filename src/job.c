@@ -39,9 +39,8 @@ int	group_process_group(t_grp *pipeline)
 
 void	update_jobs_status(t_sh *shell, int sig)
 {
-  if ((sig == SIGTSTP) && (shell->forground != NULL))
+  if (sig == SIGTSTP)
     {
-      shell->forground->running = 0;
-      shell->forground = NULL;
+
     }
 }

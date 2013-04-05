@@ -14,10 +14,12 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
 {
   if (grp == NULL)
     return (-1);
-    ///check if executale
+  ///check if executale
 //exec all here
   exec_a_pipe(shell, grp);
   group_process_group(grp);
+  shell->process_group = (t_grp**)add_ptr_t_tab((void**)shell->process_group,
+                         (void*)grp);
   set_forground_process_g(shell, grp);
   return (-1);
 }
@@ -36,7 +38,7 @@ t_grp	*create_n_process_group(t_sh *shell, char *lign)
   init_stdfd_t_def_val(&(res->fd), 0, 1, 2);
   res->pid.sid = shell->pid.sid;
   res->cmds = NULL;
-  res->running = 0;
+  res->flags = 0;
   cmd_line = str_to_wordtab(lign, "|", 1);
   while ((cmd_line != NULL) && (cmd_line[i] != NULL))
     {
@@ -44,7 +46,7 @@ t_grp	*create_n_process_group(t_sh *shell, char *lign)
       res->cmds = (t_cmd**)add_ptr_t_tab((void**)res->cmds, (void*)tmp_cmd);
       i++;
     }
-    ///check here for redirection
+  ///check here for redirection
   free(cmd_line);
   return (res);
 }

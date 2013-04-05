@@ -11,11 +11,13 @@
 SRC= 	src/main.c \
 		src/stc.c \
 		src/str.c \
+		src/my_uint64_t_strbase.c \
 		src/tr_str.c \
 		src/shell.c \
 		src/str_to_wordtab.c \
 		src/signal.c \
 		src/job.c \
+		src/jobs_forground.c \
 		src/fd.c \
 		src/swap_ptr.c \
 		src/env/env.c \
@@ -39,6 +41,7 @@ SRC= 	src/main.c \
 		src/tty.c \
 		src/pipe.c \
 		src/cmd.c \
+		src/wait.c \
 		src/cmd_full_path.c \
 		src/ptr_tab.c
 

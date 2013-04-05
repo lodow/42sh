@@ -32,12 +32,3 @@ void	set_forground_pgrp(pid_t pgid)
       signal(SIGTTOU, SIG_DFL);
     }
 }
-
-void	set_forground_process_g(t_sh *shell, t_grp *grp)
-{
-  shell->process_group = (t_grp**)add_ptr_t_tab((void**)shell->process_group,
-                                       (void*)grp);
-  shell->forground = grp;
-  grp->running = 1;
-  set_forground_pgrp(grp->pid.pgid);
-}

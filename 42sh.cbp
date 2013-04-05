@@ -92,6 +92,9 @@
 		<Unit filename="src/job.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/jobs_forground.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/list/dlist.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -102,6 +105,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/my_putchar.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/my_uint64_t_strbase.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/parse_cmd.c">
@@ -141,6 +147,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/variable.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/wait.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

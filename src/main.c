@@ -36,7 +36,6 @@ int	init_shell(t_sh *shell, char **main_env)
       || ((shell->pid.pgid = getpgid(shell->pid.pid)) == -1))
     return (-1);
   shell->process_group = NULL;
-  shell->forground = NULL;
   shell->env = add_change_env(shell->env, "PS1", "${LOGNAME} ${PWD} $ "); //default path
   shell->alias_tab = NULL;
   //Load a configu file here
@@ -51,6 +50,7 @@ int	main(int ac, char **av, char **main_env)
   signal(SIGTTIN, &sig_handler);
   signal(SIGINT, &sig_handler);
   signal(SIGTSTP, &sig_handler);
+  signal(SIGCHLD, &sig_handler);
   init_shell(&shell, main_env);
   if (shell.env != NULL)
     {
