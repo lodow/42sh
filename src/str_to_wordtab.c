@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Mon Apr  8 17:26:43 2013 maxime lavandier
+** Last update Mon Apr  8 17:33:45 2013 maxime lavandier
 */
 
 #include <stdlib.h>
@@ -23,7 +23,7 @@
 ** nbr		= nbr de fois que la chaine delim apparait
 */
 
-void	my_strncpy(char *str1, char *str2, int size)
+void	my_strncpy_force(char *str1, char *str2, int size)
 {
   strncpy(str1, str2, size);
   str1[size] = 0;
@@ -74,14 +74,14 @@ void	fill_tab_inib(char *str, char *delim, char **tab)
       if ((strncmp(&(str[max]), delim, len_delim)) == 0 && quote == -1 &&
 	  (max == 0 || str[max - 1] != '\\'))
 	{
-	  my_strncpy(tab[i++], &(str[min]), max - min);
+	  my_strncpy_force(tab[i++], &(str[min]), max - min);
 	  min = max = max + len_delim;
 	}
       else
 	max++;
     }
   if (max != min)
-    my_strncpy(tab[i++], &(str[min]), max - min);
+    my_strncpy_force(tab[i++], &(str[min]), max - min);
   tab[i] = 0;
 }
 
@@ -98,7 +98,7 @@ void	fill_tab(char *str, char *delim, char **tab)
     {
       if ((strncmp(&(str[max]), delim, len_delim)) == 0)
 	{
-	  my_strncpy(tab[i], &(str[min]), max - min);
+	  my_strncpy_force(tab[i], &(str[min]), max - min);
 	  i++;
 	  min = max = max + len_delim;
 	}
@@ -106,7 +106,7 @@ void	fill_tab(char *str, char *delim, char **tab)
 	max++;
     }
   if (max != min)
-      my_strncpy(tab[i++], &(str[min]), max - min);
+      my_strncpy_force(tab[i++], &(str[min]), max - min);
   tab[i] = 0;
 }
 
