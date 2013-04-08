@@ -41,16 +41,14 @@ void	update_jobs_status(t_sh *shell, int sig)
 {
   t_grp	*fg_grp;
 
-  if (sig == SIGTSTP)
-    {
-    set_forground_pgrp(shell->pid.pgid);
-      my_putstr("signale\n", 2, -1);
+int fd = open("/dev/tty", O_RDWR);
+my_putstr("siganl sigstop\n", fd, -1);
       if ((fg_grp = get_forground_grp(shell)) != NULL)
         {
           UNSETFLAG(fg_grp->flags, FLAGPOS(FGRP_RUNNING));
           UNSETFLAG(fg_grp->flags, FLAGPOS(FGRP_FORGROUND));
-          set_forground_pgrp(shell->pid.pgid);
-           my_putstr("hello\n", 2, -1);
+         // set_forground_pgrp(shell->pid.pgid);
+           my_putstr("hello\n", fd, -1);
         }
-    }
+    close(fd);
 }

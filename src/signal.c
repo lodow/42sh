@@ -24,7 +24,9 @@ void	sig_handler(int sig)
   t_sh	*shell;
 
   shell = get_sh_info(NULL);
-  update_jobs_status(shell, sig);
+  printf("signal %d\n", sig);
+  if (sig == SIGTSTP)
+    update_jobs_status(shell, sig);
   if (sig == SIGCHLD)
     wait_all_jobs(shell, shell->process_group);
   if (sig == SIGINT)

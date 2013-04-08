@@ -87,9 +87,12 @@ void	wait_all_jobs(t_sh *shell, t_grp **jobtab)
 void	wait_no_fg_grp(t_sh* shell)
 {
   t_grp	*fg;
+  int	tmp;
 
   while ((fg = get_forground_grp(shell)) != NULL)
     {
+  //  my_putstr("I wait\n", 2,-1);
+    wait(&tmp); //Thanks max i hope it works on every case :D
     //usleep
     }
 }
