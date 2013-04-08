@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Tue Apr  2 15:13:47 2013 maxime lavandier
+** Last update Mon Apr  8 17:26:43 2013 maxime lavandier
 */
 
 #include <stdlib.h>
@@ -22,6 +22,13 @@
 ** i		= indice
 ** nbr		= nbr de fois que la chaine delim apparait
 */
+
+void	my_strncpy(char *str1, char *str2, int size)
+{
+  strncpy(str1, str2, size);
+  str1[size] = 0;
+}
+
 char	**malloc_tab(char *str, char *delim)
 {
   char	**tab;
@@ -36,7 +43,7 @@ char	**malloc_tab(char *str, char *delim)
   while (str[i] != 0)
     {
       if (strncmp(delim, &(str[i]), len_delim) == 0)
-        nbr++;
+	nbr++;
       i++;
     }
   if ((tab = malloc((nbr + 2) * sizeof(char *))) == 0)
@@ -63,19 +70,18 @@ void	fill_tab_inib(char *str, char *delim, char **tab)
   while (str[max] != 0)
     {
       if (str[max] == '"' && (max == 0 || str[max - 1] != '\\'))
-        quote *= -1;
+	quote *= -1;
       if ((strncmp(&(str[max]), delim, len_delim)) == 0 && quote == -1 &&
-          (max == 0 || str[max - 1] != '\\'))
-        {
-          strncpy(tab[i], &(str[min]), max - min);
-          i++;
-          min = max = max + len_delim;
-        }
+	  (max == 0 || str[max - 1] != '\\'))
+	{
+	  my_strncpy(tab[i++], &(str[min]), max - min);
+	  min = max = max + len_delim;
+	}
       else
-        max++;
+	max++;
     }
   if (max != min)
-    strncpy(tab[i++], &(str[min]), max - min);
+    my_strncpy(tab[i++], &(str[min]), max - min);
   tab[i] = 0;
 }
 
@@ -91,16 +97,16 @@ void	fill_tab(char *str, char *delim, char **tab)
   while (str[max] != 0)
     {
       if ((strncmp(&(str[max]), delim, len_delim)) == 0)
-        {
-          strncpy(tab[i], &(str[min]), max - min);
-          i++;
-          min = max = max + len_delim;
-        }
+	{
+	  my_strncpy(tab[i], &(str[min]), max - min);
+	  i++;
+	  min = max = max + len_delim;
+	}
       else
-        max++;
+	max++;
     }
   if (max != min)
-    strncpy(tab[i++], &(str[min]), max - min);
+      my_strncpy(tab[i++], &(str[min]), max - min);
   tab[i] = 0;
 }
 
