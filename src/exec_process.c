@@ -21,6 +21,7 @@ void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell, t_grp *grp)
           signal(SIGTTOU, SIG_DFL);
           signal(SIGTTIN, SIG_DFL);
           signal(SIGTSTP, SIG_DFL);
+          signal(SIGCHLD, SIG_DFL);
           setpgid(0, 0);
           dup2(fd->stdin, 0);
           dup2(fd->stdout, 1);

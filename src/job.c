@@ -37,20 +37,14 @@ int	group_process_group(t_grp *pipeline)
   return (0);
 }
 
-void	update_jobs_status(t_sh *shell, int sig)
+void	update_jobs_status(t_sh *shell)
 {
   t_grp	*fg_grp;
 
-  if (sig == SIGTSTP)
+  if ((fg_grp = get_forground_grp(shell)) != NULL)
     {
-    set_forground_pgrp(shell->pid.pgid);
-      my_putstr("signale\n", 2, -1);
-      if ((fg_grp = get_forground_grp(shell)) != NULL)
-        {
-          UNSETFLAG(fg_grp->flags, FLAGPOS(FGRP_RUNNING));
-          UNSETFLAG(fg_grp->flags, FLAGPOS(FGRP_FORGROUND));
-          set_forground_pgrp(shell->pid.pgid);
-           my_putstr("hello\n", 2, -1);
-        }
+      UNSETFLAG(fg_grp->flags, FLAGPOS(FGRP_RUNNING));
+      UNSETFLAG(fg_grp->flags, FLAGPOS(FGRP_FORGROUND));
+      set_forground_pgrp(shell->pid.pgid);
     }
 }
