@@ -143,6 +143,7 @@ int	my_getnbr(char *str);
 ** Str to wordtab
 */
 char	**str_to_wordtab(char *str, char *delim, char inibiteur);
+void	rm_empty_str_f_tab(char **tab);
 
 /*
 ** Signals

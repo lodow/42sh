@@ -22,6 +22,7 @@ t_cmd	*create_n_cmd(t_sh *shell, char *lign)
   tr_str(res->line, '\t', ' ');
   res->line = check_vars_in_str(res->line, shell->env);
   res->argv = str_to_wordtab(res->line, " ", 1);
+  rm_empty_str_f_tab(res->argv);
   alias_replace(&(res->argv), shell->alias_tab);
   res->cmd_fpath = exec_full_path(res->argv[0], shell->path);
   return (res);

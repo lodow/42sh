@@ -17,6 +17,7 @@ SRC= 	src/main.c \
 		src/tr_str.c \
 		src/shell.c \
 		src/str_to_wordtab.c \
+		src/clean_tab.c \
 		src/signal.c \
 		src/job.c \
 		src/jobs_forground.c \
