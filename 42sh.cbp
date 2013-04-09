@@ -68,6 +68,9 @@
 		<Unit filename="src/builtins/unsetenv.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/clean_tab.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/cmd.c">
 			<Option compilerVar="CC" />
 		</Unit>
