@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue Apr  9 23:35:00 2013 maxime lavandier
+** Last update Tue Apr  9 23:41:56 2013 maxime lavandier
 */
 
 #include "../../include/42sh.h"
@@ -36,8 +36,8 @@ void		builtin_cd(t_sh *shell, t_cmd *cmd)
     }
   else if (cmd->argv[1] != NULL)
     {
-      getcwd(temp, 4095);
       chdir(cmd->argv[1]);
+      getcwd(temp, 4095);
       path = malloc(my_strlen(temp) + 5);
       my_strncpy(path, "PWD=", -1);
       my_strncpy(&(path[4]), temp, -1);
