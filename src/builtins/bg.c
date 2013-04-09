@@ -31,6 +31,6 @@ void	builtin_bg(t_sh *shell, t_cmd *cmd)
       printf ("bg pgid=%d\n", pgid);
       /*      kill(-pgid, SIGTTIN);*/
       /*      kill(-pgid, SIGTTOU);*/
-    /*  kill(-pgid, SIGCONT);
+/*      kill(-pgid, SIGCONT);
     }*/
 }

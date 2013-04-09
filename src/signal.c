@@ -19,12 +19,19 @@ t_sh		*get_sh_info(t_sh *sh)
   return (shell);
 }
 
+void	sig_exit()
+{
+//do what you want at exit
+}
+
 void	sig_handler(int sig)
 {
   t_sh	*shell;
 
   shell = get_sh_info(NULL);
   SETFLAG(shell->signal, FLAGPOS(sig));
+  if (sig == SIGINT)
+    sig_exit();
   signal(SIGTTOU, &sig_handler);
   signal(SIGTTIN, &sig_handler);
   signal(SIGINT, &sig_handler);

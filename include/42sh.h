@@ -204,4 +204,9 @@ void	close_fds(t_fds *fd);
 */
 void	alias_replace(char ***argv, char **alias);
 
+/*
+** Exit
+*/
+void	my_exit(int value);
+
 #endif

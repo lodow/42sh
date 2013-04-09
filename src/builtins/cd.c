@@ -13,7 +13,7 @@
 char	*builtin_cd_env(t_sh *shell, char *path, char *temp)
 {
   if (get_envvar("PWD", shell->env) != NULL)
-    rm_ptr_f_tab((void **)shell->env, send_me_da_ptr_here);
+    rm_ptr_f_tab((void **)shell->env, "kd,s");
   shell->env = (char **) add_ptr_t_tab((void **)shell->env, path);
   free(path);
   return (temp);

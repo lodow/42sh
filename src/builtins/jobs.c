@@ -12,7 +12,7 @@
 
 void	builtin_jobs(t_sh *shell, t_cmd *cmd)
 {
- /* int		i;
+  /*int		i;
   t_pipeline	*tmppipeline;
   char		*tmp;
 

@@ -9,6 +9,7 @@
 ##
 
 SRC= 	src/main.c \
+		src/my_exit.c \
 		src/stc.c \
 		src/str.c \
 		src/my_uint64_t_strbase.c \
