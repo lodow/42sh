@@ -37,18 +37,14 @@ int	group_process_group(t_grp *pipeline)
   return (0);
 }
 
-void	update_jobs_status(t_sh *shell, int sig)
+void	update_jobs_status(t_sh *shell)
 {
   t_grp	*fg_grp;
 
-int fd = open("/dev/tty", O_RDWR);
-my_putstr("siganl sigstop\n", fd, -1);
-      if ((fg_grp = get_forground_grp(shell)) != NULL)
-        {
-          UNSETFLAG(fg_grp->flags, FLAGPOS(FGRP_RUNNING));
-          UNSETFLAG(fg_grp->flags, FLAGPOS(FGRP_FORGROUND));
-         // set_forground_pgrp(shell->pid.pgid);
-           my_putstr("hello\n", fd, -1);
-        }
-    close(fd);
+  if ((fg_grp = get_forground_grp(shell)) != NULL)
+    {
+      UNSETFLAG(fg_grp->flags, FLAGPOS(FGRP_RUNNING));
+      UNSETFLAG(fg_grp->flags, FLAGPOS(FGRP_FORGROUND));
+      set_forground_pgrp(shell->pid.pgid);
+    }
 }

@@ -74,7 +74,7 @@ void	wait_all_jobs(t_sh *shell, t_grp **jobtab)
           else
             {
               my_putstr(jobtab[i]->line, 2, -1);
-              my_putstr("Done\n", 2, -1);
+              my_putstr(" -> Done\n", 2, -1);
             }
           UNSETFLAG(jobtab[i]->flags, FLAGPOS(FGRP_FORGROUND));
           rm_ptr_f_tab((void**)shell->process_group, (void*)jobtab[i]);
@@ -88,11 +88,18 @@ void	wait_no_fg_grp(t_sh* shell)
 {
   t_grp	*fg;
   int	tmp;
+  int	sig;
 
   while ((fg = get_forground_grp(shell)) != NULL)
     {
-  //  my_putstr("I wait\n", 2,-1);
-    wait(&tmp); //Thanks max i hope it works on every case :D
-    //usleep
+      waitpid(-1, &tmp, WUNTRACED);
+      sig = 0;
+      if (WIFSIGNALED(tmp))
+        sig = WTERMSIG(tmp);
+      if (WIFSTOPPED(tmp))
+        sig = WSTOPSIG(tmp);
+      if (WIFCONTINUED(tmp))
+        sig = SIGCONT;
+      call_signal_func(shell, sig);
     }
 }

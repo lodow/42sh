@@ -24,19 +24,26 @@ void	sig_handler(int sig)
   t_sh	*shell;
 
   shell = get_sh_info(NULL);
-  printf("signal %d\n", sig);
-  if (sig == SIGTSTP)
-    update_jobs_status(shell, sig);
-  if (sig == SIGCHLD)
-    wait_all_jobs(shell, shell->process_group);
-  if (sig == SIGINT)
-    {
-      my_putstr("\n", 1, -1);
-      prompt(shell);
-    }
+  SETFLAG(shell->signal, FLAGPOS(sig));
   signal(SIGTTOU, &sig_handler);
   signal(SIGTTIN, &sig_handler);
   signal(SIGINT, &sig_handler);
   signal(SIGTSTP, &sig_handler);
   signal(SIGCHLD, &sig_handler);
+}
+
+void	call_signal_func(t_sh *shell, int chld_sig)
+{
+  if (GETFLAG(shell->signal, FLAGPOS(SIGCHLD)))
+    {
+      if (chld_sig == SIGTSTP)
+        update_jobs_status(shell);
+      wait_all_jobs(shell, shell->process_group);
+    }
+  if (GETFLAG(shell->signal, FLAGPOS(SIGINT)))
+    {
+      my_putstr("\n", 1, -1);
+      prompt(shell);
+    }
+  shell->signal = 0;
 }

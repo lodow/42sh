@@ -38,6 +38,7 @@ int	init_shell(t_sh *shell, char **main_env)
   shell->process_group = NULL;
   shell->env = add_change_env(shell->env, "PS1", "${LOGNAME} ${PWD} $ "); //default path
   shell->alias_tab = NULL;
+  shell->signal = 0;
   //Load a configu file here
   return (0);
 }

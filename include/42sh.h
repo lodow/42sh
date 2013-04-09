@@ -90,6 +90,7 @@ typedef struct	s_sh
   char		**env;
   char		**alias_tab;
   t_grp		**process_group;
+  int		signal;
 }		t_sh;
 
 /*
@@ -146,11 +147,12 @@ char	**str_to_wordtab(char *str, char *delim, char inibiteur);
 */
 t_sh	*get_sh_info(t_sh *sh);
 void	sig_handler(int sig);
+void	call_signal_func(t_sh *shell, int chld_sig);
 
 /*
 ** Jobs
 */
-void	update_jobs_status(t_sh *shell, int sig);
+void	update_jobs_status(t_sh *shell);
 int	group_process_group(t_grp *pipeline);
 void	set_forground_pgrp(pid_t pgid);
 void	set_forground_process_g(t_sh *shell, t_grp *grp);
