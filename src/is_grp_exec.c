@@ -20,7 +20,7 @@ int	is_cmd_executable(t_cmd *cmd)
   return (1);
 }
 
-int	is_grp_exec(t_grp *grp)
+int	is_grp_exec(t_sh *shell, t_grp *grp)
 {
   int	i;
   t_cmd	*tmpcmd;
@@ -30,7 +30,8 @@ int	is_grp_exec(t_grp *grp)
     return (0);
   while ((tmpcmd = grp->cmds[i]) != NULL)
     {
-      if (is_cmd_executable(tmpcmd) == 0)
+      if ((is_cmd_executable(tmpcmd) == 0)
+          && (is_cmd_a_builtin(shell, tmpcmd, 0) == 0))
         {
           if (tmpcmd->argv != NULL)
             my_putstr(tmpcmd->argv[0], 2, -1);

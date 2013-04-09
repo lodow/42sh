@@ -13,7 +13,7 @@
 void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell, t_grp *grp)
 {
   cmd->pid.pid = -1;
-  if ((shell->env != NULL)/* && (special_cmd(cmd, shell, 1) == 0)*/)
+  if ((shell->env != NULL) && (is_cmd_a_builtin(shell, cmd, 1) == 0))
     {
       if ((cmd->argv != NULL) && ((cmd->pid.pid = fork()) == 0))
         {

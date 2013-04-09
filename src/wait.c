@@ -78,7 +78,7 @@ void	wait_all_jobs(t_sh *shell, t_grp **jobtab)
             }
           UNSETFLAG(jobtab[i]->flags, FLAGPOS(FGRP_FORGROUND));
           rm_ptr_f_tab((void**)shell->process_group, (void*)jobtab[i]);
-          //delete it ?
+          //delete it ? it's seem yes, don't know if it's a good ieda :(
         }
       i++;
     }

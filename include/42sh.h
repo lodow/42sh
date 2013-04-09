@@ -96,6 +96,7 @@ typedef struct	s_sh
 /*
 ** Builtins
 */
+int	is_cmd_a_builtin(t_sh *shell, t_cmd *cmd, int exec);
 void	init_builtins(t_sh *shell);
 void	builtin_exit(t_sh *shell, t_cmd *cmd);
 void	builtin_cd(t_sh *shell, t_cmd *cmd);
@@ -190,7 +191,7 @@ char	*exec_full_path(char *exec, char **paths);
 int	exec_process_group(t_sh *shell, t_grp *grp);
 void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell, t_grp *grp);
 void	free_process_group(t_grp *grp);
-int	is_grp_exec(t_grp *grp);
+int	is_grp_exec(t_sh *shell, t_grp *grp);
 
 /*
 ** Fds

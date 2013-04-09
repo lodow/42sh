@@ -10,14 +10,19 @@
 
 #include "../include/42sh.h"
 
+/*
+** Func that execute a group of command,
+** It return -1 if not executable or if it has failed
+*/
 int	exec_process_group(t_sh *shell, t_grp *grp)
 {
   if (grp == NULL)
     return (-1);
-  if (is_grp_exec(grp) == 0)
+  if (is_grp_exec(shell, grp) == 0)
     return (-1);
   exec_a_pipe(shell, grp);
-  group_process_group(grp);
+  if (group_process_group(grp) == -1)
+    return (-1);
   shell->process_group = (t_grp**)add_ptr_t_tab((void**)shell->process_group,
                          (void*)grp);
   SETFLAG(grp->flags, FLAGPOS(FGRP_RUNNING));
