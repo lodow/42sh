@@ -73,8 +73,11 @@ void	wait_all_jobs(t_sh *shell, t_grp **jobtab)
             set_forground_pgrp(shell->pid.pgid);
           else
             {
-              my_putstr(jobtab[i]->line, 2, -1);
-              my_putstr(" -> Done\n", 2, -1);
+              if (jobtab[i]->pid.pgid != -1) //this is a tempory solution
+                {
+                  my_putstr(jobtab[i]->line, 2, -1);
+                  my_putstr(" -> Done\n", 2, -1);
+                }
             }
           UNSETFLAG(jobtab[i]->flags, FLAGPOS(FGRP_FORGROUND));
           rm_ptr_f_tab((void**)shell->process_group, (void*)jobtab[i]);

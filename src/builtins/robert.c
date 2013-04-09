@@ -12,5 +12,5 @@
 
 void	builtin_robert(t_sh *shell, t_cmd *cmd)
 {
-
+  my_putstr("Hello the world !\n", 1, -1);
 }

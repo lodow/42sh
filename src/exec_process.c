@@ -30,7 +30,7 @@ void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell, t_grp *grp)
           execve(cmd->cmd_fpath, cmd->argv, shell->env);
           /*    if (cmd->fd.stdin != 0)
                 cat(0, 1);
-          */    my_putstr("What are you trying to do ? Fool !\n", 1, -1);
+          */    my_putstr("What are you trying to do ? Fool (Did you meant robert ?) !\n", 1, -1);
           exit(-1);
         }
       close_fds(fd);

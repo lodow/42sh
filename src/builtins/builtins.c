@@ -41,15 +41,16 @@ int	is_cmd_a_builtin(t_sh *shell, t_cmd *cmd, int exec)
   i = 0;
   while (i < NB_BUILTINS)
     {
-      if (my_strncmp(cmd->cmd_fpath, shell->builtins[i].str, -1) == 0)
-        {
-          if (exec)
-            {
-              ((void(*)(t_sh * shell, t_cmd * cmd))(shell->builtins[i].func))
-              (shell, cmd);
-            }
-          return (1);
-        }
+      if ((cmd->argv != NULL) && (cmd->argv[0] != NULL))
+        if (my_strncmp(cmd->argv[0], shell->builtins[i].str, -1) == 0)
+          {
+            if (exec)
+              {
+                ((void(*)(t_sh * shell, t_cmd * cmd))(shell->builtins[i].func))
+                (shell, cmd);
+              }
+            return (1);
+          }
       i++;
     }
   return (0);
