@@ -20,17 +20,17 @@ int	group_process_group(t_grp *pipeline)
   pipeline->pid.pgid = -1;
   if ((pipeline->cmds != NULL) && (pipeline->cmds[0] != NULL))
     {
-      pgid = pipeline->cmds[0]->pid.pid;
-      if (setpgid(pgid, pgid) == -1)
-        return (-1);
+      if ((pgid = pipeline->cmds[0]->pid.pid) != -1)
+        if (setpgid(pgid, pgid) == -1)
+          return (-1);
     }
   else
     return (0);
   while (pipeline->cmds[i] != NULL)
     {
-      tmppid = pipeline->cmds[i]->pid.pid;
-      if (setpgid(tmppid, pgid) == -1)
-        return (-1);
+      if (((tmppid = pipeline->cmds[i]->pid.pid) != -1) && (pgid != -1))
+        if (setpgid(tmppid, pgid) == -1)
+          return (-1);
       i++;
     }
   pipeline->pid.pgid = pgid;

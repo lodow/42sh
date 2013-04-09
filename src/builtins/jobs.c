@@ -12,9 +12,9 @@
 
 void	builtin_jobs(t_sh *shell, t_cmd *cmd)
 {
- /* int		i;
-  t_pipeline	*tmppipeline;
-  char		*tmp;
+  int	i;
+  t_grp	*tmppipeline;
+  char	*tmp;
 
   i = 0;
   if (shell->process_group != NULL)
@@ -24,9 +24,9 @@ void	builtin_jobs(t_sh *shell, t_cmd *cmd)
         my_putstr("[", 1, -1);
         my_putstr(tmp, 1, -1);
         my_putstr("] ", 1, -1);
-        my_putstr(tmppipeline->lign, 1, -1);
+        my_putstr(tmppipeline->line, 1, -1);
         my_putstr("\n", 1, -1);
         free(tmp);
         i++;
-      }*/
+      }
 }

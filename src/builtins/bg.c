@@ -12,7 +12,7 @@
 
 void	builtin_bg(t_sh *shell, t_cmd *cmd)
 {
- /* int	pgid;
+  int	pgid;
   int	i;
 
   i = 0;
@@ -26,11 +26,11 @@ void	builtin_bg(t_sh *shell, t_cmd *cmd)
     i++;
   if (shell->process_group[i] != NULL)
     {
-      pgid = shell->process_group[i]->pgid;
-      shell->process_group[i]->running = 1;
+      pgid = shell->process_group[i]->pid.pgid;
+      SETFLAG(shell->process_group[i]->flags, FLAGPOS(FGRP_RUNNING));
       printf ("bg pgid=%d\n", pgid);
       /*      kill(-pgid, SIGTTIN);*/
       /*      kill(-pgid, SIGTTOU);*/
-    /*  kill(-pgid, SIGCONT);
-    }*/
+      kill(-pgid, SIGCONT);
+    }
 }
