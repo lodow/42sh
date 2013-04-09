@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Apr 10 01:40:40 2013 maxime lavandier
+** Last update Wed Apr 10 01:50:44 2013 maxime lavandier
 */
 
 #include "../../include/42sh.h"
@@ -37,8 +37,8 @@ void		builtin_cd(t_sh *shell, t_cmd *cmd)
       rm_ptr_f_tab((void **) shell->env, (void *) old_pwd - 8);
       path = malloc(my_strlen(temp) + 9);
       my_strncpy(path, "OLD_PWD=", -1);
-      my_strncpy(&(path[8]), old_pwd, -1);
-      shell->env = add_ptr_t_tab((void **)shell->env, path);
+      my_strncpy(&(path[8]), temp, -1);
+      shell->env = (char **) add_ptr_t_tab((void **)shell->env, path);
     }
   else if (cmd->argv[1] != NULL)
     {
@@ -47,7 +47,7 @@ void		builtin_cd(t_sh *shell, t_cmd *cmd)
       path = malloc(my_strlen(temp) + 9);
       my_strncpy(path, "OLD_PWD=", -1);
       my_strncpy(&(path[8]), temp, -1);
-      shell->env = add_ptr_t_tab((void **)shell->env, path);
+      shell->env = (char **) add_ptr_t_tab((void **)shell->env, path);
       chdir(cmd->argv[1]);
     }
   else
