@@ -12,8 +12,8 @@
 
 char	*builtin_cd_env(t_sh *shell, char *path, char *temp)
 {
-  if (get_envvar("PWD", shell->env) != 0)
-    rm_ptr_f_tab((void **) shell->env, "PWD");
+  if (get_envvar("PWD", shell->env) != NULL)
+    rm_ptr_f_tab((void **)shell->env, send_me_da_ptr_here);
   shell->env = (char **) add_ptr_t_tab((void **)shell->env, path);
   free(path);
   return (temp);
@@ -26,15 +26,15 @@ void		builtin_cd(t_sh *shell, t_cmd *cmd)
   char		*path;
 
   getcwd(temp, 4095);
-  if (cmd->argv[1] != 0 && cmd->argv[1][0] == '-' &&
-      cmd->argv[1][1] == 0 && prec != 0)
+  if ((cmd->argv[1] != NULL) && (my_strncmp(cmd->argv[1], "-", -1) == 0)
+      && (prec != NULL))
     {
       chdir(prec);
       path = malloc(my_strlen(prec) + 4);
       my_strncpy(path, "PWD=", -1);
       my_strncpy(&(path[4]), prec, -1);
     }
-  else if (cmd->argv[1] != 0)
+  else if (cmd->argv[1] != NULL)
     {
       chdir(cmd->argv[1]);
       path = malloc(my_strlen(cmd->argv[1]) + 5);

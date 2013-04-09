@@ -12,5 +12,21 @@
 
 void	builtin_jobs(t_sh *shell, t_cmd *cmd)
 {
+ /* int		i;
+  t_pipeline	*tmppipeline;
+  char		*tmp;
 
+  i = 0;
+  if (shell->process_group != NULL)
+    while ((tmppipeline = shell->process_group[i]) != NULL)
+      {
+        tmp = my_uint_strbase(i + 1, "0123456789");
+        my_putstr("[", 1, -1);
+        my_putstr(tmp, 1, -1);
+        my_putstr("] ", 1, -1);
+        my_putstr(tmppipeline->lign, 1, -1);
+        my_putstr("\n", 1, -1);
+        free(tmp);
+        i++;
+      }*/
 }

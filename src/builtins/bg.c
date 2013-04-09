@@ -12,5 +12,25 @@
 
 void	builtin_bg(t_sh *shell, t_cmd *cmd)
 {
+ /* int	pgid;
+  int	i;
 
+  i = 0;
+  if (cmd->argv[1] == NULL)
+    {
+      my_putstr("Please choose wich jobs\n", 2, -1);
+      return ;
+    }
+  while ((shell->process_group[i] != NULL)
+         && (i < my_getnbr(cmd->argv[1]) - 1))
+    i++;
+  if (shell->process_group[i] != NULL)
+    {
+      pgid = shell->process_group[i]->pgid;
+      shell->process_group[i]->running = 1;
+      printf ("bg pgid=%d\n", pgid);
+      /*      kill(-pgid, SIGTTIN);*/
+      /*      kill(-pgid, SIGTTOU);*/
+    /*  kill(-pgid, SIGCONT);
+    }*/
 }
