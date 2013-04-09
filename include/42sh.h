@@ -137,6 +137,7 @@ int	my_strncmp(char *s1, char *s2, int n);
 void	swap_ptr(void **ptr1, void **ptr2);
 void	tr_str(char *str, char in, char to);
 char	*my_uint_strbase(unsigned int nb, char * base);
+int	my_getnbr(char *str);
 
 /*
 ** Str to wordtab

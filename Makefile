@@ -13,6 +13,7 @@ SRC= 	src/main.c \
 		src/stc.c \
 		src/str.c \
 		src/my_uint64_t_strbase.c \
+		src/my_getnbr.c \
 		src/tr_str.c \
 		src/shell.c \
 		src/str_to_wordtab.c \

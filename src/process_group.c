@@ -25,9 +25,10 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
     return (-1);
   shell->process_group = (t_grp**)add_ptr_t_tab((void**)shell->process_group,
                          (void*)grp);
-  SETFLAG(grp->flags, FLAGPOS(FGRP_RUNNING));
-  if (GETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND)))
+  if (GETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND)) && (grp->pid.pgid != -1))
     set_forground_process_g(shell, grp);
+  else
+    UNSETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND));
   return (0);
 }
 
