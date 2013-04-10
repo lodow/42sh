@@ -29,6 +29,7 @@
 # include "my_func.h"
 
 # define NB_BUILTINS 10
+# define NB_CONFFUNC 2
 
 # define PIPE_READ 0
 # define PIPE_WRITE 1
@@ -228,8 +229,9 @@ void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr);
 void	close_fds(t_fds *fd);
 
 /*
-** Alias
+** Conf file
 */
+void	load_conf_file(const char *filename, t_sh *shell);
 void	alias_replace(char ***argv, char **alias);
 
 /*

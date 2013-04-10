@@ -19,4 +19,5 @@ void	builtin_env(t_sh *shell, t_cmd *cmd)
       execve("/usr/bin/env", cmd->argv, shell->env);
       my_exit(0);
     }
+  waitpid(pid, &pid, 0);
 }
