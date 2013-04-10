@@ -50,6 +50,7 @@ SRC	= 	$(SRCPATH)main.c				\
 		$(SRCPATH)my_getnbr.c				\
 		$(SRCPATH)my_putchar.c				\
 		$(SRCPATH)clean_tab.c				\
+		$(SRCPATH)my_exit.c				\
 
 ENV	=	$(PATHENV)env.c					\
 

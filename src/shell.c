@@ -10,25 +10,6 @@
 
 #include "../include/42sh.h"
 
-void	prompt(t_sh *shell)
-{
-  char	*prompt;
-  char	*ps1;
-
-  if ((ps1 = get_envvar("PS1", shell->env)) != NULL)
-    {
-      if ((prompt = check_vars_in_str(ps1, shell->env)) != NULL)
-        {
-          my_putstr(prompt, 1, -1);
-          free(prompt);
-        }
-      else
-        my_putstr(ps1, 1, -1);
-    }
-  else
-    my_putstr("$ ", 1, -1);
-}
-
 void	user_loop(t_sh *shell)
 {
   char	*lign;
@@ -40,8 +21,8 @@ void	user_loop(t_sh *shell)
   if ((ps1 = get_envvar("PS1", shell->env)) != NULL)
     if ((prompt = check_vars_in_str(ps1, shell->env)) != NULL)
       {
-	shell->param.str_prompt = prompt;
-	my_put_str(shell->param.str_prompt);
+        shell->param.str_prompt = prompt;
+        my_put_str(shell->param.str_prompt);
       }
   while ((lign = read_cmd(&(shell->param))) != NULL)
     {
@@ -50,8 +31,8 @@ void	user_loop(t_sh *shell)
       parse_user_cmd(shell, lign);
       free(lign);
       wait_no_fg_grp(shell);
-      /* prompt(shell); */
     }
   if (shell->param.str_prompt != NULL)
     free(prompt);
+  reset_mod(shell->param.t);
 }

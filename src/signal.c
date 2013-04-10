@@ -46,8 +46,7 @@ void	call_signal_func(t_sh *shell, int chld_sig)
   wait_all_jobs(shell, shell->process_group);
   if (GETFLAG(shell->signal, FLAGPOS(SIGINT)))
     {
-      my_putstr("\n", 1, -1);
-      prompt(shell);
+      //my_putstr("\n", 1, -1);
     }
   shell->signal = 0;
 }

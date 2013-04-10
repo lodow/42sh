@@ -12,11 +12,9 @@
 
 void	builtin_exit(t_sh *shell, t_cmd *cmd)
 {
-  if (cmd == NULL || cmd->argv == NULL || cmd->argv[0] == NULL)
-    return ;
   reset_mod(shell->param.t);
   if (cmd->argv[1] == NULL)
-    exit(0);
+    my_exit(0);
   else
-    exit(my_getnbr(cmd->argv[1]));
+    my_exit(my_getnbr(cmd->argv[1]));
 }
