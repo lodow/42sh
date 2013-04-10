@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed Mar 20 14:13:14 2013 remi
-** Last update Wed Apr 10 09:46:03 2013 remi robert
+** Last update Wed Apr 10 09:54:25 2013 remi robert
 */
 
 #include "../include/my_func.h"
@@ -32,12 +32,12 @@ int	recup_path(char **envp)
 
 int	init_tab_line(t_param *param)
 {
-  mod_raw();
   if ((tcgetattr(1, &(param->t)) == -1) == -1)
     return (FALSE);
   param->string = NULL;
   param->len_string = 0;
   param->buff_copy[0] = END;
+  mod_raw();
   return (OK);
 }
 
