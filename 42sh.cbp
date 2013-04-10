@@ -30,8 +30,10 @@
 		</Compiler>
 		<Unit filename="Makefile" />
 		<Unit filename="include/42sh.h" />
+		<Unit filename="include/couleur.h" />
 		<Unit filename="include/get_file.h" />
 		<Unit filename="include/get_next_line.h" />
+		<Unit filename="include/my_func.h" />
 		<Unit filename="src/alias.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -129,9 +131,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/ptr_tab.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/redirection.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/shell.c">
