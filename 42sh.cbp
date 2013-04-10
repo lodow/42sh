@@ -82,6 +82,108 @@
 		<Unit filename="src/detect_redirection.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/edition_line/add_caractere.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/control_clear.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/free.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/gere_buff_copy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/gere_buff_feature.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/gere_control.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/gere_keyboard.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/get_len_string_with_pos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/init_struct_param.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/lib/get_next_line.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/lib/my_getnbr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/lib/my_memset.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/lib/my_putstr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/lib/my_strlen.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/lib/str_cmp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/lib/str_cmp_env.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/main_line.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/my_memset.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/print_prompt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/read_cmd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/return_string.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/set_pos_curser.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/str_cmp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/str_cmp_env.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/suppression.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/termcap/clear.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/termcap/coordone.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/termcap/curseur.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/termcap/dl_current_pos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/termcap/ecrase_text.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/termcap/get_pos_curser.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/termcap/mod_raw.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/view_string.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/env/env.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -122,9 +224,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/my_getnbr.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/my_putchar.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/my_uint64_t_strbase.c">

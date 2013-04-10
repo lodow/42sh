@@ -20,7 +20,6 @@
 #include <sys/ioctl.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "couleur.h"
 
 # define UP		65
 # define DOWN		66

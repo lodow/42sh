@@ -21,6 +21,6 @@ void	builtin_unsetenv(t_sh *shell, t_cmd *cmd)
   if (my_strncmp(cmd->argv[1], "PATH", -1) == 0)
     {
       free_ptr_tab((void **) shell->path);
-      shell->path = 0;
+      shell->path = NULL;
     }
 }

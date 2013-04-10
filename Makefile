@@ -14,13 +14,13 @@ SRCPATH	=	src
 
 BUILTINS=	src/builtins
 
-PATHLINE=	edition_line
+PATHLINE=	src/edition_line
+
+LIBLINE	=	src/edition_line/lib
+
+PATHTERMCAP=	src/edition_line/termcap
 
 PATHENV	=	src/env
-
-LIBLINE	=	edition_line/lib
-
-PATHTERMCAP=	edition_line/termcap
 
 SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/stc.c					\
@@ -50,7 +50,6 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/get_file.c				\
 		$(SRCPATH)/variable.c				\
 		$(SRCPATH)/my_getnbr.c				\
-		$(SRCPATH)/my_putchar.c				\
 		$(SRCPATH)/clean_tab.c				\
 		$(SRCPATH)/error.c				\
 		$(SRCPATH)/my_exit.c				\

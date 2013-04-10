@@ -14,7 +14,7 @@ void	builtin_setenv(t_sh *shell, t_cmd *cmd)
 {
   char	*temp;
 
-  if (cmd->argv[1] == 0)
+  if (cmd->argv[1] == NULL)
     {
       builtin_env(shell, cmd);
       return ;
