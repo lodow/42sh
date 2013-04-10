@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun Feb 17 09:02:36 2013 remi robert
-** Last update Fri Feb 22 14:40:06 2013 remi robert
+** Last update Wed Apr 10 10:37:04 2013 remi robert
 */
 
 #include "my_func.h"
@@ -22,9 +22,9 @@ int	open_file(int type, char *file, int *fd)
     *fd = open(file, O_RDWR | O_CREAT | O_TRUNC, 0666);
   if (*fd == -1)
     {
-      my_putstr("Error open or create file : ");
-      my_putstr(file);
-      my_putstr("\n");
+      my_putstr("Error open or create file : ", 2, -1);
+      my_putstr(file, 2, -1);
+      my_putstr("\n", 2, -1);
     }
   return (*fd);
  }

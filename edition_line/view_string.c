@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 14:03:17 2013 remi robert
-** Last update Tue Apr  9 17:04:54 2013 remi robert
+** Last update Wed Apr 10 10:26:32 2013 remi robert
 */
 
 #include "../include/my_func.h"
@@ -27,7 +27,7 @@ t_string	*get_pos_string(t_string *ptete, int pos)
   return (pcourant);
 }
 
-int	return_nb_elem(t_string *ptete)
+int		return_nb_elem(t_string *ptete)
 {
   t_string	*pcourant;
   int		indice;

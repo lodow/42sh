@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Thu Mar  7 23:13:40 2013 maxime lavandier
-** Last update Thu Mar  7 23:14:58 2013 maxime lavandier
+** Last update Wed Apr 10 10:04:26 2013 remi robert
 */
 
 #include <stdio.h>
@@ -72,7 +72,8 @@ char		*redir_fin(char *com, t_pipe *pipe)
       if (com[i] == '>' && com[i + 1] == '>')
 	{
 	  flag = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
-	  if ((fd = open(nextspace(tab[1]), O_WRONLY | O_CREAT | O_APPEND, flag)) == -1)
+	  if ((fd = open(nextspace(tab[1]), O_WRONLY |
+			 O_CREAT | O_APPEND, flag)) == -1)
 	    return (com);
 	  dup2(fd, 1);
 	  return (tab[0]);

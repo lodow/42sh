@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Wed Apr 10 13:47:16 2013 remi robert
 */
 
 #include "../include/42sh.h"
@@ -20,6 +20,8 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
     return (-1);
   if (is_grp_exec(shell, grp) == 0)
     return (-1);
+  /* creer fichier */
+  rempl_fd_process(grp->redirection, grp);
   exec_a_pipe(shell, grp);
   if (group_process_group(grp) == -1)
     return (-1);
@@ -30,6 +32,19 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
   else
     UNSETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND));
   return (0);
+}
+
+void	detect_redirection(t_redirection *red, char *str)
+{
+  red->red_g = 0;
+  red->red_b = 0;
+  red->file_g = NULL;
+  red->file_b = NULL;
+  return_type_redirection(str, &(red->red_b), &(red->red_g));
+  if (red->red_g != 0)
+    red->file_g = find_name_redirection(red->red_g, str);
+  if (red->red_b != 0)
+    red->file_b = find_name_redirection(red->red_b, str);
 }
 
 t_grp	*create_n_process_group(t_sh *shell, char *lign)
@@ -47,6 +62,7 @@ t_grp	*create_n_process_group(t_sh *shell, char *lign)
   res->pid.sid = shell->pid.sid;
   res->cmds = NULL;
   res->flags = 0;
+  detect_redirection(&(res->redirection), lign);
   cmd_line = str_to_wordtab(lign, "|", 1);
   while ((cmd_line != NULL) && (cmd_line[i] != NULL))
     {

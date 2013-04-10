@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Wed Apr 10 09:23:21 2013 remi robert
+## Last update Wed Apr 10 13:19:13 2013 remi robert
 ##
 
 INVOCATION=	gcc
@@ -51,6 +51,8 @@ SRC	= 	$(SRCPATH)main.c				\
 		$(SRCPATH)my_putchar.c				\
 		$(SRCPATH)clean_tab.c				\
 		$(SRCPATH)my_exit.c				\
+		$(SRCPATH)redirection.c				\
+		$(SRCPATH)detect_redirection.c			\
 
 ENV	=	$(PATHENV)env.c					\
 

@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Tue Apr  9 17:24:18 2013 remi robert
+** Last update Wed Apr 10 13:41:27 2013 remi robert
 */
 
 #ifndef		SH42_H
@@ -66,6 +66,14 @@ typedef struct	s_cmd
   t_pid		pid;
 }		t_cmd;
 
+typedef struct	s_redirection
+{
+  int		red_g;
+  int		red_b;
+  char		*file_b;
+  char		*file_g;
+}		t_redirection;
+
 typedef struct	s_grp
 {
   t_pid		pid;
@@ -73,6 +81,7 @@ typedef struct	s_grp
   char		*line;
   t_cmd		**cmds;
   int		flags;
+  t_redirection	redirection;
 }		t_grp;
 
 typedef struct	s_func_ptr
@@ -215,5 +224,19 @@ void	alias_replace(char ***argv, char **alias);
 ** Exit
 */
 void	my_exit(int value);
+
+/*
+** detect_type_redirection
+*/
+void	return_type_char(char *, int *, int *);
+void	return_type_redirection(char *, int *, int *);
+char	*find_name_redirection(int, char *);
+char	*return_file_redir(char *, int, int);
+
+/*
+** redirection
+*/
+void	rempl_fd_process(t_redirection red, t_grp *grp);
+int	open_file(int type, char *file);
 
 #endif
