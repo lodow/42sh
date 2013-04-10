@@ -19,7 +19,7 @@ void	user_loop(t_sh *shell)
   /* prompt(shell); */
   shell->param.str_prompt = NULL;
   if ((ps1 = get_envvar("PS1", shell->env)) != NULL)
-    if ((prompt = check_vars_in_str(ps1, shell->env)) != NULL)
+    if ((prompt = check_vars_in_str(my_strdup(ps1), shell->env)) != NULL)
       {
         shell->param.str_prompt = prompt;
         my_put_str(shell->param.str_prompt);
