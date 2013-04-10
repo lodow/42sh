@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Fri Mar 29 11:00:59 2013 maxime lavandier
+** Last update Tue Apr  9 17:24:18 2013 remi robert
 */
 
 #ifndef		SH42_H
@@ -26,6 +26,7 @@
 # include <sys/wait.h>
 # include <dirent.h>
 # include "get_file.h"
+# include "my_func.h"
 
 # define NB_BUILTINS 10
 
@@ -37,8 +38,6 @@
 # define SWITCHFLAG(x, y) ((x) ^= (y))
 # define GETFLAG(x, y) ((x) & (y))
 # define FLAGPOS(x) (1 << (x))
-
-# define GET_USER_LINE get_next_line(0)
 
 #define FGRP_RUNNING 0
 #define FGRP_TERMINATED 1
@@ -86,6 +85,7 @@ typedef struct	s_sh
 {
   t_func_ptr	builtins[NB_BUILTINS];
   t_pid		pid;
+  t_param	param;
   char		**path;
   char		**env;
   char		**alias_tab;

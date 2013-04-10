@@ -5,72 +5,126 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Mon Oct 22 10:39:42 2012 hugues morisset
+## Last update Wed Apr 10 08:57:41 2013 remi robert
 ##
 
-SRC= 	src/main.c \
-		src/my_exit.c \
-		src/stc.c \
-		src/str.c \
-		src/my_uint64_t_strbase.c \
-		src/my_getnbr.c \
-		src/tr_str.c \
-		src/shell.c \
-		src/str_to_wordtab.c \
-		src/clean_tab.c \
-		src/signal.c \
-		src/job.c \
-		src/jobs_forground.c \
-		src/is_grp_exec.c \
-		src/fd.c \
-		src/swap_ptr.c \
-		src/env/env.c \
-		src/builtins/builtins.c \
-		src/builtins/fg.c \
-		src/builtins/bg.c \
-		src/builtins/jobs.c \
-		src/builtins/robert.c \
-		src/builtins/cd.c \
-		src/builtins/echo.c \
-		src/builtins/env.c \
-		src/builtins/setenv.c \
-		src/builtins/unsetenv.c \
-		src/builtins/exit.c \
-		src/get_next_line.c \
-		src/variable.c \
-		src/alias.c \
-		src/parse_cmd.c \
-		src/process_group.c \
-		src/exec_process.c \
-		src/tty.c \
-		src/pipe.c \
-		src/redirection.c \
-		src/cmd.c \
-		src/wait.c \
-		src/cmd_full_path.c \
-		src/ptr_tab.c
+INVOCATION=	gcc
 
-OBJ= $(SRC:.c=.o)
+SRCPATH	=	src/
 
-NAME= robertSH
+BUILTINS=	src/builtins/
 
-CFLAGS= -g -Wall -Wfloat-equal -Wmissing-include-dirs \
-	-Wclobbered -Wempty-body -Wignored-qualifiers \
-	-Wmissing-field-initializers -Wmissing-parameter-type \
-	-Wold-style-declaration -Woverride-init -Wsign-compare \
-	-Wtype-limits -Wuninitialized
+PATHLINE=	edition_line/
 
-INVOCATION= gcc
+PATHENV	=	src/env/
 
-all:	$(NAME)
+LIBLINE	=	edition_line/lib/
 
-$(NAME):	$(OBJ)
-		$(INVOCATION) $(OBJ) -o $(NAME) $(CFLAGS)
+PATHTERMCAP=	edition_line/termcap/
+
+SRC	= 	$(SRCPATH)main.c				\
+		$(SRCPATH)stc.c					\
+		$(SRCPATH)str.c					\
+		$(SRCPATH)my_uint64_t_strbase.c			\
+		$(SRCPATH)tr_str.c				\
+		$(SRCPATH)shell.c				\
+		$(SRCPATH)str_to_wordtab.c			\
+		$(SRCPATH)signal.c				\
+		$(SRCPATH)job.c					\
+		$(SRCPATH)jobs_forground.c			\
+		$(SRCPATH)is_grp_exec.c				\
+		$(SRCPATH)fd.c					\
+		$(SRCPATH)swap_ptr.c				\
+		$(SRCPATH)alias.c				\
+		$(SRCPATH)parse_cmd.c				\
+		$(SRCPATH)process_group.c			\
+		$(SRCPATH)exec_process.c			\
+		$(SRCPATH)tty.c					\
+		$(SRCPATH)pipe.c				\
+		$(SRCPATH)cmd.c					\
+		$(SRCPATH)wait.c				\
+		$(SRCPATH)cmd_full_path.c			\
+		$(SRCPATH)ptr_tab.c				\
+		$(SRCPATH)get_next_line.c			\
+		$(SRCPATH)variable.c				\
+		$(SRCPATH)my_getnbr.c				\
+		$(SRCPATH)my_putchar.c				\
+		$(SRCPATH)clean_tab.c				\
+
+ENV	=	$(PATHENV)env.c					\
+
+SRCBUILTINS=	$(BUILTINS)builtins.c				\
+		$(BUILTINS)fg.c					\
+		$(BUILTINS)bg.c					\
+		$(BUILTINS)jobs.c				\
+		$(BUILTINS)robert.c				\
+		$(BUILTINS)cd.c					\
+		$(BUILTINS)echo.c				\
+		$(BUILTINS)env.c				\
+		$(BUILTINS)setenv.c				\
+		$(BUILTINS)unsetenv.c				\
+		$(BUILTINS)exit.c				\
+
+SRCLINE	=	$(PATHLINE)main_line.c				\
+		$(PATHLINE)add_caractere.c			\
+		$(PATHLINE)return_string.c			\
+		$(PATHLINE)read_cmd.c				\
+		$(PATHLINE)free.c				\
+		$(PATHLINE)view_string.c			\
+		$(PATHLINE)get_len_string_with_pos.c		\
+		$(PATHLINE)gere_keyboard.c			\
+		$(PATHLINE)suppression.c			\
+		$(PATHLINE)gere_control.c			\
+		$(PATHLINE)gere_buff_copy.c			\
+		$(PATHLINE)gere_buff_feature.c			\
+		$(PATHLINE)set_pos_curser.c			\
+		$(PATHLINE)init_struct_param.c			\
+		$(PATHLINE)print_prompt.c			\
+
+SRCLIBLINE=	$(LIBLINE)str_cmp_env.c				\
+		$(LIBLINE)str_cmp.c				\
+		$(LIBLINE)my_memset.c				\
+		$(LIBLINE)my_putstr.c				\
+
+SRCTERMCAP=	$(PATHTERMCAP)ecrase_text.c			\
+		$(PATHTERMCAP)coordone.c			\
+		$(PATHTERMCAP)mod_raw.c				\
+		$(PATHTERMCAP)curseur.c				\
+		$(PATHTERMCAP)get_pos_curser.c			\
+		$(PATHTERMCAP)clear.c				\
+		$(PATHTERMCAP)dl_current_pos.c			\
+
+OBJ	=	$(SRC:.c=.o)
+
+OBJB	=	$(SRCBUILTINS:.c=.o)
+
+OBJENV	=	$(ENV:.c=.o)
+
+OBJLINE	=	$(SRCLINE:.c=.o)
+
+OBJLIBLINE=	$(SRCLIBLINE:.c=.o)
+
+OBJTERMCAP=	$(SRCTERMCAP:.c=.o)
+
+ALLOBJ	=	$(OBJ) $(OBJB) $(OBJENV) $(OBJLIBLINE) $(OBJTERMCAP) $(OBJLINE)
+
+NAME	=	robertSH
+
+CFLAGS	=	-g -Wall -Wfloat-equal -Wmissing-include-dirs \
+		-Wclobbered -Wempty-body -Wignored-qualifiers \
+		-Wmissing-field-initializers -Wmissing-parameter-type \
+		-Wold-style-declaration -Woverride-init -Wsign-compare \
+		-Wtype-limits -Wuninitialized -ltermcap
+
+all:		$(NAME)
+
+$(NAME):	$(ALLOBJ)
+		$(INVOCATION) $(ALLOBJ) -o $(NAME) $(CFLAGS)
 
 clean:
-	rm -f $(OBJ) $(LIBOBJ)
+		rm -f $(ALLOBJ)
 
-fclean:	clean
-	rm -f $(NAME)
+fclean:		clean
+		rm -f $(NAME)
 
-re:	fclean all
+re:		fclean all

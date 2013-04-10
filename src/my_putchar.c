@@ -5,12 +5,12 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:40:03 2013 maxime lavandier
-** Last update Tue Mar 19 10:42:00 2013 maxime lavandier
+** Last update Tue Apr  9 16:33:21 2013 remi robert
 */
 
-int	my_putchar(char c)
+#include "../include/my_func.h"
+
+void	my_putchar(char c)
 {
-  if (write(1, &c, 1) == -1)
-    return (-1);
-  return (0);
+  write(1, &c, 1);
 }
