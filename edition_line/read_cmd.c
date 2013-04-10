@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 12:32:15 2013 remi robert
-** Last update Wed Apr 10 09:33:26 2013 remi robert
+** Last update Wed Apr 10 09:46:27 2013 remi robert
 */
 
 #include "../include/my_func.h"
@@ -88,6 +88,7 @@ char	*read_cmd(t_param *param)
 	{
 	  curseur(param->prompt.x, param->prompt.y);
 	  my_put_str("\n");
+	  reset_mod(param->t);
 	  return (return_string(param->string));
 	}
       if (gere_control(buff, &param) == FALSE)
