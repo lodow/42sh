@@ -19,13 +19,14 @@ void	parse_user_cmd(t_sh *shell, char *line)
 
   i = 0;
   if ((tmptab = str_to_wordtab(line, ";", 1)) != NULL)
-    {
-      tmpline = tmptab[i];
-      grp = create_n_process_group(shell, my_strdup(tmpline));
-      ///Launch option flag are set here
-      SETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND));
-      exec_process_group(shell, grp);
-      i++;
-    }
+    while ((tmpline = tmptab[i]) != NULL)
+      {
+        wait_no_fg_grp(shell);
+        grp = create_n_process_group(shell, my_strdup(tmpline));
+        ///Launch option flag are set here
+        SETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND));
+        exec_process_group(shell, grp);
+        i++;
+      }
   free_ptr_tab((void**)tmptab);
 }
