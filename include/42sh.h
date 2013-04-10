@@ -39,9 +39,21 @@
 # define GETFLAG(x, y) ((x) & (y))
 # define FLAGPOS(x) (1 << (x))
 
-#define FGRP_RUNNING 0
-#define FGRP_TERMINATED 1
-#define FGRP_FORGROUND 2
+/*
+** Jobs flags
+*/
+# define FGRP_RUNNING 0
+# define FGRP_TERMINATED 1
+# define FGRP_FORGROUND 2
+
+/*
+** Redir defines
+*/
+# define REDI_FRIGHT 0666
+# define REDI_R 3
+# define REDI_DR 4
+# define REDI_L 1
+# define REDI_DL 2
 
 typedef struct	s_fds
 {
@@ -189,9 +201,9 @@ void	prompt(t_sh *shell);
 int	exec_a_pipe(t_sh *shell, t_grp *grp);
 
 /*
-** Redirection
+** Error
 */
-
+void	my_perror(char *str);
 
 /*
 ** Env var

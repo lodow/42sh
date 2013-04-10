@@ -25,10 +25,7 @@ void	set_forground_pgrp(pid_t pgid)
       if (isatty(2))
         err += tcsetpgrp(2, pgid);
       if (err != 0)
-        {
-          my_putstr("Can't set tcsetpgrp, error: ", 2, -1);
-          my_putstr(strerror(errno), 2, -1);
-        }
+        my_perror("Can't set tcsetpgrp, error");
       signal(SIGTTOU, SIG_DFL);
     }
 }

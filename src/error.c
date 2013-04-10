@@ -8,15 +8,11 @@
 ** Last update Mon Oct  8 16:20:21 2012 hugues morisset
 */
 
-#include "../../include/42sh.h"
+#include "../include/42sh.h"
 
-void	builtin_env(t_sh *shell, t_cmd *cmd)
+void	my_perror(char *str)
 {
-  int pid;
-
-  if ((pid = fork()) == 0)
-    {
-      execve("/usr/bin/env", cmd->argv, shell->env);
-      my_exit(0);
-    }
+  my_putstr(str, 2, -1);
+  my_putstr(": ", 2, -1);
+  my_putstr(strerror(errno), 2, -1);
 }

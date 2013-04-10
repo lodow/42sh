@@ -79,7 +79,13 @@
 		<Unit filename="src/cmd_full_path.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/detect_redirection.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/env/env.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/error.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/exec_process.c">
@@ -131,6 +137,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/ptr_tab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/redirection.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/shell.c">

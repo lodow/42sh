@@ -11,20 +11,19 @@
 #include "../include/my_func.h"
 #include "../include/42sh.h"
 
-
 void	return_type_char(char *str, int *type_b, int *type_g)
 {
   if (str[0] == '<')
     {
-      if (str[1] != '\0' && str[1] == '<')
-	*type_g = 2;
-      *type_g = 1;
+      if (str[1] == '<')
+        *type_g = REDI_DL;
+      *type_g = REDI_L;
     }
   if (str[0] == '>')
     {
-      if (str[1] != '\0' && str[1] == '>')
-	*type_b = 4;
-      *type_b = 3;
+      if (str[1] == '>')
+        *type_b = REDI_DR;
+      *type_b = REDI_R;
     }
 }
 
@@ -33,11 +32,12 @@ void	return_type_redirection(char *str, int *type_b, int *type_g)
   int	indice;
 
   indice = 0;
-  while (str[indice] != '\0')
-    {
-      return_type_char(&str[indice], type_b, type_g);
-      indice = indice + 1;
-    }
+  if (str != NULL)
+    while (str[indice] != '\0')
+      {
+        return_type_char(&str[indice], type_b, type_g);
+        indice = indice + 1;
+      }
 }
 
 char	*return_file_redir(char *str, int indice, int indice_tab)
@@ -45,21 +45,21 @@ char	*return_file_redir(char *str, int indice, int indice_tab)
   char	*file;
 
   while (str[indice] != '\0' && ((str[indice] == '<' || str[indice] == '>') ||
-				 str[indice] == ' '))
+                                 str[indice] == ' '))
     indice = indice + 1;
   while (str[indice] != '\0' && str[indice] != ' ' && str[indice] != '\t' &&
-	 str[indice] != '>' && str[indice] != '<' && str[indice] != ';' &&
-	 str[indice] != '|' && str[indice] != '&')
+         str[indice] != '>' && str[indice] != '<' && str[indice] != ';' &&
+         str[indice] != '|' && str[indice] != '&')
     indice = indice + 1;
   if ((file = malloc(indice + 1)) == NULL)
     return (NULL);
   indice = 0;
   while (str[indice] != '\0' && ((str[indice] == '<' || str[indice] == '>') ||
-				 str[indice] == ' '))
+                                 str[indice] == ' '))
     indice = indice + 1;
   while (str[indice] != '\0' && str[indice] != ' ' && str[indice] != '\t' &&
-	 str[indice] != '>' && str[indice] != '<' && str[indice] != ';' &&
-	 str[indice] != '|' && str[indice] != '&')
+         str[indice] != '>' && str[indice] != '<' && str[indice] != ';' &&
+         str[indice] != '|' && str[indice] != '&')
     {
       file[indice_tab] = str[indice];
       indice = indice + 1;
@@ -78,18 +78,18 @@ char	*find_name_redirection(int type, char *str)
   mark = 0;
   while (str[indice] != '\0')
     {
-      if ((type == 1 || type == 2) && str[indice] == '<')
-	{
-	  mark = indice;
-	  if (type == 2)
-	    indice = indice + 1;
-	}
-      if ((type == 3 || type == 4) && str[indice] == '>')
-	{
-	  mark = indice;
-	  if (type == 4)
-	    indice = indice + 1;
-	}
+      if ((type == REDI_L || type == REDI_DL) && str[indice] == '<')
+        {
+          mark = indice;
+          if (type == REDI_R)
+            indice = indice + 1;
+        }
+      if ((type == REDI_R || type == REDI_DR) && str[indice] == '>')
+        {
+          mark = indice;
+          if (type == 4)
+            indice = indice + 1;
+        }
       indice = indice + 1;
     }
   if (mark != 0)
