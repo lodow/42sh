@@ -54,7 +54,6 @@ t_grp	*create_n_process_group(t_sh *shell, char *lign)
       res->cmds = (t_cmd**)add_ptr_t_tab((void**)res->cmds, (void*)tmp_cmd);
       i++;
     }
-  ///check here for redirection
   free(cmd_line);
   return (res);
 }

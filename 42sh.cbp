@@ -131,6 +131,9 @@
 		<Unit filename="src/ptr_tab.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/redirection.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/shell.c">
 			<Option compilerVar="CC" />
 		</Unit>

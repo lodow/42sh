@@ -180,6 +180,11 @@ void	prompt(t_sh *shell);
 int	exec_a_pipe(t_sh *shell, t_grp *grp);
 
 /*
+** Redirection
+*/
+
+
+/*
 ** Env var
 */
 char	*check_vars_in_str(char *str, char **envp);
