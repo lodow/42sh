@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Wed Apr 10 08:58:36 2013 remi robert
+** Last update Wed Apr 10 09:33:46 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -34,6 +34,8 @@
 # define CTRLK		11
 # define CTRLY		25
 # define CTRLU		21
+# define CTRLL		12
+# define CTRLD		4
 # define OK		1
 # define FALSE		0
 # define END		'\0'
@@ -123,5 +125,6 @@ void			init_pos_line(t_param *);
 void			my_put_str(char *);
 char			*return_string(t_string *);
 void			print_prompt(t_param *);
+void			control_clear(t_param **);
 
 #endif /* MY_FUNC_H_ */

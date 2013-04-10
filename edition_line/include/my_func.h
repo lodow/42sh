@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Tue Apr  9 15:29:03 2013 remi robert
+** Last update Wed Apr 10 09:22:36 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -116,5 +116,6 @@ void			add_caratere_list_with_buff(t_param **, char);
 void			gere_end_control_u(t_param **, t_string *, int);
 int			str_cmp_env(char *, char *);
 void			init_struct_param(t_param *);
+void			control_clear(t_param **);
 
 #endif /* MY_FUNC_H_ */

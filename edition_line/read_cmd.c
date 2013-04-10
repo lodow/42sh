@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 12:32:15 2013 remi robert
-** Last update Wed Apr 10 08:57:20 2013 remi robert
+** Last update Wed Apr 10 09:33:26 2013 remi robert
 */
 
 #include "../include/my_func.h"
@@ -49,6 +49,11 @@ int	gere_control(char *buff, t_param **param)
       gere_control_u(param);
       return (OK);
     }
+  if (buff[0] == CTRLL)
+    {
+      control_clear(param);
+      return (OK);
+    }
   return (FALSE);
 }
 
@@ -77,6 +82,8 @@ char	*read_cmd(t_param *param)
       my_memset(buff, 10);
       if ((ret = read(0, buff, 10)) == -1)
       	return (NULL);
+      if (buff[0] == CTRLD && buff[1] == '\0')
+	return (NULL);
       if (buff[0] == '\n')
 	{
 	  curseur(param->prompt.x, param->prompt.y);

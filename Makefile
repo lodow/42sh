@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Wed Apr 10 08:57:41 2013 remi robert
+## Last update Wed Apr 10 09:23:21 2013 remi robert
 ##
 
 INVOCATION=	gcc
@@ -80,6 +80,7 @@ SRCLINE	=	$(PATHLINE)main_line.c				\
 		$(PATHLINE)set_pos_curser.c			\
 		$(PATHLINE)init_struct_param.c			\
 		$(PATHLINE)print_prompt.c			\
+		$(PATHLINE)control_clear.c			\
 
 SRCLIBLINE=	$(LIBLINE)str_cmp_env.c				\
 		$(LIBLINE)str_cmp.c				\
