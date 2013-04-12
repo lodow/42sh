@@ -12,5 +12,5 @@
 
 void	my_exit(int value)
 {
-  kill(getpid(), SIGHUP);
+  kill(getpid(), SIGTERM);
 }
