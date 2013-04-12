@@ -29,8 +29,7 @@ int		init_shell(t_sh *shell, char **main_env)
   if (((shell->env = cpy_env(main_env)) == NULL)
       || ((shell->path = get_path(shell->env)) == NULL))
     return (-1);
-  if (main_env == NULL || recup_path(main_env) == 0 ||
-      init_tab_line(&(shell->param)) == 0)
+  if ((recup_path(main_env) == 0) || (init_tab_line(&(shell->param)) == 0))
     return (-1);
   init_pos_line(&(shell->param));
   //shell->pid.sid = setsid(); <- not sure if it's a good idea.

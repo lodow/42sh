@@ -87,8 +87,7 @@ SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/print_prompt.c			\
 		$(PATHLINE)/control_clear.c			\
 
-SRCLIBLINE=	$(LIBLINE)/str_cmp_env.c				\
-		$(LIBLINE)/str_cmp.c				\
+SRCLIBLINE=	$(LIBLINE)/str_cmp.c				\
 		$(LIBLINE)/my_memset.c				\
 		$(LIBLINE)/my_putstr.c				\
 

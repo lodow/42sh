@@ -9,34 +9,27 @@
 */
 
 #include "../../include/my_func.h"
+#include "../../include/42sh.h"
 
 int	recup_path(char **envp)
 {
-  int	indice;
+  char	*term;
 
-  indice = 0;
-  if (envp == NULL)
+  if ((term = get_envvar("TERM", envp)) == NULL)
     return (FALSE);
-  while (envp[indice] != NULL)
-    {
-      if (str_cmp_env(envp[indice], "TERM") == OK)
-	{
-	  if (tgetent(NULL, "xterm") != 1)
-	    return (FALSE);
-	  return (OK);
-	}
-      indice = indice + 1;
-    }
-  return (FALSE);
+  if (tgetent(NULL, term) != 1)
+    return (FALSE);
+  return (OK);
 }
 
 int	init_tab_line(t_param *param)
 {
-  if ((tcgetattr(1, &(param->t)) == -1) == -1)
-    return (FALSE);
+  param->str_prompt = NULL;
   param->string = NULL;
   param->len_string = 0;
   param->buff_copy[0] = END;
+  if (((((((((((((((((((((((((((((tcgetattr(1, &(param->t)) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1)
+    return (FALSE);
   mod_raw();
   return (OK);
 }

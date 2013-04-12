@@ -109,9 +109,6 @@
 		<Unit filename="src/edition_line/init_struct_param.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/edition_line/lib/get_next_line.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/edition_line/lib/my_getnbr.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -125,9 +122,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/lib/str_cmp.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/lib/str_cmp_env.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/main.c">
@@ -152,9 +146,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/str_cmp.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/str_cmp_env.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/suppression.c">

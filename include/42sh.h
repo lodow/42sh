@@ -209,6 +209,7 @@ void	my_perror(char *str);
 /*
 ** Env var
 */
+char	*get_envvar(char *var, char **env);
 char	*check_vars_in_str(char *str, char **envp);
 
 /*
