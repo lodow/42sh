@@ -10,20 +10,31 @@
 
 #include "../include/42sh.h"
 
-void	user_loop(t_sh *shell)
+void	recalc_prompt(t_sh *shell)
 {
-  char	*lign;
   char	*prompt;
   char	*ps1;
 
-  /* prompt(shell); */
-  shell->param.str_prompt = NULL;
+  free(shell->param.str_prompt);
   if ((ps1 = get_envvar("PS1", shell->env)) != NULL)
-    if ((prompt = check_vars_in_str(my_strdup(ps1), shell->env)) != NULL)
-      {
-        shell->param.str_prompt = prompt;
-        my_put_str(shell->param.str_prompt);
-      }
+    {
+      if ((prompt = check_vars_in_str(my_strdup(ps1), shell->env)) != NULL)
+        {
+          shell->param.str_prompt = prompt;
+          my_putstr(shell->param.str_prompt, 1, -1);
+        }
+      else
+        shell->param.str_prompt = NULL;
+    }
+  else
+    shell->param.str_prompt = my_strdup("$ ");
+}
+
+void	user_loop(t_sh *shell)
+{
+  char	*lign;
+
+  recalc_prompt(shell);
   while ((lign = read_cmd(&(shell->param))) != NULL)
     {
       update_jobs_status(shell);
@@ -31,8 +42,7 @@ void	user_loop(t_sh *shell)
       parse_user_cmd(shell, lign);
       free(lign);
       wait_no_fg_grp(shell);
+      recalc_prompt(shell);
     }
-  if (shell->param.str_prompt != NULL)
-    free(prompt);
   reset_mod(shell->param.t);
 }
