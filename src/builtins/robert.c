@@ -10,7 +10,7 @@
 
 #include "../../include/42sh.h"
 
-void	builtin_robert(t_sh *shell, t_cmd *cmd)
+void	builtin_robert(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
   my_putstr("Hello the world !\n", 1, -1);
 }

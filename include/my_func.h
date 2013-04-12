@@ -69,7 +69,6 @@ typedef struct		s_param
 int			number_caractere(t_string *);
 char			*return_string(t_string *);
 char			*read_cmd(t_param *);
-void			my_putchar(char);
 int			init_tab_line(t_param *);
 void			add_caractere(t_string **, char, t_param *);
 int			depassement(int);

@@ -10,7 +10,7 @@
 
 #include "../../include/42sh.h"
 
-void	builtin_jobs(t_sh *shell, t_cmd *cmd)
+void	builtin_jobs(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
   int	i;
   t_grp	*tmppipeline;

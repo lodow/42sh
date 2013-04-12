@@ -118,18 +118,18 @@ typedef struct	s_sh
 /*
 ** Builtins
 */
-int	is_cmd_a_builtin(t_sh *shell, t_cmd *cmd, int exec);
+int	is_cmd_a_builtin(t_cmd *cmd, t_fds *fd, t_sh *shell, int exec);
 void	init_builtins(t_sh *shell);
-void	builtin_exit(t_sh *shell, t_cmd *cmd);
-void	builtin_cd(t_sh *shell, t_cmd *cmd);
-void	builtin_env(t_sh *shell, t_cmd *cmd);
-void	builtin_unsetenv(t_sh *shell, t_cmd *cmd);
-void	builtin_setenv(t_sh *shell, t_cmd *cmd);
-void	builtin_echo(t_sh *shell, t_cmd *cmd);
-void	builtin_robert(t_sh *shell, t_cmd *cmd);
-void	builtin_fg(t_sh *shell, t_cmd *cmd);
-void	builtin_bg(t_sh *shell, t_cmd *cmd);
-void	builtin_jobs(t_sh *shell, t_cmd *cmd);
+void	builtin_exit(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	builtin_env(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	builtin_unsetenv(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	builtin_setenv(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	builtin_echo(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	builtin_robert(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	builtin_fg(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	builtin_bg(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	builtin_jobs(t_cmd *cmd, t_fds *fd, t_sh *shell);
 
 /*
 ** Env
@@ -219,7 +219,9 @@ t_grp	*create_n_process_group(t_sh *shell, char *lign);
 t_cmd	*create_n_cmd(t_sh *shell, char *lign);
 char	*exec_full_path(char *exec, char **paths);
 int	exec_process_group(t_sh *shell, t_grp *grp);
-void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell, t_grp *grp);
+void	cmd_execution(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
+                   int (*f)(char *cmd, char **argv, char **envp));
 void	free_process_group(t_grp *grp);
 int	is_grp_exec(t_sh *shell, t_grp *grp);
 
