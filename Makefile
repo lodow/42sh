@@ -122,10 +122,10 @@ CFLAGS	=	-g -Wall -Wfloat-equal -Wmissing-include-dirs \
 		-Wold-style-declaration -Woverride-init -Wsign-compare \
 		-Wtype-limits -Wuninitialized -ltermcap
 
-all:		$(NAME)
-
 $(NAME):	$(ALLOBJ)
 		$(INVOCATION) $(ALLOBJ) -o $(NAME) $(CFLAGS)
+
+all:		$(NAME)
 
 clean:
 		rm -f $(ALLOBJ)
