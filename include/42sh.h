@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Wed Apr 10 13:41:27 2013 remi robert
+** Last update Sat Apr 13 18:44:28 2013 remi robert
 */
 
 #ifndef		SH42_H
@@ -28,7 +28,7 @@
 # include "get_file.h"
 # include "my_func.h"
 
-# define NB_BUILTINS 10
+# define NB_BUILTINS 11
 # define NB_CONFFUNC 2
 
 # define PIPE_READ 0
@@ -105,6 +105,7 @@ typedef struct	s_func_ptr
 
 typedef struct	s_sh
 {
+  t_history	*history;
   t_func_ptr	builtins[NB_BUILTINS];
   t_pid		pid;
   t_param	param;
@@ -130,6 +131,9 @@ void	builtin_robert(t_sh *shell, t_cmd *cmd);
 void	builtin_fg(t_sh *shell, t_cmd *cmd);
 void	builtin_bg(t_sh *shell, t_cmd *cmd);
 void	builtin_jobs(t_sh *shell, t_cmd *cmd);
+void	builtin_history(t_sh *shell, t_cmd *cmd);
+void	rm_history_d(t_history **ptete, int pos);
+t_history	*suppr_elem_list(t_history **ptete, t_history **pcourant);
 
 /*
 ** Env
@@ -150,6 +154,7 @@ void	**concat_ptr_tab(void **tab1, void **tab2);
 /*
 ** Stc
 */
+void	my_putchar(char c);
 int	my_strlen(char *str);
 void	my_putstr(char *str, int fd, int strlen);
 void	my_strncpy(char *dest, char *src, int n);

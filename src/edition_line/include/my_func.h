@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Sat Apr 13 18:41:06 2013 remi robert
+** Last update Wed Apr 10 09:22:36 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -34,25 +34,11 @@
 # define CTRLK		11
 # define CTRLY		25
 # define CTRLU		21
-# define CTRLL		12
-# define CTRLD		4
 # define OK		1
 # define FALSE		0
 # define END		'\0'
 # define STR_LEFT      	"\x1B\x5B\x44"
 # define STR_RIGHT     	"\x1B\x5B\x43"
-# define STR_UP      	"\x1B\x5B\x41"
-# define STR_DOWN     	"\x1B\x5B\x42"
-# define BEGIN_STR     	"\x1B\x4F\x48"
-# define END_STR     	"\x1B\x4F\x46"
-
-typedef struct		s_history
-{
-  int			nb_history;
-  char			*cmd;
-  struct s_history	*next;
-  struct s_history	*back;
-}			t_history;
 
 typedef struct		s_string
 {
@@ -69,21 +55,19 @@ typedef struct		s_coordonnee
 
 typedef struct		s_param
 {
-  int			pos_history;
-  char			*str_prompt;
   char			buff_copy[2048];
   struct termios	t;
   t_string		*string;
   int			len_string;
   t_coordonnee		current_pos;
   t_coordonnee		begin_pos;
-  t_coordonnee		prompt;
 }			t_param;
 
 int			number_caractere(t_string *);
 char			*return_string(t_string *);
-char			*read_cmd(t_param *, t_history **);
+char			*read_cmd(t_param *);
 void			my_putchar(char);
+void			my_putstr(char *);
 int			init_tab_line(t_param *);
 void			add_caractere(t_string **, char, t_param *);
 int			depassement(int);
@@ -105,7 +89,7 @@ void			view_string(t_param *);
 int			get_len_string_with_pos(t_param *);
 t_string		*get_pos_string(t_string *, int);
 void			view_string(t_param *);
-void			gere_keyboard(t_param **, char *, t_history **);
+void			gere_keyboard(t_param **, char *);
 void			set_pos_left(t_param **);
 void			set_pos_right(t_param **);
 void			gere_delete(t_param **);
@@ -132,28 +116,6 @@ void			add_caratere_list_with_buff(t_param **, char);
 void			gere_end_control_u(t_param **, t_string *, int);
 int			str_cmp_env(char *, char *);
 void			init_struct_param(t_param *);
-int			recup_path(char **);
-int			init_tab_line(t_param *);
-void			init_pos_line(t_param *);
-void			my_put_str(char *);
-char			*return_string(t_string *);
-void			print_prompt(t_param *);
 void			control_clear(t_param **);
-void			delete_line_curser(void);
-void			my_putstr(char *, int, int);
-void			begin_str(t_param *);
-void			end_str(t_param *);
-char			*return_saisi(t_param *, t_history **);
-void			rempl_new_history(t_history **, char *);
-void			add_history(t_history **, char *);
-void			gere_history(t_param **, char *, t_history **);
-char			*return_pos_history(t_history *, int);
-void			add_elem_new_cmd(t_string **, char);
-void			recup_new_string(t_param **, char *);
-void			view_history(t_history *);
-int			str_cmp(char *, char *);
-void			add_history_current_cmd(t_param **, t_history **);
-void			add_current_history(t_history **, char *);
-void			my_put_nbr(int);
 
 #endif /* MY_FUNC_H_ */

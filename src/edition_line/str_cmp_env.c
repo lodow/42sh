@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Apr  9 15:18:15 2013 remi robert
-** Last update Tue Apr  9 15:18:39 2013 remi robert
+** Last update Sat Apr 13 10:56:46 2013 remi robert
 */
 
-#include "my_func.h"
+#include "../../include/my_func.h"
 
 int	str_cmp_env(char *str1, char *str2)
 {

@@ -5,11 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 14:03:17 2013 remi robert
-** Last update Wed Apr 10 10:26:32 2013 remi robert
+** Last update Sat Apr 13 10:54:14 2013 remi robert
 */
 
 #include "../../include/my_func.h"
-#include "../../include/42sh.h"
 
 t_string	*get_pos_string(t_string *ptete, int pos)
 {
@@ -45,29 +44,42 @@ int		return_nb_elem(t_string *ptete)
   return (indice);
 }
 
+void	decale_window(t_param *param)
+{
+  int	indice;
+
+  indice = ((param->len_string + param->begin_pos.x + 1) / return_x());
+  if (((param->len_string + param->begin_pos.x) + 1) /
+      return_x() > (return_y() - param->begin_pos.y) &&
+      param->current_pos.y >= return_y())
+    {
+      while (indice + 1 > (return_y() - param->begin_pos.y) &&
+	     param->current_pos.y >= return_y())
+	{
+	  curseur(param->begin_pos.x, param->begin_pos.y +
+		  (return_y() - param->begin_pos.y));
+	  delete_line_curser();
+	  my_putstr("\n", 1, -1);
+	  param->begin_pos.y -= 1;
+	  param->prompt.y -= 1;
+	  param->current_pos.y -= 1;
+	  indice = indice - 1;
+	}
+    }
+}
+
 void		view_string(t_param *param)
 {
   t_string	*pcourant;
-  int		indice;
-  int		indice_y;
 
   if (param == NULL || param->string == NULL)
     return ;
-  indice_y = param->begin_pos.y;
+  decale_window(param);
   curseur(param->begin_pos.x, param->begin_pos.y);
   pcourant = param->string;
-  indice = param->begin_pos.x;
   while (pcourant != NULL)
     {
-      indice = indice + 1;
-      my_putstr(&(pcourant->caractere), 1, 1);
-      if (indice >= return_x())
-      	{
-	  my_putstr(" ", 1, 1);
-      	  indice = 0;
-	  indice_y += 1;
-	  curseur(0, indice_y);
-      	}
+      my_putchar(pcourant->caractere);
       pcourant = pcourant->next;
     }
 }

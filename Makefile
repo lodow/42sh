@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Wed Apr 10 13:19:13 2013 remi robert
+## Last update Sat Apr 13 18:45:27 2013 remi robert
 ##
 
 INVOCATION=	gcc
@@ -55,6 +55,8 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/my_exit.c				\
 		$(SRCPATH)/redirection.c				\
 		$(SRCPATH)/detect_redirection.c			\
+		$(SRCPATH)/my_put_nbr.c			\
+		$(SRCPATH)/my_putchar.c			\
 
 ENV	=	$(PATHENV)/env.c					\
 
@@ -69,6 +71,8 @@ SRCBUILTINS=	$(BUILTINS)/builtins.c				\
 		$(BUILTINS)/setenv.c				\
 		$(BUILTINS)/unsetenv.c				\
 		$(BUILTINS)/exit.c				\
+		$(BUILTINS)/history.c				\
+		$(BUILTINS)/delete_history.c			\
 
 SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/add_caractere.c			\
@@ -86,6 +90,11 @@ SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/init_struct_param.c			\
 		$(PATHLINE)/print_prompt.c			\
 		$(PATHLINE)/control_clear.c			\
+		$(PATHLINE)/gere_direct_pos_cursor.c		\
+		$(PATHLINE)/gere_valide_saisi.c			\
+		$(PATHLINE)/add_history.c			\
+		$(PATHLINE)/gere_history.c			\
+		$(PATHLINE)/feature_history.c			\
 
 SRCLIBLINE=	$(LIBLINE)/str_cmp_env.c				\
 		$(LIBLINE)/str_cmp.c				\

@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed Mar 20 14:13:14 2013 remi
-** Last update Wed Apr 10 09:54:25 2013 remi robert
+** Last update Sat Apr 13 10:54:44 2013 remi robert
 */
 
 #include "../../include/my_func.h"
@@ -37,7 +37,7 @@ int	init_tab_line(t_param *param)
   param->string = NULL;
   param->len_string = 0;
   param->buff_copy[0] = END;
-  mod_raw();
+  param->pos_history = 0;
   return (OK);
 }
 

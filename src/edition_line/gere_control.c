@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr  5 15:49:00 2013 remi robert
-** Last update Tue Apr  9 17:05:26 2013 remi robert
+** Last update Sat Apr 13 10:55:14 2013 remi robert
 */
 
 #include "../../include/my_func.h"
@@ -78,6 +78,7 @@ void		gere_control_k(t_param **param)
   (*param)->len_string = (*param)->len_string -
     get_number_caractere_del(pcourant);
   free_string(pcourant->next);
+  end_str(*param);
   pcourant->next = NULL;
 }
 

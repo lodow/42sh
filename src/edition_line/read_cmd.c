@@ -5,12 +5,12 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 12:32:15 2013 remi robert
-** Last update Wed Apr 10 09:54:23 2013 remi robert
+** Last update Sat Apr 13 10:56:33 2013 remi robert
 */
 
 #include "../../include/my_func.h"
 
-void	gere_buff(char *buff, t_param **param)
+void	gere_buff(char *buff, t_param **param, t_history **history)
 {
   if (buff[1] == '\0' && buff[0] != ESC && buff[0] != DEL)
     {
@@ -29,7 +29,7 @@ void	gere_buff(char *buff, t_param **param)
       add_caractere(&((*param)->string), buff[0], *param);
       return ;
     }
-  gere_keyboard(param, buff);
+  gere_keyboard(param, buff, history);
 }
 
 int	gere_control(char *buff, t_param **param)
@@ -69,7 +69,7 @@ void	gere_null_list(t_param **param)
     }
 }
 
-char	*read_cmd(t_param *param)
+char	*read_cmd(t_param *param, t_history **history)
 {
   char	buff[10];
   int	ret;
@@ -85,14 +85,9 @@ char	*read_cmd(t_param *param)
       if (buff[0] == CTRLD && buff[1] == '\0')
 	return (NULL);
       if (buff[0] == '\n')
-	{
-	  curseur(param->prompt.x, param->prompt.y);
-	  my_put_str("\n");
-	  reset_mod(param->t);
-	  return (return_string(param->string));
-	}
+	return (return_saisi(param, history));
       if (gere_control(buff, &param) == FALSE)
-	gere_buff(buff, &param);
+	gere_buff(buff, &param, history);
       dl_current_pos(param);
       gere_null_list(&param);
       view_string(param);

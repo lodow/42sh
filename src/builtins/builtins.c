@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Fri Apr 12 19:14:19 2013 remi robert
 */
 
 #include "../../include/42sh.h"
@@ -32,6 +32,8 @@ void	init_builtins(t_sh *shell)
   shell->builtins[8].str = "fg";
   shell->builtins[9].func = &builtin_robert;
   shell->builtins[9].str = "robert";
+  shell->builtins[10].func = &builtin_history;
+  shell->builtins[10].str = "history";
 }
 
 int	is_cmd_a_builtin(t_sh *shell, t_cmd *cmd, int exec)

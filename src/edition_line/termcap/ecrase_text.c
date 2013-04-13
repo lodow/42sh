@@ -5,11 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 13:02:21 2013 remi robert
-** Last update Tue Apr  9 16:30:46 2013 remi robert
+** Last update Sat Apr 13 10:58:58 2013 remi robert
 */
 
 #include "../../../include/my_func.h"
-#include "../../../include/42sh.h"
 
 void	ecrase_text(t_coordonnee begin_pos, int size)
 {
@@ -19,7 +18,7 @@ void	ecrase_text(t_coordonnee begin_pos, int size)
   indice = 0;
   while (indice != size)
     {
-      my_putstr(" ", 1, 1);;
+      my_putchar(' ');
       indice = indice + 1;
     }
   curseur(begin_pos.x, begin_pos.y);

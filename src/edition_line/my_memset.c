@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  8 17:22:19 2013 remi robert
-** Last update Tue Apr  9 15:22:52 2013 remi robert
+** Last update Sat Apr 13 10:56:27 2013 remi robert
 */
 
-#include "my_func.h"
+#include "../../include/my_func.h"
 
 void	my_memset(char *buff, int size)
 {

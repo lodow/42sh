@@ -5,10 +5,10 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Thu Mar 21 08:26:27 2013 remi
-** Last update Mon Apr  1 22:18:28 2013 remi robert
+** Last update Sat Apr 13 10:58:01 2013 remi robert
 */
 
-#include "my_func.h"
+#include "../../../include/my_func.h"
 
 int	my_strlen(char *str)
 {
