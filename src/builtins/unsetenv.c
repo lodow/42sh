@@ -8,7 +8,7 @@
 ** Last update Wed Apr 10 02:23:48 2013 maxime lavandier
 */
 
-#include "../../include/42sh.h"
+#include "42sh.h"
 
 void	builtin_unsetenv(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {

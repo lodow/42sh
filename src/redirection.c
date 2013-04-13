@@ -8,8 +8,8 @@
 ** Last update Wed Apr 10 13:58:50 2013 remi robert
 */
 
-#include "../include/42sh.h"
-#include "../include/my_func.h"
+#include "42sh.h"
+#include "my_func.h"
 
 int	open_file(int type, char *file)
 {

@@ -8,8 +8,8 @@
 ** Last update Wed Apr 10 13:45:08 2013 remi robert
 */
 
-#include "../include/my_func.h"
-#include "../include/42sh.h"
+#include "my_func.h"
+#include "42sh.h"
 
 void	return_type_char(char *str, int *type_b, int *type_g)
 {

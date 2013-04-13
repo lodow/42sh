@@ -8,7 +8,7 @@
 ** Last update Tue Apr  9 16:34:47 2013 remi robert
 */
 
-#include "../../../include/my_func.h"
+#include "my_func.h"
 
 void	my_memset(char *buff, int size)
 {

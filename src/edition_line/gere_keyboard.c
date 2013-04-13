@@ -8,7 +8,7 @@
 ** Last update Tue Apr  9 21:24:26 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 void	set_pos_left(t_param **param)
 {

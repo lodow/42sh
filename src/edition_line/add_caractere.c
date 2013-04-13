@@ -8,7 +8,7 @@
 ** Last update Tue Apr  9 17:05:41 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 void		place_with_current_pos(t_string **ptete,
 				       t_string **new_char,

@@ -8,7 +8,7 @@
 ** Last update Mon Oct  8 16:20:21 2012 hugues morisset
 */
 
-#include "../../include/42sh.h"
+#include "42sh.h"
 
 int	builtin_env_print(char *path, char **argv, char **envp)
 {

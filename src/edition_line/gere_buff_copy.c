@@ -8,7 +8,7 @@
 ** Last update Tue Apr  9 17:05:33 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 void	set_buff_copy(t_param **param, t_string *pcourant)
 {

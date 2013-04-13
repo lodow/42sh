@@ -8,8 +8,8 @@
 ** Last update Wed Apr 10 10:26:32 2013 remi robert
 */
 
-#include "../../include/my_func.h"
-#include "../../include/42sh.h"
+#include "my_func.h"
+#include "42sh.h"
 
 t_string	*get_pos_string(t_string *ptete, int pos)
 {

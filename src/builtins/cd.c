@@ -8,7 +8,7 @@
 ** Last update Wed Apr 10 01:50:44 2013 maxime lavandier
 */
 
-#include "../../include/42sh.h"
+#include "42sh.h"
 
 char	*builtin_cd_env(t_sh *shell, char *path, char *temp)
 {

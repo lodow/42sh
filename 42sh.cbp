@@ -36,6 +36,9 @@
 		<Unit filename="src/alias.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/backquotes.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/builtins/bg.c">
 			<Option compilerVar="CC" />
 		</Unit>

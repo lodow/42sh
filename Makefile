@@ -8,18 +8,29 @@
 ## Last update Wed Apr 10 13:19:13 2013 remi robert
 ##
 
-INVOCATION=	gcc
+CC=	gcc
+
+RM= rm
+
+NAME	=	robertSH
+
+COMPILEFLAG	=	-g -Wall -Wfloat-equal -Wmissing-include-dirs \
+		-Wclobbered -Wempty-body -Wignored-qualifiers \
+		-Wmissing-field-initializers -Wmissing-parameter-type \
+		-Wold-style-declaration -Woverride-init -Wsign-compare \
+		-Wtype-limits -Wuninitialized -ltermcap
+
+INCLUDE= -Iinclude/
+
+LIBS=
+
+CFLAGS= $(COMPILEFLAG) $(INCLUDE)
 
 SRCPATH	=	src
-
 BUILTINS=	src/builtins
-
 PATHLINE=	src/edition_line
-
 LIBLINE	=	src/edition_line/lib
-
 PATHTERMCAP=	src/edition_line/termcap
-
 PATHENV	=	src/env
 
 SRC	= 	$(SRCPATH)/main.c				\
@@ -37,6 +48,7 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/swap_ptr.c				\
 		$(SRCPATH)/alias.c				\
 		$(SRCPATH)/parse_cmd.c				\
+		$(SRCPATH)/backquotes.c				\
 		$(SRCPATH)/process_group.c			\
 		$(SRCPATH)/exec_process.c			\
 		$(SRCPATH)/tty.c					\
@@ -99,37 +111,22 @@ SRCTERMCAP=	$(PATHTERMCAP)/ecrase_text.c			\
 		$(PATHTERMCAP)/clear.c				\
 		$(PATHTERMCAP)/dl_current_pos.c			\
 
-OBJ	=	$(SRC:.c=.o)
+OBJ	=	$(SRC:.c=.o) \
+		$(SRCBUILTINS:.c=.o) \
+		$(ENV:.c=.o) \
+		$(SRCLINE:.c=.o) \
+		$(SRCLIBLINE:.c=.o) \
+		$(SRCTERMCAP:.c=.o) \
 
-OBJB	=	$(SRCBUILTINS:.c=.o)
-
-OBJENV	=	$(ENV:.c=.o)
-
-OBJLINE	=	$(SRCLINE:.c=.o)
-
-OBJLIBLINE=	$(SRCLIBLINE:.c=.o)
-
-OBJTERMCAP=	$(SRCTERMCAP:.c=.o)
-
-ALLOBJ	=	$(OBJ) $(OBJB) $(OBJENV) $(OBJLIBLINE) $(OBJTERMCAP) $(OBJLINE)
-
-NAME	=	robertSH
-
-CFLAGS	=	-g -Wall -Wfloat-equal -Wmissing-include-dirs \
-		-Wclobbered -Wempty-body -Wignored-qualifiers \
-		-Wmissing-field-initializers -Wmissing-parameter-type \
-		-Wold-style-declaration -Woverride-init -Wsign-compare \
-		-Wtype-limits -Wuninitialized -ltermcap
-
-$(NAME):	$(ALLOBJ)
-		$(INVOCATION) $(ALLOBJ) -o $(NAME) $(CFLAGS)
+$(NAME):	$(OBJ)
+		$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LIBS)
 
 all:		$(NAME)
 
 clean:
-		rm -f $(ALLOBJ)
+		$(RM) -f $(OBJ)
 
 fclean:		clean
-		rm -f $(NAME)
+		$(RM) -f $(NAME)
 
 re:		fclean all

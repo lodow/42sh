@@ -8,8 +8,8 @@
 ** Last update Wed Apr 10 09:54:25 2013 remi robert
 */
 
-#include "../../include/my_func.h"
-#include "../../include/42sh.h"
+#include "my_func.h"
+#include "42sh.h"
 
 int	recup_path(char **envp)
 {

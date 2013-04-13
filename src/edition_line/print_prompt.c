@@ -8,7 +8,7 @@
 ** Last update Wed Apr 10 08:57:15 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 void	print_prompt(t_param *param)
 {

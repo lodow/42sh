@@ -8,7 +8,7 @@
 ** Last update Tue Mar 19 14:28:27 2013 remi
 */
 
-#include "../include/get_next_line.h"
+#include "get_next_line.h"
 
 /*
 **      _    _

@@ -8,7 +8,7 @@
 ** Last update Wed Apr 10 09:54:23 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 void	gere_buff(char *buff, t_param **param)
 {

@@ -8,7 +8,7 @@
 ** Last update Sat Dec 15 17:28:23 2012 Hugues
 */
 
-#include	"../include/get_file.h"
+#include	"get_file.h"
 
 char	**add_line_ttab(char **tab, char **linetab, int tab_size)
 {

@@ -8,8 +8,8 @@
 ** Last update Tue Apr  9 16:30:46 2013 remi robert
 */
 
-#include "../../../include/my_func.h"
-#include "../../../include/42sh.h"
+#include "my_func.h"
+#include "42sh.h"
 
 void	ecrase_text(t_coordonnee begin_pos, int size)
 {

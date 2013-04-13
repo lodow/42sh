@@ -8,7 +8,7 @@
 ** Last update Tue Apr  9 17:20:47 2013 remi robert
 */
 
-#include "../include/42sh.h"
+#include "42sh.h"
 
 char	**get_path(char **envp)
 {

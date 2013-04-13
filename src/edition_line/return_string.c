@@ -8,7 +8,7 @@
 ** Last update Tue Apr  9 21:38:58 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 int		number_caractere(t_string *ptr)
 {

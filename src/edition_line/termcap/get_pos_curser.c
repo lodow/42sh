@@ -8,7 +8,7 @@
 ** Last update Tue Apr  9 17:03:08 2013 remi robert
 */
 
-#include "../../../include/my_func.h"
+#include "my_func.h"
 
 void	assign_value_pos(int *x, int *y, char *buff)
 {

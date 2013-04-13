@@ -8,7 +8,7 @@
 ** Last update Wed Apr 10 09:54:20 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 void		init_struct_param(t_param *param)
 {

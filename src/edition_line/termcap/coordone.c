@@ -8,7 +8,7 @@
 ** Last update Tue Apr  9 16:30:27 2013 remi robert
 */
 
-#include "../../../include/my_func.h"
+#include "my_func.h"
 
 int			return_x()
 {

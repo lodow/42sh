@@ -8,7 +8,7 @@
 ** Last update Tue Apr  9 22:03:02 2013 remi robert
 */
 
-#include "../include/42sh.h"
+#include "42sh.h"
 
 void	recalc_prompt(t_sh *shell)
 {

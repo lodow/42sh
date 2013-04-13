@@ -8,7 +8,7 @@
 ** Last update Mon Oct  8 16:20:21 2012 hugues morisset
 */
 
-#include "../include/42sh.h"
+#include "42sh.h"
 
 void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr)
 {

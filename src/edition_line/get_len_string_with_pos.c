@@ -8,7 +8,7 @@
 ** Last update Tue Apr  9 21:24:09 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 int	get_len_string_with_pos(t_param *param)
 {

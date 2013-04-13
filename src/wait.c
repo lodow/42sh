@@ -8,7 +8,7 @@
 ** Last update Wed Apr 10 10:26:02 2013 remi robert
 */
 
-#include "../include/42sh.h"
+#include "42sh.h"
 
 void	aff_special_return_val(t_cmd *cmd)
 {

@@ -8,7 +8,7 @@
 ** Last update Tue Apr  9 17:03:29 2013 remi robert
 */
 
-#include "../../../include/my_func.h"
+#include "my_func.h"
 
 int	curseur(int x, int y)
 {

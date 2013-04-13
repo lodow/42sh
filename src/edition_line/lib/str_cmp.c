@@ -8,7 +8,7 @@
 ** Last update Tue Apr  9 16:22:19 2013 remi robert
 */
 
-#include "../../../include/my_func.h"
+#include "my_func.h"
 
 int	str_cmp(char *str1, char *str2)
 {
