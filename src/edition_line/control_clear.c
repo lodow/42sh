@@ -8,7 +8,7 @@
 ** Last update Sat Apr 13 10:55:43 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 void	control_clear(t_param **param)
 {

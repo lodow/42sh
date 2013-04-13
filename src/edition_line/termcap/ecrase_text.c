@@ -5,10 +5,11 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 13:02:21 2013 remi robert
-** Last update Sat Apr 13 10:58:58 2013 remi robert
+** Last update Sat Apr 13 18:55:35 2013 remi robert
 */
 
-#include "../../../include/my_func.h"
+#include "my_func.h"
+#include "42sh.h"
 
 void	ecrase_text(t_coordonnee begin_pos, int size)
 {

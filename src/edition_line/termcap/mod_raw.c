@@ -8,7 +8,7 @@
 ** Last update Sat Apr 13 10:58:25 2013 remi robert
 */
 
-#include "../../../include/my_func.h"
+#include "my_func.h"
 
 void	reset_mod(struct termios t)
 {

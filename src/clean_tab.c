@@ -8,7 +8,7 @@
 ** Last update Mon Oct  8 16:20:21 2012 hugues morisset
 */
 
-#include "../include/42sh.h"
+#include "42sh.h"
 
 void	free_empty_str_f_end_tab(char **tab, int i, int nb)
 {

@@ -8,7 +8,7 @@
 ** Last update Wed Apr 10 13:47:16 2013 remi robert
 */
 
-#include "../include/42sh.h"
+#include "42sh.h"
 
 /*
 ** Func that execute a group of command,

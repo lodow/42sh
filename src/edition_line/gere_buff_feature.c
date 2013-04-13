@@ -8,7 +8,7 @@
 ** Last update Sat Apr 13 10:55:55 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 void		new_copy(t_string **ptete, char caractere)
 {

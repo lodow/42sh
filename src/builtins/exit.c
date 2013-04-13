@@ -8,9 +8,9 @@
 ** Last update Wed Apr 10 08:46:01 2013 remi robert
 */
 
-#include "../../include/42sh.h"
+#include "42sh.h"
 
-void	builtin_exit(t_sh *shell, t_cmd *cmd)
+void	builtin_exit(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
   reset_mod(shell->param.t);
   if (cmd->argv[1] == NULL)

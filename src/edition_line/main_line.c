@@ -8,36 +8,33 @@
 ** Last update Sat Apr 13 10:54:44 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
+#include "42sh.h"
 
 int	recup_path(char **envp)
 {
-  int	indice;
+  char	*term;
 
-  indice = 0;
-  if (envp == NULL)
+  if ((term = get_envvar("TERM", envp)) == NULL)
     return (FALSE);
-  while (envp[indice] != NULL)
-    {
-      if (str_cmp_env(envp[indice], "TERM") == OK)
-	{
-	  if (tgetent(NULL, "xterm") != 1)
-	    return (FALSE);
-	  return (OK);
-	}
-      indice = indice + 1;
-    }
-  return (FALSE);
+  if (tgetent(NULL, term) != 1)
+    return (FALSE);
+  return (OK);
 }
 
 int	init_tab_line(t_param *param)
 {
-  if ((tcgetattr(1, &(param->t)) == -1) == -1)
-    return (FALSE);
+  param->str_prompt = NULL;
   param->string = NULL;
   param->len_string = 0;
   param->buff_copy[0] = END;
+<<<<<<< HEAD
   param->pos_history = 0;
+=======
+  if (((((((((((((((((((((((((((((tcgetattr(1, &(param->t)) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1) == -1)
+    return (FALSE);
+  mod_raw();
+>>>>>>> 5190da430e3d4e956583514fde7fd1dbbe197d34
   return (OK);
 }
 

@@ -8,7 +8,7 @@
 ** Last update Wed Apr 10 01:50:44 2013 maxime lavandier
 */
 
-#include "../../include/42sh.h"
+#include "42sh.h"
 
 char	*builtin_cd_env(t_sh *shell, char *path, char *temp)
 {
@@ -22,7 +22,7 @@ char	*builtin_cd_env(t_sh *shell, char *path, char *temp)
   return (temp);
 }
 
-void		builtin_cd(t_sh *shell, t_cmd *cmd)
+void		builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
   char		temp[4096];
   char		*path;

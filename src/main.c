@@ -8,7 +8,7 @@
 ** Last update Fri Apr 12 19:28:35 2013 remi robert
 */
 
-#include "../include/42sh.h"
+#include "42sh.h"
 
 char	**get_path(char **envp)
 {
@@ -30,8 +30,7 @@ int		init_shell(t_sh *shell, char **main_env)
       || ((shell->path = get_path(shell->env)) == NULL) ||
       (shell->history = malloc(sizeof(t_history))) == NULL)
     return (-1);
-  if (main_env == NULL || recup_path(main_env) == 0 ||
-      init_tab_line(&(shell->param)) == 0)
+  if ((recup_path(main_env) == 0) || (init_tab_line(&(shell->param)) == 0))
     return (-1);
   //init_pos_line(&(shell->param));
   //shell->pid.sid = setsid(); <- not sure if it's a good idea.

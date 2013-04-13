@@ -8,7 +8,7 @@
 ** Last update Wed Mar 20 16:11:18 2013 maxime lavandier
 */
 
-#include "../../include/42sh.h"
+#include "42sh.h"
 
 char	*get_envvar(char *var, char **env)
 {

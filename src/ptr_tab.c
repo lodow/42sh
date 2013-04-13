@@ -8,7 +8,7 @@
 ** Last update Fri Mar 29 10:19:24 2013 Hugues
 */
 
-#include "../include/42sh.h"
+#include "42sh.h"
 
 void	**add_ptr_t_tab(void **tab, void *add)
 {

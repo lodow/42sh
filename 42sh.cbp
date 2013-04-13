@@ -30,11 +30,13 @@
 		</Compiler>
 		<Unit filename="Makefile" />
 		<Unit filename="include/42sh.h" />
-		<Unit filename="include/couleur.h" />
 		<Unit filename="include/get_file.h" />
 		<Unit filename="include/get_next_line.h" />
 		<Unit filename="include/my_func.h" />
 		<Unit filename="src/alias.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/backquotes.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/builtins/bg.c">
@@ -109,9 +111,6 @@
 		<Unit filename="src/edition_line/init_struct_param.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/edition_line/lib/get_next_line.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/edition_line/lib/my_getnbr.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -125,9 +124,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/lib/str_cmp.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/lib/str_cmp_env.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/main.c">
@@ -152,9 +148,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/str_cmp.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/str_cmp_env.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/suppression.c">

@@ -8,16 +8,25 @@
 ** Last update Mon Oct  8 16:20:21 2012 hugues morisset
 */
 
-#include "../../include/42sh.h"
+#include "42sh.h"
 
-void	builtin_env(t_sh *shell, t_cmd *cmd)
+int	builtin_env_print(char *path, char **argv, char **envp)
 {
-  int pid;
+  int	i;
 
-  if ((pid = fork()) == 0)
-    {
-      execve("/usr/bin/env", cmd->argv, shell->env);
-      my_exit(0);
-    }
-  waitpid(pid, &pid, 0);
+  i = 0;
+  if (envp != NULL)
+    while (envp[i] != NULL)
+      {
+        my_putstr(envp[i], 1, -1);
+        my_putstr("\n", 1, -1);
+        i++;
+      }
+  my_exit(0);
+  return (-1);
+}
+
+void	builtin_env(t_cmd *cmd, t_fds *fd, t_sh *shell)
+{
+  exec_process(cmd, fd, shell, &builtin_env_print);
 }

@@ -8,9 +8,9 @@
 ** Last update Mon Oct  8 16:20:21 2012 hugues morisset
 */
 
-#include "../include/42sh.h"
+#include "42sh.h"
 
 void	my_exit(int value)
 {
-  kill(getpid(), SIGHUP);
+  kill(getpid(), SIGTERM);
 }

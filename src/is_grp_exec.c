@@ -8,7 +8,7 @@
 ** Last update Mon Oct  8 16:20:21 2012 hugues morisset
 */
 
-#include "../include/42sh.h"
+#include "42sh.h"
 
 int	is_cmd_executable(t_cmd *cmd)
 {
@@ -31,7 +31,7 @@ int	is_grp_exec(t_sh *shell, t_grp *grp)
   while ((tmpcmd = grp->cmds[i]) != NULL)
     {
       if ((is_cmd_executable(tmpcmd) == 0)
-          && (is_cmd_a_builtin(shell, tmpcmd, 0) == 0))
+          && (is_cmd_a_builtin(tmpcmd, NULL, shell, 0) == 0))
         {
           if (tmpcmd->argv != NULL)
             my_putstr(tmpcmd->argv[0], 2, -1);

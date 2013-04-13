@@ -8,7 +8,7 @@
 ** Last update Sat Apr 13 10:58:36 2013 remi robert
 */
 
-#include "../../../include/my_func.h"
+#include "my_func.h"
 
 void	delete_line_curser(void)
 {

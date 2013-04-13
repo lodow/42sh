@@ -8,7 +8,7 @@
 ** Last update Fri Apr 12 19:14:19 2013 remi robert
 */
 
-#include "../../include/42sh.h"
+#include "42sh.h"
 
 void	init_builtins(t_sh *shell)
 {
@@ -36,7 +36,7 @@ void	init_builtins(t_sh *shell)
   shell->builtins[10].str = "history";
 }
 
-int	is_cmd_a_builtin(t_sh *shell, t_cmd *cmd, int exec)
+int	is_cmd_a_builtin(t_cmd *cmd, t_fds *fd, t_sh *shell, int exec)
 {
   int	i;
 
@@ -48,8 +48,8 @@ int	is_cmd_a_builtin(t_sh *shell, t_cmd *cmd, int exec)
           {
             if (exec)
               {
-                ((void(*)(t_sh * shell, t_cmd * cmd))(shell->builtins[i].func))
-                (shell, cmd);
+                ((void(*)(t_cmd*, t_fds*, t_sh*))(shell->builtins[i].func))
+                (cmd, fd, shell);
               }
             return (1);
           }

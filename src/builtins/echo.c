@@ -8,9 +8,9 @@
 ** Last update Mon Oct  8 16:20:21 2012 hugues morisset
 */
 
-#include "../../include/42sh.h"
+#include "42sh.h"
 
-void	builtin_echo(t_sh *shell, t_cmd *cmd)
+void	builtin_echo(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
 
 }

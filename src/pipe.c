@@ -8,7 +8,7 @@
 ** Last update Mon Oct  8 16:20:21 2012 hugues morisset
 */
 
-#include "../include/42sh.h"
+#include "42sh.h"
 
 int	exec_a_pipe(t_sh *shell, t_grp *grp)
 {
@@ -31,7 +31,7 @@ int	exec_a_pipe(t_sh *shell, t_grp *grp)
             return (-1);
           fd.stdout = ptab[PIPE_WRITE];
         }
-      exec_process(tmpcmd, &fd, shell, grp);
+      cmd_execution(tmpcmd, &fd, shell);
       init_stdfd_t_def_val(&fd, grp->fd.stdin, grp->fd.stdout, grp->fd.stderr);
       if (grp->cmds[i + 1] != NULL)
         fd.stdin = ptab[PIPE_READ];

@@ -8,7 +8,7 @@
 ** Last update Sat Apr 13 10:55:14 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 int	get_number_caractere_del(t_string *pcourant)
 {

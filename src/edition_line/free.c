@@ -8,7 +8,7 @@
 ** Last update Sat Apr 13 10:55:48 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 void	free_string(t_string *ptr)
 {

@@ -8,7 +8,7 @@
 ** Last update Sat Apr 13 10:56:38 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 void	gere_end_control_u(t_param **param, t_string *pcourant, int indice)
 {

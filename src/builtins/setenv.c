@@ -8,15 +8,15 @@
 ** Last update Wed Apr 10 02:23:18 2013 maxime lavandier
 */
 
-#include "../../include/42sh.h"
+#include "42sh.h"
 
-void	builtin_setenv(t_sh *shell, t_cmd *cmd)
+void	builtin_setenv(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
   char	*temp;
 
   if (cmd->argv[1] == NULL)
     {
-      builtin_env(shell, cmd);
+      builtin_env(cmd, fd, shell);
       return ;
     }
   if (get_envvar(cmd->argv[1], shell->env) != 0)
