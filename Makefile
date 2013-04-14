@@ -18,11 +18,11 @@ COMPILEFLAG	=	-g -Wall -Wfloat-equal -Wmissing-include-dirs \
 		-Wclobbered -Wempty-body -Wignored-qualifiers \
 		-Wmissing-field-initializers -Wmissing-parameter-type \
 		-Wold-style-declaration -Woverride-init -Wsign-compare \
-		-Wtype-limits -Wuninitialized -ltermcap
+		-Wtype-limits -Wuninitialized
 
 INCLUDE= -Iinclude/
 
-LIBS=
+LIBS= -ltermcap
 
 CFLAGS= $(COMPILEFLAG) $(INCLUDE)
 

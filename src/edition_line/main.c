@@ -12,22 +12,13 @@
 
 int	recup_path(char **envp)
 {
-  int	indice;
+  char	*term;
 
-  indice = 0;
-  if (envp == NULL)
+  if ((term = get_envvar("TERM", envp)) == NULL)
     return (FALSE);
-  while (envp[indice] != NULL)
-    {
-      if (str_cmp_env(envp[indice], "TERM") == OK)
-	{
-	  if (tgetent(NULL, "xterm") != 1)
-	    return (FALSE);
-	  return (OK);
-	}
-      indice = indice + 1;
-    }
-  return (FALSE);
+  if (tgetent(NULL, term) != 1)
+    return (FALSE);
+  return (OK);
 }
 
 int	init_tab_line(t_param *param)

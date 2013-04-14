@@ -15,8 +15,7 @@ int	recup_path(char **envp)
   int	indice;
 
   indice = 0;
-  if (envp == NULL)
-    return (FALSE);
+
   while (envp[indice] != NULL)
     {
       if (str_cmp_env(envp[indice], "TERM") == OK)
@@ -32,7 +31,7 @@ int	recup_path(char **envp)
 
 int	init_tab_line(t_param *param)
 {
-  if ((tcgetattr(1, &(param->t)) == -1) == -1)
+  if (tcgetattr(1, &(param->t)) == -1)
     return (FALSE);
   param->str_prompt = NULL;
   param->string = NULL;
