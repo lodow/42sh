@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Mon Apr  8 17:33:45 2013 maxime lavandier
+** Last update Sun Apr 14 17:52:10 2013 maxime lavandier
 */
 
 #include <stdlib.h>
@@ -123,5 +123,7 @@ char	**str_to_wordtab(char *str, char *delim, char inibiteur)
     fill_tab_inib(str, delim, tab);
   else
     fill_tab(str, delim, tab);
+  if (inibiteur == 2)
+    del_slash_quote(tab);
   return (tab);
 }
