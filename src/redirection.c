@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun Feb 17 09:02:36 2013 remi robert
-** Last update Wed Apr 10 13:58:50 2013 remi robert
+** Last update Sun Apr 14 17:56:59 2013 remi robert
 */
 
 #include "42sh.h"
@@ -44,7 +44,5 @@ void	rempl_fd_process(t_redirection red, t_grp *grp)
     }
   if (red.red_g != 0 && red.file_g != NULL &&
       (ret = open_file(red.red_g, red.file_g)) != -1)
-    {
-      grp->fd.stdin = ret;
-    }
+    grp->fd.stdin = ret;
 }

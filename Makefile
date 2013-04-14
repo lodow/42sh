@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Sun Apr 14 16:44:03 2013 remi robert
+## Last update Sun Apr 14 18:14:38 2013 maxime lavandier
 ##
 
 CC=	gcc
@@ -35,6 +35,7 @@ PATHENV	=	src/env
 
 SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/stc.c				\
+		$(SRCPATH)/inib_str_to_wordtab.c		\
 		$(SRCPATH)/str.c				\
 		$(SRCPATH)/my_uint64_t_strbase.c		\
 		$(SRCPATH)/tr_str.c				\
@@ -68,6 +69,8 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/detect_redirection.c			\
 		$(SRCPATH)/my_put_nbr.c				\
 		$(SRCPATH)/my_putchar.c				\
+		$(SRCPATH)/delete_history.c			\
+		$(SRCPATH)/history.c				\
 
 ENV	=	$(PATHENV)/env.c				\
 
@@ -83,7 +86,6 @@ SRCBUILTINS=	$(BUILTINS)/builtins.c				\
 		$(BUILTINS)/unsetenv.c				\
 		$(BUILTINS)/exit.c				\
 		$(BUILTINS)/history.c				\
-		$(BUILTINS)/delete_history.c			\
 
 SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/add_caractere.c			\

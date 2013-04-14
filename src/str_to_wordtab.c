@@ -5,12 +5,13 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Mon Apr  8 17:33:45 2013 maxime lavandier
+** Last update Sun Apr 14 18:22:35 2013 maxime lavandier
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "../include/42sh.h"
 
 /*
 ** malloc_tab() retourne le tableau **tab malloc
@@ -123,5 +124,7 @@ char	**str_to_wordtab(char *str, char *delim, char inibiteur)
     fill_tab_inib(str, delim, tab);
   else
     fill_tab(str, delim, tab);
+  if (inibiteur == 2)
+    del_slash_quote(tab);
   return (tab);
 }

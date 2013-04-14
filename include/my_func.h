@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Sun Apr 14 16:48:10 2013 remi robert
+** Last update Sun Apr 14 17:56:20 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -150,12 +150,13 @@ void			gere_history(t_param **, char *, t_history **);
 char			*return_pos_history(t_history *, int);
 void			add_elem_new_cmd(t_string **, char);
 void			recup_new_string(t_param **, char *);
-void			view_history(t_history *);
+int			view_history(char *, char **, char **);
 int			str_cmp(char *, char *);
 void			add_history_current_cmd(t_param **, t_history **);
 void			add_current_history(t_history **, char *);
 void			my_put_nbr(int);
 void			gere_current_history(t_param **, char *);
 void			gere_globb(t_param **);
+void			clear_history(t_history *);
 
 #endif /* MY_FUNC_H_ */
