@@ -207,7 +207,7 @@ void	wait_no_fg_grp(t_sh* shell);
 ** User funcs
 */
 void	user_loop(t_sh *shell);
-void	parse_user_cmd(t_sh *shell, char *line);
+void	parse_user_cmd(t_sh *shell, char *line, int def_fdout);
 void	prompt(t_sh *shell);
 
 /*
@@ -274,6 +274,11 @@ int	rempl_red(char **, t_redirection *);
 void	rempl_file_redirection(char *, char *);
 void	rempl_new_lign_cmd(char *, char **, int, int);
 char	*reform_lign(char **);
+
+/*
+** Backquotes
+*/
+char	*check_and_load_backquote(char *line, t_sh *shell);
 
 /*
 ** my_str_to_wordtab

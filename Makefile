@@ -36,6 +36,7 @@ PATHRED	=	src/redirection
 
 SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/stc.c				\
+		$(SRCPATH)/backquotes.c			\
 		$(SRCPATH)/inib_str_to_wordtab.c		\
 		$(SRCPATH)/str.c				\
 		$(SRCPATH)/my_uint64_t_strbase.c		\

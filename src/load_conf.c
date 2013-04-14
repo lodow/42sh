@@ -25,7 +25,7 @@ void	export_set(char *str, t_sh *shell)
 {
   char	**field;
 
-  if ((field = str_to_wordtab(str, "=", 2)) == NULL)
+  if ((field = str_to_wordtab(str, "=", 0)) == NULL)
     return ;
   if ((field[0] != NULL) && (field[1] != NULL))
     {
@@ -82,11 +82,12 @@ void	load_conf_file(const char *filename, t_sh *shell)
     return ;
   file = get_data_ffile(fd);
   close(fd);
-  while (file[i] != NULL)
-    {
-      new_conf_set(file[i], shell);
-      free(file[i]);
-      i++;
-    }
+  if (file != NULL)
+    while (file[i] != NULL)
+      {
+        new_conf_set(file[i], shell);
+        free(file[i]);
+        i++;
+      }
   free(file);
 }
