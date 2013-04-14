@@ -266,4 +266,6 @@ void	rempl_fd_process(t_redirection, t_grp *);
 void	del_slash_quote(char **);
 void	my_strncpy_force(char *, char *, int);
 
+char	**get_path(char **envp);
+
 #endif

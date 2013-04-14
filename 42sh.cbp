@@ -84,6 +84,9 @@
 		<Unit filename="src/cmd_full_path.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/delete_history.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/detect_redirection.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -219,6 +222,12 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/get_next_line.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/history.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/inib_str_to_wordtab.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/is_grp_exec.c">

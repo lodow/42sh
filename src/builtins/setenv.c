@@ -27,5 +27,5 @@ void	builtin_setenv(t_cmd *cmd, t_fds *fd, t_sh *shell)
   my_strncpy(&(temp[my_strlen(temp)]), cmd->argv[2], -1);
   shell->env = (char **) add_ptr_t_tab((void **) shell->env, temp);
   if (my_strncmp(cmd->argv[1], "PATH", -1) == 0)
-    shell->path = str_to_wordtab(cmd->argv[2], ":", 0);
+    shell->path = get_path(shell->env);
 }

@@ -25,7 +25,7 @@ void	export_set(char *str, t_sh *shell)
 {
   char	**field;
 
-  if ((field = str_to_wordtab(str, "=", 0)) == NULL)
+  if ((field = str_to_wordtab(str, "=", 2)) == NULL)
     return ;
   if ((field[0] != NULL) && (field[1] != NULL))
     {
