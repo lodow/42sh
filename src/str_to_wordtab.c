@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Sun Apr 14 17:46:04 2013 maxime lavandier
+** Last update Sun Apr 14 17:52:10 2013 maxime lavandier
 */
 
 #include <stdlib.h>
@@ -126,18 +126,4 @@ char	**str_to_wordtab(char *str, char *delim, char inibiteur)
   if (inibiteur == 2)
     del_slash_quote(tab);
   return (tab);
-}
-
-int	main(int c, char **v)
-{
-  char **t;
-  int	i;
-
-  t = str_to_wordtab(v[1], " ", 2);
-  i = 0;
-  while (t[i] != 0)
-    {
-      printf ("%s\n", t[i]);
-      i++;
-    }
 }
