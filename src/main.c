@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:31:22 2013 maxime lavandier
-** Last update Tue Apr  9 17:20:47 2013 remi robert
+** Last update Sun Apr 14 18:08:08 2013 remi robert
 */
 
 #include "42sh.h"
@@ -37,6 +37,7 @@ int		init_shell(t_sh *shell, char **main_env)
   if (((shell->pid.pid = getpid()) == -1)
       || ((shell->pid.pgid = getpgid(shell->pid.pid)) == -1))
     return (-1);
+  shell->history = NULL;
   shell->process_group = NULL;
   shell->env = add_change_env(shell->env, "PS1", "${LOGNAME} ${PWD} $ "); //default path
   shell->alias_tab = NULL;

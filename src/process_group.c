@@ -5,10 +5,11 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Apr 10 13:47:16 2013 remi robert
+** Last update Sun Apr 14 17:48:06 2013 remi robert
 */
 
 #include "42sh.h"
+#include "my_func.h"
 
 /*
 ** Func that execute a group of command,

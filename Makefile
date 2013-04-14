@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Sun Apr 14 18:13:17 2013 maxime lavandier
+## Last update Sun Apr 14 18:14:38 2013 maxime lavandier
 ##
 
 CC=	gcc
@@ -69,6 +69,8 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/detect_redirection.c			\
 		$(SRCPATH)/my_put_nbr.c				\
 		$(SRCPATH)/my_putchar.c				\
+		$(SRCPATH)/delete_history.c			\
+		$(SRCPATH)/history.c				\
 
 ENV	=	$(PATHENV)/env.c				\
 
@@ -84,7 +86,6 @@ SRCBUILTINS=	$(BUILTINS)/builtins.c				\
 		$(BUILTINS)/unsetenv.c				\
 		$(BUILTINS)/exit.c				\
 		$(BUILTINS)/history.c				\
-		$(BUILTINS)/delete_history.c			\
 
 SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/add_caractere.c			\
