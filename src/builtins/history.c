@@ -5,57 +5,21 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr 12 19:14:58 2013 remi robert
-** Last update Sun Apr 14 10:21:40 2013 remi robert
+** Last update Sun Apr 14 18:02:25 2013 remi robert
 */
 
-#include "../../include/42sh.h"
-
-void		view_history(t_history *ptete)
-{
-  t_history	*pcourant;
-
-  if (ptete == NULL)
-    {
-      my_putstr("NULL\n", 1, -1);
-      return ;
-    }
-  pcourant = ptete;
-  while (pcourant->next != NULL)
-    pcourant = pcourant->next;
-  while (pcourant != NULL)
-    {
-      my_putstr(" ", 1, -1);
-      my_put_nbr(pcourant->nb_history);
-      my_putstr("  ", 1, -1);
-      my_putstr(pcourant->cmd, 1, -1);
-      my_putstr("\n", 1, -1);
-      pcourant = pcourant->back;
-    }
-}
-
-void		clear_history(t_history *ptr)
-{
-  if (ptr == NULL)
-    return ;
-  while (ptr->next != NULL)
-    {
-      ptr = ptr->next;
-      if (ptr->back->cmd != NULL)
-	free(ptr->back->cmd);
-      free(ptr->back);
-    }
-  if (ptr->cmd != NULL)
-    free(ptr->cmd);
-  free(ptr);
-}
+#include "42sh.h"
 
 void	builtin_history(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
-  if (shell == NULL || cmd == NULL)
-    return ;
+  void	*temp;
+
   if (cmd->argv[1] == NULL)
     {
-      view_history(shell->history);
+      temp = (void *)cmd->argv[0];
+      cmd->argv[0] = (char *)shell->history;
+      exec_process(cmd, fd, shell,  &view_history);
+      cmd->argv[0] = (char *)temp;
       return ;
     }
   if (cmd->argv[1] != NULL && str_cmp(cmd->argv[1], "-c") == 1)
