@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 16:58:28 2013 remi robert
-** Last update Sun Apr 14 16:09:41 2013 remi robert
+** Last update Sun Apr 14 16:47:20 2013 remi robert
 */
 
 #include "my_func.h"
@@ -74,6 +74,8 @@ int		alone_caractere_in_string(t_string *pcourant,
 
 void	gere_keyboard(t_param **param, char *buff, t_history **history)
 {
+  if (str_cmp(buff, "\t") == 1)
+    gere_globb(param);
   if (str_cmp(buff, BEGIN_STR) == 1)
     begin_str(*param);
   if (str_cmp(buff, END_STR) == 1)
