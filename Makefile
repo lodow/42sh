@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Sun Apr 14 10:03:53 2013 remi robert
+## Last update Sun Apr 14 13:14:42 2013 remi robert
 ##
 
 CC=	gcc
@@ -34,27 +34,27 @@ PATHTERMCAP=	src/edition_line/termcap
 PATHENV	=	src/env
 
 SRC	= 	$(SRCPATH)/main.c				\
-		$(SRCPATH)/stc.c					\
-		$(SRCPATH)/str.c					\
-		$(SRCPATH)/my_uint64_t_strbase.c			\
+		$(SRCPATH)/stc.c				\
+		$(SRCPATH)/str.c				\
+		$(SRCPATH)/my_uint64_t_strbase.c		\
 		$(SRCPATH)/tr_str.c				\
 		$(SRCPATH)/shell.c				\
 		$(SRCPATH)/str_to_wordtab.c			\
 		$(SRCPATH)/signal.c				\
-		$(SRCPATH)/job.c					\
+		$(SRCPATH)/job.c				\
 		$(SRCPATH)/jobs_forground.c			\
-		$(SRCPATH)/is_grp_exec.c				\
+		$(SRCPATH)/is_grp_exec.c			\
 		$(SRCPATH)/fd.c					\
 		$(SRCPATH)/swap_ptr.c				\
 		$(SRCPATH)/alias.c				\
 		$(SRCPATH)/parse_cmd.c				\
 		$(SRCPATH)/process_group.c			\
 		$(SRCPATH)/exec_process.c			\
-		$(SRCPATH)/tty.c					\
+		$(SRCPATH)/tty.c				\
 		$(SRCPATH)/pipe.c				\
-		$(SRCPATH)/cmd.c					\
+		$(SRCPATH)/cmd.c				\
 		$(SRCPATH)/wait.c				\
-		$(SRCPATH)/load_conf.c			\
+		$(SRCPATH)/load_conf.c				\
 		$(SRCPATH)/cmd_full_path.c			\
 		$(SRCPATH)/ptr_tab.c				\
 		$(SRCPATH)/get_next_line.c			\
@@ -64,19 +64,19 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/clean_tab.c				\
 		$(SRCPATH)/error.c				\
 		$(SRCPATH)/my_exit.c				\
-		$(SRCPATH)/redirection.c				\
+		$(SRCPATH)/redirection.c			\
 		$(SRCPATH)/detect_redirection.c			\
-		$(SRCPATH)/my_put_nbr.c			\
-		$(SRCPATH)/my_putchar.c			\
+		$(SRCPATH)/my_put_nbr.c				\
+		$(SRCPATH)/my_putchar.c				\
 
-ENV	=	$(PATHENV)/env.c					\
+ENV	=	$(PATHENV)/env.c				\
 
 SRCBUILTINS=	$(BUILTINS)/builtins.c				\
-		$(BUILTINS)/fg.c					\
-		$(BUILTINS)/bg.c					\
+		$(BUILTINS)/fg.c				\
+		$(BUILTINS)/bg.c				\
 		$(BUILTINS)/jobs.c				\
 		$(BUILTINS)/robert.c				\
-		$(BUILTINS)/cd.c					\
+		$(BUILTINS)/cd.c				\
 		$(BUILTINS)/echo.c				\
 		$(BUILTINS)/env.c				\
 		$(BUILTINS)/setenv.c				\
@@ -106,16 +106,17 @@ SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/add_history.c			\
 		$(PATHLINE)/gere_history.c			\
 		$(PATHLINE)/feature_history.c			\
+		$(PATHLINE)/gere_current_history.c		\
 
 SRCLIBLINE=	$(LIBLINE)/str_cmp.c				\
 		$(LIBLINE)/my_memset.c				\
 		$(LIBLINE)/my_putstr.c				\
-		$(LIBLINE)/str_cmp_env.c				\
+		$(LIBLINE)/str_cmp_env.c			\
 
 SRCTERMCAP=	$(PATHTERMCAP)/ecrase_text.c			\
 		$(PATHTERMCAP)/coordone.c			\
-		$(PATHTERMCAP)/mod_raw.c				\
-		$(PATHTERMCAP)/curseur.c				\
+		$(PATHTERMCAP)/mod_raw.c			\
+		$(PATHTERMCAP)/curseur.c			\
 		$(PATHTERMCAP)/get_pos_curser.c			\
 		$(PATHTERMCAP)/clear.c				\
 		$(PATHTERMCAP)/dl_current_pos.c			\
