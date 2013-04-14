@@ -5,11 +5,9 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Sun Apr 14 18:22:35 2013 maxime lavandier
+** Last update Sun Apr 14 19:19:28 2013 remi robert
 */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
 #include "42sh.h"
 

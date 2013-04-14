@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Sun Apr 14 17:58:53 2013 remi robert
+** Last update Sun Apr 14 19:19:19 2013 remi robert
 */
 
 #ifndef		SH42_H
@@ -259,5 +259,11 @@ char	*return_file_redir(char *, int, int);
 ** redirection
 */
 void	rempl_fd_process(t_redirection, t_grp *);
+
+/*
+** my_str_to_wordtab
+*/
+void	del_slash_quote(char **);
+void	my_strncpy_force(char *, char *, int);
 
 #endif
