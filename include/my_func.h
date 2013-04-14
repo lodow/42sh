@@ -150,7 +150,6 @@ void			gere_history(t_param **, char *, t_history **);
 char			*return_pos_history(t_history *, int);
 void			add_elem_new_cmd(t_string **, char);
 void			recup_new_string(t_param **, char *);
-int			view_history(char *, char **, char **);
 int			str_cmp(char *, char *);
 void			add_history_current_cmd(t_param **, t_history **);
 void			add_current_history(t_history **, char *);

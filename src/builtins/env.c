@@ -10,11 +10,13 @@
 
 #include "42sh.h"
 
-int	builtin_env_print(char *path, char **argv, char **envp)
+int	builtin_env_print(char *path, char **argv, t_sh *shell)
 {
   int	i;
+  char	**envp;
 
   i = 0;
+  envp = shell->env;
   if (envp != NULL)
     while (envp[i] != NULL)
       {

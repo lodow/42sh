@@ -10,9 +10,9 @@
 
 #include "42sh.h"
 
-int	my_execve(char *path, char **argv, char **envp)
+int	my_execve(char *path, char **argv, t_sh *shell)
 {
-  return (execve(path, argv, envp));
+  return (execve(path, argv, shell->env));
 }
 
 void	cmd_execution(t_cmd *cmd, t_fds *fd, t_sh *shell)
@@ -28,7 +28,7 @@ void	cmd_execution(t_cmd *cmd, t_fds *fd, t_sh *shell)
 }
 
 void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
-                   int (*f)(char *cmd, char **argv, char **envp))
+                   int (*f)(char *cmd, char **argv, t_sh *shell))
 {
   if ((cmd->pid.pid = fork()) == 0)
     {
@@ -42,7 +42,7 @@ void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
       dup2(fd->stdout, 1);
       dup2(fd->stderr, 2);
       close_fds(fd);
-      f(cmd->cmd_fpath, cmd->argv, shell->env);
+      f(cmd->cmd_fpath, cmd->argv, shell);
       /*    if (cmd->fd.stdin != 0)
             cat(0, 1);
       */    my_putstr("What are you trying to do ? Fool (Did you meant robert ?) !\n", 1, -1);
