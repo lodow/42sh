@@ -19,11 +19,6 @@ t_sh		*get_sh_info(t_sh *sh)
   return (shell);
 }
 
-void	sig_exit()
-{
-//do what you want at exit
-}
-
 void	sig_handler(int sig)
 {
   t_sh	*shell;
@@ -31,7 +26,10 @@ void	sig_handler(int sig)
   shell = get_sh_info(NULL);
   SETFLAG(shell->signal, FLAGPOS(sig));
   if (sig == SIGINT)
-    sig_exit();
+    {
+      my_putstr("\n", 1, -1);
+      my_putstr(shell->param.str_prompt, 1, -1);
+    }
   signal(SIGTTOU, &sig_handler);
   signal(SIGTTIN, &sig_handler);
   signal(SIGINT, &sig_handler);
@@ -44,9 +42,5 @@ void	call_signal_func(t_sh *shell, int chld_sig)
   if (chld_sig == SIGTSTP)
     update_jobs_status(shell);
   wait_all_jobs(shell, shell->process_group);
-  if (GETFLAG(shell->signal, FLAGPOS(SIGINT)))
-    {
-      //my_putstr("\n", 1, -1);
-    }
   shell->signal = 0;
 }
