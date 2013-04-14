@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Thu Mar 21 08:21:11 2013 remi
-** Last update Sun Apr 14 16:10:34 2013 remi robert
+** Last update Sun Apr 14 19:00:31 2013 remi robert
 */
 
 #include "my_func.h"
@@ -42,10 +42,16 @@ void	get_pos_curser(int *x, int *y)
   char	buff[10];
   int	indice;
 
+  *x = -1;
+  *y = -1;
   my_memset(buff, 10);
-  write(1, "\033[6n", my_strlen("\033[6n"));
-  indice = read(1, buff, 10);
-  buff[indice] = '\0';
+  while (buff[0] != 27)
+    {
+      my_memset(buff, 10);
+      write(1, "\033[6n", my_strlen("\033[6n"));
+      indice = read(1, buff, 10);
+      buff[indice] = '\0';
+    }
   assign_value_pos(x, y, buff);
   curseur(*x, *y);
   my_put_str("         ");
