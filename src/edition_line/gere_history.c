@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr 12 13:13:10 2013 remi robert
-** Last update Sat Apr 13 10:02:32 2013 remi robert
+** Last update Sun Apr 14 13:38:24 2013 remi robert
 */
 
 #include "../include/my_func.h"
@@ -40,7 +40,10 @@ int	gere_pos_history(char *buff, int current_pos, int nb_max)
     {
       current_pos = current_pos - 1;
       if (current_pos < 1)
-	current_pos = current_pos + 1;
+	{
+	  current_pos = current_pos + 1;
+	  return (-1);
+	}
       return (current_pos);
     }
   return (-1);
@@ -82,20 +85,27 @@ void	add_history_current_cmd(t_param **param, t_history **history)
 /*
 ** decommenter pour faire historique sur les commandes courantes;
 */
-void	gere_history(t_param **param, char *buff, t_history **history)
+void		gere_history(t_param **param, char *buff, t_history **history)
 {
-  int	ret;
+  int		ret;
+  /* static char	*old_cmd; */
 
   if (*param == NULL || buff == NULL || *history == NULL)
     return ;
-  /* if ((*param)->string != NULL) */
-  /*   add_history_current_cmd(param); */
+  /* old_cmd = return_string((*param)->string); */
   if ((ret = gere_pos_history(buff, (*param)->pos_history,
-			      nb_max_history(*history))) == -1)
-    return ;
+			      nb_max_history(*history))) <= 0)
+    {
+      (*param)->pos_history = ret;
+      free_string((*param)->string);
+      (*param)->string = NULL;
+      return ;
+    }
   (*param)->pos_history = ret;
   free_string((*param)->string);
   (*param)->string = NULL;
   recup_new_string(param, return_pos_history(*history,
 					     (*param)->pos_history));
+  /* if (old_cmd != NULL) */
+  /*   free(old_cmd); */
 }
