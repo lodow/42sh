@@ -10,13 +10,13 @@
 
 #include "42sh.h"
 
-int		view_history(char *path, char **argv, char **envp)
+int		view_history(char *path, char **argv, t_sh *shell)
 {
   t_history	*pcourant;
 
-  if (argv[0] == NULL)
+  if (shell->history == NULL)
     return (-1);
-  pcourant = (t_history*)argv[0];
+  pcourant = shell->history;
   while (pcourant->next != NULL)
     pcourant = pcourant->next;
   while (pcourant != NULL)

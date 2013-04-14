@@ -132,7 +132,14 @@ void	builtin_fg(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_bg(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_jobs(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_history(t_cmd *cmd, t_fds *fd, t_sh *shell);
-void	rm_history_d(t_history **ptete, int pos);
+void	builtin_alias(t_cmd *cmd, t_fds *fd, t_sh *shell);
+
+
+/*
+** History
+*/
+int		view_history(char *path, char **argv, t_sh *shell);
+void		rm_history_d(t_history **ptete, int pos);
 t_history	*suppr_elem_list(t_history **ptete, t_history **pcourant);
 
 /*
@@ -226,7 +233,7 @@ char	*exec_full_path(char *exec, char **paths);
 int	exec_process_group(t_sh *shell, t_grp *grp);
 void	cmd_execution(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
-                   int (*f)(char *cmd, char **argv, char **envp));
+                   int (*f)(char *cmd, char **argv, t_sh *shell));
 void	free_process_group(t_grp *grp);
 int	is_grp_exec(t_sh *shell, t_grp *grp);
 

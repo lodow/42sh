@@ -86,6 +86,7 @@ SRCBUILTINS=	$(BUILTINS)/builtins.c				\
 		$(BUILTINS)/unsetenv.c				\
 		$(BUILTINS)/exit.c				\
 		$(BUILTINS)/history.c				\
+		$(BUILTINS)/alias.c				\
 
 SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/add_caractere.c			\
