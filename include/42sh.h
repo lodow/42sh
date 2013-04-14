@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Sun Apr 14 19:19:19 2013 remi robert
+** Last update Sun Apr 14 23:57:36 2013 remi robert
 */
 
 #ifndef		SH42_H
@@ -81,6 +81,7 @@ typedef struct	s_cmd
 
 typedef struct	s_redirection
 {
+  int		end;
   int		red_g;
   int		red_b;
   char		*file_b;
@@ -89,12 +90,13 @@ typedef struct	s_redirection
 
 typedef struct	s_grp
 {
+  int		nb_red;
   t_pid		pid;
   t_fds		fd;
   char		*line;
   t_cmd		**cmds;
   int		flags;
-  t_redirection	redirection;
+  t_redirection	*redirection;
 }		t_grp;
 
 typedef struct	s_func_ptr
@@ -250,7 +252,7 @@ void	my_exit(int value);
 /*
 ** detect_type_redirection
 */
-void	return_type_char(char *, int *, int *);
+int	return_type_char(char *);
 void	return_type_redirection(char *, int *, int *);
 char	*find_name_redirection(int, char *);
 char	*return_file_redir(char *, int, int);
@@ -258,7 +260,13 @@ char	*return_file_redir(char *, int, int);
 /*
 ** redirection
 */
-void	rempl_fd_process(t_redirection, t_grp *);
+char	*parse_redirection(t_grp **, char *, int *);
+void	rempl_fd_process(t_redirection *, t_grp *);
+int	find_redirection(char **, char *);
+int	rempl_red(char **, t_redirection *);
+void	rempl_file_redirection(char *, char *);
+void	rempl_new_lign_cmd(char *, char **, int, int);
+char	*reform_lign(char **);
 
 /*
 ** my_str_to_wordtab

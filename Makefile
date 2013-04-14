@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Sun Apr 14 18:14:38 2013 maxime lavandier
+## Last update Sun Apr 14 23:29:44 2013 remi robert
 ##
 
 CC=	gcc
@@ -32,6 +32,7 @@ PATHLINE=	src/edition_line
 LIBLINE	=	src/edition_line/lib
 PATHTERMCAP=	src/edition_line/termcap
 PATHENV	=	src/env
+PATHRED	=	src/redirection
 
 SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/stc.c				\
@@ -65,7 +66,6 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/clean_tab.c				\
 		$(SRCPATH)/error.c				\
 		$(SRCPATH)/my_exit.c				\
-		$(SRCPATH)/redirection.c			\
 		$(SRCPATH)/detect_redirection.c			\
 		$(SRCPATH)/my_put_nbr.c				\
 		$(SRCPATH)/my_putchar.c				\
@@ -111,6 +111,13 @@ SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/gere_current_history.c		\
 		$(PATHLINE)/globb.c				\
 
+SRCRED	=	$(PATHRED)/find_redirection.c			\
+		$(PATHRED)/parse_redirection.c			\
+		$(PATHRED)/redirection.c			\
+		$(PATHRED)/reform_str_cmd.c			\
+		$(PATHRED)/rempl_redirection.c			\
+		$(PATHRED)/return_type_char.c			\
+
 SRCLIBLINE=	$(LIBLINE)/str_cmp.c				\
 		$(LIBLINE)/my_memset.c				\
 		$(LIBLINE)/my_putstr.c				\
@@ -129,6 +136,7 @@ OBJ	=	$(SRC:.c=.o) \
 		$(SRCLINE:.c=.o) \
 		$(SRCLIBLINE:.c=.o) \
 		$(SRCTERMCAP:.c=.o) \
+		$(SRCRED:.c=.o) \
 
 $(NAME):	$(OBJ)
 		$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LIBS)

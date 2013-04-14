@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sun Apr 14 17:48:06 2013 remi robert
+** Last update Sun Apr 14 23:57:17 2013 remi robert
 */
 
 #include "42sh.h"
@@ -62,9 +62,12 @@ t_grp	*create_n_process_group(t_sh *shell, char *lign)
   init_stdfd_t_def_val(&(res->fd), 0, 1, 2);
   res->pid.sid = shell->pid.sid;
   res->cmds = NULL;
+  res->redirection = NULL;
   res->flags = 0;
-  detect_redirection(&(res->redirection), lign);
-  cmd_line = str_to_wordtab(lign, "|", 1);
+  res->nb_red = 0;
+  res->line = parse_redirection(&res, lign, &(res->nb_red));
+  //detect_redirection(&(res->redirection), lign);
+  cmd_line = str_to_wordtab(res->line, "|", 1);
   while ((cmd_line != NULL) && (cmd_line[i] != NULL))
     {
       tmp_cmd = create_n_cmd(shell, cmd_line[i]);
