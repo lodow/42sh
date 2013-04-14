@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Sun Apr 14 16:44:03 2013 remi robert
+## Last update Sun Apr 14 18:13:17 2013 maxime lavandier
 ##
 
 CC=	gcc
@@ -35,6 +35,7 @@ PATHENV	=	src/env
 
 SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/stc.c				\
+		$(SRCPATH)/inib_str_to_wordtab.c		\
 		$(SRCPATH)/str.c				\
 		$(SRCPATH)/my_uint64_t_strbase.c		\
 		$(SRCPATH)/tr_str.c				\
