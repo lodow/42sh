@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 14:03:17 2013 remi robert
-** Last update Sat Apr 13 09:23:58 2013 remi robert
+** Last update Sun Apr 14 16:07:54 2013 remi robert
 */
 
-#include "../include/my_func.h"
+#include "my_func.h"
 
 t_string	*get_pos_string(t_string *ptete, int pos)
 {

@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  8 16:36:04 2013 remi robert
-** Last update Sat Apr 13 09:10:28 2013 remi robert
+** Last update Sun Apr 14 16:10:40 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 void	delete_line_curser(void)
 {

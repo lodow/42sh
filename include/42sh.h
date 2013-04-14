@@ -132,6 +132,7 @@ void	builtin_fg(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_bg(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_jobs(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_history(t_cmd *cmd, t_fds *fd, t_sh *shell);
+
 void	rm_history_d(t_history **ptete, int pos);
 t_history	*suppr_elem_list(t_history **ptete, t_history **pcourant);
 

@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Sun Apr 14 13:14:42 2013 remi robert
+## Last update Sun Apr 14 16:44:03 2013 remi robert
 ##
 
 CC=	gcc
@@ -18,11 +18,11 @@ COMPILEFLAG	=	-g -Wall -Wfloat-equal -Wmissing-include-dirs \
 		-Wclobbered -Wempty-body -Wignored-qualifiers \
 		-Wmissing-field-initializers -Wmissing-parameter-type \
 		-Wold-style-declaration -Woverride-init -Wsign-compare \
-		-Wtype-limits -Wuninitialized -ltermcap
+		-Wtype-limits -Wuninitialized
 
 INCLUDE= -Iinclude/
 
-LIBS=
+LIBS= -ltermcap
 
 CFLAGS= $(COMPILEFLAG) $(INCLUDE)
 
@@ -107,11 +107,11 @@ SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/gere_history.c			\
 		$(PATHLINE)/feature_history.c			\
 		$(PATHLINE)/gere_current_history.c		\
+		$(PATHLINE)/globb.c				\
 
 SRCLIBLINE=	$(LIBLINE)/str_cmp.c				\
 		$(LIBLINE)/my_memset.c				\
 		$(LIBLINE)/my_putstr.c				\
-		$(LIBLINE)/str_cmp_env.c			\
 
 SRCTERMCAP=	$(PATHTERMCAP)/ecrase_text.c			\
 		$(PATHTERMCAP)/coordone.c			\

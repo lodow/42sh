@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr 12 10:51:51 2013 remi robert
-** Last update Fri Apr 12 11:05:10 2013 remi robert
+** Last update Sun Apr 14 16:09:36 2013 remi robert
 */
 
-#include "../include/my_func.h"
+#include "my_func.h"
 
 void	begin_str(t_param *param)
 {

@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr 12 13:13:10 2013 remi robert
-** Last update Sun Apr 14 13:38:24 2013 remi robert
+** Last update Sun Apr 14 16:08:39 2013 remi robert
 */
 
-#include "../include/my_func.h"
+#include "my_func.h"
 
 int		nb_max_history(t_history *history)
 {
