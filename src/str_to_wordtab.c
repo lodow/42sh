@@ -5,12 +5,13 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Sun Apr 14 17:52:10 2013 maxime lavandier
+** Last update Sun Apr 14 18:22:35 2013 maxime lavandier
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "../include/42sh.h"
 
 /*
 ** malloc_tab() retourne le tableau **tab malloc
