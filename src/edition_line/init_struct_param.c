@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Apr  9 15:26:37 2013 remi robert
-** Last update Sun Apr 14 13:26:08 2013 remi robert
+** Last update Sun Apr 14 16:12:30 2013 remi robert
 */
 
-#include "../include/my_func.h"
+#include "my_func.h"
 
 void		init_struct_param(t_param *param)
 {

@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr  5 15:49:00 2013 remi robert
-** Last update Sat Apr 13 09:11:21 2013 remi robert
+** Last update Sun Apr 14 16:09:31 2013 remi robert
 */
 
-#include "../include/my_func.h"
+#include "my_func.h"
 
 int	get_number_caractere_del(t_string *pcourant)
 {

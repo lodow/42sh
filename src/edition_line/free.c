@@ -5,10 +5,10 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed Mar 20 16:52:58 2013 remi
-** Last update Sat Apr 13 08:34:49 2013 remi robert
+** Last update Sun Apr 14 16:08:51 2013 remi robert
 */
 
-#include "../include/my_func.h"
+#include "my_func.h"
 
 void	free_string(t_string *ptr)
 {

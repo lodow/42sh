@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Feb  5 08:45:15 2013 remi robert
-** Last update Tue Apr  9 17:03:29 2013 remi robert
+** Last update Sun Apr 14 16:10:56 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "my_func.h"
 
 int	curseur(int x, int y)
 {

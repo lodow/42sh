@@ -5,10 +5,10 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed Mar 20 14:13:14 2013 remi
-** Last update Sun Apr 14 10:14:41 2013 remi robert
+** Last update Sun Apr 14 16:08:24 2013 remi robert
 */
 
-#include "../include/my_func.h"
+#include "my_func.h"
 
 int	recup_path(char **envp)
 {

@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed Apr  3 08:07:53 2013 remi robert
-** Last update Tue Apr  9 17:05:05 2013 remi robert
+** Last update Sun Apr 14 16:08:01 2013 remi robert
 */
 
-#include "../include/my_func.h"
+#include "my_func.h"
 
 int		gere_first_elem(t_param **param)
 {

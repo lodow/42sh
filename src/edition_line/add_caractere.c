@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 12:27:59 2013 remi robert
-** Last update Fri Apr 12 13:01:53 2013 remi robert
+** Last update Sun Apr 14 16:09:02 2013 remi robert
 */
 
-#include "../include/my_func.h"
+#include "my_func.h"
 
 void		place_with_current_pos(t_string **ptete,
 				       t_string **new_char,
