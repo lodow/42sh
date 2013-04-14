@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr 12 13:30:27 2013 remi robert
-** Last update Sat Apr 13 10:55:25 2013 remi robert
+** Last update Fri Apr 12 19:36:09 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "../include/my_func.h"
 
 char		*return_pos_history(t_history *ptete, int pos)
 {

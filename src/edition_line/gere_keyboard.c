@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 16:58:28 2013 remi robert
-** Last update Sat Apr 13 10:56:06 2013 remi robert
+** Last update Fri Apr 12 19:32:30 2013 remi robert
 */
 
-#include "my_func.h"
+#include "../include/my_func.h"
 
 void	set_pos_left(t_param **param)
 {

@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Sat Apr 13 18:45:27 2013 remi robert
+## Last update Sun Apr 14 10:03:53 2013 remi robert
 ##
 
 CC=	gcc
@@ -48,7 +48,6 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/swap_ptr.c				\
 		$(SRCPATH)/alias.c				\
 		$(SRCPATH)/parse_cmd.c				\
-		$(SRCPATH)/backquotes.c				\
 		$(SRCPATH)/process_group.c			\
 		$(SRCPATH)/exec_process.c			\
 		$(SRCPATH)/tty.c					\
@@ -111,6 +110,7 @@ SRCLINE	=	$(PATHLINE)/main_line.c				\
 SRCLIBLINE=	$(LIBLINE)/str_cmp.c				\
 		$(LIBLINE)/my_memset.c				\
 		$(LIBLINE)/my_putstr.c				\
+		$(LIBLINE)/str_cmp_env.c				\
 
 SRCTERMCAP=	$(PATHTERMCAP)/ecrase_text.c			\
 		$(PATHTERMCAP)/coordone.c			\

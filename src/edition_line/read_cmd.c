@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 12:32:15 2013 remi robert
-** Last update Sat Apr 13 10:56:33 2013 remi robert
+** Last update Fri Apr 12 19:42:27 2013 remi robert
 */
 
-#include "my_func.h"
+#include "../include/my_func.h"
 
 void	gere_buff(char *buff, t_param **param, t_history **history)
 {

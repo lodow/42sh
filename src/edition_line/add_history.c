@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr 12 12:53:40 2013 remi robert
-** Last update Sat Apr 13 10:55:30 2013 remi robert
+** Last update Sat Apr 13 08:02:48 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "../include/my_func.h"
 
 void   	rempl_new_history(t_history **elem, char *str)
 {

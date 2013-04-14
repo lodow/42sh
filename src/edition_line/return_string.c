@@ -5,10 +5,10 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed Mar 20 16:11:46 2013 remi
-** Last update Sat Apr 13 10:54:34 2013 remi robert
+** Last update Tue Apr  9 21:38:58 2013 remi robert
 */
 
-#include "my_func.h"
+#include "../include/my_func.h"
 
 int		number_caractere(t_string *ptr)
 {

@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed Apr 10 08:55:38 2013 remi robert
-** Last update Sat Apr 13 10:54:39 2013 remi robert
+** Last update Wed Apr 10 08:57:15 2013 remi robert
 */
 
-#include "my_func.h"
+#include "../include/my_func.h"
 
 void	print_prompt(t_param *param)
 {

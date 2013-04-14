@@ -5,10 +5,10 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Thu Mar 21 08:21:11 2013 remi
-** Last update Sat Apr 13 10:58:30 2013 remi robert
+** Last update Tue Apr  9 17:03:08 2013 remi robert
 */
 
-#include "my_func.h"
+#include "../../include/my_func.h"
 
 void	assign_value_pos(int *x, int *y, char *buff)
 {

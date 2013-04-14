@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Apr  9 14:25:24 2013 remi robert
-** Last update Sat Apr 13 10:56:38 2013 remi robert
+** Last update Tue Apr  9 17:06:17 2013 remi robert
 */
 
-#include "my_func.h"
+#include "../include/my_func.h"
 
 void	gere_end_control_u(t_param **param, t_string *pcourant, int indice)
 {

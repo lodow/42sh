@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  8 17:49:14 2013 remi robert
-** Last update Sat Apr 13 10:55:18 2013 remi robert
+** Last update Tue Apr  9 17:05:33 2013 remi robert
 */
 
-#include "my_func.h"
+#include "../include/my_func.h"
 
 void	set_buff_copy(t_param **param, t_string *pcourant)
 {

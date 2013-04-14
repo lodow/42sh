@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Sat Apr 13 19:00:55 2013 remi robert
+** Last update Sun Apr 14 10:22:08 2013 remi robert
 */
 
 #ifndef		SH42_H
@@ -131,7 +131,7 @@ void	builtin_robert(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_fg(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_bg(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_jobs(t_cmd *cmd, t_fds *fd, t_sh *shell);
-void	builtin_history(t_sh *shell, t_cmd *cmd);
+void	builtin_history(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	rm_history_d(t_history **ptete, int pos);
 t_history	*suppr_elem_list(t_history **ptete, t_history **pcourant);
 

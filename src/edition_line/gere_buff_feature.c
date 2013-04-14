@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Apr  9 14:17:39 2013 remi robert
-** Last update Sat Apr 13 10:55:55 2013 remi robert
+** Last update Tue Apr  9 17:05:58 2013 remi robert
 */
 
-#include "my_func.h"
+#include "../include/my_func.h"
 
 void		new_copy(t_string **ptete, char caractere)
 {

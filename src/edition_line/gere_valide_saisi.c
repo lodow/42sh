@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr 12 12:46:34 2013 remi robert
-** Last update Sat Apr 13 10:54:56 2013 remi robert
+** Last update Sat Apr 13 10:48:42 2013 remi robert
 */
 
-#include "../../include/my_func.h"
+#include "../include/my_func.h"
 
 int	recup_nb_history(char *str)
 {

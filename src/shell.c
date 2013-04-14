@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat Apr 13 18:54:52 2013 remi robert
+** Last update Sun Apr 14 10:14:05 2013 remi robert
 */
 
 #include "42sh.h"
@@ -15,7 +15,8 @@ void	recalc_prompt(t_sh *shell)
   char	*prompt;
   char	*ps1;
 
-  free(shell->param.str_prompt);
+  if (shell->param.str_prompt != NULL)
+    free(shell->param.str_prompt);
   if ((ps1 = get_envvar("PS1", shell->env)) != NULL)
     {
       if ((prompt = check_vars_in_str(my_strdup(ps1), shell->env)) != NULL)

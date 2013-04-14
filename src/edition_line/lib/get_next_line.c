@@ -5,10 +5,10 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Tue Feb 26 21:19:06 2013 remi
-** Last update Sat Apr 13 10:57:48 2013 remi robert
+** Last update Fri Apr  5 13:18:39 2013 remi robert
 */
 
-#include "../../../include/my_func.h"
+#include "my_func.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
