@@ -48,9 +48,6 @@
 		<Unit filename="src/builtins/cd.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/builtins/delete_history.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/builtins/echo.c">
 			<Option compilerVar="CC" />
 		</Unit>

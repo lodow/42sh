@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "../include/42sh.h"
+#include "42sh.h"
 
 /*
 ** malloc_tab() retourne le tableau **tab malloc

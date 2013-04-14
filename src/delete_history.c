@@ -5,10 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat Apr 13 08:46:11 2013 remi robert
-** Last update Sat Apr 13 09:05:56 2013 remi robert
+** Last update Sun Apr 14 19:12:51 2013 Hugues
 */
 
-#include "../../include/42sh.h"
+#include "42sh.h"
 
 t_history	*suppr_elem_list(t_history **ptete, t_history **pcourant)
 {
