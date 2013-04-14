@@ -28,7 +28,7 @@
 # include "get_file.h"
 # include "my_func.h"
 
-# define NB_BUILTINS 11
+# define NB_BUILTINS 12
 # define NB_CONFFUNC 2
 
 # define PIPE_READ 0
