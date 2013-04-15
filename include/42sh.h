@@ -140,6 +140,7 @@ void	builtin_alias(t_cmd *cmd, t_fds *fd, t_sh *shell);
 /*
 ** History
 */
+int		load_history_f_file(char *line, t_sh *shell);
 int		view_history(char *path, char **argv, t_sh *shell);
 void		rm_history_d(t_history **ptete, int pos);
 t_history	*suppr_elem_list(t_history **ptete, t_history **pcourant);
@@ -165,7 +166,7 @@ void	**concat_ptr_tab(void **tab1, void **tab2);
 */
 void	my_putchar(char c);
 int	my_strlen(char *str);
-void	my_putstr(char *str, int fd, int strlen);
+void	my_putstr(const char *str, int fd, int strlen);
 void	my_strncpy(char *dest, char *src, int n);
 char	*my_strdup(char *str);
 int	is_in_str(char c, char *str);
@@ -226,6 +227,7 @@ void	my_perror(char *str);
 */
 char	*get_envvar(char *var, char **env);
 char	*check_vars_in_str(char *str, char **envp);
+void	replace_var_in_argv(char **argv, char **envp);
 
 /*
 ** Commands
@@ -249,7 +251,9 @@ void	close_fds(t_fds *fd);
 /*
 ** Conf file
 */
-void	load_conf_file(const char *filename, t_sh *shell);
+int	new_conf_set(char *str, t_sh *shell);
+void	load_conf_file(const char *filename, t_sh *shell,
+                     int (*f)(char *line, t_sh *shell));
 void	alias_replace(char ***argv, char **alias);
 
 /*
@@ -268,7 +272,7 @@ char	*return_file_redir(char *, int, int);
 /*
 ** redirection
 */
-char	*parse_redirection(t_grp **, char *, int *);
+char	*parse_redirection(t_grp *, char *, int *);
 void	rempl_fd_process(t_redirection *, t_grp *);
 int	find_redirection(char **, char *);
 int	rempl_red(char **, t_redirection *);

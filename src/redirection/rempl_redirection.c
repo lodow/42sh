@@ -33,7 +33,7 @@ int	rempl_red(char **tab, t_redirection *red)
     {
       red->red_b = return_type_char(tab[0]);
       if ((red->file_b = malloc(my_strlen(tab[1]) + 1)) == NULL)
-	return (0);
+        return (0);
       rempl_file_redirection(red->file_b, tab[1]);
       return (1);
     }
@@ -41,7 +41,7 @@ int	rempl_red(char **tab, t_redirection *red)
     {
       red->red_g = return_type_char(tab[0]);
       if ((red->file_g = malloc(my_strlen(tab[1]) + 1)) == NULL)
-	return (0);
+        return (0);
       rempl_file_redirection(red->file_g, tab[1]);
       return (1);
     }

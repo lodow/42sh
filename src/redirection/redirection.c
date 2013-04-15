@@ -42,11 +42,11 @@ void	rempl_fd_process(t_redirection *red, t_grp *grp)
   while (indice < grp->nb_red)
     {
       if (red[indice].red_b != 0 && red[indice].file_b != NULL &&
-	  (ret = open_file(red[indice].red_b, red[indice].file_b)) != -1)
-	grp->fd.stdin = ret;
+          (ret = open_file(red[indice].red_b, red[indice].file_b)) != -1)
+        grp->fd.stdin = ret;
       if (red[indice].red_g != 0 && red[indice].file_g != NULL &&
-	  (ret = open_file(red[indice].red_g, red[indice].file_g)) != -1)
-	grp->fd.stdout = ret;
+          (ret = open_file(red[indice].red_g, red[indice].file_g)) != -1)
+        grp->fd.stdout = ret;
       indice = indice + 1;
     }
   printf("in: %d out: %d\n", grp->fd.stdin, grp->fd.stdout);

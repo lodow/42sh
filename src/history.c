@@ -10,6 +10,12 @@
 
 #include "42sh.h"
 
+int	load_history_f_file(char *line, t_sh *shell)
+{
+  add_history(&(shell->history), line);
+  return (1);
+}
+
 int		view_history(char *path, char **argv, t_sh *shell)
 {
   t_history	*pcourant;
@@ -40,7 +46,7 @@ void		clear_history(t_history *ptr)
     {
       ptr = ptr->next;
       if (ptr->back->cmd != NULL)
-	free(ptr->back->cmd);
+        free(ptr->back->cmd);
       free(ptr->back);
     }
   if (ptr->cmd != NULL)

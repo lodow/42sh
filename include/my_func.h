@@ -141,7 +141,7 @@ char			*return_string(t_string *);
 void			print_prompt(t_param *);
 void			control_clear(t_param **);
 void			delete_line_curser(void);
-void			my_putstr(char *, int, int);
+void			my_putstr(const char *, int, int);
 void			begin_str(t_param *);
 void			end_str(t_param *);
 char			*return_saisi(t_param *, t_history **);
