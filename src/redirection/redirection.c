@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun Feb 17 09:02:36 2013 remi robert
-** Last update Mon Apr 15 00:01:48 2013 remi robert
+** Last update Mon Apr 15 10:59:26 2013 remi robert
 */
 
 #include "42sh.h"
@@ -20,9 +20,9 @@ int	open_file(int type, char *file)
     return (0);
   if (type == REDI_L)
     fd = open(file, O_RDONLY);
-  if (type == REDI_R)
+  if (type == 4)
     fd = open(file, O_WRONLY | O_CREAT | O_APPEND, REDI_FRIGHT);
-  if (type == REDI_DL)
+  if (type == 3)
     fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, REDI_FRIGHT);
   if (fd == -1)
     {
