@@ -54,5 +54,6 @@ char	*check_and_load_backquote(char *line, t_sh *shell)
       i++;
     }
   str = tab_file_tstr(backtab, ' ');
+  tr_str(str, '\n', ' ');
   return (str);
 }

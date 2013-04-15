@@ -1,77 +1,86 @@
-rm robertSH
-gs
-ll
 ls
-ls
-man glob
-l
-ll
-ll
-l
-ll
-ll
-ll
-l
-teeshirt
 `echo ls`
-`ls`
-l
-l
-l
-l
 ls
 ll
-l
-l
-l
-l
-l
+ls
+ll
 `echo ls`
 `echo ls`
+ls
+`echo ls`
+`echo ls`
+`echo ls`
+`echo ls`
+`echo ls`
+`echo ls     s`
+`echo ls     `
 `echo ls `
-`echo ls .`
-`echo ls ./`
-`echo ls .`
-`echo ls`
 `echo ls`
 `echo ls`
 `echo ls`
 ls
-`echo ls`
-`echo ls`
-echo qsldk d qd sq
-ls
-la
-source
-la
-la
-qz
-qsd
-qsd
-sd
-qsd
-wsd
-qsdqsdqsdddqsqsmljqsls
-la
-source
-la
-la
-la
-echo l
-echo lqsdmlqsd
-echo lqsdmlqsd qdqsd
 qsd
  qsd
 qsd
+echo lqsdmlqsd qdqsd
+echo lqsdmlqsd
+echo l
+la
+la
+la
+source
+la
+qsdqsdqsdddqsqsmljqsls
+wsd
+qsd
+sd
+qsd
+qsd
+qz
+la
+la
+source
+la
+ls
+echo qsldk d qd sq
+`echo ls`
+`echo ls`
 ls
 `echo ls`
 `echo ls`
 `echo ls`
+`echo ls`
+`echo ls .`
+`echo ls ./`
+`echo ls .`
 `echo ls `
-`echo ls     `
-`echo ls     s`
 `echo ls`
 `echo ls`
+l
+l
+l
+l
+l
+ll
+ls
+l
+l
+l
+l
+`ls`
 `echo ls`
-`echo ls`
-`echo ls`
+teeshirt
+l
+ll
+ll
+ll
+l
+ll
+ll
+l
+man glob
+ls
+ls
+ll
+gs
+rm robertSH
