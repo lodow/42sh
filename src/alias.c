@@ -25,7 +25,7 @@ void	alias_replace(char ***argv, char **aliastab)
   alias = (*argv)[0];
   if ((assoc = get_envvar(alias, aliastab)) == NULL)
     return ;
-  if ((arg_alias = str_to_wordtab(assoc, " ", 1)) == NULL)
+  if ((arg_alias = str_to_wordtab(assoc, " ", 2)) == NULL)
     return ;
   tmp_tab = (*argv);
   (*argv) = (char**)concat_ptr_tab((void**)arg_alias, (void**)(&((*argv)[1])));

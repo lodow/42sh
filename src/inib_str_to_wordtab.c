@@ -5,13 +5,10 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Sun Apr 14 17:31:53 2013 maxime lavandier
-** Last update Sun Apr 14 18:22:32 2013 maxime lavandier
+** Last update Sun Apr 14 19:06:05 2013 remi robert
 */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include "../include/42sh.h"
+#include "42sh.h"
 
 void	del_slash_quote(char **tab)
 {

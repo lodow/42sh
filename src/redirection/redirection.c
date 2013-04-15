@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun Feb 17 09:02:36 2013 remi robert
-** Last update Sun Apr 14 17:56:59 2013 remi robert
+** Last update Mon Apr 15 10:59:26 2013 remi robert
 */
 
 #include "42sh.h"
@@ -20,9 +20,9 @@ int	open_file(int type, char *file)
     return (0);
   if (type == REDI_L)
     fd = open(file, O_RDONLY);
-  if (type == REDI_R)
+  if (type == 4)
     fd = open(file, O_WRONLY | O_CREAT | O_APPEND, REDI_FRIGHT);
-  if (type == REDI_DL)
+  if (type == 3)
     fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, REDI_FRIGHT);
   if (fd == -1)
     {
@@ -33,16 +33,21 @@ int	open_file(int type, char *file)
   return (fd);
 }
 
-void	rempl_fd_process(t_redirection red, t_grp *grp)
+void	rempl_fd_process(t_redirection *red, t_grp *grp)
 {
+  int	indice;
   int	ret;
 
-  if (red.red_b != 0 && red.file_b != NULL &&
-      (ret = open_file(red.red_b, red.file_b)) != -1)
+  indice = 0;
+  while (indice < grp->nb_red)
     {
-      grp->fd.stdout = ret;
+      if (red[indice].red_b != 0 && red[indice].file_b != NULL &&
+          (ret = open_file(red[indice].red_b, red[indice].file_b)) != -1)
+        grp->fd.stdin = ret;
+      if (red[indice].red_g != 0 && red[indice].file_g != NULL &&
+          (ret = open_file(red[indice].red_g, red[indice].file_g)) != -1)
+        grp->fd.stdout = ret;
+      indice = indice + 1;
     }
-  if (red.red_g != 0 && red.file_g != NULL &&
-      (ret = open_file(red.red_g, red.file_g)) != -1)
-    grp->fd.stdin = ret;
+  printf("in: %d out: %d\n", grp->fd.stdin, grp->fd.stdout);
 }

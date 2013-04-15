@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Sun Apr 14 18:20:56 2013 maxime lavandier
+** Last update Mon Apr 15 16:56:14 2013 maxime lavandier
 */
 
 #ifndef		SH42_H
@@ -28,7 +28,7 @@
 # include "get_file.h"
 # include "my_func.h"
 
-# define NB_BUILTINS 11
+# define NB_BUILTINS 14
 # define NB_CONFFUNC 2
 
 # define PIPE_READ 0
@@ -81,6 +81,7 @@ typedef struct	s_cmd
 
 typedef struct	s_redirection
 {
+  int		end;
   int		red_g;
   int		red_b;
   char		*file_b;
@@ -89,12 +90,13 @@ typedef struct	s_redirection
 
 typedef struct	s_grp
 {
+  int		nb_red;
   t_pid		pid;
   t_fds		fd;
   char		*line;
   t_cmd		**cmds;
   int		flags;
-  t_redirection	redirection;
+  t_redirection	*redirection;
 }		t_grp;
 
 typedef struct	s_func_ptr
@@ -132,7 +134,17 @@ void	builtin_fg(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_bg(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_jobs(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_history(t_cmd *cmd, t_fds *fd, t_sh *shell);
-void	rm_history_d(t_history **ptete, int pos);
+void	builtin_alias(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	builtin_source(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	builtin_clear(t_cmd *cmd, t_fds *fd, t_sh *shell);
+
+
+/*
+** History
+*/
+int		load_history_f_file(char *line, t_sh *shell);
+int		view_history(char *path, char **argv, t_sh *shell);
+void		rm_history_d(t_history **ptete, int pos);
 t_history	*suppr_elem_list(t_history **ptete, t_history **pcourant);
 
 /*
@@ -156,7 +168,7 @@ void	**concat_ptr_tab(void **tab1, void **tab2);
 */
 void	my_putchar(char c);
 int	my_strlen(char *str);
-void	my_putstr(char *str, int fd, int strlen);
+void	my_putstr(const char *str, int fd, int strlen);
 void	my_strncpy(char *dest, char *src, int n);
 char	*my_strdup(char *str);
 int	is_in_str(char c, char *str);
@@ -167,6 +179,7 @@ char	*my_uint_strbase(unsigned int nb, char * base);
 int	my_getnbr(char *str);
 void	my_strncpy_force(char *str1, char *str2, int size);
 void	del_slash_quote(char **tab);
+char	*my_stradd(char *str, char *add, int size_add);
 
 /*
 ** Str to wordtab
@@ -200,7 +213,7 @@ void	wait_no_fg_grp(t_sh* shell);
 ** User funcs
 */
 void	user_loop(t_sh *shell);
-void	parse_user_cmd(t_sh *shell, char *line);
+void	parse_user_cmd(t_sh *shell, char *line, int def_fdout);
 void	prompt(t_sh *shell);
 
 /*
@@ -218,6 +231,7 @@ void	my_perror(char *str);
 */
 char	*get_envvar(char *var, char **env);
 char	*check_vars_in_str(char *str, char **envp);
+void	replace_var_in_argv(char **argv, char **envp);
 
 /*
 ** Commands
@@ -228,7 +242,7 @@ char	*exec_full_path(char *exec, char **paths);
 int	exec_process_group(t_sh *shell, t_grp *grp);
 void	cmd_execution(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
-                   int (*f)(char *cmd, char **argv, char **envp));
+                   int (*f)(char *cmd, char **argv, t_sh *shell));
 void	free_process_group(t_grp *grp);
 int	is_grp_exec(t_sh *shell, t_grp *grp);
 
@@ -241,7 +255,12 @@ void	close_fds(t_fds *fd);
 /*
 ** Conf file
 */
-void	load_conf_file(const char *filename, t_sh *shell);
+void	store_history_f(t_sh *shell, int fd);
+int	new_conf_set(char *str, t_sh *shell);
+void	store_conf_file(const char *filename, t_sh *shell,
+                      void (*f)(t_sh *shell, int fd));
+void	load_conf_file(const char *filename, t_sh *shell,
+                     int (*f)(char *line, t_sh *shell));
 void	alias_replace(char ***argv, char **alias);
 
 /*
@@ -252,7 +271,7 @@ void	my_exit(int value);
 /*
 ** detect_type_redirection
 */
-void	return_type_char(char *, int *, int *);
+int	return_type_char(char *);
 void	return_type_redirection(char *, int *, int *);
 char	*find_name_redirection(int, char *);
 char	*return_file_redir(char *, int, int);
@@ -260,6 +279,25 @@ char	*return_file_redir(char *, int, int);
 /*
 ** redirection
 */
-void	rempl_fd_process(t_redirection, t_grp *);
+char	*parse_redirection(t_grp *, char *, int *);
+void	rempl_fd_process(t_redirection *, t_grp *);
+int	find_redirection(char **, char *);
+int	rempl_red(char **, t_redirection *);
+void	rempl_file_redirection(char *, char *);
+void	rempl_new_lign_cmd(char *, char **, int, int);
+char	*reform_lign(char **);
+
+/*
+** Backquotes
+*/
+char	*check_and_load_backquote(char *line, t_sh *shell);
+
+/*
+** my_str_to_wordtab
+*/
+void	del_slash_quote(char **);
+void	my_strncpy_force(char *, char *, int);
+
+char	**get_path(char **envp);
 
 #endif

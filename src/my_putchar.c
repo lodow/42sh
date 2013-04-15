@@ -8,7 +8,7 @@
 ** Last update Sat Apr 13 18:45:13 2013 remi robert
 */
 
-#include "../include/42sh.h"
+#include "42sh.h"
 
 void	my_putchar(char caractere)
 {

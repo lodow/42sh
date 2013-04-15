@@ -27,6 +27,6 @@
 
 char	*get_file(const char *file);
 char	**get_data_ffile(int fd);
-char	*tab_file_tstr(char **tab_file);
+char	*tab_file_tstr(char **tab_file, char sepa);
 
 #endif

@@ -39,6 +39,9 @@
 		<Unit filename="src/backquotes.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/builtins/alias.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/builtins/bg.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -46,6 +49,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/builtins/cd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/builtins/clear.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/builtins/echo.c">
@@ -60,6 +66,9 @@
 		<Unit filename="src/builtins/fg.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/builtins/history.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/builtins/jobs.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -67,6 +76,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/builtins/setenv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/builtins/source.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/builtins/unsetenv.c">
@@ -81,13 +93,22 @@
 		<Unit filename="src/cmd_full_path.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/delete_history.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/detect_redirection.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/add_caractere.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/edition_line/add_history.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/edition_line/control_clear.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/feature_history.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/free.c">
@@ -102,12 +123,32 @@
 		<Unit filename="src/edition_line/gere_control.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/edition_line/gere_current_history.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/gere_direct_pos_cursor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/gere_history.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/edition_line/gere_keyboard.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/gere_valide_saisi.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/get_len_string_with_pos.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/edition_line/globb/genere_globb_str.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/globb/globb.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/include/couleur.h" />
+		<Unit filename="src/edition_line/include/my_func.h" />
 		<Unit filename="src/edition_line/init_struct_param.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -124,9 +165,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/lib/str_cmp.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/main_line.c">
@@ -195,6 +233,12 @@
 		<Unit filename="src/get_next_line.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/history.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/inib_str_to_wordtab.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/is_grp_exec.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -219,6 +263,12 @@
 		<Unit filename="src/my_getnbr.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/my_put_nbr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/my_putchar.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/my_uint64_t_strbase.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -237,6 +287,24 @@
 		<Unit filename="src/redirection.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/redirection/find_redirection.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/redirection/parse_redirection.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/redirection/redirection.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/redirection/reform_str_cmd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/redirection/rempl_redirection.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/redirection/return_type_char.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/shell.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -244,6 +312,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/stc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/store_conf.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/str.c">

@@ -10,6 +10,18 @@
 
 #include "42sh.h"
 
+char	**get_path(char **envp)
+{
+  char	**paths;
+
+  paths = str_to_wordtab(get_envvar("PATH", envp), ":", 0);
+  if (paths == NULL)
+    {
+      // if you want to set a default path if none, it's here!
+    }
+  return (paths);
+}
+
 /*
 ** Return the full path of a command , return the command if didn't find it
 ** for trying to execute it from the current directory

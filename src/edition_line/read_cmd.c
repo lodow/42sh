@@ -5,14 +5,14 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 12:32:15 2013 remi robert
-** Last update Sun Apr 14 16:09:53 2013 remi robert
+** Last update Mon Apr 15 08:37:48 2013 remi robert
 */
 
 #include "my_func.h"
 
 void	gere_buff(char *buff, t_param **param, t_history **history)
 {
-  if (buff[1] == '\0' && buff[0] != ESC && buff[0] != DEL)
+  if (buff[1] == '\0' && buff[0] != ESC && buff[0] != DEL && buff[0] != '\t')
     {
       (*param)->len_string += 1;
       (*param)->current_pos.x += 1;

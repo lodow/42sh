@@ -10,21 +10,19 @@
 
 #include "42sh.h"
 
-char	**get_path(char **envp)
+void	init_sig()
 {
-  char	**paths;
-
-  paths = str_to_wordtab(get_envvar("PATH", envp), ":", 0);
-  if (paths == NULL)
-    {
-      // if you want to set a default path if none, it's here!
-    }
-  return (paths);
+  signal(SIGTTOU, &sig_handler);
+  signal(SIGTTIN, &sig_handler);
+  signal(SIGINT, &sig_handler);
+  signal(SIGTSTP, &sig_handler);
+  signal(SIGCHLD, &sig_handler);
 }
 
 int		init_shell(t_sh *shell, char **main_env)
 {
   get_sh_info(shell);
+  init_sig();
   init_builtins(shell);
   if (((shell->env = cpy_env(main_env)) == NULL)
       || ((shell->path = get_path(shell->env)) == NULL))
@@ -42,26 +40,28 @@ int		init_shell(t_sh *shell, char **main_env)
   shell->env = add_change_env(shell->env, "PS1", "${LOGNAME} ${PWD} $ "); //default path
   shell->alias_tab = NULL;
   shell->signal = 0;
-  load_conf_file(".42conf", shell);
+  load_conf_file(".42conf", shell, &new_conf_set);
+  load_conf_file(".history", shell, &load_history_f_file);
   return (0);
+}
+
+void	exit_shell(t_sh *shell)
+{
+  store_conf_file(".history", shell, store_history_f);
+  //free shell
+  free_ptr_tab((void**)shell->env);
 }
 
 int		main(int ac, char **av, char **main_env)
 {
   t_sh		shell;
 
-  signal(SIGTTOU, &sig_handler);
-  signal(SIGTTIN, &sig_handler);
-  signal(SIGINT, &sig_handler);
-  signal(SIGTSTP, &sig_handler);
-  signal(SIGCHLD, &sig_handler);
   if (init_shell(&shell, main_env) == -1)
     return (0);
   if (shell.env != NULL)
     {
       user_loop(&shell);
     }
-  //free shell
-  free_ptr_tab((void**)shell.env);
+  exit_shell(&shell);
   return (0);
 }

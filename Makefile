@@ -5,12 +5,12 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Sun Apr 14 18:14:38 2013 maxime lavandier
+## Last update Mon Apr 15 09:58:19 2013 remi robert
 ##
 
-CC=	gcc
+CC	=	gcc
 
-RM= rm
+RM	= 	rm
 
 NAME	=	robertSH
 
@@ -20,11 +20,11 @@ COMPILEFLAG	=	-g -Wall -Wfloat-equal -Wmissing-include-dirs \
 		-Wold-style-declaration -Woverride-init -Wsign-compare \
 		-Wtype-limits -Wuninitialized
 
-INCLUDE= -Iinclude/
+INCLUDE	= 	-Iinclude/
 
-LIBS= -ltermcap
+LIBS	= 	-ltermcap
 
-CFLAGS= $(COMPILEFLAG) $(INCLUDE)
+CFLAGS	= 	$(COMPILEFLAG) $(INCLUDE)
 
 SRCPATH	=	src
 BUILTINS=	src/builtins
@@ -32,9 +32,12 @@ PATHLINE=	src/edition_line
 LIBLINE	=	src/edition_line/lib
 PATHTERMCAP=	src/edition_line/termcap
 PATHENV	=	src/env
+PATHRED	=	src/redirection
+PATHGLOBB=	src/edition_line/globb
 
 SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/stc.c				\
+		$(SRCPATH)/backquotes.c				\
 		$(SRCPATH)/inib_str_to_wordtab.c		\
 		$(SRCPATH)/str.c				\
 		$(SRCPATH)/my_uint64_t_strbase.c		\
@@ -56,6 +59,7 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/cmd.c				\
 		$(SRCPATH)/wait.c				\
 		$(SRCPATH)/load_conf.c				\
+		$(SRCPATH)/store_conf.c				\
 		$(SRCPATH)/cmd_full_path.c			\
 		$(SRCPATH)/ptr_tab.c				\
 		$(SRCPATH)/get_next_line.c			\
@@ -65,7 +69,6 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/clean_tab.c				\
 		$(SRCPATH)/error.c				\
 		$(SRCPATH)/my_exit.c				\
-		$(SRCPATH)/redirection.c			\
 		$(SRCPATH)/detect_redirection.c			\
 		$(SRCPATH)/my_put_nbr.c				\
 		$(SRCPATH)/my_putchar.c				\
@@ -86,6 +89,9 @@ SRCBUILTINS=	$(BUILTINS)/builtins.c				\
 		$(BUILTINS)/unsetenv.c				\
 		$(BUILTINS)/exit.c				\
 		$(BUILTINS)/history.c				\
+		$(BUILTINS)/alias.c				\
+		$(BUILTINS)/source.c			\
+		$(BUILTINS)/clear.c				\
 
 SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/add_caractere.c			\
@@ -109,7 +115,16 @@ SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/gere_history.c			\
 		$(PATHLINE)/feature_history.c			\
 		$(PATHLINE)/gere_current_history.c		\
-		$(PATHLINE)/globb.c				\
+
+SRCGLOBB=	$(PATHGLOBB)/globb.c				\
+		$(PATHGLOBB)/genere_globb_str.c			\
+
+SRCRED	=	$(PATHRED)/find_redirection.c			\
+		$(PATHRED)/parse_redirection.c			\
+		$(PATHRED)/redirection.c			\
+		$(PATHRED)/reform_str_cmd.c			\
+		$(PATHRED)/rempl_redirection.c			\
+		$(PATHRED)/return_type_char.c			\
 
 SRCLIBLINE=	$(LIBLINE)/str_cmp.c				\
 		$(LIBLINE)/my_memset.c				\
@@ -123,12 +138,14 @@ SRCTERMCAP=	$(PATHTERMCAP)/ecrase_text.c			\
 		$(PATHTERMCAP)/clear.c				\
 		$(PATHTERMCAP)/dl_current_pos.c			\
 
-OBJ	=	$(SRC:.c=.o) \
-		$(SRCBUILTINS:.c=.o) \
-		$(ENV:.c=.o) \
-		$(SRCLINE:.c=.o) \
-		$(SRCLIBLINE:.c=.o) \
-		$(SRCTERMCAP:.c=.o) \
+OBJ	=	$(SRC:.c=.o) 					\
+		$(SRCBUILTINS:.c=.o) 				\
+		$(ENV:.c=.o) 					\
+		$(SRCLINE:.c=.o) 				\
+		$(SRCLIBLINE:.c=.o) 				\
+		$(SRCTERMCAP:.c=.o) 				\
+		$(SRCRED:.c=.o) 				\
+		$(SRCGLOBB:.c=.o) 				\
 
 $(NAME):	$(OBJ)
 		$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LIBS)

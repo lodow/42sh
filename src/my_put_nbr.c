@@ -8,7 +8,7 @@
 ** Last update Sat Apr 13 07:59:27 2013 remi robert
 */
 
-#include "../include/42sh.h"
+#include "42sh.h"
 
 int	number_digit(int nb, int nombre_chiffre, int multiplicateur)
 {

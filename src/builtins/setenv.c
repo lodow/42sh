@@ -12,20 +12,12 @@
 
 void	builtin_setenv(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
-  char	*temp;
-
   if (cmd->argv[1] == NULL)
     {
       builtin_env(cmd, fd, shell);
       return ;
     }
-  if (get_envvar(cmd->argv[1], shell->env) != 0)
-    rm_ptr_f_tab((void **) shell->env, cmd->argv[1]);
-  temp = malloc(my_strlen(cmd->argv[1]) + my_strlen(cmd->argv[2]) + 2);
-  my_strncpy(temp, cmd->argv[1], -1);
-  my_strncpy(&(temp[my_strlen(temp)]), "=", -1);
-  my_strncpy(&(temp[my_strlen(temp)]), cmd->argv[2], -1);
-  shell->env = (char **) add_ptr_t_tab((void **) shell->env, temp);
+  shell->env = add_change_env(shell->env, cmd->argv[1], cmd->argv[2]);
   if (my_strncmp(cmd->argv[1], "PATH", -1) == 0)
-    shell->path = str_to_wordtab(cmd->argv[2], ":", 0);
+    shell->path = get_path(shell->env);
 }

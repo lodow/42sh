@@ -12,14 +12,9 @@
 
 void	builtin_history(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
-  void	*temp;
-
   if (cmd->argv[1] == NULL)
     {
-      temp = (void *)cmd->argv[0];
-      cmd->argv[0] = (char *)shell->history;
       exec_process(cmd, fd, shell,  &view_history);
-      cmd->argv[0] = (char *)temp;
       return ;
     }
   if (cmd->argv[1] != NULL && str_cmp(cmd->argv[1], "-c") == 1)

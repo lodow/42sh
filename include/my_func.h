@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Sun Apr 14 17:56:20 2013 remi robert
+** Last update Mon Apr 15 09:51:08 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -20,6 +20,7 @@
 #include <sys/ioctl.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <glob.h>
 #include "couleur.h"
 
 # define UP		65
@@ -140,7 +141,7 @@ char			*return_string(t_string *);
 void			print_prompt(t_param *);
 void			control_clear(t_param **);
 void			delete_line_curser(void);
-void			my_putstr(char *, int, int);
+void			my_putstr(const char *, int, int);
 void			begin_str(t_param *);
 void			end_str(t_param *);
 char			*return_saisi(t_param *, t_history **);
@@ -150,7 +151,6 @@ void			gere_history(t_param **, char *, t_history **);
 char			*return_pos_history(t_history *, int);
 void			add_elem_new_cmd(t_string **, char);
 void			recup_new_string(t_param **, char *);
-int			view_history(char *, char **, char **);
 int			str_cmp(char *, char *);
 void			add_history_current_cmd(t_param **, t_history **);
 void			add_current_history(t_history **, char *);
@@ -158,5 +158,7 @@ void			my_put_nbr(int);
 void			gere_current_history(t_param **, char *);
 void			gere_globb(t_param **);
 void			clear_history(t_history *);
+char			*return_very_string(char *, char *, int);
+char			*return_str_globb(char *, int);
 
 #endif /* MY_FUNC_H_ */

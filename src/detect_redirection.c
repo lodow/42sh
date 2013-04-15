@@ -5,27 +5,27 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed Apr 10 10:42:19 2013 remi robert
-** Last update Wed Apr 10 13:45:08 2013 remi robert
+** Last update Sun Apr 14 21:50:24 2013 remi robert
 */
 
 #include "my_func.h"
 #include "42sh.h"
 
-void	return_type_char(char *str, int *type_b, int *type_g)
-{
-  if (str[0] == '<')
-    {
-      if (str[1] == '<')
-        *type_g = REDI_DL;
-      *type_g = REDI_L;
-    }
-  if (str[0] == '>')
-    {
-      if (str[1] == '>')
-        *type_b = REDI_DR;
-      *type_b = REDI_R;
-    }
-}
+/* void	return_type_char(char *str, int *type_b, int *type_g) */
+/* { */
+/*   if (str[0] == '<') */
+/*     { */
+/*       if (str[1] == '<') */
+/*         *type_g = REDI_DL; */
+/*       *type_g = REDI_L; */
+/*     } */
+/*   if (str[0] == '>') */
+/*     { */
+/*       if (str[1] == '>') */
+/*         *type_b = REDI_DR; */
+/*       *type_b = REDI_R; */
+/*     } */
+/* } */
 
 void	return_type_redirection(char *str, int *type_b, int *type_g)
 {
@@ -35,7 +35,7 @@ void	return_type_redirection(char *str, int *type_b, int *type_g)
   if (str != NULL)
     while (str[indice] != '\0')
       {
-        return_type_char(&str[indice], type_b, type_g);
+	//        return_type_char(&str[indice], type_b, type_g);
         indice = indice + 1;
       }
 }
