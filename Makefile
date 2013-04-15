@@ -59,6 +59,7 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/cmd.c				\
 		$(SRCPATH)/wait.c				\
 		$(SRCPATH)/load_conf.c				\
+		$(SRCPATH)/store_conf.c				\
 		$(SRCPATH)/cmd_full_path.c			\
 		$(SRCPATH)/ptr_tab.c				\
 		$(SRCPATH)/get_next_line.c			\
@@ -89,6 +90,8 @@ SRCBUILTINS=	$(BUILTINS)/builtins.c				\
 		$(BUILTINS)/exit.c				\
 		$(BUILTINS)/history.c				\
 		$(BUILTINS)/alias.c				\
+		$(BUILTINS)/source.c			\
+		$(BUILTINS)/clear.c				\
 
 SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/add_caractere.c			\

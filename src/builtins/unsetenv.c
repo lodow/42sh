@@ -12,12 +12,9 @@
 
 void	builtin_unsetenv(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
-  char	*temp;
-
   if (cmd->argv[1] == NULL)
     my_putstr("Unsetenv: missing argument\n", 2, -1);
-  if ((temp = get_envvar(cmd->argv[1], shell->env)) != NULL)
-    rm_ptr_f_tab((void **) shell->env, temp - my_strlen(cmd->argv[1]) - 1);
+  rm_env(shell->env, cmd->argv[1]);
   if (my_strncmp(cmd->argv[1], "PATH", -1) == 0)
     {
       free_ptr_tab((void **) shell->path);
