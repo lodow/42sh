@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Sun Apr 14 20:01:19 2013 remi robert
+** Last update Mon Apr 15 17:01:43 2013 maxime lavandier
 */
 
 #include <string.h>
@@ -24,7 +24,7 @@
 
 void	my_strncpy_force(char *str1, char *str2, int size)
 {
-  strncpy(str1, str2, size);
+  my_strncpy(str1, str2, size);
   str1[size] = 0;
 }
 
