@@ -51,6 +51,9 @@
 		<Unit filename="src/builtins/cd.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/builtins/clear.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/builtins/echo.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -73,6 +76,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/builtins/setenv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/builtins/source.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/builtins/unsetenv.c">

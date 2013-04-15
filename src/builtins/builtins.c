@@ -10,6 +10,14 @@
 
 #include "42sh.h"
 
+void	init_builtins2(t_sh *shell)
+{
+  shell->builtins[12].func = &builtin_source;
+  shell->builtins[12].str = "source";
+  shell->builtins[13].func = &builtin_clear;
+  shell->builtins[13].str = "clear";
+}
+
 void	init_builtins(t_sh *shell)
 {
   shell->builtins[0].func = &builtin_env;
@@ -36,7 +44,7 @@ void	init_builtins(t_sh *shell)
   shell->builtins[10].str = "history";
   shell->builtins[11].func = &builtin_robert;
   shell->builtins[11].str = "robert";
-
+  init_builtins2(shell);
 }
 
 int	is_cmd_a_builtin(t_cmd *cmd, t_fds *fd, t_sh *shell, int exec)

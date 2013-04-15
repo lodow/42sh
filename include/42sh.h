@@ -28,7 +28,7 @@
 # include "get_file.h"
 # include "my_func.h"
 
-# define NB_BUILTINS 12
+# define NB_BUILTINS 14
 # define NB_CONFFUNC 2
 
 # define PIPE_READ 0
@@ -135,6 +135,8 @@ void	builtin_bg(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_jobs(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_history(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_alias(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	builtin_source(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	builtin_clear(t_cmd *cmd, t_fds *fd, t_sh *shell);
 
 
 /*

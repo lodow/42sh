@@ -90,6 +90,8 @@ SRCBUILTINS=	$(BUILTINS)/builtins.c				\
 		$(BUILTINS)/exit.c				\
 		$(BUILTINS)/history.c				\
 		$(BUILTINS)/alias.c				\
+		$(BUILTINS)/source.c			\
+		$(BUILTINS)/clear.c				\
 
 SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/add_caractere.c			\
