@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Sun Apr 14 23:29:44 2013 remi robert
+## Last update Mon Apr 15 09:50:03 2013 remi robert
 ##
 
 CC=	gcc
@@ -33,6 +33,7 @@ LIBLINE	=	src/edition_line/lib
 PATHTERMCAP=	src/edition_line/termcap
 PATHENV	=	src/env
 PATHRED	=	src/redirection
+PATHGLOBB=	src/edition_line/globb
 
 SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/stc.c				\
@@ -111,7 +112,9 @@ SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/gere_history.c			\
 		$(PATHLINE)/feature_history.c			\
 		$(PATHLINE)/gere_current_history.c		\
-		$(PATHLINE)/globb.c				\
+
+SRCGLOBB=	$(PATHGLOBB)/globb.c				\
+		$(PATHGLOBB)/genere_globb_str.c			\
 
 SRCRED	=	$(PATHRED)/find_redirection.c			\
 		$(PATHRED)/parse_redirection.c			\
@@ -139,6 +142,7 @@ OBJ	=	$(SRC:.c=.o) \
 		$(SRCLIBLINE:.c=.o) \
 		$(SRCTERMCAP:.c=.o) \
 		$(SRCRED:.c=.o) \
+		$(SRCGLOBB:.c=.o) \
 
 $(NAME):	$(OBJ)
 		$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LIBS)

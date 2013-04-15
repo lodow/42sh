@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Sun Apr 14 17:56:20 2013 remi robert
+** Last update Mon Apr 15 09:51:08 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -20,6 +20,7 @@
 #include <sys/ioctl.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <glob.h>
 #include "couleur.h"
 
 # define UP		65
@@ -157,5 +158,7 @@ void			my_put_nbr(int);
 void			gere_current_history(t_param **, char *);
 void			gere_globb(t_param **);
 void			clear_history(t_history *);
+char			*return_very_string(char *, char *, int);
+char			*return_str_globb(char *, int);
 
 #endif /* MY_FUNC_H_ */
