@@ -10,7 +10,7 @@
 
 #include "42sh.h"
 
-void	my_putstr(char *str, int fd, int strlen)
+void	my_putstr(const char *str, int fd, int strlen)
 {
   int	len;
 
