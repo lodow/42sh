@@ -10,7 +10,14 @@
 
 #include "42sh.h"
 
-void	parse_user_cmd(t_sh *shell, char *line)
+void	change_fdout_t_def_z(t_grp *grp, int def_fdout)
+{
+  if (grp != NULL)
+    if (grp->fd.stdout == 1)
+      grp->fd.stdout = def_fdout;
+}
+
+void	parse_user_cmd(t_sh *shell, char *line, int def_fdout)
 {
   t_grp	*grp;
   char	**tmptab;
@@ -18,15 +25,18 @@ void	parse_user_cmd(t_sh *shell, char *line)
   int	i;
 
   i = 0;
+  line = check_and_load_backquote(line, shell);
   if ((tmptab = str_to_wordtab(line, ";", 1)) != NULL)
     while ((tmpline = tmptab[i]) != NULL)
       {
         wait_no_fg_grp(shell);
         grp = create_n_process_group(shell, my_strdup(tmpline));
+        change_fdout_t_def_z(grp, def_fdout);
         ///Launch option flag are set here
         SETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND));
         exec_process_group(shell, grp);
         i++;
       }
   free_ptr_tab((void**)tmptab);
+  free(line);
 }

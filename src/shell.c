@@ -40,7 +40,7 @@ void	user_loop(t_sh *shell)
     {
       update_jobs_status(shell);
       call_signal_func(shell, 0);
-      parse_user_cmd(shell, lign);
+      parse_user_cmd(shell, lign, 1);
       free(lign);
       wait_no_fg_grp(shell);
       recalc_prompt(shell);

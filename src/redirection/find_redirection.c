@@ -23,10 +23,10 @@ int	find_redirection(char **tab, char *str)
   while (tab[indice] != NULL)
     {
       if (str_cmp(tab[indice], "<") == 1 ||
-	  str_cmp(tab[indice], "<<") == 1 ||
-	  str_cmp(tab[indice], ">") == 1 ||
-	  str_cmp(tab[indice], ">>") == 1)
-	nb = nb + 1;
+          str_cmp(tab[indice], "<<") == 1 ||
+          str_cmp(tab[indice], ">") == 1 ||
+          str_cmp(tab[indice], ">>") == 1)
+        nb = nb + 1;
       indice = indice + 1;
     }
   return (nb);

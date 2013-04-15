@@ -45,7 +45,7 @@ void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
       f(cmd->cmd_fpath, cmd->argv, shell);
       /*    if (cmd->fd.stdin != 0)
             cat(0, 1);
-      */    my_putstr("What are you trying to do ? Fool (Did you meant robert ?) !\n", 1, -1);
+      */    my_putstr("What are you trying to do ? Fool!\n", 1, -1);
       my_exit(-1);
     }
 }
