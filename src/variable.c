@@ -97,5 +97,24 @@ char	*check_vars_in_str(char *str, char **envp)
       var = 1;
       i++;
     }
+  if (var == 0)
+    return (NULL);
   return (str);
+}
+
+void	replace_var_in_argv(char **argv, char **envp)
+{
+  char	*str;
+
+  if ((argv == NULL) || (envp == NULL))
+    return ;
+  while (argv[0] != NULL)
+    {
+      if ((str = check_vars_in_str(argv[0], envp)) != NULL)
+        {
+          free(argv[0]);
+          argv[0] = str;
+        }
+      argv = &(argv[1]);
+    }
 }

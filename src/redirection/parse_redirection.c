@@ -11,7 +11,7 @@
 #include "42sh.h"
 
 void	init_elem_red(t_redirection *red, int size,
-		      int *pos, int *pos_indice)
+                    int *pos, int *pos_indice)
 {
   int	indice;
 
@@ -29,7 +29,7 @@ void	init_elem_red(t_redirection *red, int size,
     }
 }
 
-char	*parse_redirection(t_grp **grp, char *lign, int *nb_red)
+char	*parse_redirection(t_grp *grp, char *lign, int *nb_red)
 {
   char	**tab;
   int	indice;
@@ -37,21 +37,20 @@ char	*parse_redirection(t_grp **grp, char *lign, int *nb_red)
 
   if ((tab = str_to_wordtab(lign, " ", 2)) != NULL &&
       (*nb_red = find_redirection(tab, lign)) != 0 &&
-      ((*grp)->redirection = malloc(sizeof(t_redirection) *
-				    (*nb_red + 1))) != NULL)
+      (grp->redirection = malloc(sizeof(t_redirection) *
+                                 (*nb_red + 1))) != NULL)
     {
-      init_elem_red((*grp)->redirection, *nb_red, &indice, &pos);
+      init_elem_red(grp->redirection, *nb_red, &indice, &pos);
       while (tab[indice] != NULL)
-      	{
-	  fflush(stdout);
-      	  if (rempl_red(&tab[indice], &(*grp)->redirection[pos % *nb_red]) == 1)
-	    {
-	      tab[indice][0] = '\0';
-	      tab[indice + 1][0] = '\0';
-	      pos = pos + 1;
-	    }
-      	  indice = indice + 1;
-      	}
+        {
+          if (rempl_red(&tab[indice], &(grp->redirection[pos % *nb_red])) == 1)
+            {
+              tab[indice][0] = '\0';
+              tab[indice + 1][0] = '\0';
+              pos = pos + 1;
+            }
+          indice = indice + 1;
+        }
       return (reform_lign(tab));
     }
   return (lign);

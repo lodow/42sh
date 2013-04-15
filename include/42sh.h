@@ -226,6 +226,7 @@ void	my_perror(char *str);
 */
 char	*get_envvar(char *var, char **env);
 char	*check_vars_in_str(char *str, char **envp);
+void	replace_var_in_argv(char **argv, char **envp);
 
 /*
 ** Commands
@@ -268,7 +269,7 @@ char	*return_file_redir(char *, int, int);
 /*
 ** redirection
 */
-char	*parse_redirection(t_grp **, char *, int *);
+char	*parse_redirection(t_grp *, char *, int *);
 void	rempl_fd_process(t_redirection *, t_grp *);
 int	find_redirection(char **, char *);
 int	rempl_red(char **, t_redirection *);

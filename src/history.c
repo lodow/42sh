@@ -40,7 +40,7 @@ void		clear_history(t_history *ptr)
     {
       ptr = ptr->next;
       if (ptr->back->cmd != NULL)
-	free(ptr->back->cmd);
+        free(ptr->back->cmd);
       free(ptr->back);
     }
   if (ptr->cmd != NULL)
