@@ -135,7 +135,10 @@
 		<Unit filename="src/edition_line/get_len_string_with_pos.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/edition_line/globb.c">
+		<Unit filename="src/edition_line/globb/genere_globb_str.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/globb/globb.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/include/couleur.h" />
@@ -156,9 +159,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/lib/str_cmp.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/main_line.c">

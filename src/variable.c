@@ -97,8 +97,6 @@ char	*check_vars_in_str(char *str, char **envp)
       var = 1;
       i++;
     }
-  if (var == 0)
-    return (NULL);
   return (str);
 }
 
@@ -112,7 +110,8 @@ void	replace_var_in_argv(char **argv, char **envp)
     {
       if ((str = check_vars_in_str(argv[0], envp)) != NULL)
         {
-          free(argv[0]);
+          if (str != argv[0])
+            free(argv[0]);
           argv[0] = str;
         }
       argv = &(argv[1]);
