@@ -5,12 +5,12 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Mon Apr 15 09:50:03 2013 remi robert
+## Last update Mon Apr 15 09:58:19 2013 remi robert
 ##
 
-CC=	gcc
+CC	=	gcc
 
-RM= rm
+RM	= 	rm
 
 NAME	=	robertSH
 
@@ -20,11 +20,11 @@ COMPILEFLAG	=	-g -Wall -Wfloat-equal -Wmissing-include-dirs \
 		-Wold-style-declaration -Woverride-init -Wsign-compare \
 		-Wtype-limits -Wuninitialized
 
-INCLUDE= -Iinclude/
+INCLUDE	= 	-Iinclude/
 
-LIBS= -ltermcap
+LIBS	= 	-ltermcap
 
-CFLAGS= $(COMPILEFLAG) $(INCLUDE)
+CFLAGS	= 	$(COMPILEFLAG) $(INCLUDE)
 
 SRCPATH	=	src
 BUILTINS=	src/builtins
@@ -37,7 +37,7 @@ PATHGLOBB=	src/edition_line/globb
 
 SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/stc.c				\
-		$(SRCPATH)/backquotes.c			\
+		$(SRCPATH)/backquotes.c				\
 		$(SRCPATH)/inib_str_to_wordtab.c		\
 		$(SRCPATH)/str.c				\
 		$(SRCPATH)/my_uint64_t_strbase.c		\
@@ -135,14 +135,14 @@ SRCTERMCAP=	$(PATHTERMCAP)/ecrase_text.c			\
 		$(PATHTERMCAP)/clear.c				\
 		$(PATHTERMCAP)/dl_current_pos.c			\
 
-OBJ	=	$(SRC:.c=.o) \
-		$(SRCBUILTINS:.c=.o) \
-		$(ENV:.c=.o) \
-		$(SRCLINE:.c=.o) \
-		$(SRCLIBLINE:.c=.o) \
-		$(SRCTERMCAP:.c=.o) \
-		$(SRCRED:.c=.o) \
-		$(SRCGLOBB:.c=.o) \
+OBJ	=	$(SRC:.c=.o) 					\
+		$(SRCBUILTINS:.c=.o) 				\
+		$(ENV:.c=.o) 					\
+		$(SRCLINE:.c=.o) 				\
+		$(SRCLIBLINE:.c=.o) 				\
+		$(SRCTERMCAP:.c=.o) 				\
+		$(SRCRED:.c=.o) 				\
+		$(SRCGLOBB:.c=.o) 				\
 
 $(NAME):	$(OBJ)
 		$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LIBS)
