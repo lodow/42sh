@@ -38,4 +38,5 @@ void	parse_user_cmd(t_sh *shell, char *line, int def_fdout)
         i++;
       }
   free_ptr_tab((void**)tmptab);
+  free(line);
 }

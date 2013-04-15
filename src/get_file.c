@@ -42,6 +42,8 @@ char	*my_strcpysepa(char *str1, char sepa, char *str2)
   int	i;
 
   i = 0;
+  if ((str1 == NULL) || (str2 == NULL))
+    return (NULL);
   while (str2[i] != '\0')
     {
       str1[i] = str2[i];

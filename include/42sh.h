@@ -174,6 +174,7 @@ void	swap_ptr(void **ptr1, void **ptr2);
 void	tr_str(char *str, char in, char to);
 char	*my_uint_strbase(unsigned int nb, char * base);
 int	my_getnbr(char *str);
+char	*my_stradd(char *str, char *add, int size_add);
 
 /*
 ** Str to wordtab
