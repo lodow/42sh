@@ -308,6 +308,9 @@
 		<Unit filename="src/stc.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/store_conf.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/str.c">
 			<Option compilerVar="CC" />
 		</Unit>

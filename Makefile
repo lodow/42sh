@@ -59,6 +59,7 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/cmd.c				\
 		$(SRCPATH)/wait.c				\
 		$(SRCPATH)/load_conf.c				\
+		$(SRCPATH)/store_conf.c				\
 		$(SRCPATH)/cmd_full_path.c			\
 		$(SRCPATH)/ptr_tab.c				\
 		$(SRCPATH)/get_next_line.c			\

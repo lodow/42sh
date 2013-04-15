@@ -10,18 +10,6 @@
 
 #include "42sh.h"
 
-char	**get_path(char **envp)
-{
-  char	**paths;
-
-  paths = str_to_wordtab(get_envvar("PATH", envp), ":", 0);
-  if (paths == NULL)
-    {
-      // if you want to set a default path if none, it's here!
-    }
-  return (paths);
-}
-
 int		init_shell(t_sh *shell, char **main_env)
 {
   get_sh_info(shell);
@@ -47,6 +35,13 @@ int		init_shell(t_sh *shell, char **main_env)
   return (0);
 }
 
+void	exit_shell(t_sh *shell)
+{
+  store_conf_file(".history", shell, store_history_f);
+  //free shell
+  free_ptr_tab((void**)shell->env);
+}
+
 int		main(int ac, char **av, char **main_env)
 {
   t_sh		shell;
@@ -62,7 +57,6 @@ int		main(int ac, char **av, char **main_env)
     {
       user_loop(&shell);
     }
-  //free shell
-  free_ptr_tab((void**)shell.env);
+  exit_shell(&shell);
   return (0);
 }

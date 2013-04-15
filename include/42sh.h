@@ -251,7 +251,10 @@ void	close_fds(t_fds *fd);
 /*
 ** Conf file
 */
+void	store_history_f(t_sh *shell, int fd);
 int	new_conf_set(char *str, t_sh *shell);
+void	store_conf_file(const char *filename, t_sh *shell,
+                      void (*f)(t_sh *shell, int fd));
 void	load_conf_file(const char *filename, t_sh *shell,
                      int (*f)(char *line, t_sh *shell));
 void	alias_replace(char ***argv, char **alias);
