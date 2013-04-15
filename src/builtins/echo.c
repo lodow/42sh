@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Apr 15 20:49:31 2013 maxime lavandier
+** Last update Mon Apr 15 20:55:32 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -18,7 +18,7 @@ int	builtin_echo_option(char **argv, int *new_line)
   i = 1;
   while (argv[i] != NULL && argv[i][0] == '-')
     {
-      if (strcmp(argv[i], "-n") == 0)
+      if (my_strncmp(argv[i], "-n", -1) == 0)
 	*new_line = 0;
       i++;
     }
