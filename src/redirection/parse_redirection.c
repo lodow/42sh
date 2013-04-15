@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun Apr 14 19:54:34 2013 remi robert
-** Last update Sun Apr 14 23:59:06 2013 remi robert
+** Last update Mon Apr 15 11:14:18 2013 remi robert
 */
 
 #include "42sh.h"
@@ -35,7 +35,7 @@ char	*parse_redirection(t_grp **grp, char *lign, int *nb_red)
   int	indice;
   int	pos;
 
-  if ((tab = str_to_wordtab(lign, " ", 2)) != NULL &&
+  if (lign != NULL && (tab = str_to_wordtab(lign, " ", 2)) != NULL &&
       (*nb_red = find_redirection(tab, lign)) != 0 &&
       ((*grp)->redirection = malloc(sizeof(t_redirection) *
 				    (*nb_red + 1))) != NULL)
@@ -43,7 +43,6 @@ char	*parse_redirection(t_grp **grp, char *lign, int *nb_red)
       init_elem_red((*grp)->redirection, *nb_red, &indice, &pos);
       while (tab[indice] != NULL)
       	{
-	  fflush(stdout);
       	  if (rempl_red(&tab[indice], &(*grp)->redirection[pos % *nb_red]) == 1)
 	    {
 	      tab[indice][0] = '\0';
