@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Sun Apr 14 23:57:36 2013 remi robert
+** Last update Mon Apr 15 21:59:23 2013 maxime lavandier
 */
 
 #ifndef		SH42_H
@@ -33,6 +33,12 @@
 
 # define PIPE_READ 0
 # define PIPE_WRITE 1
+
+# define ECHO_5(y)	(y == 't' ? '\t' : y == 'v' ? '\v' : -1)
+# define ECHO_4(y)	(y == 'n' ? '\n' : y == 'r' ? '\r' : ECHO_5(y))
+# define ECHO_3(y)	(y == 'e' ? '\e' : y == 'f' ? '\f' : ECHO_4(y))
+# define ECHO_2(y)	(y == 'b' ? -2 : y == 'c' ? '\c' : ECHO_3(y))
+# define ECHO_1(y)	(y == '\\' ? '\\' : y == 'a' ? '\a' : ECHO_2(y))
 
 # define SETFLAG(x, y) ((x) |= (y))
 # define UNSETFLAG(x, y) ((x) &= ~(y))
@@ -177,6 +183,8 @@ void	swap_ptr(void **ptr1, void **ptr2);
 void	tr_str(char *str, char in, char to);
 char	*my_uint_strbase(unsigned int nb, char * base);
 int	my_getnbr(char *str);
+void	my_strncpy_force(char *str1, char *str2, int size);
+void	del_slash_quote(char **tab);
 char	*my_stradd(char *str, char *add, int size_add);
 
 /*

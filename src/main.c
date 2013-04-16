@@ -10,9 +10,19 @@
 
 #include "42sh.h"
 
+void	init_sig()
+{
+  signal(SIGTTOU, &sig_handler);
+  signal(SIGTTIN, &sig_handler);
+  signal(SIGINT, &sig_handler);
+  signal(SIGTSTP, &sig_handler);
+  signal(SIGCHLD, &sig_handler);
+}
+
 int		init_shell(t_sh *shell, char **main_env)
 {
   get_sh_info(shell);
+  init_sig();
   init_builtins(shell);
   if (((shell->env = cpy_env(main_env)) == NULL)
       || ((shell->path = get_path(shell->env)) == NULL))
@@ -46,11 +56,6 @@ int		main(int ac, char **av, char **main_env)
 {
   t_sh		shell;
 
-  signal(SIGTTOU, &sig_handler);
-  signal(SIGTTIN, &sig_handler);
-  signal(SIGINT, &sig_handler);
-  signal(SIGTSTP, &sig_handler);
-  signal(SIGCHLD, &sig_handler);
   if (init_shell(&shell, main_env) == -1)
     return (0);
   if (shell.env != NULL)
