@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Mon Apr 15 21:59:23 2013 maxime lavandier
+** Last update Tue Apr 16 15:20:39 2013 maxime lavandier
 */
 
 #ifndef		SH42_H
@@ -37,7 +37,7 @@
 # define ECHO_5(y)	(y == 't' ? '\t' : y == 'v' ? '\v' : -1)
 # define ECHO_4(y)	(y == 'n' ? '\n' : y == 'r' ? '\r' : ECHO_5(y))
 # define ECHO_3(y)	(y == 'e' ? '\e' : y == 'f' ? '\f' : ECHO_4(y))
-# define ECHO_2(y)	(y == 'b' ? -2 : y == 'c' ? '\c' : ECHO_3(y))
+# define ECHO_2(y)	(y == 'b' ? '\b' : y == 'c' ? -2 : ECHO_3(y))
 # define ECHO_1(y)	(y == '\\' ? '\\' : y == 'a' ? '\a' : ECHO_2(y))
 
 # define SETFLAG(x, y) ((x) |= (y))
