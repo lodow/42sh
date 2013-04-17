@@ -38,7 +38,7 @@ void	user_loop(t_sh *shell)
   recalc_prompt(shell);
   while ((lign = read_cmd(&(shell->param), &shell->history)) != NULL)
     {
-      update_jobs_status(shell);
+      no_fg_jobs_status(shell);
       call_signal_func(shell, 0);
       parse_user_cmd(shell, lign, 1);
       free(lign);

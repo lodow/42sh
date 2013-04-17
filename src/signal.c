@@ -40,7 +40,7 @@ void	sig_handler(int sig)
 void	call_signal_func(t_sh *shell, int chld_sig)
 {
   if (chld_sig == SIGTSTP)
-    update_jobs_status(shell);
+    no_fg_jobs_status(shell);
   wait_all_jobs(shell, shell->process_group);
   shell->signal = 0;
 }

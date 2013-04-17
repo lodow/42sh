@@ -28,7 +28,37 @@ void	aff_special_return_val(t_cmd *cmd)
         my_putstr("Segmentation fault\n", 2, -1);
     }
   if (WIFEXITED(cmd->return_value))
-    cmd->return_value = WEXITSTATUS(cmd->return_value);
+    {
+      cmd->return_value = WEXITSTATUS(cmd->return_value);
+      cmd->pid.pid = -1 ;
+    }
+}
+
+t_cmd	*cmd_f_pid(int pid, t_sh *shell)
+{
+  int	i;
+  int	j;
+  t_grp	*tmpgrp;
+  t_cmd	*tmpcmd;
+
+  i = 0;
+  if ((shell == NULL) || (shell->process_group == NULL) || (pid == -1))
+    return (NULL);
+  while ((tmpgrp = shell->process_group[i]) != NULL)
+    {
+      if (tmpgrp->cmds != NULL)
+        {
+          j = 0;
+          while ((tmpcmd = tmpgrp->cmds[j]) != NULL)
+            {
+              if (tmpcmd->pid.pid == pid)
+                return (tmpcmd);
+              j++;
+            }
+        }
+      i++;
+    }
+  return (NULL);
 }
 
 int	wait_son(t_grp *grp)
@@ -81,7 +111,7 @@ void	wait_all_jobs(t_sh *shell, t_grp **jobtab)
             }
           UNSETFLAG(jobtab[i]->flags, FLAGPOS(FGRP_FORGROUND));
           rm_ptr_f_tab((void**)shell->process_group, (void*)jobtab[i]);
-          //delete it ? it's seem yes, don't know if it's a good ieda :(
+          //delete it ? it's seem yes, don't know if it's a good ieda
         }
       i++;
     }
@@ -92,11 +122,16 @@ void	wait_no_fg_grp(t_sh* shell)
   t_grp	*fg;
   int	tmp;
   int	sig;
+  t_cmd	*cmd;
 
   while ((fg = get_forground_grp(shell)) != NULL)
     {
-      waitpid(-1, &tmp, WUNTRACED);
       sig = 0;
+      if ((cmd = cmd_f_pid(waitpid(-1, &tmp, WUNTRACED), shell)) != NULL)
+        {
+          cmd->return_value = tmp;
+          aff_special_return_val(cmd);
+        }
       if (WIFSIGNALED(tmp))
         sig = WTERMSIG(tmp);
       if (WIFSTOPPED(tmp))
