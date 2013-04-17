@@ -16,3 +16,4 @@ Liste des bonus :
 -Backquotes
 -Variable
 -Inhibiteurs
+-Fichier de conf
