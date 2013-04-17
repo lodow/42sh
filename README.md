@@ -13,3 +13,4 @@ Liste des bonus :
 -Job control
 -Historique
 -Clear
+-alias
