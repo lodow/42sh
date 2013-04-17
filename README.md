@@ -12,5 +12,8 @@ Liste des bonus :
 -Edition de ligne
 -Job control
 -Historique
--Clear
--alias
+-Alias
+-Backquotes
+-Variable
+-Inhibiteurs
+-Fichier de conf
