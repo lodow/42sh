@@ -1,3 +1,33 @@
+fg 1
+jobs
+jobs
+cat -e &
+ls
+sleep 3 &
+ls &
+ls
+sleep 3 &
+sleep 3 &
+sleep 3 &
+sleep 3 &
+sleep 3 &
+sleep 3
+ls &
+ls
+ls
+s
+l
+ls
+ls
+l
+ll
+ll
+ls
+fg 1
+cat -e
+ls
+ls
+ls
 alias
 ls
 env
@@ -255,3 +285,20 @@ cat .history
 `echo ls`
 ls
 env
+read
+ls
+ls | cat -e
+ls | cat -e | grep m
+ls | cat -e | grep sqmdk
+lsls
+ls
+grep sdq
+grep sdq
+ls | cat -e | grep sqmdk
+sleep 3 &
+sleep 3 | ls &
+sleep 3 | ls &
+sleep 3 | ls &
+sleep 3 &
+sleep 3 &
+ls

@@ -110,6 +110,14 @@ void	wait_all_jobs(t_sh *shell, t_grp **jobtab)
                 }
             }
           UNSETFLAG(jobtab[i]->flags, FLAGPOS(FGRP_FORGROUND));
+          int j = 0;
+          printf("grp return value is [");
+          while (jobtab[i]->cmds[j] != NULL)
+            {
+              printf("%d,", jobtab[i]->cmds[j]->return_value);
+              j++;
+            }
+          printf("\n");
           rm_ptr_f_tab((void**)shell->process_group, (void*)jobtab[i]);
           //delete it ? it's seem yes, don't know if it's a good ieda
         }
@@ -140,4 +148,5 @@ void	wait_no_fg_grp(t_sh* shell)
         sig = SIGCONT;
       call_signal_func(shell, sig);
     }
+  set_forground_pgrp(shell->pid.pgid);
 }

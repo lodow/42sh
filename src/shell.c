@@ -40,10 +40,10 @@ void	user_loop(t_sh *shell)
     {
       no_fg_jobs_status(shell);
       call_signal_func(shell, 0);
+      wait_no_fg_grp(shell);
       parse_user_cmd(shell, lign, 1);
-      free(lign);
       wait_no_fg_grp(shell);
       recalc_prompt(shell);
+      free(lign);
     }
-  reset_mod(shell->param.t);
 }

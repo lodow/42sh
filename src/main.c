@@ -60,7 +60,7 @@ int		main(int ac, char **av, char **main_env)
   t_sh		shell;
 
   if (init_shell(&shell, main_env) == -1)
-    return (0);
+    return (-1);
   if (shell.env != NULL)
     {
       user_loop(&shell);
