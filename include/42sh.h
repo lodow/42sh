@@ -247,7 +247,7 @@ t_cmd	*create_n_cmd(t_sh *shell, char *lign);
 char	*exec_full_path(char *exec, char **paths);
 int	exec_process_group(t_sh *shell, t_grp *grp);
 void	cmd_execution(t_cmd *cmd, t_fds *fd, t_sh *shell);
-void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
+int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
                    int (*f)(char *cmd, char **argv, t_sh *shell));
 void	free_process_group(t_grp *grp);
 int	is_grp_exec(t_sh *shell, t_grp *grp);
@@ -272,7 +272,8 @@ void	alias_replace(char ***argv, char **alias);
 /*
 ** Exit
 */
-void	my_exit(int value);
+void	my_exit(int value, int pid);
+void	exit_shell(t_sh *shell);
 
 /*
 ** detect_type_redirection

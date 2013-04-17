@@ -12,9 +12,12 @@
 
 void	builtin_exit(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
-  reset_mod(shell->param.t);
+  int	pid;
+
+  pid = getpid();
+  exit_shell(shell);
   if (cmd->argv[1] == NULL)
-    my_exit(0);
+    my_exit(0, pid);
   else
-    my_exit(my_getnbr(cmd->argv[1]));
+    my_exit(my_getnbr(cmd->argv[1]), pid);
 }

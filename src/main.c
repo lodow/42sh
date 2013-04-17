@@ -17,6 +17,8 @@ void	init_sig()
   signal(SIGINT, &sig_handler);
   signal(SIGTSTP, &sig_handler);
   signal(SIGCHLD, &sig_handler);
+  signal(SIGHUP, &sig_handler);
+  signal(SIGTERM, &sig_handler);
 }
 
 int		init_shell(t_sh *shell, char **main_env)
@@ -47,6 +49,7 @@ int		init_shell(t_sh *shell, char **main_env)
 
 void	exit_shell(t_sh *shell)
 {
+  reset_mod(shell->param.t);
   store_conf_file(".history", shell, store_history_f);
   //free shell
   free_ptr_tab((void**)shell->env);

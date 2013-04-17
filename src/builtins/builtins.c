@@ -59,6 +59,7 @@ int	is_cmd_a_builtin(t_cmd *cmd, t_fds *fd, t_sh *shell, int exec)
           {
             if (exec)
               {
+                cmd->pid.pid = -1;
                 ((void(*)(t_cmd*, t_fds*, t_sh*))(shell->builtins[i].func))
                 (cmd, fd, shell);
               }

@@ -80,8 +80,7 @@ int	builtins_print_echo(char *path, char **argv, t_sh *shell)
     }
   if (new_line)
     my_putstr("\n", 1, -1);
-  my_exit(0);
-  return (-1);
+  return (0);
 }
 
 void	builtin_echo(t_cmd *cmd, t_fds *fd, t_sh *shell)

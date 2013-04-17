@@ -34,8 +34,7 @@ int		view_history(char *path, char **argv, t_sh *shell)
       my_putstr("\n", 1, -1);
       pcourant = pcourant->back;
     }
-  my_exit(0);
-  return (-1);
+  return (0);
 }
 
 void		clear_history(t_history *ptr)
