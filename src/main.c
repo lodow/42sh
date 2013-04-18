@@ -24,6 +24,7 @@ void	init_sig()
 int		init_shell(t_sh *shell, char **main_env)
 {
   get_sh_info(shell);
+  shell->viteviteexit = 0;
   init_sig();
   init_builtins(shell);
   if (((shell->env = cpy_env(main_env)) == NULL)
@@ -66,5 +67,6 @@ int		main(int ac, char **av, char **main_env)
       user_loop(&shell);
     }
   exit_shell(&shell);
-  return (0);
+  UNSETFLAG(shell.viteviteexit, FLAGPOS(EXIT_F_POS));
+  return (shell.viteviteexit);
 }

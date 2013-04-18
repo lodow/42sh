@@ -141,10 +141,16 @@
 		<Unit filename="src/edition_line/get_len_string_with_pos.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/edition_line/globb/completation.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/edition_line/globb/genere_globb_str.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/globb/globb.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/globb/print_glob.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/include/couleur.h" />
@@ -282,9 +288,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/ptr_tab.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/redirection.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/redirection/find_redirection.c">

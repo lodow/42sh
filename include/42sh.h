@@ -46,6 +46,10 @@
 # define GETFLAG(x, y) ((x) & (y))
 # define FLAGPOS(x) (1 << (x))
 
+
+# define EXIT_F_POS 31
+# define MEXIT GETFLAG(shell->viteviteexit, FLAGPOS(EXIT_F_POS))
+
 /*
 ** Jobs flags
 */
@@ -122,6 +126,7 @@ typedef struct	s_sh
   char		**alias_tab;
   t_grp		**process_group;
   int		signal;
+  int		viteviteexit;
 }		t_sh;
 
 /*
@@ -272,7 +277,7 @@ void	alias_replace(char ***argv, char **alias);
 /*
 ** Exit
 */
-void	my_exit(int value, int pid);
+void	my_exit(int value);
 void	exit_shell(t_sh *shell);
 
 /*

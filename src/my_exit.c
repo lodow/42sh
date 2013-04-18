@@ -10,10 +10,14 @@
 
 #include "42sh.h"
 
-void	my_exit(int value, int pid)
+void	my_exit(int value)
 {
-  if (pid == -1)
-    pid = getpid();
-  kill(pid, SIGINT);
-  my_putstr("My exit failed, Now let's do some shit !!\n", 2, -1);
+  t_sh	*shell;
+
+  shell = get_sh_info(NULL);
+  shell->viteviteexit = *((char*)(&(value)));
+  SETFLAG(shell->viteviteexit, FLAGPOS(EXIT_F_POS));
+  /*  exit(value);
+    kill(0, SIGKILL);
+    my_putstr("My exit failed, Now let's do some shit !!\n", 2, -1);*/
 }

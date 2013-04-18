@@ -1,7 +1,42 @@
+<<<<<<< HEAD
 robertSH
 robertSH
 42sh.cbp
 lavand_m_minishell2
+=======
+exit
+env
+l
+ls
+env
+env
+env
+exit 50
+env
+exit
+man execve
+/
+.
+/
+/
+alias
+alias
+ls
+exit
+l
+l
+l
+ls
+sl
+l
+ls
+ls
+exit
+l
+l
+ls
+<<<<<<< HEAD
+>>>>>>> 33c1881372743a41900cf7539d3037de60e4eacd
 l
 ..
 l
@@ -462,6 +497,7 @@ ll
 emacs 42sh.cbp
 l
 ls
+<<<<<<< HEAD
 ls /tmp/
 ls
 ls 42sh.cbp
@@ -497,3 +533,25 @@ l
 fg
 fg
 fg
+=======
+>>>>>>> 7bd78829184a00941f60b0356ee929f17de2fcb1
+exit
+ll
+c
+l
+l
+echo -n qlskd=
+l
+l
+env
+env
+exit
+ls
+l
+exit
+exit
+env
+env
+alias
+exit
+>>>>>>> 33c1881372743a41900cf7539d3037de60e4eacd
