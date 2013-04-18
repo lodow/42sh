@@ -1,217 +1,87 @@
-fg 1
-jobs
-jobs
-cat -e &
+exit
+exitr
+ls
+ls
+ls
+ls
+exit
+ls
+exit
 ls
 sleep 3 &
-ls &
-ls
 sleep 3 &
+sleep 3 | ls &
+sleep 3 | ls &
+sleep 3 | ls &
 sleep 3 &
-sleep 3 &
-sleep 3 &
-sleep 3 &
-sleep 3
-ls &
+ls | cat -e | grep sqmdk
+grep sdq
+grep sdq
 ls
+lsls
+ls | cat -e | grep sqmdk
+ls | cat -e | grep m
+ls | cat -e
 ls
-s
-l
-ls
-ls
-l
-ll
-ll
-ls
-fg 1
-cat -e
-ls
-ls
-ls
-alias
-ls
+read
 env
+ls
+`echo ls`
+cat .history
+qsdqsd
+l
+clean
+l
 env
 echo ls
+echo ls
+h
+echo ls
+echo ls
 env
-ls
-env
-env
-env
-env
-echo -n qsmsdsene
-echo -n qsmsdsececho -n qsmsd
-val echo -n qsmsdsv
-val echo qsmsdsd
-val echo qsmsdsd
-vval echo qsmsdsd
-val echo qsmsds
-
-ececho qsmsdsd
-ecls
-echo qsmsdsd
-echo qsmsdsd
-echo qsmsdsd
-echo qsm
-echo  qsm
-echo -n qsm
-echo 
-echo 
-echo -n qsm
-echo -n qsm
-echo -n qsm
-echo 
-echo -echo 
-echo -n qsm
-ls
 env
 env
 cat -e | cat -e
 cat -e | cat -e
-cat -e | cat -e
-cat -e | cat -e
-cat -e | cat -e
+cat -e
 ls
+cat -e | cat -e
+cat -e
+cat -e
+cat -e
 ls
-ls
-echo -e "\t" | tr "\t" "@"
-echo -e "\t" | tr "\t" "\n"
+echo -e -n "\n"
+echo -e "\n"
+echo -en "\n"
+echo -e "\n"
+echo -ne "\n"
+echo -e "\n"
 echo -e "\t"
-git pull
+echo -e
+echo -ne
+echo "dz \n "
+echo "dz \n"
+echecho "decho
+echo "c
+eecho \\ececho \t
+echo \
+echo "\t"
 l
-ls
-make
-echo -n test
-echo -nsdf
+echo -n lzfdsdqspoooooooooooooooooooo
+echo -n lzfdsdqspoooooooooooooooooooo
+echo -n lzfdsdqspoooooooooooooooooooo
+echo -n lzfdsdqspoooooooooooooooooooo
+echo -n lzfdsdqspoooooooooooooooooooo
+echo -n lzfd
+echo -n lzfd
+echo -n lzfd
+echo -n lzfd
+echo -n lzfd
+echo -n l
 echo -n
-echo-n
-echo -n 
 echo -n
-echo -- n dmfs
-echo --n dmfs
-echo - n dmfs
-echo -n dmfs
-echo dmfs -n
-echo dmfs -n
-echo  "qsmldk=" -n
-echo  "qsmldk=" -n
-echo  "qsmldk="
-echo -n "qsmldk="
-echo --n "qsmldk="
-echo -n "qsmldk="
-echo -n "qsmldk="
-echo -n "qsmld'k="
-ls
-ls
-ls
-l
-ls
-sl
-sl
-ls
-ls
-git push
-git pull
-git push
-gs
-ls
-gs
-ls
-ls
-rm robertSH
-gs
-ll
-ls
-ls
-man glob
-l
-ll
-ll
-l
-ll
-ll
-ll
-l
-teeshirt
-`echo ls`
-`ls`
-l
-l
-l
-l
-ls
-ll
-l
-l
-l
-l
-l
-`echo ls`
-`echo ls`
-`echo ls`echo ls`
-`echo ls `
-`echo ls .`
-`echo ls ./`
-`echo ls .`
-`echo ls`
-`echo ls`
-`echo ls`
-`echo ls`
-ls
-`echo ls`
-`echo ls`
-echo qsldk d qd sq
-ls
-la
-source
-la
-la
-qz
-qsd
-qsd
-sd
-qsd
-wsd
-qsdqsdqsdddqsqsmljqsls
-la
-source
-la
-la
-la
-echo l
-echo lqsdmlqsd
-echo lqsdmlqsd qdqsd
-qsd
- qsd
-qsd
-ls
-`echo ls`
-`echo ls`
-`echo ls`
-`echo ls `
-`echo ls     `
-`echo ls     s`
-`echo ls`
-`echo ls`
-`echo ls`
-`echo ls`
-`echo ls`
-ls
-`echo ls`
-`echo ls`
-ll
-ls
-ll
-ls
-`echo 
-l
-l
-l
-l
-ls
-l
-l
-l
+echo -n qsmqs
+echo -n qsm
 l
 l
 l
@@ -227,78 +97,220 @@ l
 l
 l
 l
-echo -n qsm
-echo -n qsmqs
-echo -n
-echo -n
-echo -n l
-echo -n lzfd
-echo -n lzfd
-echo -n lzfd
-echo -n lzfd
-echo -n lzfd
-echo -n lzfdsdqspoooooooooooooooooooo
-echo -n lzfdsdqspoooooooooooooooooooo
-echo -n lzfdsdqspoooooooooooooooooooo
-echo -n lzfdsdqspoooooooooooooooooooo
-echo -n lzfdsdqspoooooooooooooooooooo
 l
-echo "\t"
-echo \
-eecho \\ececho \t
-echo "c
-echecho "decho
-echo "dz \n"
-echo "dz \n "
-echo -ne
-echo -e
-echo -e "\t"
-echo -e "\n"
-echo -ne "\n"
-echo -e "\n"
-echo -en "\n"
-echo -e "\n"
-echo -e -n "\n"
+l
+l
 ls
-cat -e
-cat -e
-cat -e
-cat -e | cat -e
+l
+l
+l
+l
+`echo 
 ls
-cat -e
-cat -e | cat -e
-cat -e | cat -e
-env
-env
-env
-echo ls
-echo ls
-h
-echo ls
-echo ls
-env
-l
-clean
-l
-qsdqsd
-cat .history
+ll
+ls
+ll
+`echo ls`
 `echo ls`
 ls
+`echo ls`
+`echo ls`
+`echo ls`
+`echo ls`
+`echo ls`
+`echo ls     s`
+`echo ls     `
+`echo ls `
+`echo ls`
+`echo ls`
+`echo ls`
+ls
+qsd
+ qsd
+qsd
+echo lqsdmlqsd qdqsd
+echo lqsdmlqsd
+echo l
+la
+la
+la
+source
+la
+qsdqsdqsdddqsqsmljqsls
+wsd
+qsd
+sd
+qsd
+qsd
+qz
+la
+la
+source
+la
+ls
+echo qsldk d qd sq
+`echo ls`
+`echo ls`
+ls
+`echo ls`
+`echo ls`
+`echo ls`
+`echo ls`
+`echo ls .`
+`echo ls ./`
+`echo ls .`
+`echo ls `
+`echo ls`echo ls`
+`echo ls`
+`echo ls`
+l
+l
+l
+l
+l
+ll
+ls
+l
+l
+l
+l
+`ls`
+`echo ls`
+teeshirt
+l
+ll
+ll
+ll
+l
+ll
+ll
+l
+man glob
+ls
+ls
+ll
+gs
+rm robertSH
+ls
+ls
+gs
+ls
+gs
+git push
+git pull
+git push
+ls
+ls
+sl
+sl
+ls
+l
+ls
+ls
+ls
+echo -n "qsmld'k="
+echo -n "qsmldk="
+echo -n "qsmldk="
+echo --n "qsmldk="
+echo -n "qsmldk="
+echo  "qsmldk="
+echo  "qsmldk=" -n
+echo  "qsmldk=" -n
+echo dmfs -n
+echo dmfs -n
+echo -n dmfs
+echo - n dmfs
+echo --n dmfs
+echo -- n dmfs
+echo -n
+echo -n 
+echo-n
+echo -n
+echo -nsdf
+echo -n test
+make
+ls
+l
+git pull
+echo -e "\t"
+echo -e "\t" | tr "\t" "\n"
+echo -e "\t" | tr "\t" "@"
+ls
+ls
+ls
+cat -e | cat -e
+cat -e | cat -e
+cat -e | cat -e
+cat -e | cat -e
+cat -e | cat -e
 env
-read
+env
 ls
-ls | cat -e
-ls | cat -e | grep m
-ls | cat -e | grep sqmdk
-lsls
+echo -n qsm
+echo -echo 
+echo 
+echo -n qsm
+echo -n qsm
+echo -n qsm
+echo 
+echo 
+echo -n qsm
+echo  qsm
+echo qsm
+echo qsmsdsd
+echo qsmsdsd
+echo qsmsdsd
+ecls
+ececho qsmsdsd
+
+val echo qsmsds
+vval echo qsmsdsd
+val echo qsmsdsd
+val echo qsmsdsd
+val echo -n qsmsdsv
+echo -n qsmsdsececho -n qsmsd
+echo -n qsmsdsene
+env
+env
+env
+env
 ls
-grep sdq
-grep sdq
-ls | cat -e | grep sqmdk
+env
+echo ls
+env
+env
+ls
+alias
+ls
+ls
+ls
+cat -e
+fg 1
+ls
+ll
+ll
+l
+ls
+ls
+l
+s
+ls
+ls
+ls &
+sleep 3
 sleep 3 &
-sleep 3 | ls &
-sleep 3 | ls &
-sleep 3 | ls &
 sleep 3 &
 sleep 3 &
+sleep 3 &
+sleep 3 &
+ls
+ls &
+sleep 3 &
+ls
+cat -e &
+jobs
+jobs
+fg 1
+exit
+exit
 ls
