@@ -272,7 +272,7 @@ void	alias_replace(char ***argv, char **alias);
 /*
 ** Exit
 */
-void	my_exit(int value, int pid);
+void	my_exit(int value);
 void	exit_shell(t_sh *shell);
 
 /*

@@ -10,10 +10,8 @@
 
 #include "42sh.h"
 
-void	my_exit(int value, int pid)
+void	my_exit(int value)
 {
-  if (pid == -1)
-    pid = getpid();
-  kill(pid, SIGINT);
+  exit(value);
   my_putstr("My exit failed, Now let's do some shit !!\n", 2, -1);
 }

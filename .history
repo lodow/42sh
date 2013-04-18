@@ -1,3 +1,7 @@
+exit
+l
+l
+ls
 <<<<<<< HEAD
 l
 fg
@@ -421,3 +425,4 @@ exit
 ls
 ls
 >>>>>>> 7bd78829184a00941f60b0356ee929f17de2fcb1
+exit
