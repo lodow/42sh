@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu Apr 18 16:58:13 2013 maxime lavandier
+** Last update Thu Apr 18 17:21:33 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -22,6 +22,33 @@ char	*builtin_cd_env(t_sh *shell, char *path, char *temp)
   return (temp);
 }
 
+void	cd_puterror()
+{
+  my_putstr("cd : chdir error\n", 2, -1);
+}
+
+char	*cd_new_dir(t_cmd *cmd, t_fds *fd, t_sh *shell)
+{
+  char		temp[4096];
+  char		*path;
+  char		*old_pwd;
+
+  getcwd(temp, 4095);
+  old_pwd = get_envvar("OLD_PWD", shell->env);
+  if (chdir(cmd->argv[1]))
+    {
+      my_putstr("cd : chdir error\n", 2, -1);
+      return (NULL);
+    }
+  if (old_pwd != NULL)
+    rm_ptr_f_tab((void **) shell->env, (void *) old_pwd - 8);
+  path = malloc(my_strlen(temp) + 9);
+  my_strncpy(path, "OLD_PWD=", -1);
+  my_strncpy(&(path[8]), temp, -1);
+  shell->env = (char **) add_ptr_t_tab((void **)shell->env, path);
+  return (path);
+}
+
 void		builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
   char		temp[4096];
@@ -34,10 +61,7 @@ void		builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell)
       && old_pwd != NULL)
     {
       if (chdir(old_pwd) == -1)
-	{
-	  my_putstr("cd : chdir error\n", 1, -1);
-	  return ;
-	}
+	return (cd_puterror());
       rm_ptr_f_tab((void **) shell->env, (void *) old_pwd - 8);
       path = malloc(my_strlen(temp) + 9);
       my_strncpy(path, "OLD_PWD=", -1);
@@ -45,20 +69,10 @@ void		builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell)
       shell->env = (char **) add_ptr_t_tab((void **)shell->env, path);
     }
   else if (cmd->argv[1] != NULL)
-    {
-      if (chdir(cmd->argv[1]))
-	{
-	  my_putstr("cd : chdir error\n", 1, -1);
-	  return ;
-	}
-      if (old_pwd != NULL)
-        rm_ptr_f_tab((void **) shell->env, (void *) old_pwd - 8);
-      path = malloc(my_strlen(temp) + 9);
-      my_strncpy(path, "OLD_PWD=", -1);
-      my_strncpy(&(path[8]), temp, -1);
-      shell->env = (char **) add_ptr_t_tab((void **)shell->env, path);
-    }
+      path = cd_new_dir(cmd, fd, shell);
   else
+    return ;
+  if (path == NULL)
     return ;
   builtin_cd_env(shell, path, temp);
 }
