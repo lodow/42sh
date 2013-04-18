@@ -139,8 +139,11 @@ void	wait_no_fg_grp(t_sh* shell)
       sig = 0;
       if ((cmd = cmd_f_pid(waitpid(-1, &tmp, WUNTRACED), shell)) != NULL)
         {
-          cmd->return_value = tmp;
-          aff_special_return_val(cmd);
+          if (WIFEXITED(tmp))
+            {
+              cmd->return_value = tmp;
+              aff_special_return_val(cmd);
+            }
         }
       if (WIFSIGNALED(tmp))
         sig = WTERMSIG(tmp);
