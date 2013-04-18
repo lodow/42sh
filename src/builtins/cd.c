@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Apr 10 01:50:44 2013 maxime lavandier
+** Last update Thu Apr 18 16:58:13 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -33,7 +33,11 @@ void		builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell)
   if ((cmd->argv[1] != NULL) && (my_strncmp(cmd->argv[1], "-", -1) == 0)
       && old_pwd != NULL)
     {
-      chdir(old_pwd);
+      if (chdir(old_pwd) == -1)
+	{
+	  my_putstr("cd : chdir error\n", 1, -1);
+	  return ;
+	}
       rm_ptr_f_tab((void **) shell->env, (void *) old_pwd - 8);
       path = malloc(my_strlen(temp) + 9);
       my_strncpy(path, "OLD_PWD=", -1);
@@ -42,13 +46,17 @@ void		builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell)
     }
   else if (cmd->argv[1] != NULL)
     {
+      if (chdir(cmd->argv[1]))
+	{
+	  my_putstr("cd : chdir error\n", 1, -1);
+	  return ;
+	}
       if (old_pwd != NULL)
         rm_ptr_f_tab((void **) shell->env, (void *) old_pwd - 8);
       path = malloc(my_strlen(temp) + 9);
       my_strncpy(path, "OLD_PWD=", -1);
       my_strncpy(&(path[8]), temp, -1);
       shell->env = (char **) add_ptr_t_tab((void **)shell->env, path);
-      chdir(cmd->argv[1]);
     }
   else
     return ;
