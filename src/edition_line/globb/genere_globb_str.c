@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr 15 09:38:51 2013 remi robert
-** Last update Mon Apr 15 09:53:12 2013 remi robert
+** Last update Thu Apr 18 10:29:07 2013 remi robert
 */
 
 #include "my_func.h"
@@ -21,7 +21,7 @@ char	*return_very_string(char *str_globb, char *str, int pos)
     indice = indice - 1;
   if (str[indice] == ' ')
     indice = indice + 1;
-  if ((str_globb = malloc((pos - indice) + 2)) == NULL)
+  if ((str_globb = malloc((pos - indice) + 3)) == NULL)
     return (NULL);
   indice_pos = 0;
   while (str[indice] != '\0')

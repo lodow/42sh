@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Mon Apr 15 09:58:19 2013 remi robert
+## Last update Thu Apr 18 10:04:17 2013 remi robert
 ##
 
 CC	=	gcc
@@ -118,6 +118,8 @@ SRCLINE	=	$(PATHLINE)/main_line.c				\
 
 SRCGLOBB=	$(PATHGLOBB)/globb.c				\
 		$(PATHGLOBB)/genere_globb_str.c			\
+		$(PATHGLOBB)/print_glob.c			\
+		$(PATHGLOBB)/completation.c			\
 
 SRCRED	=	$(PATHRED)/find_redirection.c			\
 		$(PATHRED)/parse_redirection.c			\

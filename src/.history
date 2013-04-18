@@ -1,8 +1,4 @@
-l
-fg
-42sh.
-42s
-4
+cd src
 fg
 exit
 fs
@@ -348,6 +344,3 @@ t
 ls
 exit
 exit
-42s
-42sh.cbp
-l

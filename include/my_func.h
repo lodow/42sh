@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Mon Apr 15 09:51:08 2013 remi robert
+** Last update Thu Apr 18 10:25:19 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -46,6 +46,16 @@
 # define STR_DOWN     	"\x1B\x5B\x42"
 # define BEGIN_STR     	"\x1B\x4F\x48"
 # define END_STR     	"\x1B\x4F\x46"
+
+typedef struct		s_glob
+{
+  int			x;
+  int			y;
+  glob_t		glob;
+  int			len_max;
+  int			nb_line;
+  int			nb_colonne;
+}			t_glob;
 
 typedef struct		s_history
 {
@@ -160,5 +170,9 @@ void			gere_globb(t_param **);
 void			clear_history(t_history *);
 char			*return_very_string(char *, char *, int);
 char			*return_str_globb(char *, int);
+int			get_size_glob(glob_t *);
+void			print_glob(t_param **, t_glob *);
+void			create_new_cmd_string_with_globb(t_param **,
+							 t_glob *, char *);
 
 #endif /* MY_FUNC_H_ */
