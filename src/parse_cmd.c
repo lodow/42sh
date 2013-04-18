@@ -31,6 +31,8 @@ void	parse_grp(t_sh *shell, char *line, int def_fdout, int back)
 void	parse_linked_grp_process(t_sh *shell, char *line, int def_fdout, int back)
 {
   parse_grp(shell, line, def_fdout, back);
+  if (MEXIT)
+    return ;
 }
 
 int	launch_background(char **line)
@@ -53,7 +55,7 @@ int	launch_background(char **line)
             free(tab[i - 1]);
             tab[i - 1] = NULL;
           }
-     // free((*line));
+      // free((*line));
       (*line) = tab_file_tstr(tab, ' ');
     }
   return (back);
@@ -69,10 +71,14 @@ void	parse_user_cmd(t_sh *shell, char *line, int def_fdout)
   i = 0;
   back = launch_background(&line);
   line = check_and_load_backquote(line, shell);
+  if (MEXIT)
+    return ;
   if ((tmptab = str_to_wordtab(line, ";", 1)) != NULL)
     while ((tmpline = tmptab[i]) != NULL)
       {
         parse_linked_grp_process(shell, tmpline, def_fdout, back);
+        if (MEXIT)
+          return ;
         i++;
       }
   if (back == 1)

@@ -42,6 +42,8 @@ void	user_loop(t_sh *shell)
       call_signal_func(shell, 0);
       wait_no_fg_grp(shell);
       parse_user_cmd(shell, lign, 1);
+      if (MEXIT)
+        return ;
       wait_no_fg_grp(shell);
       recalc_prompt(shell);
       free(lign);

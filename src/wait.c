@@ -109,7 +109,7 @@ void	wait_all_jobs(t_sh *shell, t_grp **jobtab)
                   my_putstr(" -> Done\n", 2, -1);
                 }
             }
-          UNSETFLAG(jobtab[i]->flags, FLAGPOS(FGRP_FORGROUND));
+          ///debug
           int j = 0;
           printf("grp return value is [");
           while (jobtab[i]->cmds[j] != NULL)
@@ -118,6 +118,8 @@ void	wait_all_jobs(t_sh *shell, t_grp **jobtab)
               j++;
             }
           printf("\n");
+          ///
+          UNSETFLAG(jobtab[i]->flags, FLAGPOS(FGRP_FORGROUND));
           rm_ptr_f_tab((void**)shell->process_group, (void*)jobtab[i]);
           //delete it ? it's seem yes, don't know if it's a good ieda
         }
@@ -137,8 +139,11 @@ void	wait_no_fg_grp(t_sh* shell)
       sig = 0;
       if ((cmd = cmd_f_pid(waitpid(-1, &tmp, WUNTRACED), shell)) != NULL)
         {
-          cmd->return_value = tmp;
-          aff_special_return_val(cmd);
+          if (WIFEXITED(tmp))
+            {
+              cmd->return_value = tmp;
+              aff_special_return_val(cmd);
+            }
         }
       if (WIFSIGNALED(tmp))
         sig = WTERMSIG(tmp);

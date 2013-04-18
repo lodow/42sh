@@ -21,6 +21,8 @@ char	*exec_line_a_g_res(char *line, t_sh *shell)
   if (pipe(pipefd) == -1)
     return (my_strdup(""));
   parse_user_cmd(shell, line, pipefd[PIPE_WRITE]);
+  if (MEXIT)
+    return (NULL);
   sizeread = 1;
   close(pipefd[PIPE_WRITE]);
   while (sizeread > 0)
@@ -50,6 +52,8 @@ char	*check_and_load_backquote(char *line, t_sh *shell)
               free(backtab[i]);
               backtab[i] = str;
             }
+          if (MEXIT)
+            return (NULL);
         }
       i++;
     }

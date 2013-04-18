@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun Apr 14 16:43:27 2013 remi robert
-** Last update Thu Apr 18 10:40:19 2013 remi robert
+** Last update Thu Apr 18 15:01:11 2013 remi robert
 */
 
 #include "my_func.h"
@@ -15,13 +15,15 @@ int		rempl_globb(char *path, glob_t *globbuf)
 {
   globbuf->gl_offs = 0;
   glob(path, GLOB_DOOFFS | GLOB_NOCHECK, NULL, globbuf);
-  if (globbuf->gl_pathc == 1 && str_cmp(globbuf->gl_pathv[0], path) == 1)
+  if (globbuf == NULL || globbuf->gl_pathv == NULL ||
+      (globbuf->gl_pathc == 1 && str_cmp(globbuf->gl_pathv[0], path) == 1))
     return (0);
   return (1);
 }
 
 void		init_struct_glob(t_glob *glob)
 {
+  glob->pos = 0;
   glob->x = 0;
   glob->y = 0;
   glob->len_max = 0;
@@ -36,6 +38,8 @@ void	completation_cmd(char *str_glob, char *buff, t_param **param)
 
   indice = 0;
   size = 0;
+  if (str_glob == NULL || param == NULL)
+    return ;
   while (str_glob[indice] != '\0' && str_glob[indice] != '*')
     indice = indice + 1;
   while (buff[indice] != '\0')
@@ -64,7 +68,12 @@ void		gere_globb(t_param **param)
   str_globb = return_str_globb(str, pos);
   if (rempl_globb(str_globb, &(param_glob.glob)) == 0)
     return ;
-  print_glob(param, &param_glob);
+  if ((*param)->selector == 0)
+    {
+      my_select_glob(param, str_globb, &param_glob);
+      return ;
+    }
+  print_glob(param, &param_glob, -1);
   create_new_cmd_string_with_globb(param, &param_glob, buff);
   completation_cmd(str_globb, buff, param);
   if (str_globb != NULL)

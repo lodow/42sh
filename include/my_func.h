@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Thu Apr 18 10:25:19 2013 remi robert
+** Last update Thu Apr 18 15:28:19 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -49,6 +49,7 @@
 
 typedef struct		s_glob
 {
+  int			pos;
   int			x;
   int			y;
   glob_t		glob;
@@ -80,6 +81,7 @@ typedef struct		s_coordonnee
 
 typedef struct		s_param
 {
+  int			selector;
   int			pos_history;
   char			*str_prompt;
   char			buff_copy[2048];
@@ -171,8 +173,13 @@ void			clear_history(t_history *);
 char			*return_very_string(char *, char *, int);
 char			*return_str_globb(char *, int);
 int			get_size_glob(glob_t *);
-void			print_glob(t_param **, t_glob *);
+void			print_glob(t_param **, t_glob *, int);
 void			create_new_cmd_string_with_globb(t_param **,
 							 t_glob *, char *);
+void			my_select_glob(t_param **, char *, t_glob *);
+int			rempl_globb(char *, glob_t *);
+void			init_struct_glob(t_glob *);
+void			completation_cmd(char *, char *, t_param **);
+void			view_glob(t_glob *, int);
 
 #endif /* MY_FUNC_H_ */

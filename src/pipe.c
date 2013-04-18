@@ -32,6 +32,8 @@ int	exec_a_pipe(t_sh *shell, t_grp *grp)
           fd.stdout = ptab[PIPE_WRITE];
         }
       cmd_execution(tmpcmd, &fd, shell);
+      if (MEXIT)
+        return (0);
       init_stdfd_t_def_val(&fd, grp->fd.stdin, grp->fd.stdout, grp->fd.stderr);
       if (grp->cmds[i + 1] != NULL)
         fd.stdin = ptab[PIPE_READ];
