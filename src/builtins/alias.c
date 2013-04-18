@@ -59,8 +59,7 @@ int	builtin_alias_print(char *path, char **argv, t_sh *shell)
       else
         builtin_alias_find(alias, tofind);
     }
-  my_exit(0);
-  return (-1);
+  return (0);
 }
 
 void	builtin_alias(t_cmd *cmd, t_fds *fd, t_sh *shell)

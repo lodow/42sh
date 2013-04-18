@@ -27,11 +27,14 @@ void	cmd_execution(t_cmd *cmd, t_fds *fd, t_sh *shell)
   close_fds(fd);
 }
 
-void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
-                   int (*f)(char *cmd, char **argv, t_sh *shell))
+int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
+                 int (*f)(char *cmd, char **argv, t_sh *shell))
 {
+  int	pid;
+
   if ((cmd->pid.pid = fork()) == 0)
     {
+      pid = getpid();
       signal(SIGINT, SIG_DFL);
       signal(SIGTTOU, SIG_DFL);
       signal(SIGTTIN, SIG_DFL);
@@ -42,10 +45,7 @@ void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
       dup2(fd->stdout, 1);
       dup2(fd->stderr, 2);
       close_fds(fd);
-      f(cmd->cmd_fpath, cmd->argv, shell);
-      /*    if (cmd->fd.stdin != 0)
-            cat(0, 1);
-      */    my_putstr("What are you trying to do ? Fool!\n", 1, -1);
-      my_exit(-1);
+      my_exit(f(cmd->cmd_fpath, cmd->argv, shell), pid);
     }
+  return (cmd->pid.pid);
 }

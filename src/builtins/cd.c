@@ -43,7 +43,7 @@ void		builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell)
   else if (cmd->argv[1] != NULL)
     {
       if (old_pwd != NULL)
-	rm_ptr_f_tab((void **) shell->env, (void *) old_pwd - 8);
+        rm_ptr_f_tab((void **) shell->env, (void *) old_pwd - 8);
       path = malloc(my_strlen(temp) + 9);
       my_strncpy(path, "OLD_PWD=", -1);
       my_strncpy(&(path[8]), temp, -1);

@@ -10,7 +10,9 @@
 
 #include "42sh.h"
 
-void	my_exit(int value)
+void	my_exit(int value, int pid)
 {
-  kill(getpid(), SIGTERM);
+  if (pid == -1)
+    pid = getpid();
+  kill(pid, SIGINT);
 }

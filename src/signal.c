@@ -30,6 +30,8 @@ void	sig_handler(int sig)
       my_putstr("\n", 1, -1);
       my_putstr(shell->param.str_prompt, 1, -1);
     }
+  if ((sig == SIGHUP) || (sig == SIGTERM))
+    exit_shell(shell);
   signal(SIGTTOU, &sig_handler);
   signal(SIGTTIN, &sig_handler);
   signal(SIGINT, &sig_handler);
@@ -40,7 +42,7 @@ void	sig_handler(int sig)
 void	call_signal_func(t_sh *shell, int chld_sig)
 {
   if (chld_sig == SIGTSTP)
-    update_jobs_status(shell);
+    no_fg_jobs_status(shell);
   wait_all_jobs(shell, shell->process_group);
   shell->signal = 0;
 }

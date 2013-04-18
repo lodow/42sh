@@ -29,7 +29,6 @@ int	open_file(int type, char *file)
       my_putstr("Error open or create file : ", 2, -1);
       my_perror(file);
     }
-  printf("FD : {%s}[%d]\n", file, fd);
   return (fd);
 }
 
@@ -49,5 +48,4 @@ void	rempl_fd_process(t_redirection *red, t_grp *grp)
         grp->fd.stdout = ret;
       indice = indice + 1;
     }
-  printf("in: %d out: %d\n", grp->fd.stdin, grp->fd.stdout);
 }

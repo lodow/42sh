@@ -24,14 +24,13 @@ int	builtin_env_print(char *path, char **argv, t_sh *shell)
         my_putstr("\n", 1, -1);
         i++;
       }
-  my_exit(0);
-  return (-1);
+  return (0);
 }
 
 void	builtin_env(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
-  if (cmd->argv[1] == 0)
+  if (cmd->argv[1] == NULL)
     exec_process(cmd, fd, shell, &builtin_env_print);
   else
-    printf ("pas encore\n");
+    my_putstr("Not implented yet\n", 2, -1);
 }

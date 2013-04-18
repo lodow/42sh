@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Mon Apr 15 21:59:23 2013 maxime lavandier
+** Last update Tue Apr 16 15:20:39 2013 maxime lavandier
 */
 
 #ifndef		SH42_H
@@ -37,7 +37,7 @@
 # define ECHO_5(y)	(y == 't' ? '\t' : y == 'v' ? '\v' : -1)
 # define ECHO_4(y)	(y == 'n' ? '\n' : y == 'r' ? '\r' : ECHO_5(y))
 # define ECHO_3(y)	(y == 'e' ? '\e' : y == 'f' ? '\f' : ECHO_4(y))
-# define ECHO_2(y)	(y == 'b' ? -2 : y == 'c' ? '\c' : ECHO_3(y))
+# define ECHO_2(y)	(y == 'b' ? '\b' : y == 'c' ? -2 : ECHO_3(y))
 # define ECHO_1(y)	(y == '\\' ? '\\' : y == 'a' ? '\a' : ECHO_2(y))
 
 # define SETFLAG(x, y) ((x) |= (y))
@@ -203,7 +203,7 @@ void	call_signal_func(t_sh *shell, int chld_sig);
 /*
 ** Jobs
 */
-void	update_jobs_status(t_sh *shell);
+void	no_fg_jobs_status(t_sh *shell);
 int	group_process_group(t_grp *pipeline);
 void	set_forground_pgrp(pid_t pgid);
 void	set_forground_process_g(t_sh *shell, t_grp *grp);
@@ -247,7 +247,7 @@ t_cmd	*create_n_cmd(t_sh *shell, char *lign);
 char	*exec_full_path(char *exec, char **paths);
 int	exec_process_group(t_sh *shell, t_grp *grp);
 void	cmd_execution(t_cmd *cmd, t_fds *fd, t_sh *shell);
-void	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
+int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
                    int (*f)(char *cmd, char **argv, t_sh *shell));
 void	free_process_group(t_grp *grp);
 int	is_grp_exec(t_sh *shell, t_grp *grp);
@@ -272,7 +272,8 @@ void	alias_replace(char ***argv, char **alias);
 /*
 ** Exit
 */
-void	my_exit(int value);
+void	my_exit(int value, int pid);
+void	exit_shell(t_sh *shell);
 
 /*
 ** detect_type_redirection

@@ -37,7 +37,7 @@ int	group_process_group(t_grp *pipeline)
   return (0);
 }
 
-void	update_jobs_status(t_sh *shell)
+void	no_fg_jobs_status(t_sh *shell)
 {
   t_grp	*fg_grp;
 
