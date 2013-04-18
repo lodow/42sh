@@ -14,23 +14,18 @@ void	builtin_bg(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
   int	pgid;
   int	i;
+  int	nb;
 
   i = 0;
-  if (cmd->argv[1] == NULL)
-    {
-      my_putstr("Please choose wich jobs\n", 2, -1);
-      return ;
-    }
-  while ((shell->process_group[i] != NULL)
-         && (i < my_getnbr(cmd->argv[1]) - 1))
+  nb = 0;
+  if (cmd->argv[1] != NULL)
+    nb =  my_getnbr(cmd->argv[1]) - 1;
+  while ((shell->process_group[i] != NULL) && (i < nb))
     i++;
   if (shell->process_group[i] != NULL)
     {
       pgid = shell->process_group[i]->pid.pgid;
       SETFLAG(shell->process_group[i]->flags, FLAGPOS(FGRP_RUNNING));
-      printf ("bg pgid=%d\n", pgid);
-      /*      kill(-pgid, SIGTTIN);*/
-      /*      kill(-pgid, SIGTTOU);*/
       kill(-pgid, SIGCONT);
     }
 }

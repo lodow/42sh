@@ -48,7 +48,7 @@
 
 
 # define EXIT_F_POS 31
-# define MEXIT GETFLAG(shell->viteviteexit, FLAGPOS(EXIT_F_POS))
+# define MEXIT GETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS))
 
 /*
 ** Jobs flags
@@ -126,7 +126,7 @@ typedef struct	s_sh
   char		**alias_tab;
   t_grp		**process_group;
   int		signal;
-  int		viteviteexit;
+  int		beepbeepexit;
 }		t_sh;
 
 /*
