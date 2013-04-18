@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu Apr 18 14:08:00 2013 remi robert
-** Last update Thu Apr 18 15:40:48 2013 remi robert
+** Last update Thu Apr 18 15:55:55 2013 remi robert
 */
 
 #include "my_func.h"
@@ -13,19 +13,30 @@
 
 void	gere_keyboard_globb(char *buff, t_glob *param_glob, int max)
 {
-  if (str_cmp(buff, STR_UP) == 1)
+  if (str_cmp(buff, STR_LEFT) == 1)
     {
       param_glob->pos -= 1;
       if (param_glob->pos < 0)
 	param_glob->pos = max - 1;
       return ;
     }
-  if (str_cmp(buff, STR_DOWN) == 1)
+  if (str_cmp(buff, STR_RIGHT) == 1)
     {
       param_glob->pos += 1;
       if (param_glob->pos >= max)
 	param_glob->pos = 0;
       return ;
+    }
+  if (str_cmp(buff, STR_DOWN) == 1)
+    {
+      if (param_glob->pos += (param_glob->nb_line - 1) < max)
+	param_glob->pos += (param_glob->nb_line - 2);
+    }
+  if (str_cmp(buff, STR_UP) == 1)
+    {
+      if (param_glob->pos -= (param_glob->nb_line - 1) <= 0)
+	param_glob->pos -= (param_glob->nb_line - 1);
+
     }
 }
 
@@ -53,6 +64,8 @@ void	my_select_glob(t_param **param,
 
   ret = 1;
   print_glob(param, param_glob, param_glob->pos);
+  printf("%s[%d]%s", F_ROUGE, param_glob->nb_line, REZ);
+  fflush(stdout);
   y = param_glob->y - (param_glob->nb_colonne + 1);
   while (ret > 0)
     {
