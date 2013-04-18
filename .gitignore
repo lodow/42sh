@@ -5,6 +5,7 @@ Thumbs.db
 #*#
 *.out
 *.o
+.history
 *.layout*
 *.layout
 *.depend*
