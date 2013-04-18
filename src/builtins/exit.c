@@ -12,7 +12,6 @@
 
 void	builtin_exit(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
-  exit_shell(shell);
   if (cmd->argv[1] == NULL)
     my_exit(0);
   else

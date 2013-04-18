@@ -1,4 +1,31 @@
 exit
+env
+l
+ls
+env
+env
+env
+exit 50
+env
+exit
+man execve
+/
+.
+/
+/
+alias
+alias
+ls
+exit
+l
+l
+l
+ls
+sl
+l
+ls
+ls
+exit
 l
 l
 ls
@@ -425,4 +452,22 @@ exit
 ls
 ls
 >>>>>>> 7bd78829184a00941f60b0356ee929f17de2fcb1
+exit
+ll
+c
+l
+l
+echo -n qlskd=
+l
+l
+env
+env
+exit
+ls
+l
+exit
+exit
+env
+env
+alias
 exit
