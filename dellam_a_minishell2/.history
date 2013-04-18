@@ -1,26 +1,11 @@
-robertSH
-robertSH
-42sh.cbp
-lavand_m_minishell2
 l
-..
-l
-clean
-l
-my_getnbr.o
-cd src
-42fg
-42sh.cbp
-df
-42sh.
+cd dellam_a_minishell2
 l
 l
-eamcs Makefile
+emacs 42sh.cbp
 l
+emacs Makefile
 l
-clean
-l
-emacs auteur
 l
 42sh.cbp
 ./robertSH
@@ -461,39 +446,3 @@ l
 ll
 emacs 42sh.cbp
 l
-ls
-ls /tmp/
-ls
-ls 42sh.cbp
-l
-ls -l 42sh.cbp
-l
-clean
-l
-make re
-l
-make re
-make clean
-l
-fg
-l
-clean
-l
-fg
-42sh.cbp
-l
-clean
-l
-l
-emacs Makefile
-cd src
-main.o
-l
-clean
-l
-l
-..
-l
-fg
-fg
-fg
