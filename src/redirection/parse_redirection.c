@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun Apr 14 19:54:34 2013 remi robert
-** Last update Mon Apr 15 11:14:18 2013 remi robert
+** Last update Mon Apr 15 15:47:43 2013 remi robert
 */
 
 #include "42sh.h"
@@ -42,17 +42,6 @@ char	*parse_redirection(t_grp *grp, char *lign, int *nb_red)
     {
       init_elem_red(grp->redirection, *nb_red, &indice, &pos);
       while (tab[indice] != NULL)
-<<<<<<< HEAD
-      	{
-      	  if (rempl_red(&tab[indice], &(*grp)->redirection[pos % *nb_red]) == 1)
-	    {
-	      tab[indice][0] = '\0';
-	      tab[indice + 1][0] = '\0';
-	      pos = pos + 1;
-	    }
-      	  indice = indice + 1;
-      	}
-=======
         {
           if (rempl_red(&tab[indice], &(grp->redirection[pos % *nb_red])) == 1)
             {
@@ -62,7 +51,6 @@ char	*parse_redirection(t_grp *grp, char *lign, int *nb_red)
             }
           indice = indice + 1;
         }
->>>>>>> 4b242fdd147a7dcb4a4601bb1d5df74187ae4a2e
       return (reform_lign(tab));
     }
   return (lign);
