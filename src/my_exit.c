@@ -15,4 +15,5 @@ void	my_exit(int value, int pid)
   if (pid == -1)
     pid = getpid();
   kill(pid, SIGINT);
+  my_putstr("My exit failed, Now let's do some shit !!\n", 2, -1);
 }

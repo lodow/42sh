@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 l
 fg
 42sh.
@@ -60,6 +61,50 @@ h
 echo ls
 echo ls
 env
+=======
+ls
+exit
+exitr
+ls
+ls
+ls
+ls
+exit
+ls
+exit
+ls
+sleep 3 &
+sleep 3 &
+sleep 3 | ls &
+sleep 3 | ls &
+sleep 3 | ls &
+sleep 3 &
+ls | cat -e | grep sqmdk
+grep sdq
+grep sdq
+ls
+lsls
+ls | cat -e | grep sqmdk
+ls | cat -e | grep m
+ls | cat -e
+ls
+read
+env
+ls
+`echo ls`
+cat .history
+qsdqsd
+l
+clean
+l
+env
+echo ls
+echo ls
+h
+echo ls
+echo ls
+env
+>>>>>>> 7bd78829184a00941f60b0356ee929f17de2fcb1
 env
 env
 cat -e | cat -e
@@ -103,12 +148,17 @@ echo -n
 echo -n
 echo -n qsmqs
 echo -n qsm
+<<<<<<< HEAD
+=======
+l
+>>>>>>> 7bd78829184a00941f60b0356ee929f17de2fcb1
 l
 l
 l
 l
 l
 l
+ech
 l
 ech
 l
@@ -121,6 +171,10 @@ l
 l
 l
 l
+<<<<<<< HEAD
+=======
+l
+>>>>>>> 7bd78829184a00941f60b0356ee929f17de2fcb1
 ls
 l
 l
@@ -184,7 +238,10 @@ ls
 `echo ls`echo ls`
 `echo ls`
 `echo ls`
+<<<<<<< HEAD
 l
+=======
+>>>>>>> 7bd78829184a00941f60b0356ee929f17de2fcb1
 l
 l
 l
@@ -192,7 +249,13 @@ l
 ll
 ls
 l
+ll
+ls
 l
+<<<<<<< HEAD
+=======
+l
+>>>>>>> 7bd78829184a00941f60b0356ee929f17de2fcb1
 l
 l
 `ls`
@@ -332,6 +395,7 @@ cat -e &
 jobs
 jobs
 fg 1
+<<<<<<< HEAD
 ls
 env
 ls
@@ -351,3 +415,9 @@ exit
 42s
 42sh.cbp
 l
+=======
+exit
+exit
+ls
+ls
+>>>>>>> 7bd78829184a00941f60b0356ee929f17de2fcb1

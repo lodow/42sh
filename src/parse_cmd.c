@@ -53,7 +53,7 @@ int	launch_background(char **line)
             free(tab[i - 1]);
             tab[i - 1] = NULL;
           }
-      free((*line));
+     // free((*line));
       (*line) = tab_file_tstr(tab, ' ');
     }
   return (back);
