@@ -71,21 +71,24 @@ int	new_conf_set(char *str, t_sh *shell)
 /*
 ** Load your conf file
 */
-void	load_conf_file(const char *filename, t_sh *shell,
+void	load_conf_file(char *filename, t_sh *shell,
                      int (*f)(char *line, t_sh *shell))
 {
   char	**file;
+  char	*path;
   int	fd;
   int	i;
 
   i = 0;
-  if ((fd = open(filename, O_RDONLY)) == -1)
+  if (((path = check_vars_in_str(filename, shell->env)) == NULL)
+      || ((fd = open(path, O_RDONLY)) == -1))
     {
       my_putstr("Can't open config file: ", 2, -1);
-      my_putstr(filename, 2, -1);
+      my_putstr(path, 2, -1);
       my_putstr("\n", 2, -1);
       return ;
     }
+  free(path);
   file = get_data_ffile(fd);
   close(fd);
   if (file != NULL)

@@ -35,7 +35,7 @@ void	parse_linked_grp_process(t_sh *shell, char *line, int def_fdout, int back)
     return ;
 }
 
-int	launch_background(char **line)
+int	parse_launch_background(char **line)
 {
   int	back;
   int	i;
@@ -69,7 +69,7 @@ void	parse_user_cmd(t_sh *shell, char *line, int def_fdout)
   int	back;
 
   i = 0;
-  back = launch_background(&line);
+  back = parse_launch_background(&line);
   line = check_and_load_backquote(line, shell);
   if (MEXIT)
     return ;
