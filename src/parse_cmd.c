@@ -17,7 +17,7 @@ void	change_fdout_t_def_z(t_grp *grp, int def_fdout)
       grp->fd.stdout = def_fdout;
 }
 
-void	parse_grp(t_sh *shell, char *line, int def_fdout, int back)
+t_grp	*parse_grp_a_exec(t_sh *shell, char *line, int def_fdout, int back)
 {
   t_grp	*grp;
 
@@ -26,11 +26,22 @@ void	parse_grp(t_sh *shell, char *line, int def_fdout, int back)
   if (back == 0)
     SETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND));
   exec_process_group(shell, grp);
+  return (grp);
 }
 
 void	parse_linked_grp_process(t_sh *shell, char *line, int def_fdout, int back)
 {
-  parse_grp(shell, line, def_fdout, back);
+  t_grp	*grp;
+  char	**taba;
+  char	**tabo;
+  char	*next_line;
+
+  taba = str_to_wordtab(line, "&&", 1);
+  tabo = str_to_wordtab(line, "||", 1);
+  next_line =
+  grp = parse_grp_a_exec(shell, line, def_fdout, back);
+  grp->next.transition = GRP_TRANS_NONE;
+  grp->next.line = NULL;
   if (MEXIT)
     return ;
 }

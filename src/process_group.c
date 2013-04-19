@@ -80,6 +80,23 @@ t_grp	*create_n_process_group(t_sh *shell, char *lign)
   return (res);
 }
 
+int	global_group_ret_status(t_grp *grp)
+{
+  int	i;
+  int	glost;
+
+  i = 0;
+  glost = 0;
+  if ((grp == NULL) || (grp->cmds == NULL))
+    return (0);
+  while (grp->cmds[i] != NULL)
+    {
+      glost += grp->cmds[i]->return_value;
+      i++;
+    }
+  return (glost);
+}
+
 void	free_process_group(t_grp *grp)
 {
   if (grp != NULL)

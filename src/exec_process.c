@@ -30,6 +30,8 @@ void	cmd_execution(t_cmd *cmd, t_fds *fd, t_sh *shell)
 int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
                  int (*f)(char *cmd, char **argv, t_sh *shell))
 {
+  int	ret_exec;
+
   if ((cmd->pid.pid = fork()) == 0)
     {
       signal(SIGINT, SIG_DFL);
@@ -42,7 +44,9 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
       dup2(fd->stdout, 1);
       dup2(fd->stderr, 2);
       close_fds(fd);
-      my_exit(f(cmd->cmd_fpath, cmd->argv, shell));
+      if ((ret_exec = f(cmd->cmd_fpath, cmd->argv, shell)) == -1)
+        my_perror(cmd->cmd_fpath);
+      my_exit(ret_exec);
     }
   return (cmd->pid.pid);
 }

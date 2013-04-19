@@ -34,33 +34,6 @@ void	aff_special_return_val(t_cmd *cmd)
     }
 }
 
-t_cmd	*cmd_f_pid(int pid, t_sh *shell)
-{
-  int	i;
-  int	j;
-  t_grp	*tmpgrp;
-  t_cmd	*tmpcmd;
-
-  i = 0;
-  if ((shell == NULL) || (shell->process_group == NULL) || (pid == -1))
-    return (NULL);
-  while ((tmpgrp = shell->process_group[i]) != NULL)
-    {
-      if (tmpgrp->cmds != NULL)
-        {
-          j = 0;
-          while ((tmpcmd = tmpgrp->cmds[j]) != NULL)
-            {
-              if (tmpcmd->pid.pid == pid)
-                return (tmpcmd);
-              j++;
-            }
-        }
-      i++;
-    }
-  return (NULL);
-}
-
 int	wait_son(t_grp *grp)
 {
   int	i;
@@ -84,6 +57,8 @@ int	wait_son(t_grp *grp)
     }
   return (0);
 }
+
+
 
 void	wait_all_jobs(t_sh *shell, t_grp **jobtab)
 {
@@ -117,12 +92,11 @@ void	wait_all_jobs(t_sh *shell, t_grp **jobtab)
               printf("%d,", jobtab[i]->cmds[j]->return_value);
               j++;
             }
-          printf("\n");
+          printf("] -> %d\n", global_group_ret_status(jobtab[i]));
           ///
+          exec_next_grp(jobtab[i], shell);
           UNSETFLAG(jobtab[i]->flags, FLAGPOS(FGRP_FORGROUND));
-          rm_ptr_f_tab((void**)shell->process_group, (void*)jobtab[i]);
-          //delete it ? it's seem yes, don't know if it's a good ieda
-          //it's not cause we need it after for && ||
+          SETFLAG(jobtab[i]->flags, FLAGPOS(FGRP_TERMINATED));
         }
       i++;
     }
@@ -155,4 +129,5 @@ void	wait_no_fg_grp(t_sh* shell)
       call_signal_func(shell, sig);
     }
   set_forground_pgrp(shell->pid.pgid);
+  rm_all_terminated_grp(shell);
 }

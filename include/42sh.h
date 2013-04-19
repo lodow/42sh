@@ -51,6 +51,13 @@
 # define MEXIT GETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS))
 
 /*
+** Groups transition flags
+*/
+# define GRP_TRANS_NONE 0
+# define GRP_TRANS_AND 1
+# define GRP_TRANS_OR 2
+
+/*
 ** Jobs flags
 */
 # define FGRP_RUNNING 0
@@ -98,6 +105,12 @@ typedef struct	s_redirection
   char		*file_g;
 }		t_redirection;
 
+typedef struct	s_next_grp
+{
+  int		transition;
+  char		*line;
+}		t_next_grp;
+
 typedef struct	s_grp
 {
   int		nb_red;
@@ -107,6 +120,7 @@ typedef struct	s_grp
   t_cmd		**cmds;
   int		flags;
   t_redirection	*redirection;
+  t_next_grp	next;
 }		t_grp;
 
 typedef struct	s_func_ptr
@@ -219,6 +233,7 @@ t_grp	*get_forground_grp(t_sh *shell);
 */
 void	wait_all_jobs(t_sh *shell, t_grp **jobtab);
 void	wait_no_fg_grp(t_sh* shell);
+t_cmd	*cmd_f_pid(int pid, t_sh *shell);
 
 /*
 ** User funcs
@@ -247,13 +262,16 @@ void	replace_var_in_argv(char **argv, char **envp);
 /*
 ** Commands
 */
+int	exec_next_grp(t_grp *grp, t_sh *shell);
+void	rm_all_terminated_grp(t_sh *shell);
+int	global_group_ret_status(t_grp *grp);
 t_grp	*create_n_process_group(t_sh *shell, char *lign);
 t_cmd	*create_n_cmd(t_sh *shell, char *lign);
 char	*exec_full_path(char *exec, char **paths);
 int	exec_process_group(t_sh *shell, t_grp *grp);
 void	cmd_execution(t_cmd *cmd, t_fds *fd, t_sh *shell);
 int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
-                   int (*f)(char *cmd, char **argv, t_sh *shell));
+                 int (*f)(char *cmd, char **argv, t_sh *shell));
 void	free_process_group(t_grp *grp);
 int	is_grp_exec(t_sh *shell, t_grp *grp);
 

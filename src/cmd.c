@@ -10,6 +10,33 @@
 
 #include "42sh.h"
 
+t_cmd	*cmd_f_pid(int pid, t_sh *shell)
+{
+  int	i;
+  int	j;
+  t_grp	*tmpgrp;
+  t_cmd	*tmpcmd;
+
+  i = 0;
+  if ((shell == NULL) || (shell->process_group == NULL) || (pid == -1))
+    return (NULL);
+  while ((tmpgrp = shell->process_group[i]) != NULL)
+    {
+      if (tmpgrp->cmds != NULL)
+        {
+          j = 0;
+          while ((tmpcmd = tmpgrp->cmds[j]) != NULL)
+            {
+              if (tmpcmd->pid.pid == pid)
+                return (tmpcmd);
+              j++;
+            }
+        }
+      i++;
+    }
+  return (NULL);
+}
+
 t_cmd	*create_n_cmd(t_sh *shell, char *lign)
 {
   t_cmd	*res;
