@@ -23,15 +23,17 @@ void	store_history_f(t_sh *shell, int fd)
     }
 }
 
-void	store_conf_file(const char *filename, t_sh *shell,
+void	store_conf_file(char *filename, t_sh *shell,
                       void (*f)(t_sh *shell, int fd))
 {
+  char	*path;
   int	fd;
 
-  if ((fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, REDI_FRIGHT)) == -1)
+  if (((path = check_vars_in_str(filename, shell->env)) == NULL)
+      || ((fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, REDI_FRIGHT)) == -1))
     {
       my_putstr("Can't open config file: ", 2, -1);
-      my_putstr(filename, 2, -1);
+      my_putstr(path, 2, -1);
       my_putstr("\n", 2, -1);
       return ;
     }
