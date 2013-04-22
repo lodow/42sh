@@ -32,16 +32,13 @@ t_grp	*parse_grp_a_exec(t_sh *shell, char *line, int def_fdout, int back)
 void	parse_linked_grp_process(t_sh *shell, char *line, int def_fdout, int back)
 {
   t_grp	*grp;
-  char	**taba;
-  char	**tabo;
+  int	type;
   char	*next_line;
 
-  taba = str_to_wordtab(line, "&&", 1);
-  tabo = str_to_wordtab(line, "||", 1);
-  next_line =
+  next_line = type_next_and_or(line, &type);
   grp = parse_grp_a_exec(shell, line, def_fdout, back);
-  grp->next.transition = GRP_TRANS_NONE;
-  grp->next.line = NULL;
+  grp->transition = type;
+  grp->transition_line = next_line;
   if (MEXIT)
     return ;
 }

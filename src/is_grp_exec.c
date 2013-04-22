@@ -43,24 +43,6 @@ int	is_grp_exec(t_sh *shell, t_grp *grp)
   return (1);
 }
 
-int	exec_next_grp(t_grp *grp, t_sh *shell)
-{
-  int	fdout;
-  int	gobst;
-
-  if ((grp == NULL) || (grp->next.transition == GRP_TRANS_NONE))
-    return (0);
-  fdout = grp->fd.stdout;
-  gobst = global_group_ret_status(grp);
-  if (((grp->next.transition == GRP_TRANS_AND) && (gobst == 0))
-      || ((grp->next.transition == GRP_TRANS_OR) && (gobst != 0)))
-    {
-      parse_user_cmd(shell, grp->next.line, fdout);
-      return (1);
-    }
-  return (0);
-}
-
 void	rm_all_terminated_grp(t_sh *shell)
 {
   int	i;

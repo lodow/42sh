@@ -105,12 +105,6 @@ typedef struct	s_redirection
   char		*file_g;
 }		t_redirection;
 
-typedef struct	s_next_grp
-{
-  int		transition;
-  char		*line;
-}		t_next_grp;
-
 typedef struct	s_grp
 {
   int		nb_red;
@@ -120,7 +114,8 @@ typedef struct	s_grp
   t_cmd		**cmds;
   int		flags;
   t_redirection	*redirection;
-  t_next_grp	next;
+  int		transition;
+  char		*transition_line;
 }		t_grp;
 
 typedef struct	s_func_ptr
@@ -245,6 +240,7 @@ void	prompt(t_sh *shell);
 /*
 ** Pipes
 */
+char	*type_next_and_or(char *line, int *type);
 int	exec_a_pipe(t_sh *shell, t_grp *grp);
 
 /*

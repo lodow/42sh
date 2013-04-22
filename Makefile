@@ -74,6 +74,7 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/my_putchar.c				\
 		$(SRCPATH)/delete_history.c			\
 		$(SRCPATH)/history.c				\
+		$(SRCPATH)/and_or.c				\
 
 ENV	=	$(PATHENV)/env.c				\
 
