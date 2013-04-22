@@ -10,7 +10,6 @@
 
 #include "42sh.h"
 
-
 void	env_exec(char *cmd, char **argv, char **env)
 {
   //do something
