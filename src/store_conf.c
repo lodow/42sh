@@ -15,11 +15,13 @@ void	store_history_f(t_sh *shell, int fd)
   t_history	*tmp;
 
   tmp = shell->history;
+  while (tmp->next != NULL)
+    tmp = tmp->next;
   while (tmp != NULL)
     {
       my_putstr(tmp->cmd, fd, -1);
       my_putstr("\n", fd, -1);
-      tmp = tmp->next;
+      tmp = tmp->back;
     }
 }
 
