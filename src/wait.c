@@ -60,43 +60,33 @@ int	wait_son(t_grp *grp)
 
 
 
-void	wait_all_jobs(t_sh *shell, t_grp **jobtab)
+void	wait_all_jobs(t_sh *shell)
 {
   int	i;
   t_grp	*forground_grp;
 
   i = 0;
-  if (jobtab == NULL)
+  if (shell->process_group == NULL)
     return ;
   forground_grp = get_forground_grp(shell);
-  while (jobtab[i] != NULL)
+  while (shell->process_group[i] != NULL)
     {
-      if (wait_son(jobtab[i]) == 0)
+      if (wait_son(shell->process_group[i]) == 0)
         {
-          SETFLAG(jobtab[i]->flags, FGRP_TERMINATED);
-          if (jobtab[i] == forground_grp)
+          SETFLAG(shell->process_group[i]->flags, FGRP_TERMINATED);
+          if (shell->process_group[i] == forground_grp)
             set_forground_pgrp(shell->pid.pgid);
           else
             {
-              if (jobtab[i]->pid.pgid != -1) //this is a tempory solution
+              if (shell->process_group[i]->pid.pgid != -1) //this is a tempory solution
                 {
-                  my_putstr(jobtab[i]->line, 2, -1);
-                  my_putstr(" -> Done\n", 2, -1);
+                  my_putstr(shell->process_group[i]->line, 1, -1);
+                  my_putstr(" -> Done\n", 1, -1);
                 }
             }
-          ///debug
-          int j = 0;
-          printf("grp return value is [");
-          while (jobtab[i]->cmds[j] != NULL)
-            {
-              printf("%d,", jobtab[i]->cmds[j]->return_value);
-              j++;
-            }
-          printf("] -> %d\n", global_group_ret_status(jobtab[i]));
-          ///
-          exec_next_grp(jobtab[i], shell);
-          UNSETFLAG(jobtab[i]->flags, FLAGPOS(FGRP_FORGROUND));
-          SETFLAG(jobtab[i]->flags, FLAGPOS(FGRP_TERMINATED));
+          exec_next_grp(shell->process_group[i], shell);
+          UNSETFLAG(shell->process_group[i]->flags, FLAGPOS(FGRP_FORGROUND));
+          SETFLAG(shell->process_group[i]->flags, FLAGPOS(FGRP_TERMINATED));
         }
       i++;
     }

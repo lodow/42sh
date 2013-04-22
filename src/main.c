@@ -51,7 +51,7 @@ int		init_shell(t_sh *shell, char **main_env)
 void	exit_shell(t_sh *shell)
 {
   reset_mod(shell->param.t);
-  store_conf_file(".history", shell, store_history_f);
+  store_conf_file("${HOME}/.history", shell, store_history_f);
   //free shell
   free_ptr_tab((void**)shell->env);
 }

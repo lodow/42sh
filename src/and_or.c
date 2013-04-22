@@ -23,6 +23,8 @@ int	exec_next_grp(t_grp *grp, t_sh *shell)
       || ((grp->transition == GRP_TRANS_OR) && (gobst != 0)))
     {
       parse_user_cmd(shell, grp->transition_line, fdout);
+      grp->transition = GRP_TRANS_NONE;
+      ///set last grp to same flag
       return (1);
     }
   return (0);

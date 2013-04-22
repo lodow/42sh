@@ -27,7 +27,7 @@ char	*exec_line_a_g_res(char *line, t_sh *shell)
   close(pipefd[PIPE_WRITE]);
   while (sizeread > 0)
     {
-      wait_all_jobs(shell, shell->process_group);
+      wait_all_jobs(shell);
       if ((sizeread = read(pipefd[PIPE_READ], buffer, READ_SIZE)) > 0)
         str = my_stradd(str, buffer, sizeread);
     }
