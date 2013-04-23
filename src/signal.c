@@ -31,7 +31,7 @@ void	sig_handler(int sig)
       my_putstr(shell->param.str_prompt, 1, -1);
     }
   if ((sig == SIGHUP) || (sig == SIGTERM))
-    exit_shell(shell);
+    my_exit(0);
   signal(SIGTTOU, &sig_handler);
   signal(SIGTTIN, &sig_handler);
   signal(SIGINT, &sig_handler);
