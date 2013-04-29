@@ -311,6 +311,9 @@
 		<Unit filename="src/redirection/return_type_char.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/reg_expr.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/shell.c">
 			<Option compilerVar="CC" />
 		</Unit>
