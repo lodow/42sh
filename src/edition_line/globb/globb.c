@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun Apr 14 16:43:27 2013 remi robert
-** Last update Thu Apr 18 15:01:11 2013 remi robert
+** Last update Mon Apr 29 22:28:30 2013 remi robert
 */
 
 #include "my_func.h"
@@ -52,8 +52,34 @@ void	completation_cmd(char *str_glob, char *buff, t_param **param)
   end_str(*param);
 }
 
+void	rempl_str_buff(char *buff, char *str)
+{
+  int	indice;
+
+  indice = -1;
+  while (str[++indice] != '\0')
+    buff[indice] = str[indice];
+  buff[indice] = '\0';
+  if (str != NULL)
+    free(str);
+}
+
+int		 check_active_my_select(char *path, glob_t *globbuf, char *str,
+					char *buff_prec_str)
+{
+  if (str_cmp(str, buff_prec_str) == 1)
+    return (1);
+  if (path == NULL || globbuf == NULL || globbuf->gl_pathv == NULL ||
+      str == NULL)
+    return (0);
+  if (str_cmp(path, "*") == 1 || str_cmp(globbuf->gl_pathv[0], str) == 1)
+    return (1);
+  return (0);
+}
+
 void		gere_globb(t_param **param)
 {
+  static char	buff_prec_str[1024] = "\0";
   t_glob	param_glob;
   int		pos;
   char		*str;
@@ -68,7 +94,8 @@ void		gere_globb(t_param **param)
   str_globb = return_str_globb(str, pos);
   if (rempl_globb(str_globb, &(param_glob.glob)) == 0)
     return ;
-  if ((*param)->selector == 0)
+  if (check_active_my_select(str_globb,
+			     &(param_glob.glob), str, buff_prec_str) == 1)
     {
       my_select_glob(param, str_globb, &param_glob);
       return ;
@@ -76,6 +103,7 @@ void		gere_globb(t_param **param)
   print_glob(param, &param_glob, -1);
   create_new_cmd_string_with_globb(param, &param_glob, buff);
   completation_cmd(str_globb, buff, param);
+  rempl_str_buff(buff_prec_str, return_string((*param)->string));
   if (str_globb != NULL)
     free(str_globb);
 }

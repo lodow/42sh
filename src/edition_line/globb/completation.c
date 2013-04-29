@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu Apr 18 10:03:44 2013 remi robert
-** Last update Thu Apr 18 10:33:00 2013 remi robert
+** Last update Mon Apr 29 21:49:54 2013 remi robert
 */
 
 #include "my_func.h"
@@ -29,9 +29,9 @@ int	return_less_size(t_glob *param_glob)
   return (size);
 }
 
-void	create_new_cmd_string_with_globb(t_param **param,
-					 t_glob *param_glob,
-					 char *buff)
+void	create_new_cmd_string_with_globb(t_param	 **param,
+					 t_glob		 *param_glob,
+					 char		 *buff)
 {
   int	indice;
   int	indice_caractere;
