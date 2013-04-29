@@ -5,6 +5,7 @@ Thumbs.db
 #*#
 *.out
 *.o
+.42conf
 .history
 robertSH
 *.layout*
