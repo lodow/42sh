@@ -5,32 +5,11 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun Apr 14 16:43:27 2013 remi robert
-** Last update Tue Apr 30 11:42:05 2013 remi robert
+** Last update Tue Apr 30 13:29:58 2013 remi robert
 */
 
 #include "my_func.h"
 #include "42sh.h"
-
-int		rempl_globb(char *path, glob_t *globbuf)
-{
-  globbuf->gl_offs = 0;
-  glob(path, GLOB_DOOFFS | GLOB_NOCHECK, NULL, globbuf);
-  if (globbuf == NULL || globbuf->gl_pathv == NULL ||
-      (globbuf->gl_pathc == 1 && str_cmp(globbuf->gl_pathv[0], path) == 1))
-    return (0);
-  return (1);
-}
-
-void		init_struct_glob(t_glob *glob, int fd)
-{
-  glob->fd_tty = fd;
-  glob->pos = 0;
-  glob->x = 0;
-  glob->y = 0;
-  glob->len_max = 0;
-  glob->nb_line = 0;
-  glob->nb_colonne = 0;
-}
 
 void	completation_cmd(char *str_glob, char *buff, t_param **param)
 {
@@ -53,18 +32,6 @@ void	completation_cmd(char *str_glob, char *buff, t_param **param)
   end_str(*param);
 }
 
-void	rempl_str_buff(char *buff, char *str)
-{
-  int	indice;
-
-  indice = -1;
-  while (str[++indice] != '\0')
-    buff[indice] = str[indice];
-  buff[indice] = '\0';
-  if (str != NULL)
-    free(str);
-}
-
 int		 check_active_my_select(char *path, glob_t *globbuf, char *str,
 					char *buff_prec_str)
 {
@@ -78,6 +45,15 @@ int		 check_active_my_select(char *path, glob_t *globbuf, char *str,
   return (0);
 }
 
+void		launch_my_select(t_param **param, char *str_globb,
+				 t_glob *param_glob)
+{
+  my_select_glob(param, str_globb, param_glob);
+  if (str_globb != NULL)
+    free(str_globb);
+  return ;
+}
+
 void		gere_globb(t_param **param)
 {
   static char	buff_prec_str[1024] = "\0";
@@ -87,20 +63,17 @@ void		gere_globb(t_param **param)
   char		*str_globb;
   char		buff[2048];
 
-  init_struct_glob(&param_glob, (*param)->fd_tty);
+  str = return_string((*param)->string);
+  init_struct_glob(&param_glob, *param);
   pos = get_len_string_with_pos(*param);
-  if (pos < 0 || pos > (*param)->len_string ||
-      (str = return_string((*param)->string)) == NULL)
+  if (pos < 0 || pos > (*param)->len_string || str == NULL)
     return ;
   str_globb = return_str_globb(str, pos);
   if (rempl_globb(str_globb, &(param_glob.glob)) == 0)
     return ;
   if (check_active_my_select(str_globb,
 			     &(param_glob.glob), str, buff_prec_str) == 1)
-    {
-      my_select_glob(param, str_globb, &param_glob);
-      return ;
-    }
+    return (launch_my_select(param, str_globb, &param_glob));
   print_glob(param, &param_glob, -1);
   create_new_cmd_string_with_globb(param, &param_glob, buff);
   completation_cmd(str_globb, buff, param);

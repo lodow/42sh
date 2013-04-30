@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu Apr 18 10:03:44 2013 remi robert
-** Last update Mon Apr 29 21:49:54 2013 remi robert
+** Last update Tue Apr 30 13:57:21 2013 remi robert
 */
 
 #include "my_func.h"
@@ -29,9 +29,17 @@ int	return_less_size(t_glob *param_glob)
   return (size);
 }
 
-void	create_new_cmd_string_with_globb(t_param	 **param,
-					 t_glob		 *param_glob,
-					 char		 *buff)
+void	rempl_globb_caractere(int *indice, char *buff,
+			      int *indice_caractere, char caractere)
+{
+  buff[*indice_caractere] = caractere;
+  *indice_caractere += 1;
+  *indice = 0;
+}
+
+void	create_new_cmd_string_with_globb(t_param **param,
+					 t_glob	*param_glob,
+					 char *buff)
 {
   int	indice;
   int	indice_caractere;
@@ -44,11 +52,7 @@ void	create_new_cmd_string_with_globb(t_param	 **param,
   while (indice_caractere < size)
     {
       if (indice == (int)param_glob->glob.gl_pathc)
-	{
-	  buff[indice_caractere] = caractere;
-	  indice_caractere += 1;
-	  indice = 0;
-	}
+	rempl_globb_caractere(&indice, buff, &indice_caractere, caractere);
       if (indice == 0)
 	caractere =
 	  param_glob->glob.gl_pathv[indice][indice_caractere];
@@ -60,4 +64,4 @@ void	create_new_cmd_string_with_globb(t_param	 **param,
       indice = indice + 1;
     }
   buff[indice_caractere] = '\0';
-}
+ }

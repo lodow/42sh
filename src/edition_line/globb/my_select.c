@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu Apr 18 14:08:00 2013 remi robert
-** Last update Thu Apr 18 15:55:55 2013 remi robert
+** Last update Tue Apr 30 13:58:04 2013 remi robert
 */
 
 #include "my_func.h"
@@ -36,7 +36,6 @@ void	gere_keyboard_globb(char *buff, t_glob *param_glob, int max)
     {
       if (param_glob->pos -= (param_glob->nb_line - 1) <= 0)
 	param_glob->pos -= (param_glob->nb_line - 1);
-
     }
 }
 
@@ -64,8 +63,6 @@ void	my_select_glob(t_param **param,
 
   ret = 1;
   print_glob(param, param_glob, param_glob->pos);
-  printf("%s[%d]%s", F_ROUGE, param_glob->nb_line, REZ);
-  fflush(stdout);
   y = param_glob->y - (param_glob->nb_colonne + 1);
   while (ret > 0)
     {

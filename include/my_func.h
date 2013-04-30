@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Tue Apr 30 12:56:04 2013 remi robert
+** Last update Tue Apr 30 13:30:39 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -181,8 +181,9 @@ void			create_new_cmd_string_with_globb(t_param **,
 							 t_glob *, char *);
 void			my_select_glob(t_param **, char *, t_glob *);
 int			rempl_globb(char *, glob_t *);
-void			init_struct_glob(t_glob *, int);
+void			init_struct_glob(t_glob *, t_param *);
 void			completation_cmd(char *, char *, t_param **);
 void			view_glob(t_glob *, int);
+void			rempl_str_buff(char *, char *);
 
 #endif /* MY_FUNC_H_ */
