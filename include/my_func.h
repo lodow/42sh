@@ -5,23 +5,23 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Tue Apr 30 11:42:50 2013 remi robert
+** Last update Tue Apr 30 12:56:04 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
 # define MY_FUNC_H_
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <termcap.h>
-#include <termios.h>
-#include <sys/types.h>
-#include <sys/ioctl.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <glob.h>
-#include "couleur.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <termcap.h>
+# include <termios.h>
+# include <sys/types.h>
+# include <sys/ioctl.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <glob.h>
+# include "couleur.h"
 
 # define UP		65
 # define DOWN		66
@@ -37,6 +37,8 @@
 # define CTRLU		21
 # define CTRLL		12
 # define CTRLD		4
+# define CTRLA		1
+# define CTRLE		5
 # define OK		1
 # define FALSE		0
 # define END		'\0'

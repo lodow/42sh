@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Thu Apr 18 14:10:44 2013 remi robert
+## Last update Tue Apr 30 13:10:55 2013 remi robert
 ##
 
 CC	=	gcc
@@ -91,7 +91,7 @@ SRCBUILTINS=	$(BUILTINS)/builtins.c				\
 		$(BUILTINS)/exit.c				\
 		$(BUILTINS)/history.c				\
 		$(BUILTINS)/alias.c				\
-		$(BUILTINS)/source.c			\
+		$(BUILTINS)/source.c				\
 		$(BUILTINS)/clear.c				\
 
 SRCLINE	=	$(PATHLINE)/main_line.c				\
@@ -116,6 +116,7 @@ SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/gere_history.c			\
 		$(PATHLINE)/feature_history.c			\
 		$(PATHLINE)/gere_current_history.c		\
+		$(PATHLINE)/get_type_contole.c			\
 
 SRCGLOBB=	$(PATHGLOBB)/globb.c				\
 		$(PATHGLOBB)/genere_globb_str.c			\

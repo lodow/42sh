@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 16:58:28 2013 remi robert
-** Last update Tue Apr 30 11:28:56 2013 remi robert
+** Last update Tue Apr 30 13:10:20 2013 remi robert
 */
 
 #include "my_func.h"
@@ -76,9 +76,9 @@ void	gere_keyboard(t_param **param, char *buff, t_history **history)
 {
   if (buff[0] == 9 && buff[1] == '\0')
     gere_globb(param);
-  if (str_cmp(buff, BEGIN_STR) == 1)
+  if (str_cmp(buff, BEGIN_STR) == 1 || (buff[0] == CTRLA && buff[1] == '\0'))
     begin_str(*param);
-  if (str_cmp(buff, END_STR) == 1)
+  if (str_cmp(buff, END_STR) == 1 || buff[0] == CTRLE)
     end_str(*param);
   if (str_cmp(buff, STR_LEFT) == 1)
     set_pos_left(param);

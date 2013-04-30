@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 12:32:15 2013 remi robert
-** Last update Tue Apr 30 11:27:19 2013 remi robert
+** Last update Tue Apr 30 13:10:21 2013 remi robert
 */
 
 #include "my_func.h"
@@ -30,31 +30,6 @@ void	gere_buff(char *buff, t_param **param, t_history **history)
       return ;
     }
   gere_keyboard(param, buff, history);
-}
-
-int	gere_control(char *buff, t_param **param)
-{
-  if (buff[0] == CTRLK)
-    {
-      gere_control_k(param);
-      return (OK);
-    }
-  if (buff[0] == CTRLY)
-    {
-      gere_control_y(param);
-      return (OK);
-    }
-  if (buff[0] == CTRLU)
-    {
-      gere_control_u(param);
-      return (OK);
-    }
-  if (buff[0] == CTRLL)
-    {
-      control_clear(param);
-      return (OK);
-    }
-  return (FALSE);
 }
 
 void	gere_null_list(t_param **param)
