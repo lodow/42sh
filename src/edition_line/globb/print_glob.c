@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu Apr 18 08:50:49 2013 remi robert
-** Last update Thu Apr 18 15:41:58 2013 remi robert
+** Last update Tue Apr 30 11:50:56 2013 remi robert
 */
 
 #include "my_func.h"
@@ -36,7 +36,7 @@ void	view_glob(t_glob *param_glob, int selector)
   indice = 0;
   while (indice < (int)param_glob->glob.gl_pathc)
     {
-      curseur(param_glob->x, param_glob->y);
+      curseur(param_glob->x, param_glob->y, param_glob->fd_tty);
       param_glob->x += param_glob->len_max;
       if (selector == indice)
 	{
@@ -85,7 +85,7 @@ void	print_glob(t_param **param, t_glob *param_glob, int selector)
   param_glob->nb_line = (return_x() / param_glob->len_max) + 1;
   calc_colonne_glob(param_glob);
   my_putstr("\n", 1, -1);
-  get_pos_curser(&(param_glob->x), &(param_glob->y));
+  get_pos_curser(&(param_glob->x), &(param_glob->y), (*param)->fd_tty);
   param_glob->x = 0;
   view_glob(param_glob, selector);
   my_put_str("\n");

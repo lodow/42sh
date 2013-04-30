@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed Mar 20 14:13:14 2013 remi
-** Last update Sun Apr 14 16:32:29 2013 remi robert
+** Last update Tue Apr 30 11:35:07 2013 remi robert
 */
 
 #include "my_func.h"
@@ -24,21 +24,23 @@ int	recup_path(char **envp)
 
 int	init_tab_line(t_param *param)
 {
+  if ((param->fd_tty = open("/dev/tty", O_RDWR)) == -1)
+    param->fd_tty = 1;
   param->str_prompt = NULL;
   param->string = NULL;
   param->len_string = 0;
   param->buff_copy[0] = END;
   param->pos_history = 0;
-  if (tcgetattr(1, &(param->t)) == -1)
+  if (tcgetattr(param->fd_tty, &(param->t)) == -1)
     return (FALSE);
   return (OK);
 }
 
 void	init_pos_line(t_param *param)
 {
-  mod_raw();
-  get_pos_curser(&(param->begin_pos.x), &(param->begin_pos.y));
+  mod_raw(param->fd_tty);
+  get_pos_curser(&(param->begin_pos.x), &(param->begin_pos.y), param->fd_tty);
   param->current_pos.x = param->begin_pos.x;
   param->current_pos.y = param->begin_pos.y;
-  curseur(param->current_pos.x, param->current_pos.y);
+  curseur(param->current_pos.x, param->current_pos.y, param->fd_tty);
 }

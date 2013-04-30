@@ -5,17 +5,17 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  8 16:36:04 2013 remi robert
-** Last update Sun Apr 14 16:10:40 2013 remi robert
+** Last update Tue Apr 30 11:38:24 2013 remi robert
 */
 
 #include "my_func.h"
 
-void	delete_line_curser(void)
+void	delete_line_curser(int fd)
 {
   char	*s;
 
   s = tgetstr("dl", NULL);
-  my_put_str(s);
+  my_putstr(s, fd, -1);
 }
 
 void	dl_current_pos(t_param *param)
@@ -29,13 +29,13 @@ void	dl_current_pos(t_param *param)
   x = param->begin_pos.x;
   while (indice != size + 1)
     {
-      curseur(x, param->begin_pos.y + indice);
-      delete_line_curser();
+      curseur(x, param->begin_pos.y + indice, param->fd_tty);
+      delete_line_curser(param->fd_tty);
       x = 0;
       indice = indice + 1;
     }
-  curseur(param->current_pos.x, param->current_pos.y);
-  delete_line_curser();
-  curseur(param->begin_pos.x, param->begin_pos.y);
-  delete_line_curser();
+  curseur(param->current_pos.x, param->current_pos.y, param->fd_tty);
+  delete_line_curser(param->fd_tty);
+  curseur(param->begin_pos.x, param->begin_pos.y, param->fd_tty);
+  delete_line_curser(param->fd_tty);
 }

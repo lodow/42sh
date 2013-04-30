@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Mon Apr 29 22:03:47 2013 remi robert
+** Last update Tue Apr 30 11:42:50 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -49,6 +49,7 @@
 
 typedef struct		s_glob
 {
+  int			fd_tty;
   int			pos;
   int			x;
   int			y;
@@ -81,7 +82,7 @@ typedef struct		s_coordonnee
 
 typedef struct		s_param
 {
-  int			selector;
+  int			fd_tty;
   int			pos_history;
   char			*str_prompt;
   char			buff_copy[2048];
@@ -103,15 +104,15 @@ int			depassement(int);
 int			get_number(char *, int, int, int);
 int			my_getnbr(char *);
 int			my_strlen(char *);
-int			clear_screem(void);
+int			clear_screem(int);;
 int			return_x(void);
 int			return_y(void);
 void			assign_value_pos(int *, int *, char *);
-void			get_pos_curser(int *, int *);
+void			get_pos_curser(int *, int *, int);
 void			reset_mod(struct termios);
-void			mod_raw(void);
-int			curseur(int, int);
-void			ecrase_text(t_coordonnee, int);
+void			mod_raw(int);
+int			curseur(int, int, int);
+void			ecrase_text(t_coordonnee, int, int);
 void			free_string(t_string *);
 void			init_pos_line(t_param *);
 void			view_string(t_param *);
@@ -152,7 +153,7 @@ void			my_put_str(char *);
 char			*return_string(t_string *);
 void			print_prompt(t_param *);
 void			control_clear(t_param **);
-void			delete_line_curser(void);
+void			delete_line_curser(int);
 void			my_putstr(const char *, int, int);
 void			begin_str(t_param *);
 void			end_str(t_param *);
@@ -178,7 +179,7 @@ void			create_new_cmd_string_with_globb(t_param **,
 							 t_glob *, char *);
 void			my_select_glob(t_param **, char *, t_glob *);
 int			rempl_globb(char *, glob_t *);
-void			init_struct_glob(t_glob *);
+void			init_struct_glob(t_glob *, int);
 void			completation_cmd(char *, char *, t_param **);
 void			view_glob(t_glob *, int);
 

@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun Apr 14 16:43:27 2013 remi robert
-** Last update Mon Apr 29 22:28:30 2013 remi robert
+** Last update Tue Apr 30 11:42:05 2013 remi robert
 */
 
 #include "my_func.h"
@@ -21,8 +21,9 @@ int		rempl_globb(char *path, glob_t *globbuf)
   return (1);
 }
 
-void		init_struct_glob(t_glob *glob)
+void		init_struct_glob(t_glob *glob, int fd)
 {
+  glob->fd_tty = fd;
   glob->pos = 0;
   glob->x = 0;
   glob->y = 0;
@@ -86,7 +87,7 @@ void		gere_globb(t_param **param)
   char		*str_globb;
   char		buff[2048];
 
-  init_struct_glob(&param_glob);
+  init_struct_glob(&param_glob, (*param)->fd_tty);
   pos = get_len_string_with_pos(*param);
   if (pos < 0 || pos > (*param)->len_string ||
       (str = return_string((*param)->string)) == NULL)

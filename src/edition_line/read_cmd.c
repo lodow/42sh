@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 12:32:15 2013 remi robert
-** Last update Mon Apr 15 08:37:48 2013 remi robert
+** Last update Tue Apr 30 11:27:19 2013 remi robert
 */
 
 #include "my_func.h"
@@ -91,7 +91,7 @@ char	*read_cmd(t_param *param, t_history **history)
       dl_current_pos(param);
       gere_null_list(&param);
       view_string(param);
-      curseur(param->current_pos.x, param->current_pos.y);
+      curseur(param->current_pos.x, param->current_pos.y, param->fd_tty);
     }
   return (return_string(param->string));
 }

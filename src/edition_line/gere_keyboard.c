@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 16:58:28 2013 remi robert
-** Last update Mon Apr 15 08:38:37 2013 remi robert
+** Last update Tue Apr 30 11:28:56 2013 remi robert
 */
 
 #include "my_func.h"
@@ -90,5 +90,5 @@ void	gere_keyboard(t_param **param, char *buff, t_history **history)
     gere_suppr(param);
   if (buff[0] == ESC && buff[1] == CRO && buff[2] == SUPPR)
     gere_delete(param);
-  curseur((*param)->current_pos.x, (*param)->current_pos.y);
+  curseur((*param)->current_pos.x, (*param)->current_pos.y, (*param)->fd_tty);
 }

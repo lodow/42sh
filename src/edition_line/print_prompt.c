@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed Apr 10 08:55:38 2013 remi robert
-** Last update Sun Apr 14 16:08:18 2013 remi robert
+** Last update Tue Apr 30 11:27:47 2013 remi robert
 */
 
 #include "my_func.h"
@@ -14,8 +14,8 @@ void	print_prompt(t_param *param)
 {
   if (param->str_prompt != NULL)
     {
-      curseur(param->prompt.x, param->prompt.y);
+      curseur(param->prompt.x, param->prompt.y, param->fd_tty);
       my_put_str(param->str_prompt);
-      curseur(param->current_pos.x, param->current_pos.y);
+      curseur(param->current_pos.x, param->current_pos.y, param->fd_tty);
     }
 }

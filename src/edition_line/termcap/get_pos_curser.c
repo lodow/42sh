@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Thu Mar 21 08:21:11 2013 remi
-** Last update Sun Apr 14 19:00:31 2013 remi robert
+** Last update Tue Apr 30 11:34:15 2013 remi robert
 */
 
 #include "my_func.h"
@@ -37,7 +37,7 @@ void	assign_value_pos(int *x, int *y, char *buff)
   *x = my_getnbr(num) - 1;
 }
 
-void	get_pos_curser(int *x, int *y)
+void	get_pos_curser(int *x, int *y, int fd)
 {
   char	buff[10];
   int	indice;
@@ -53,7 +53,7 @@ void	get_pos_curser(int *x, int *y)
       buff[indice] = '\0';
     }
   assign_value_pos(x, y, buff);
-  curseur(*x, *y);
+  curseur(*x, *y, fd);
   my_put_str("         ");
-  curseur(*x, *y);
+  curseur(*x, *y, fd);
 }
