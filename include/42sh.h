@@ -19,6 +19,7 @@
 # include <sys/stat.h>
 # include <string.h>
 # include <errno.h>
+# include <glob.h>
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/time.h>
@@ -325,5 +326,11 @@ void	del_slash_quote(char **);
 void	my_strncpy_force(char *, char *, int);
 
 char	**get_path(char **envp);
+
+/*
+** Glob
+*/
+void	expand_reg_epx_on_argv(char ***argv);
+char	**expand_reg_exp(char *regexp);
 
 #endif
