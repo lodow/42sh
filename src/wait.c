@@ -78,7 +78,7 @@ void	wait_all_jobs(t_sh *shell)
             set_forground_pgrp(shell->pid.pgid);
           else
             {
-              if (shell->process_group[i]->pid.pgid != -1) //this is a tempory solution
+              if (shell->process_group[i]->pid.pgid != -1)
                 {
                   my_putstr(shell->process_group[i]->line, 1, -1);
                   my_putstr(" -> Done\n", 1, -1);

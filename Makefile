@@ -75,6 +75,7 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/delete_history.c			\
 		$(SRCPATH)/history.c				\
 		$(SRCPATH)/and_or.c				\
+		$(SRCPATH)/reg_expr.c			\
 
 ENV	=	$(PATHENV)/env.c				\
 

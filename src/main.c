@@ -52,8 +52,9 @@ void	exit_shell(t_sh *shell)
 {
   reset_mod(shell->param.t);
   store_conf_file("${HOME}/.history", shell, store_history_f);
-  //free shell
   free_ptr_tab((void**)shell->env);
+  if (!GETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS)))
+    my_putstr("exit\n", 1, -1);
 }
 
 int		main(int ac, char **av, char **main_env)
