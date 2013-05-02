@@ -5,14 +5,14 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Thu May  2 09:47:22 2013 remi robert
+## Last update Thu May  2 22:21:42 2013 remi robert
 ##
 
 CC	=	gcc
 
 RM	= 	rm
 
-NAME	=	robertSH
+NAME	=	gingerSH
 
 COMPILEFLAG	=	-g -Wall -Wfloat-equal -Wmissing-include-dirs \
 		-Wclobbered -Wempty-body -Wignored-qualifiers \
