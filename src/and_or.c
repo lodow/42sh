@@ -52,7 +52,7 @@ char	*type_next_and_or(char *line, int *type)
       next_line = my_strdup(&(line[2 + my_strlen(tabo[0])]));
       line[my_strlen(tabo[0])] = '\0';
     }
-  free_ptr_tab((void**)taba);
-  free_ptr_tab((void**)tabo);
+  free_ptr_tab((void**)taba, &free);
+  free_ptr_tab((void**)tabo, &free);
   return (next_line);
 }

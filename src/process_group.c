@@ -102,6 +102,6 @@ void	free_process_group(t_grp *grp)
   if (grp != NULL)
     {
       free(grp->line);
-      free_ptr_tab((void**)grp->cmds);
+      free_ptr_tab((void**)grp->cmds, &free);
     }
 }

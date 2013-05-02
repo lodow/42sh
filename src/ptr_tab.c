@@ -73,7 +73,7 @@ void	rm_ptr_f_tab(void **tab, void *ptr)
     }
 }
 
-void	free_ptr_tab(void **tab)
+void	free_ptr_tab(void **tab, void (*f)(void *ptr))
 {
   int	i;
 
@@ -82,7 +82,7 @@ void	free_ptr_tab(void **tab)
     {
       while (tab[i] != NULL)
         {
-          free(tab[i]);
+          f(tab[i]);
           i++;
         }
       free(tab);

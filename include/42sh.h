@@ -181,7 +181,7 @@ char	**add_change_env(char **env, char *var, char *value);
 */
 void	rm_ptr_f_tab(void **tab, void *ptr);
 void	**add_ptr_t_tab(void **tab, void *add);
-void	free_ptr_tab(void **tab);
+void	free_ptr_tab(void **tab, void (*f)(void *ptr));
 void	**concat_ptr_tab(void **tab1, void **tab2);
 
 /*

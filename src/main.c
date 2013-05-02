@@ -52,9 +52,9 @@ void	exit_shell(t_sh *shell)
 {
   reset_mod(shell->param.t);
   store_conf_file("${HOME}/.history", shell, store_history_f);
-  free_ptr_tab((void**)shell->env);
-  if (!GETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS)))
-    my_putstr("exit\n", 1, -1);
+  free_ptr_tab((void**)shell->env, &free);
+  free_ptr_tab((void**)shell->path, &free);
+  free_ptr_tab((void**)shell->alias_tab, &free);
 }
 
 int		main(int ac, char **av, char **main_env)
@@ -68,6 +68,8 @@ int		main(int ac, char **av, char **main_env)
       user_loop(&shell);
     }
   exit_shell(&shell);
+  if (!GETFLAG(shell.beepbeepexit, FLAGPOS(EXIT_F_POS)))
+    my_putstr("exit\n", 1, -1);
   UNSETFLAG(shell.beepbeepexit, FLAGPOS(EXIT_F_POS));
   return (shell.beepbeepexit);
 }

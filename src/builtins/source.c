@@ -17,7 +17,7 @@ void	builtin_source(t_cmd *cmd, t_fds *fd, t_sh *shell)
   source = ".42conf";
   if (cmd->argv[1] != NULL)
     source = cmd->argv[1];
-  free_ptr_tab((void**)shell->alias_tab);
+  free_ptr_tab((void**)shell->alias_tab, &free);
   shell->alias_tab = NULL;
   load_conf_file(source, shell, &new_conf_set);
 }

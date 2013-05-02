@@ -31,7 +31,7 @@ void	export_set(char *str, t_sh *shell)
     {
       shell->env = add_change_env(shell->env, field[0], field[1]);
     }
-  free_ptr_tab((void**)field);
+  free_ptr_tab((void**)field, &free);
 }
 
 /*

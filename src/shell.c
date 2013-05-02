@@ -20,7 +20,7 @@ void	recalc_prompt(t_sh *shell)
   if ((ps1 = get_envvar("PS1", shell->env)) != NULL)
     {
       if ((prompt = check_vars_in_str(my_strdup(ps1), shell->env)) != NULL)
-	shell->param.str_prompt = prompt;
+        shell->param.str_prompt = prompt;
       else
         shell->param.str_prompt = NULL;
     }
@@ -43,6 +43,6 @@ void	user_loop(t_sh *shell)
         return ;
       wait_no_fg_grp(shell);
       recalc_prompt(shell);
-      free(lign);
+      //free(lign);
     }
 }

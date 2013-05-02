@@ -63,7 +63,7 @@ int	parse_launch_background(char **line)
             free(tab[i - 1]);
             tab[i - 1] = NULL;
           }
-      // free((*line));
+      free((*line));
       (*line) = tab_file_tstr(tab, ' ');
     }
   return (back);
@@ -91,6 +91,6 @@ void	parse_user_cmd(t_sh *shell, char *line, int def_fdout)
       }
   if (back == 1)
     no_fg_jobs_status(shell);
-  free_ptr_tab((void**)tmptab);
-  free(line);
+  free_ptr_tab((void**)tmptab, &free);
+  //free(line);
 }
