@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Apr 30 13:08:39 2013 remi robert
-** Last update Tue Apr 30 13:11:26 2013 remi robert
+** Last update Thu May  2 08:18:53 2013 remi robert
 */
 
 #include "my_func.h"
@@ -35,6 +35,7 @@ int	gere_control(char *buff, t_param **param)
   if (buff[0] == CTRLY)
     {
       gere_control_y(param);
+      end_str(*param);
       return (OK);
     }
   if (buff[0] == CTRLU)

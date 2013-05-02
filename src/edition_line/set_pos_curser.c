@@ -5,12 +5,13 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Apr  9 14:25:24 2013 remi robert
-** Last update Sun Apr 14 16:09:58 2013 remi robert
+** Last update Thu May  2 08:17:35 2013 remi robert
 */
 
 #include "my_func.h"
 
-void	gere_end_control_u(t_param **param, t_string *pcourant, int indice)
+void	gere_end_control_u(t_param **param,
+			   t_string *pcourant, int indice)
 {
   pcourant->back = NULL;
   (*param)->string = pcourant;
