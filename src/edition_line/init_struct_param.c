@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Apr  9 15:26:37 2013 remi robert
-** Last update Tue Apr 30 11:35:39 2013 remi robert
+** Last update Thu May  2 08:34:25 2013 remi robert
 */
 
 #include "my_func.h"
@@ -23,5 +23,4 @@ void		init_struct_param(t_param *param)
   curseur(param->current_pos.x, param->current_pos.y, param->fd_tty);
   param->string = NULL;
   param->len_string = 0;
-  param->buff_copy[0] = END;
 }
