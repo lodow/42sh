@@ -92,5 +92,5 @@ void	parse_user_cmd(t_sh *shell, char *line, int def_fdout)
   if (back == 1)
     no_fg_jobs_status(shell);
   free_ptr_tab((void**)tmptab, &free);
-  //free(line);
+  free(line);
 }

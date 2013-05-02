@@ -41,4 +41,5 @@ void	store_conf_file(char *filename, t_sh *shell,
     }
   f(shell, fd);
   close(fd);
+  free(path);
 }

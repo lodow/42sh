@@ -21,7 +21,6 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
     return (-1);
   if (is_grp_exec(shell, grp) == 0)
     return (-1);
-  /* creer fichier */
   rempl_fd_process(grp->redirection, grp);
   exec_a_pipe(shell, grp);
   if (MEXIT)
@@ -68,7 +67,6 @@ t_grp	*create_n_process_group(t_sh *shell, char *lign)
   res->flags = 0;
   res->nb_red = 0;
   res->line = parse_redirection(res, lign, &(res->nb_red));
-  //detect_redirection(&(res->redirection), lign);
   cmd_line = str_to_wordtab(res->line, "|", 1);
   while ((cmd_line != NULL) && (cmd_line[i] != NULL))
     {
@@ -102,6 +100,6 @@ void	free_process_group(t_grp *grp)
   if (grp != NULL)
     {
       free(grp->line);
-      free_ptr_tab((void**)grp->cmds, &free);
+      free_ptr_tab((void**)grp->cmds, (void*)(&free_cmd));
     }
 }

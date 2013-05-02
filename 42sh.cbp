@@ -168,8 +168,6 @@
 		<Unit filename="src/edition_line/globb/rempl_globb.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/edition_line/include/couleur.h" />
-		<Unit filename="src/edition_line/include/my_func.h" />
 		<Unit filename="src/edition_line/init_struct_param.c">
 			<Option compilerVar="CC" />
 		</Unit>

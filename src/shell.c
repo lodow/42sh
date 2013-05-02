@@ -14,15 +14,23 @@ void	recalc_prompt(t_sh *shell)
 {
   char	*prompt;
   char	*ps1;
+  char	*tmp;
 
-  if (shell->param.str_prompt != NULL)
-    free(shell->param.str_prompt);
+  free(shell->param.str_prompt);
   if ((ps1 = get_envvar("PS1", shell->env)) != NULL)
     {
-      if ((prompt = check_vars_in_str(my_strdup(ps1), shell->env)) != NULL)
-        shell->param.str_prompt = prompt;
+      tmp = my_strdup(ps1);
+      if ((prompt = check_vars_in_str(tmp, shell->env)) != NULL)
+        {
+          if (prompt != tmp)
+            free(tmp);
+          shell->param.str_prompt = prompt;
+        }
       else
-        shell->param.str_prompt = NULL;
+        {
+          free(tmp);
+          shell->param.str_prompt = NULL;
+        }
     }
   else
     shell->param.str_prompt = my_strdup("$ ");
