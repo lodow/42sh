@@ -55,3 +55,12 @@ t_cmd	*create_n_cmd(t_sh *shell, char *lign)
   res->cmd_fpath = exec_full_path(res->argv[0], shell->path);
   return (res);
 }
+
+void	free_cmd(t_cmd *cmd)
+{
+  if (cmd == NULL)
+    return ;
+  free(cmd->line);
+  free_ptr_tab((void**)cmd->argv, &free);
+  free(cmd->cmd_fpath);
+}

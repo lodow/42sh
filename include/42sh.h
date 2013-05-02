@@ -267,6 +267,7 @@ t_cmd	*create_n_cmd(t_sh *shell, char *lign);
 char	*exec_full_path(char *exec, char **paths);
 int	exec_process_group(t_sh *shell, t_grp *grp);
 void	cmd_execution(t_cmd *cmd, t_fds *fd, t_sh *shell);
+void	free_cmd(t_cmd *cmd);
 int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
                  int (*f)(char *cmd, char **argv, t_sh *shell));
 void	free_process_group(t_grp *grp);

@@ -55,6 +55,7 @@ void	exit_shell(t_sh *shell)
   free_ptr_tab((void**)shell->env, &free);
   free_ptr_tab((void**)shell->path, &free);
   free_ptr_tab((void**)shell->alias_tab, &free);
+  free_ptr_tab((void**)shell->process_group, (void*)(&free_process_group));
   clear_history(shell->history);
 }
 
@@ -65,9 +66,7 @@ int		main(int ac, char **av, char **main_env)
   if (init_shell(&shell, main_env) == -1)
     return (-1);
   if (shell.env != NULL)
-    {
-      user_loop(&shell);
-    }
+    user_loop(&shell);
   exit_shell(&shell);
   if (!GETFLAG(shell.beepbeepexit, FLAGPOS(EXIT_F_POS)))
     my_putstr("exit\n", 1, -1);
