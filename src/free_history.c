@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu May  2 11:04:16 2013 remi robert
-** Last update Thu May  2 11:06:48 2013 remi robert
+** Last update Thu May  2 13:10:22 2013 remi robert
 */
 
 #include "my_func.h"
@@ -21,7 +21,7 @@ void		free_history(t_history *ptete)
   while (pcourant != NULL)
     {
       pcourant = pcourant->next;
-      if (pcourant != NULL)
+      if (pcourant->back != NULL)
 	{
 	  if (pcourant->back->cmd != NULL)
 	    free(pcourant->back->cmd);
