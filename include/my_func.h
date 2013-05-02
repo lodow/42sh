@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Thu May  2 09:47:50 2013 remi robert
+** Last update Thu May  2 21:10:17 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -111,12 +111,12 @@ int			return_x(void);
 int			return_y(void);
 void			assign_value_pos(int *, int *, char *);
 void			get_pos_curser(int *, int *, int);
-void			reset_mod(struct termios);
-void			mod_raw(int);
+int			reset_mod(struct termios);
+int			mod_raw(int);
 int			curseur(int, int, int);
 void			ecrase_text(t_coordonnee, int, int);
 void			free_string(t_string *);
-void			init_pos_line(t_param *);
+int			init_pos_line(t_param *);
 void			view_string(t_param *);
 int			get_len_string_with_pos(t_param *);
 t_string		*get_pos_string(t_string *, int);
@@ -151,7 +151,7 @@ int			str_cmp_env(char *, char *);
 void			init_struct_param(t_param *);
 int			recup_path(char **);
 int			init_tab_line(t_param *);
-void			init_pos_line(t_param *);
+int			init_pos_line(t_param *);
 void			my_put_str(char *);
 char			*return_string(t_string *);
 void			print_prompt(t_param *);

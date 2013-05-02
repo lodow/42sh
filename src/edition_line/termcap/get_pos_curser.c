@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Thu Mar 21 08:21:11 2013 remi
-** Last update Tue Apr 30 11:34:15 2013 remi robert
+** Last update Thu May  2 21:03:48 2013 remi robert
 */
 
 #include "my_func.h"
@@ -48,8 +48,8 @@ void	get_pos_curser(int *x, int *y, int fd)
   while (buff[0] != 27)
     {
       my_memset(buff, 10);
-      write(1, "\033[6n", my_strlen("\033[6n"));
-      indice = read(1, buff, 10);
+      write(fd, "\033[6n", my_strlen("\033[6n"));
+      indice = read(fd, buff, 10);
       buff[indice] = '\0';
     }
   assign_value_pos(x, y, buff);

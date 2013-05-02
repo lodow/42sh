@@ -5,33 +5,35 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 21:58:20 2013 remi robert
-** Last update Thu May  2 13:38:16 2013 remi robert
+** Last update Thu May  2 21:08:05 2013 remi robert
 */
 
 #include "my_func.h"
 #include "42sh.h"
 
-void	reset_mod(struct termios t)
+int	reset_mod(struct termios t)
 {
   char	*s;
 
-  s = tgetstr("ve", NULL);
+  if ((s = tgetstr("ve", NULL)) == NULL)
+    return (EXIT_FAILURE);
   my_put_str(s);
   if (tcsetattr(0, TCSANOW, &t) == -1)
     {
-      printf("Erreur setattr\n");
-      my_exit(EXIT_FAILURE);
+      my_putstr("Erreur setattr\n", 2, -1);
+      return (EXIT_FAILURE);
     }
+  return (EXIT_SUCCESS);
 }
 
-void			mod_raw(int tty)
+int			mod_raw(int tty)
 {
   struct termios	t;
 
   if (tcgetattr(0, &t) == -1)
     {
-      printf("Erreur getattr\n");
-      my_exit(EXIT_FAILURE);
+      my_putstr("Erreur getattr\n", 2, -1);
+      return (EXIT_FAILURE);
     }
   t.c_lflag = t.c_lflag & ~ICANON;
   t.c_lflag = t.c_lflag & ~ECHO;
@@ -39,7 +41,8 @@ void			mod_raw(int tty)
   t.c_cc[VTIME] = 0;
   if (tcsetattr(0, TCSANOW, &t) == -1)
     {
-      printf("Erreur setattr\n");
-      my_exit(EXIT_FAILURE);
+      my_putstr("Erreur setattr\n", 2, -1);
+      return (EXIT_FAILURE);
     }
+  return (EXIT_SUCCESS);
 }

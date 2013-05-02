@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:31:22 2013 maxime lavandier
-** Last update Sun Apr 14 18:08:08 2013 remi robert
+** Last update Thu May  2 21:11:29 2013 remi robert
 */
 
 #include "42sh.h"
@@ -32,7 +32,8 @@ int		init_shell(t_sh *shell, char **main_env)
     return (-1);
   if ((recup_path(shell->env) == 0) || (init_tab_line(&(shell->param)) == 0))
     return (-1);
-  init_pos_line(&(shell->param));
+  if (init_pos_line(&(shell->param)) == 0)
+    return (-1);
   //shell->pid.sid = setsid(); <- not sure if it's a good idea.
   //if it is don't forget to check it
   if (((shell->pid.pid = getpid()) == -1)
