@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Thu May  2 22:21:42 2013 remi robert
+## Last update Thu May  2 22:37:47 2013 remi robert
 ##
 
 CC	=	gcc
@@ -146,6 +146,7 @@ SRCTERMCAP=	$(PATHTERMCAP)/ecrase_text.c			\
 		$(PATHTERMCAP)/get_pos_curser.c			\
 		$(PATHTERMCAP)/clear.c				\
 		$(PATHTERMCAP)/dl_current_pos.c			\
+		$(PATHTERMCAP)/view_curser.c			\
 
 OBJ	=	$(SRC:.c=.o) 					\
 		$(SRCBUILTINS:.c=.o) 				\

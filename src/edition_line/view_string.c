@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 14:03:17 2013 remi robert
-** Last update Tue Apr 30 11:39:21 2013 remi robert
+** Last update Thu May  2 22:42:29 2013 remi robert
 */
 
 #include "my_func.h"
@@ -74,6 +74,7 @@ void		view_string(t_param *param)
 
   if (param == NULL || param->string == NULL)
     return ;
+  view_curser(param->fd_tty);
   decale_window(param);
   curseur(param->begin_pos.x, param->begin_pos.y, param->fd_tty);
   pcourant = param->string;
@@ -82,4 +83,5 @@ void		view_string(t_param *param)
       my_putchar(pcourant->caractere);
       pcourant = pcourant->next;
     }
+  invisible_curseur(param->fd_tty);
 }
