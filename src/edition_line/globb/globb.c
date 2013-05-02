@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun Apr 14 16:43:27 2013 remi robert
-** Last update Tue Apr 30 13:29:58 2013 remi robert
+** Last update Thu May  2 09:42:17 2013 remi robert
 */
 
 #include "my_func.h"
@@ -32,8 +32,8 @@ void	completation_cmd(char *str_glob, char *buff, t_param **param)
   end_str(*param);
 }
 
-int		 check_active_my_select(char *path, glob_t *globbuf, char *str,
-					char *buff_prec_str)
+int		 check_active_my_select(char *path, glob_t *globbuf,
+					char *str,	char *buff_prec_str)
 {
   if (str_cmp(str, buff_prec_str) == 1)
     return (1);
@@ -54,7 +54,7 @@ void		launch_my_select(t_param **param, char *str_globb,
   return ;
 }
 
-void		gere_globb(t_param **param)
+void		gere_globb(t_param **param, char **env)
 {
   static char	buff_prec_str[1024] = "\0";
   t_glob	param_glob;
@@ -69,7 +69,7 @@ void		gere_globb(t_param **param)
   if (pos < 0 || pos > (*param)->len_string || str == NULL)
     return ;
   str_globb = return_str_globb(str, pos);
-  if (rempl_globb(str_globb, &(param_glob.glob)) == 0)
+  if (rempl_globb(str_globb, &(param_glob.glob), env) == 0)
     return ;
   if (check_active_my_select(str_globb,
 			     &(param_glob.glob), str, buff_prec_str) == 1)

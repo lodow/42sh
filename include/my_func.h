@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Tue Apr 30 13:30:39 2013 remi robert
+** Last update Thu May  2 09:47:50 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -98,7 +98,7 @@ typedef struct		s_param
 
 int			number_caractere(t_string *);
 char			*return_string(t_string *);
-char			*read_cmd(t_param *, t_history **);
+char			*read_cmd(t_param *, t_history **, char **);
 void			my_putchar(char);
 int			init_tab_line(t_param *);
 void			add_caractere(t_string **, char, t_param *);
@@ -121,7 +121,8 @@ void			view_string(t_param *);
 int			get_len_string_with_pos(t_param *);
 t_string		*get_pos_string(t_string *, int);
 void			view_string(t_param *);
-void			gere_keyboard(t_param **, char *, t_history **);
+void			gere_keyboard(t_param **, char *, t_history **,
+				      char **);
 void			set_pos_left(t_param **);
 void			set_pos_right(t_param **);
 void			gere_delete(t_param **);
@@ -171,7 +172,7 @@ void			add_history_current_cmd(t_param **, t_history **);
 void			add_current_history(t_history **, char *);
 void			my_put_nbr(int);
 void			gere_current_history(t_param **, char *);
-void			gere_globb(t_param **);
+void			gere_globb(t_param **, char **);
 void			clear_history(t_history *);
 char			*return_very_string(char *, char *, int);
 char			*return_str_globb(char *, int);
@@ -180,10 +181,11 @@ void			print_glob(t_param **, t_glob *, int);
 void			create_new_cmd_string_with_globb(t_param **,
 							 t_glob *, char *);
 void			my_select_glob(t_param **, char *, t_glob *);
-int			rempl_globb(char *, glob_t *);
+int			rempl_globb(char *, glob_t *, char **);
 void			init_struct_glob(t_glob *, t_param *);
 void			completation_cmd(char *, char *, t_param **);
 void			view_glob(t_glob *, int);
 void			rempl_str_buff(char *, char *);
+int			globb_executable(char *, glob_t *, char **);
 
 #endif /* MY_FUNC_H_ */

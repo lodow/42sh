@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu May  2 08:46:01 2013 remi robert
+** Last update Thu May  2 09:36:26 2013 remi robert
 */
 
 #include "42sh.h"
@@ -33,7 +33,7 @@ void	user_loop(t_sh *shell)
   char	*lign;
 
   recalc_prompt(shell);
-  while ((lign = read_cmd(&(shell->param), &shell->history)) != NULL)
+  while ((lign = read_cmd(&(shell->param), &shell->history, shell->env)) != NULL)
     {
       no_fg_jobs_status(shell);
       call_signal_func(shell, 0);

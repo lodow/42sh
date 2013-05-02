@@ -5,12 +5,12 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Apr  1 12:32:15 2013 remi robert
-** Last update Tue Apr 30 13:10:21 2013 remi robert
+** Last update Thu May  2 09:41:22 2013 remi robert
 */
 
 #include "my_func.h"
 
-void	gere_buff(char *buff, t_param **param, t_history **history)
+void	gere_buff(char *buff, t_param **param, t_history **history, char **env)
 {
   if (buff[1] == '\0' && buff[0] != ESC && buff[0] != DEL && buff[0] != '\t')
     {
@@ -29,7 +29,7 @@ void	gere_buff(char *buff, t_param **param, t_history **history)
       add_caractere(&((*param)->string), buff[0], *param);
       return ;
     }
-  gere_keyboard(param, buff, history);
+  gere_keyboard(param, buff, history, env);
 }
 
 void	gere_null_list(t_param **param)
@@ -44,7 +44,7 @@ void	gere_null_list(t_param **param)
     }
 }
 
-char	*read_cmd(t_param *param, t_history **history)
+char	*read_cmd(t_param *param, t_history **history, char **env)
 {
   char	buff[10];
   int	ret;
@@ -62,7 +62,7 @@ char	*read_cmd(t_param *param, t_history **history)
       if (buff[0] == '\n')
 	return (return_saisi(param, history));
       if (gere_control(buff, &param) == FALSE)
-	gere_buff(buff, &param, history);
+	gere_buff(buff, &param, history, env);
       dl_current_pos(param);
       gere_null_list(&param);
       view_string(param);
