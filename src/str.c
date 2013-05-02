@@ -5,10 +5,36 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Thu May  2 16:21:07 2013 remi robert
 */
 
 #include "42sh.h"
+
+char	*str_cat(char *str1, char *str2)
+{
+  char	*s;
+  int	indice;
+  int	indice2;
+
+  if (str1 == NULL || str2 == NULL ||
+      (s = malloc(my_strlen(str1) + my_strlen(str2) + 1)) == NULL)
+    return (NULL);
+  indice = 0;
+  while (str1[indice] != '\0')
+    {
+      s[indice] = str1[indice];
+      indice += 1;
+    }
+  indice2 = 0;
+  while (str2[indice2] != '\0')
+    {
+      s[indice] = str2[indice2];
+      indice += 1;
+      indice2 += 1;
+    }
+  s[indice] = '\0';
+  return (s);
+}
 
 int	my_strlen(char *str)
 {

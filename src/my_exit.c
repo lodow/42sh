@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Thu May  2 15:40:43 2013 remi robert
 */
 
 #include "42sh.h"
@@ -17,7 +17,7 @@ void	my_exit(int value)
   shell = get_sh_info(NULL);
   shell->beepbeepexit = *((char*)(&(value)));
   SETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS));
+    /* kill(0, SIGTERM); */
   /*  exit(value);
-    kill(0, SIGKILL);
     my_putstr("My exit failed, Now let's do some shit !!\n", 2, -1);*/
 }

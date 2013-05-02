@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Tue Apr 16 15:20:39 2013 maxime lavandier
+** Last update Thu May  2 16:24:43 2013 remi robert
 */
 
 #ifndef		SH42_H
@@ -201,6 +201,7 @@ int	my_getnbr(char *str);
 void	my_strncpy_force(char *str1, char *str2, int size);
 void	del_slash_quote(char **tab);
 char	*my_stradd(char *str, char *add, int size_add);
+char	*str_cat(char *str1, char *str2);
 
 /*
 ** Str to wordtab

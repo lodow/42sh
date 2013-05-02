@@ -5,10 +5,11 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 21:58:20 2013 remi robert
-** Last update Tue Apr 30 11:21:34 2013 remi robert
+** Last update Thu May  2 13:38:16 2013 remi robert
 */
 
 #include "my_func.h"
+#include "42sh.h"
 
 void	reset_mod(struct termios t)
 {
@@ -19,7 +20,7 @@ void	reset_mod(struct termios t)
   if (tcsetattr(0, TCSANOW, &t) == -1)
     {
       printf("Erreur setattr\n");
-      return ;
+      my_exit(EXIT_FAILURE);
     }
 }
 
@@ -30,7 +31,7 @@ void			mod_raw(int tty)
   if (tcgetattr(0, &t) == -1)
     {
       printf("Erreur getattr\n");
-      return ;
+      my_exit(EXIT_FAILURE);
     }
   t.c_lflag = t.c_lflag & ~ICANON;
   t.c_lflag = t.c_lflag & ~ECHO;
@@ -39,6 +40,6 @@ void			mod_raw(int tty)
   if (tcsetattr(0, TCSANOW, &t) == -1)
     {
       printf("Erreur setattr\n");
-      return ;
+      my_exit(EXIT_FAILURE);
     }
 }
