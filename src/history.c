@@ -37,6 +37,25 @@ int		view_history(char *path, char **argv, t_sh *shell)
   return (0);
 }
 
+void	free_history(t_history *ptete)
+{
+  t_history	*pcourant;
+
+  if (ptete == NULL)
+    return ;
+  pcourant = ptete;
+  while (pcourant != NULL)
+    {
+      pcourant = pcourant->next;
+      if (pcourant->back != NULL)
+        {
+          if (pcourant->back->cmd != NULL)
+            free(pcourant->back->cmd);
+          free(pcourant->back);
+        }
+    }
+}
+
 void		clear_history(t_history *ptr)
 {
   if (ptr == NULL)

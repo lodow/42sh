@@ -144,6 +144,9 @@
 		<Unit filename="src/edition_line/get_len_string_with_pos.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/edition_line/get_type_contole.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/edition_line/globb/completation.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -153,7 +156,16 @@
 		<Unit filename="src/edition_line/globb/globb.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/edition_line/globb/init_globb.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/globb/my_select.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/edition_line/globb/print_glob.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/globb/rempl_globb.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/include/couleur.h" />

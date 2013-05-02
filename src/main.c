@@ -55,6 +55,7 @@ void	exit_shell(t_sh *shell)
   free_ptr_tab((void**)shell->env, &free);
   free_ptr_tab((void**)shell->path, &free);
   free_ptr_tab((void**)shell->alias_tab, &free);
+  free_history(shell->history);
 }
 
 int		main(int ac, char **av, char **main_env)
