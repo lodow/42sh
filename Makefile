@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Tue Apr 30 13:22:32 2013 remi robert
+## Last update Thu May  2 09:47:22 2013 remi robert
 ##
 
 CC	=	gcc
@@ -126,6 +126,7 @@ SRCGLOBB=	$(PATHGLOBB)/globb.c				\
 		$(PATHGLOBB)/my_select.c			\
 		$(PATHGLOBB)/init_globb.c			\
 		$(PATHGLOBB)/rempl_globb.c			\
+		$(PATHGLOBB)/globb_executable.c			\
 
 SRCRED	=	$(PATHRED)/find_redirection.c			\
 		$(PATHRED)/parse_redirection.c			\
