@@ -57,6 +57,7 @@ void	exit_shell(t_sh *shell)
   free_ptr_tab((void**)shell->alias_tab, &free);
   free_ptr_tab((void**)shell->process_group, (void*)(&free_process_group));
   clear_history(shell->history);
+  free(shell->param.str_prompt);
 }
 
 int		main(int ac, char **av, char **main_env)
