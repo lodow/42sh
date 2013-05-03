@@ -44,8 +44,8 @@ int		init_shell(t_sh *shell, char **main_env)
   shell->env = add_change_env(shell->env, "PS1", "${LOGNAME} ${PWD} $ ");
   shell->alias_tab = NULL;
   shell->signal = 0;
-  load_conf_file("${HOME}/.42conf", shell, &new_conf_set);
-  load_conf_file(".42conf", shell, &new_conf_set);
+  if (load_conf_file("${HOME}/.42conf", shell, &new_conf_set) == -1)
+    load_conf_file(".42conf", shell, &new_conf_set);
   load_conf_file("${HOME}/.history", shell, &load_history_f_file);
   return (0);
 }

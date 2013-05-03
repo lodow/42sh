@@ -71,7 +71,7 @@ int	new_conf_set(char *str, t_sh *shell)
 /*
 ** Load your conf file
 */
-void	load_conf_file(char *filename, t_sh *shell,
+int	load_conf_file(char *filename, t_sh *shell,
                      int (*f)(char *line, t_sh *shell))
 {
   char	**file;
@@ -86,9 +86,10 @@ void	load_conf_file(char *filename, t_sh *shell,
       my_putstr("Can't open config file: ", 2, -1);
       my_putstr(path, 2, -1);
       my_putstr("\n", 2, -1);
-      return ;
+      return (-1);
     }
-  free(path);
+  if (path != filename)
+    free(path);
   file = get_data_ffile(fd);
   close(fd);
   if (file != NULL)
@@ -99,4 +100,5 @@ void	load_conf_file(char *filename, t_sh *shell,
         i++;
       }
   free(file);
+  return (0);
 }
