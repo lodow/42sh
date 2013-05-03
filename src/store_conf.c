@@ -34,12 +34,11 @@ void	store_conf_file(char *filename, t_sh *shell,
   if (((path = check_vars_in_str(filename, shell->env)) == NULL)
       || ((fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, REDI_FRIGHT)) == -1))
     {
-      my_putstr("Can't open config file: ", 2, -1);
-      my_putstr(path, 2, -1);
-      my_putstr("\n", 2, -1);
+      my_perror(path);
       return ;
     }
   f(shell, fd);
   close(fd);
-  free(path);
+  if (path != filename)
+    free(path);
 }
