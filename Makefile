@@ -12,7 +12,7 @@ CC	=	gcc
 
 RM	= 	rm
 
-NAME	=	gingerSH
+NAME	=	42SH
 
 COMPILEFLAG	=	-g -Wall -Wfloat-equal -Wmissing-include-dirs \
 		-Wclobbered -Wempty-body -Wignored-qualifiers \
