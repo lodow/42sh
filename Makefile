@@ -14,7 +14,7 @@ RM	= 	rm
 
 NAME	=	robertSH
 
-COMPILEFLAG	=	-g -Wall -Wfloat-equal -Wmissing-include-dirs \
+COMPILEFLAG	=	-ggdb3 -Wall -Wfloat-equal -Wmissing-include-dirs \
 		-Wclobbered -Wempty-body -Wignored-qualifiers \
 		-Wmissing-field-initializers -Wmissing-parameter-type \
 		-Wold-style-declaration -Woverride-init -Wsign-compare \
