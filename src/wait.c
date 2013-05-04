@@ -19,8 +19,8 @@ void	aff_special_return_val(t_cmd *cmd)
     {
       signal = WTERMSIG(cmd->return_value);
       my_putstr(cmd->argv[0], 2, -1);
-      my_putstr(" terminated by signal: 0x", 2, -1);
-      tmp = my_uint_strbase(signal, "0123456789ABCDEF");
+      my_putstr(" terminated by signal: ", 2, -1);
+      tmp = my_uint_strbase(signal, "0123456789");
       my_putstr(tmp, 2, -1);
       free(tmp);
       my_putstr("\n", 2, -1);

@@ -16,10 +16,7 @@ void	print_prompt(t_param *param)
     {
       invisible_curseur(param->fd_tty);
       curseur(param->prompt.x, param->prompt.y, param->fd_tty);
-      my_putstr(INTENSITE, 1, -1);
-      my_putstr(MAGENTA, 1, -1);
       my_putstr(param->str_prompt, 1, -1);
-      my_putstr(REZ, 1, -1);
       curseur(param->current_pos.x, param->current_pos.y, param->fd_tty);
       view_curser(param->fd_tty);
     }
