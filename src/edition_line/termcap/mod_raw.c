@@ -21,6 +21,7 @@ int	reset_mod(struct termios t)
   if (tcsetattr(0, TCSANOW, &t) == -1)
     {
       my_putstr("Erreur setattr\n", 2, -1);
+      my_perror(NULL);
       return (EXIT_FAILURE);
     }
   return (EXIT_SUCCESS);
@@ -33,6 +34,7 @@ int			mod_raw(int tty)
   if (tcgetattr(0, &t) == -1)
     {
       my_putstr("Erreur getattr\n", 2, -1);
+      my_perror(NULL);
       return (EXIT_FAILURE);
     }
   t.c_lflag = t.c_lflag & ~ICANON;
@@ -42,6 +44,7 @@ int			mod_raw(int tty)
   if (tcsetattr(0, TCSANOW, &t) == -1)
     {
       my_putstr("Erreur setattr\n", 2, -1);
+      my_perror(NULL);
       return (EXIT_FAILURE);
     }
   return (EXIT_SUCCESS);
