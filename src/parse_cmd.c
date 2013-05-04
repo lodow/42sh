@@ -25,8 +25,11 @@ t_grp	*parse_grp_a_exec(t_sh *shell, char *line, int def_fdout, int back)
   change_fdout_t_def_z(grp, def_fdout);
   if (back == 0)
     SETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND));
-  exec_process_group(shell, grp);
-  return (grp);
+  if (exec_process_group(shell, grp) == -1)
+    free_process_group(grp);
+  else
+    return (grp);
+  return (NULL);
 }
 
 void	parse_linked_grp_process(t_sh *shell, char *line,
@@ -37,9 +40,11 @@ void	parse_linked_grp_process(t_sh *shell, char *line,
   char	*next_line;
 
   next_line = type_next_and_or(line, &type);
-  grp = parse_grp_a_exec(shell, line, def_fdout, back);
-  grp->transition = type;
-  grp->transition_line = next_line;
+  if ((grp = parse_grp_a_exec(shell, line, def_fdout, back)) != NULL)
+    {
+      grp->transition = type;
+      grp->transition_line = next_line;
+    }
   if (MEXIT)
     return ;
 }
