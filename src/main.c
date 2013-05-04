@@ -44,7 +44,8 @@ int		init_shell(t_sh *shell, char **main_env)
   shell->env = add_change_env(shell->env, "PS1", "${LOGNAME} ${PWD} $ ");
   shell->alias_tab = NULL;
   shell->signal = 0;
-  load_conf_file("${HOME}/.42conf", shell, &new_conf_set);
+  if (load_conf_file("${HOME}/.42conf", shell, &new_conf_set) == -1)
+    load_conf_file(".42conf", shell, &new_conf_set);
   load_conf_file("${HOME}/.history", shell, &load_history_f_file);
   return (0);
 }
@@ -53,6 +54,17 @@ void	exit_shell(t_sh *shell)
 {
   reset_mod(shell->param.t);
   store_conf_file("${HOME}/.history", shell, store_history_f);
+  free_ptr_tab((void**)shell->env, &free);
+  free_ptr_tab((void**)shell->path, &free);
+  free_ptr_tab((void**)shell->alias_tab, &free);
+  free_ptr_tab((void**)shell->process_group, (void*)(&free_process_group));
+  clear_history(shell->history);
+  free(shell->param.str_prompt);
+  my_putstr("exit\n", 1, -1);
+}
+
+void	fork_exit_shell(t_sh *shell)
+{
   free_ptr_tab((void**)shell->env, &free);
   free_ptr_tab((void**)shell->path, &free);
   free_ptr_tab((void**)shell->alias_tab, &free);
@@ -69,9 +81,10 @@ int		main(int ac, char **av, char **main_env)
     return (-1);
   if (shell.env != NULL)
     user_loop(&shell);
-  exit_shell(&shell);
-  if (!GETFLAG(shell.beepbeepexit, FLAGPOS(EXIT_F_POS)))
-    my_putstr("exit\n", 1, -1);
+  if (GETFLAG(shell.beepbeepexit, FLAGPOS(EXIT_F_POS)))
+    fork_exit_shell(&shell);
+  else
+    exit_shell(&shell);
   UNSETFLAG(shell.beepbeepexit, FLAGPOS(EXIT_F_POS));
   return (shell.beepbeepexit);
 }
