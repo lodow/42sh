@@ -15,7 +15,6 @@ alias open=xdg-open
 alias sc=screen -S
 alias sl=screen -ls
 alias sr=screen -r
-alias gitl=git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
 alias servethis=python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'
 alias sudo=sudocmd
 alias cgrep=grep -E -v '^(#|$|;)'
@@ -26,8 +25,6 @@ alias niceprod=nicecool
 alias np=niceprod
 alias extract=extract
 alias unall=extract
-alias rm=mv $* -t /home/${USER}/.local/share/Trash/files/
-alias pkill=kill.sh
 alias norme=~/norme/norme -nocheat -return -score -libc
 alias man=man -Len -a
 alias ban=ban
