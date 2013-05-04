@@ -12,7 +12,13 @@
 
 void	env_exec(char *cmd, char **argv, char **env)
 {
-  //do something
+ /* char	*line;
+
+  line = tab_file_tstr(argv, ' ');
+  parse_user_cmd(shell, line, 1);*/
+  /*
+  wait it here
+  */
 }
 
 void	env_unset_and_exec(char *cmd, char **argv, t_sh *shell, char *to_unset)
@@ -24,10 +30,10 @@ void	env_unset_and_exec(char *cmd, char **argv, t_sh *shell, char *to_unset)
   if (old_unset == NULL)
     {
       if ((new_unset = malloc(my_strlen(old_unset))) == NULL)
-	{
-	  my_putstr("malloc error\n", 1, -1);
-	  return ;
-	}
+        {
+          my_putstr("malloc error\n", 1, -1);
+          return ;
+        }
       my_strncpy(new_unset, old_unset - (strlen(to_unset) + 1), -1);
       rm_ptr_f_tab((void **) shell->env, (void *) old_unset - (strlen(to_unset) + 1));
       env_exec(cmd, argv, shell->env);
@@ -46,9 +52,9 @@ void	env_chose_option(char *path, char **argv, t_sh *shell)
   while (argv[i] != NULL && argv[i][0] == '-')
     {
       if (my_strncmp(argv[i], "-i", -1) == 0)
-	ignore_env = 1;
+        ignore_env = 1;
       else if (my_strncmp(argv[i], "-u", -1))
-	unset = argv[i + 1];
+        unset = argv[i + 1];
       i++;
     }
   if (ignore_env == 1)
@@ -71,18 +77,18 @@ int	builtin_env_print(char *path, char **argv, t_sh *shell)
       i = 0;
       envp = shell->env;
       if (envp != NULL)
-	while (envp[i] != NULL)
-	  {
-	    my_putstr(envp[i], 1, -1);
-	    if (argv[1] == NULL)
-	      my_putstr("\n", 1, -1);
-	    i++;
-	  }
+        while (envp[i] != NULL)
+          {
+            my_putstr(envp[i], 1, -1);
+            if (argv[1] == NULL)
+              my_putstr("\n", 1, -1);
+            i++;
+          }
     }
   return (0);
 }
 
 void	builtin_env(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
-    exec_process(cmd, fd, shell, &builtin_env_print);
+  exec_process(cmd, fd, shell, &builtin_env_print);
 }
