@@ -58,8 +58,6 @@ int	wait_son(t_grp *grp)
   return (0);
 }
 
-
-
 void	wait_all_jobs(t_sh *shell)
 {
   int	i;
