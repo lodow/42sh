@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Mon Apr 15 17:01:43 2013 maxime lavandier
+** Last update Sat May  4 14:39:35 2013 maxime lavandier
 */
 
 #include <string.h>
@@ -55,7 +55,7 @@ char	**malloc_tab(char *str, char *delim)
   return (tab);
 }
 
-void	fill_tab_inib(char *str, char *delim, char **tab)
+int	fill_tab_inib(char *str, char *delim, char **tab)
 {
   int	min;
   int	max;
@@ -81,10 +81,10 @@ void	fill_tab_inib(char *str, char *delim, char **tab)
     }
   if (max != min)
     my_strncpy_force(tab[i++], &(str[min]), max - min);
-  tab[i] = 0;
+  return (i);
 }
 
-void	fill_tab(char *str, char *delim, char **tab)
+int	fill_tab(char *str, char *delim, char **tab)
 {
   int	min;
   int	max;
@@ -105,23 +105,39 @@ void	fill_tab(char *str, char *delim, char **tab)
 	max++;
     }
   if (max != min)
-      my_strncpy_force(tab[i++], &(str[min]), max - min);
-  tab[i] = 0;
+    my_strncpy_force(tab[i++], &(str[min]), max - min);
+  return (i);
+}
+
+void	free_wordtab(char **tab, int rempli, int lenght_malloc)
+{
+  while (rempli <= lenght_malloc)
+    {
+      free(tab[rempli]);
+      tab[rempli] = NULL;
+      rempli++;
+    }
 }
 
 char	**str_to_wordtab(char *str, char *delim, char inibiteur)
 {
   char	**tab;
+  int	lenght_malloc;
+  int	rempli;
 
+  lenght_malloc = 0;
   if (str == NULL || delim == NULL)
     return (NULL);
   tab = malloc_tab(str, delim);
+  while (tab[lenght_malloc] != NULL)
+    lenght_malloc++;
   if (tab == NULL)
     return (NULL);
   if (inibiteur)
-    fill_tab_inib(str, delim, tab);
+    rempli = fill_tab_inib(str, delim, tab);
   else
-    fill_tab(str, delim, tab);
+    rempli = fill_tab(str, delim, tab);
+  free_wordtab(tab, rempli, lenght_malloc);
   if (inibiteur == 2)
     del_slash_quote(tab);
   return (tab);
