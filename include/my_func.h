@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Thu May  2 21:10:17 2013 remi robert
+** Last update Thu May  2 22:39:21 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -96,6 +96,8 @@ typedef struct		s_param
   t_coordonnee		prompt;
 }			t_param;
 
+int			view_curser(int);
+int			invisible_curseur(int);
 int			number_caractere(t_string *);
 char			*return_string(t_string *);
 char			*read_cmd(t_param *, t_history **, char **);

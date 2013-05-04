@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Apr 30 13:14:02 2013 remi robert
-** Last update Thu May  2 20:36:56 2013 remi robert
+** Last update Thu May  2 22:54:57 2013 remi robert
 */
 
 #include "my_func.h"
@@ -15,9 +15,9 @@ int		rempl_globb(char *path, glob_t *globbuf, char **env)
   globbuf->gl_offs = 0;
   glob(path, GLOB_DOOFFS | GLOB_NOCHECK, NULL, globbuf);
   if (globbuf->gl_pathc == 1)
-    globb_executable(path, globbuf, env);
+    return (globb_executable(path, globbuf, env));
   if (globbuf == NULL || globbuf->gl_pathv == NULL ||
-      (globbuf->gl_pathc == 1 && str_cmp(globbuf->gl_pathv[0], path) == 1))
+      (globbuf->gl_pathc <= 1 && str_cmp(globbuf->gl_pathv[0], path) == 1))
     return (0);
   return (1);
 }

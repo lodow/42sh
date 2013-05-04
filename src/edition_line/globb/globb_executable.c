@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu May  2 09:46:09 2013 remi robert
-** Last update Thu May  2 20:43:15 2013 remi robert
+** Last update Thu May  2 22:54:25 2013 remi robert
 */
 
 #include "my_func.h"
@@ -48,7 +48,7 @@ void	view_tab(char **tab)
     }
 }
 
-void	print_tab_path(char **path, char *str, glob_t *globbuf)
+void	get_tab_path(char **path, char *str, glob_t *globbuf)
 {
   int	indice;
   char	*s;
@@ -58,6 +58,8 @@ void	print_tab_path(char **path, char *str, glob_t *globbuf)
     {
       s = str_cat(path[indice], "/");
       s = str_cat(s, str);
+      if (s == NULL)
+	return ;
       if (indice == 0)
 	glob(s, GLOB_DOOFFS, NULL, globbuf);
       else
@@ -75,8 +77,11 @@ int	globb_executable(char *path, glob_t *globbuf, char **env)
   if (env == NULL || (s = get_envvar("PATH", env)) != NULL)
     {
       if ((tab_path = str_to_wordtab(s, ":", 0)) == NULL)
-	return (FALSE);
-      print_tab_path(tab_path, path, globbuf);
+	return (0);
+      get_tab_path(tab_path, path, globbuf);
+      if (globbuf == NULL || globbuf->gl_pathc <= 1)
+	return (0);
+      return (1);
     }
-  return (OK);
+  return (0);
 }

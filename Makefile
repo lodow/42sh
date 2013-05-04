@@ -5,14 +5,14 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Thu May  2 09:47:22 2013 remi robert
+## Last update Thu May  2 22:37:47 2013 remi robert
 ##
 
 CC	=	gcc
 
 RM	= 	rm
 
-NAME	=	robertSH
+NAME	=	42SH
 
 COMPILEFLAG	=	-ggdb3 -Wall -Wfloat-equal -Wmissing-include-dirs \
 		-Wclobbered -Wempty-body -Wignored-qualifiers \
@@ -146,6 +146,7 @@ SRCTERMCAP=	$(PATHTERMCAP)/ecrase_text.c			\
 		$(PATHTERMCAP)/get_pos_curser.c			\
 		$(PATHTERMCAP)/clear.c				\
 		$(PATHTERMCAP)/dl_current_pos.c			\
+		$(PATHTERMCAP)/view_curser.c			\
 
 OBJ	=	$(SRC:.c=.o) 					\
 		$(SRCBUILTINS:.c=.o) 				\
