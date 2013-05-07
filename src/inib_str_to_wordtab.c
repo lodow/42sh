@@ -5,10 +5,20 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Sun Apr 14 17:31:53 2013 maxime lavandier
-** Last update Sun Apr 14 19:06:05 2013 remi robert
+** Last update Tue May  7 14:29:08 2013 maxime lavandier
 */
 
 #include "42sh.h"
+
+void	free_wordtab(char **tab, int rempli, int lenght_malloc)
+{
+  while (rempli <= lenght_malloc)
+    {
+      free(tab[rempli]);
+      tab[rempli] = NULL;
+      rempli++;
+    }
+}
 
 void	del_slash_quote(char **tab)
 {

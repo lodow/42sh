@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Sat May  4 14:39:35 2013 maxime lavandier
+** Last update Tue May  7 14:27:48 2013 maxime lavandier
 */
 
 #include <string.h>
@@ -107,16 +107,6 @@ int	fill_tab(char *str, char *delim, char **tab)
   if (max != min)
     my_strncpy_force(tab[i++], &(str[min]), max - min);
   return (i);
-}
-
-void	free_wordtab(char **tab, int rempli, int lenght_malloc)
-{
-  while (rempli <= lenght_malloc)
-    {
-      free(tab[rempli]);
-      tab[rempli] = NULL;
-      rempli++;
-    }
 }
 
 char	**str_to_wordtab(char *str, char *delim, char inibiteur)
