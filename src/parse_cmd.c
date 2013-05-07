@@ -29,7 +29,8 @@ t_grp	*parse_grp_a_exec(t_sh *shell, char *line, int def_fdout, int back)
   return (grp);
 }
 
-void	parse_linked_grp_process(t_sh *shell, char *line, int def_fdout, int back)
+void	parse_linked_grp_process(t_sh *shell, char *line,
+                               int def_fdout, int back)
 {
   t_grp	*grp;
   int	type;

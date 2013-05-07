@@ -17,7 +17,7 @@ void	set_forground_pgrp(pid_t pgid)
   err = 0;
   if (pgid != -1)
     {
-      signal(SIGTTOU, SIG_IGN); //Find why we ahve todo that !
+      signal(SIGTTOU, SIG_IGN);
       if (isatty(0))
         err += tcsetpgrp(0, pgid);
       if (isatty(1))

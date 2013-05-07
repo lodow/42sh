@@ -10,6 +10,17 @@
 
 #include "42sh.h"
 
+int	create_pipe(t_grp *grp, int ptab[2], t_fds *fd, int i)
+{
+  if (grp->cmds[i + 1] != NULL)
+    {
+      if (pipe(ptab) == -1)
+        return (-1);
+      fd->stdout = ptab[PIPE_WRITE];
+    }
+  return (0);
+}
+
 int	exec_a_pipe(t_sh *shell, t_grp *grp)
 {
   t_fds	fd;
@@ -25,12 +36,8 @@ int	exec_a_pipe(t_sh *shell, t_grp *grp)
     return (-1);
   while ((tmpcmd = grp->cmds[i]) != NULL)
     {
-      if (grp->cmds[i + 1] != NULL)
-        {
-          if (pipe(ptab) == -1)
-            return (-1);
-          fd.stdout = ptab[PIPE_WRITE];
-        }
+      if (create_pipe(grp, ptab, &fd, i) == -1)
+        return (-1);
       cmd_execution(tmpcmd, &fd, shell);
       if (MEXIT)
         return (0);
