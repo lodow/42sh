@@ -11,17 +11,16 @@
 #include "my_func.h"
 #include "42sh.h"
 
-int	reset_mod(struct termios t)
+int	reset_mod(struct termios t, int tty)
 {
   char	*s;
 
   if ((s = tgetstr("ve", NULL)) == NULL)
     return (EXIT_FAILURE);
-  my_put_str(s);
-  if (tcsetattr(0, TCSANOW, &t) == -1)
+  my_putstr(s, tty, -1);
+  if (tcsetattr(tty, TCSANOW, &t) == -1)
     {
-      my_putstr("Erreur setattr\n", 2, -1);
-      my_perror(NULL);
+      my_perror("tcsetattr");
       return (EXIT_FAILURE);
     }
   return (EXIT_SUCCESS);
@@ -31,20 +30,18 @@ int			mod_raw(int tty)
 {
   struct termios	t;
 
-  if (tcgetattr(0, &t) == -1)
+  if (tcgetattr(tty, &t) == -1)
     {
-      my_putstr("Erreur getattr\n", 2, -1);
-      my_perror(NULL);
+      my_perror("tcgetattr");
       return (EXIT_FAILURE);
     }
   t.c_lflag = t.c_lflag & ~ICANON;
   t.c_lflag = t.c_lflag & ~ECHO;
   t.c_cc[VMIN] = 1;
   t.c_cc[VTIME] = 0;
-  if (tcsetattr(0, TCSANOW, &t) == -1)
+  if (tcsetattr(tty, TCSANOW, &t) == -1)
     {
-      my_putstr("Erreur setattr\n", 2, -1);
-      my_perror(NULL);
+      my_perror("tcsetattr");
       return (EXIT_FAILURE);
     }
   return (EXIT_SUCCESS);

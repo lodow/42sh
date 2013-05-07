@@ -113,7 +113,7 @@ int			return_x(void);
 int			return_y(void);
 void			assign_value_pos(int *, int *, char *);
 void			get_pos_curser(int *, int *, int);
-int			reset_mod(struct termios);
+int			reset_mod(struct termios, int tty);
 int			mod_raw(int);
 int			curseur(int, int, int);
 void			ecrase_text(t_coordonnee, int, int);

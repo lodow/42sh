@@ -85,7 +85,7 @@ char	*return_saisi(t_param *param, t_history **history)
 
   end_str(param);
   my_put_str("\n");
-  reset_mod(param->t);
+  reset_mod(param->t, param->fd_tty);
   str = return_string(param->string);
   str = check_cmd_history(str, history);
   if (str != NULL && str[0] != '\0' && str[0] != '\n')
