@@ -32,7 +32,8 @@ t_grp	*parse_grp_a_exec(t_sh *shell, char *line, int def_fdout, int back)
   return (NULL);
 }
 
-void	parse_linked_grp_process(t_sh *shell, char *line, int def_fdout, int back)
+void	parse_linked_grp_process(t_sh *shell, char *line,
+                               int def_fdout, int back)
 {
   t_grp	*grp;
   int	type;
@@ -68,7 +69,7 @@ int	parse_launch_background(char **line)
             free(tab[i - 1]);
             tab[i - 1] = NULL;
           }
-      free((*line));
+      //free((*line));
       (*line) = tab_file_tstr(tab, ' ');
     }
   return (back);

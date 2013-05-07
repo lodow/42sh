@@ -37,7 +37,8 @@ void	export_set(char *str, t_sh *shell)
 /*
 ** Add your config func here
 */
-void	fill_conf_func_tab(char **conf_list, void (**f)(char *str, t_sh *shell))
+void	fill_conf_func_tab(char **conf_list,
+                         void (**f)(char *str, t_sh *shell))
 {
   conf_list[0] = "export ";
   f[0] = &export_set;
