@@ -41,7 +41,8 @@ void	user_loop(t_sh *shell)
   char	*lign;
 
   recalc_prompt(shell);
-  while ((lign = read_cmd(&(shell->param), &shell->history, shell->env)) != NULL)
+  while ((lign = read_cmd(&(shell->param), &shell->history, shell->env))
+         != NULL)
     {
       no_fg_jobs_status(shell);
       call_signal_func(shell, 0);
@@ -51,6 +52,5 @@ void	user_loop(t_sh *shell)
         return ;
       wait_no_fg_grp(shell);
       recalc_prompt(shell);
-      //free(lign);
     }
 }

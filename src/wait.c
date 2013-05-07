@@ -63,31 +63,28 @@ void	wait_all_jobs(t_sh *shell)
   int	i;
   t_grp	*forground_grp;
 
-  i = 0;
+  i = -1;
   if (shell->process_group == NULL)
     return ;
   forground_grp = get_forground_grp(shell);
-  while (shell->process_group[i] != NULL)
-    {
-      if (wait_son(shell->process_group[i]) == 0)
-        {
-          SETFLAG(shell->process_group[i]->flags, FGRP_TERMINATED);
-          if (shell->process_group[i] == forground_grp)
-            set_forground_pgrp(shell->pid.pgid);
-          else
-            {
-              if (shell->process_group[i]->pid.pgid != -1)
-                {
-                  my_putstr(shell->process_group[i]->line, 1, -1);
-                  my_putstr(" -> Done\n", 1, -1);
-                }
-            }
-          exec_next_grp(shell->process_group[i], shell);
-          UNSETFLAG(shell->process_group[i]->flags, FLAGPOS(FGRP_FORGROUND));
-          SETFLAG(shell->process_group[i]->flags, FLAGPOS(FGRP_TERMINATED));
-        }
-      i++;
-    }
+  while (shell->process_group[++i] != NULL)
+    if (wait_son(shell->process_group[i]) == 0)
+      {
+        SETFLAG(shell->process_group[i]->flags, FGRP_TERMINATED);
+        if (shell->process_group[i] == forground_grp)
+          set_forground_pgrp(shell->pid.pgid);
+        else
+          {
+            if (shell->process_group[i]->pid.pgid != -1)
+              {
+                my_putstr(shell->process_group[i]->line, 1, -1);
+                my_putstr(" -> Done\n", 1, -1);
+              }
+          }
+        exec_next_grp(shell->process_group[i], shell);
+        UNSETFLAG(shell->process_group[i]->flags, FLAGPOS(FGRP_FORGROUND));
+        SETFLAG(shell->process_group[i]->flags, FLAGPOS(FGRP_TERMINATED));
+      }
 }
 
 void	wait_no_fg_grp(t_sh* shell)
@@ -101,13 +98,11 @@ void	wait_no_fg_grp(t_sh* shell)
     {
       sig = 0;
       if ((cmd = cmd_f_pid(waitpid(-1, &tmp, WUNTRACED), shell)) != NULL)
-        {
-          if (WIFEXITED(tmp))
-            {
-              cmd->return_value = tmp;
-              aff_special_return_val(cmd);
-            }
-        }
+        if (WIFEXITED(tmp))
+          {
+            cmd->return_value = tmp;
+            aff_special_return_val(cmd);
+          }
       if (WIFSIGNALED(tmp))
         sig = WTERMSIG(tmp);
       if (WIFSTOPPED(tmp))
