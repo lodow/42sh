@@ -25,7 +25,10 @@ int	recup_path(char **envp)
 int	init_tab_line(t_param *param)
 {
   if ((param->fd_tty = open("/dev/tty", O_RDWR)) == -1)
-    param->fd_tty = 1;
+    {
+      my_perror("/dev/tty");
+      return (FALSE);
+    }
   param->str_prompt = NULL;
   param->string = NULL;
   param->len_string = 0;
