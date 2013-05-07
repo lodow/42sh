@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Thu May  2 16:24:43 2013 remi robert
+** Last update Tue May  7 14:28:52 2013 maxime lavandier
 */
 
 #ifndef		SH42_H
@@ -208,6 +208,7 @@ char	*str_cat(char *str1, char *str2);
 */
 char	**str_to_wordtab(char *str, char *delim, char inibiteur);
 void	rm_empty_str_f_tab(char **tab);
+void	free_wordtab(char **tab, int rempli, int lenght_malloc);
 
 /*
 ** Signals
