@@ -20,7 +20,7 @@ t_string	*get_pos_string(t_string *ptete, int pos)
   while (pcourant != NULL)
     {
       if (indice == pos)
-	return (pcourant);
+        return (pcourant);
       pcourant = pcourant->next;
       indice = indice + 1;
     }
@@ -48,23 +48,25 @@ void	decale_window(t_param *param)
 {
   int	indice;
 
-  indice = ((param->len_string + param->begin_pos.x + 1) / return_x());
+  indice = ((param->len_string + param->begin_pos.x + 1)
+            / return_x(param->fd_tty));
   if (((param->len_string + param->begin_pos.x) + 1) /
-      return_x() > (return_y() - param->begin_pos.y) &&
-      param->current_pos.y >= return_y())
+      return_x(param->fd_tty) > (return_y(param->fd_tty) - param->begin_pos.y)
+      && param->current_pos.y >= return_y(param->fd_tty))
     {
-      while (indice + 1 > (return_y() - param->begin_pos.y) &&
-	     param->current_pos.y >= return_y())
-	{
-	  curseur(param->begin_pos.x, param->begin_pos.y +
-		  (return_y() - param->begin_pos.y), param->fd_tty);
-	  delete_line_curser(param->fd_tty);
-	  my_putstr("\n", 1, -1);
-	  param->begin_pos.y -= 1;
-	  param->prompt.y -= 1;
-	  param->current_pos.y -= 1;
-	  indice = indice - 1;
-	}
+      while (indice + 1 > (return_y(param->fd_tty) - param->begin_pos.y) &&
+             param->current_pos.y >= return_y(param->fd_tty))
+        {
+          curseur(param->begin_pos.x, param->begin_pos.y +
+                  (return_y(param->fd_tty) - param->begin_pos.y),
+                  param->fd_tty);
+          delete_line_curser(param->fd_tty);
+          my_putstr("\n", 1, -1);
+          param->begin_pos.y -= 1;
+          param->prompt.y -= 1;
+          param->current_pos.y -= 1;
+          indice = indice - 1;
+        }
     }
 }
 

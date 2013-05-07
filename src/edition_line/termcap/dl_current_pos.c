@@ -24,7 +24,8 @@ void	dl_current_pos(t_param *param)
   int	size;
   int	x;
 
-  size = (param->len_string + my_strlen(param->buff_copy)) / return_x();
+  size = (param->len_string + my_strlen(param->buff_copy))
+         / return_x(param->fd_tty);
   indice = 0;
   x = param->begin_pos.x;
   while (indice != size + 1)

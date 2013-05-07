@@ -38,7 +38,7 @@ void		get_buff_copy(t_param **param)
   while (indice < 2048 && (*param)->buff_copy[indice] != END)
     {
       add_caratere_list_with_buff(param, (*param)->buff_copy[indice]);
-      if ((*param)->current_pos.x >= return_x())
+      if ((*param)->current_pos.x >= return_x((*param)->fd_tty))
 	{
 	  (*param)->current_pos.x = 0;
 	  (*param)->current_pos.y += 1;

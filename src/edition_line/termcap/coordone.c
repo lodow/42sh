@@ -10,18 +10,18 @@
 
 #include "my_func.h"
 
-int			return_x()
+int			return_x(int tty)
 {
   struct winsize	ws;
 
-  ioctl(1, TIOCGWINSZ, &ws);
+  ioctl(tty, TIOCGWINSZ, &ws);
   return (ws.ws_col);
 }
 
-int			return_y()
+int			return_y(int tty)
 {
   struct winsize	ws;
 
-  ioctl(1, TIOCGWINSZ, &ws);
+  ioctl(tty, TIOCGWINSZ, &ws);
   return (ws.ws_row - 1);
 }

@@ -78,7 +78,7 @@ void	my_select_glob(t_param **param,
       gere_keyboard_globb(buff, param_glob, param_glob->glob.gl_pathc);
       param_glob->y = y;
       param_glob->x = 0;
-      view_glob(param_glob, param_glob->pos);
+      view_glob(param_glob, param_glob->pos, *param);
       my_putstr("\n", 1, -1);
     }
 }

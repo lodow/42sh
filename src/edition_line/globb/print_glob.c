@@ -29,7 +29,7 @@ int	get_size_glob(glob_t *globbuf)
   return (size + 2);
 }
 
-void	view_glob(t_glob *param_glob, int selector)
+void	view_glob(t_glob *param_glob, int selector, t_param *param)
 {
   int	indice;
 
@@ -46,8 +46,8 @@ void	view_glob(t_glob *param_glob, int selector)
       my_put_str(param_glob->glob.gl_pathv[indice]);
       if (selector == indice)
 	my_put_str(REZ);
-      if (param_glob->x >= return_x() ||
-	  param_glob->x + param_glob->len_max > return_x())
+      if (param_glob->x >= return_x(param->fd_tty) ||
+	  param_glob->x + param_glob->len_max > return_x(param->fd_tty))
 	{
 	  my_put_str("\n");
 	  param_glob->x = 0;
@@ -58,7 +58,7 @@ void	view_glob(t_glob *param_glob, int selector)
     }
 }
 
-void	calc_colonne_glob(t_glob *param_glob)
+void	calc_colonne_glob(t_glob *param_glob, t_param *param)
 {
   int	indice;
   int	x;
@@ -69,8 +69,8 @@ void	calc_colonne_glob(t_glob *param_glob)
   while (indice < (int)param_glob->glob.gl_pathc)
     {
       x += param_glob->len_max;
-      if (x >= return_x() ||
-	  x + param_glob->len_max > return_x())
+      if (x >= return_x(param->fd_tty) ||
+	  x + param_glob->len_max > return_x(param->fd_tty))
 	{
 	  x = 0;
 	  param_glob->nb_colonne += 2;
@@ -82,11 +82,11 @@ void	calc_colonne_glob(t_glob *param_glob)
 void	print_glob(t_param **param, t_glob *param_glob, int selector)
 {
   param_glob->len_max = get_size_glob(&(param_glob->glob));
-  param_glob->nb_line = (return_x() / param_glob->len_max) + 1;
-  calc_colonne_glob(param_glob);
+  param_glob->nb_line = (return_x((*param)->fd_tty) / param_glob->len_max) + 1;
+  calc_colonne_glob(param_glob, *param);
   my_putstr("\n", 1, -1);
   get_pos_curser(&(param_glob->x), &(param_glob->y), (*param)->fd_tty);
   param_glob->x = 0;
-  view_glob(param_glob, selector);
+  view_glob(param_glob, selector, *param);
   my_put_str("\n");
 }

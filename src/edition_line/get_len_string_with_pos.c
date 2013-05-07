@@ -14,6 +14,7 @@ int	get_len_string_with_pos(t_param *param)
 {
   if (param == NULL || param->string == NULL)
     return (FALSE);
-  return (((param->current_pos.y - param->begin_pos.y) * return_x()) +
-	  ((param->current_pos.x - param->begin_pos.x) - 1));
+  return (((param->current_pos.y - param->begin_pos.y)
+           * return_x(param->fd_tty)) +
+          ((param->current_pos.x - param->begin_pos.x) - 1));
 }

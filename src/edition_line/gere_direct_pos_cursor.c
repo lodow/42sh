@@ -28,7 +28,7 @@ void	end_str(t_param *param)
   while (indice < param->len_string)
     {
       pos_x = pos_x + 1;
-      if (pos_x == return_x())
+      if (pos_x == return_x(param->fd_tty))
 	{
 	  pos_x = 0;
 	  pos_y = pos_y + 1;

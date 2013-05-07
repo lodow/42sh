@@ -16,9 +16,9 @@ void	gere_buff(char *buff, t_param **param, t_history **history, char **env)
     {
       (*param)->len_string += 1;
       (*param)->current_pos.x += 1;
-      if ((*param)->current_pos.x >= return_x())
+      if ((*param)->current_pos.x >= return_x((*param)->fd_tty))
 	{
-	  if ((*param)->current_pos.y >= return_y())
+	  if ((*param)->current_pos.y >= return_y((*param)->fd_tty))
 	    {
 	      (*param)->begin_pos.y -= 1;
 	      (*param)->current_pos.y -= 1;
