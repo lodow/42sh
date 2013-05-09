@@ -59,21 +59,20 @@ void	**concat_ptr_tab(void **tab1, void **tab2)
   tlen = 0;
   if (tab1 == NULL || tab2 == NULL)
     return (NULL);
-  while (tab1[tlen] != NULL)
-    tlen++;
-  i = 0;
-  while (tab2[i] != NULL)
-    i++;
-  if ((final_tab = malloc(((tlen + i) + 1) * sizeof(void*))) == NULL)
+  tlen += ptr_tab_size(tab1);
+  tlen += ptr_tab_size(tab2);
+  if ((final_tab = malloc((tlen + 2 + (PTRT_PACK - ((tlen + 1) % PTRT_PACK)))
+                          * sizeof(void*))) == NULL)
     return (NULL);
   tlen = -1;
   while (tab1[++tlen] != NULL)
     final_tab[tlen] = tab1[tlen];
-  i = -1;
-  while (tab2[++i] != NULL)
+  i = 0;
+  while (tab2[i] != NULL)
     {
       final_tab[tlen] = tab2[i];
       tlen++;
+      i++;
     }
   final_tab[tlen] = NULL;
   return (final_tab);
