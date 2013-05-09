@@ -10,27 +10,43 @@
 
 #include "42sh.h"
 
-void	**add_ptr_t_tab(void **tab, void *add)
+int	ptr_tab_size(void **tab)
 {
-  void	**newtab;
   int	i;
 
   i = 0;
   if (tab != NULL)
     while (tab[i] != NULL)
       i++;
-  if ((newtab = malloc((i + 2) * sizeof(void*))) == NULL)
-    return (NULL);
-  i = 0;
-  if (tab != NULL)
-    while (tab[i] != NULL)
-      {
-        newtab[i] = tab[i];
-        i++;
-      }
+  return (i);
+}
+
+void	**add_ptr_t_tab(void **tab, void *add)
+{
+  void	**newtab;
+  int	i;
+
+  i = ptr_tab_size(tab);
+  if (i % PTRT_PACK == 0)
+    {
+      if ((newtab = malloc((i + 3 + (PTRT_PACK - ((i + 2) % PTRT_PACK)))
+                           * sizeof(void*))) == NULL)
+        return (NULL);
+    }
+  else
+    newtab = tab;
+  if ((tab != NULL) && (i % PTRT_PACK == 0))
+    {
+      i = 0;
+      while (tab[i] != NULL)
+        {
+          newtab[i] = tab[i];
+          i++;
+        }
+      free(tab);
+    }
   newtab[i] = add;
   newtab[i + 1] = NULL;
-  free(tab);
   return (newtab);
 }
 

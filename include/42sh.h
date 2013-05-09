@@ -74,6 +74,8 @@
 # define REDI_L 1
 # define REDI_DL 2
 
+# define PTRT_PACK 4
+
 typedef struct	s_fds
 {
   int		stdin;
@@ -179,6 +181,7 @@ char	**add_change_env(char **env, char *var, char *value);
 /*
 ** Ptr tab
 */
+int	ptr_tab_size(void **tab);
 void	rm_ptr_f_tab(void **tab, void *ptr);
 void	**add_ptr_t_tab(void **tab, void *add);
 void	free_ptr_tab(void **tab, void (*f)(void *ptr));

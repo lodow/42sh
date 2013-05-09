@@ -12,13 +12,10 @@
 
 void	builtin_exit(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
-  /* if (cmd->argv[1] == NULL)
-     my_exit(0);
-   else
-     my_exit(my_getnbr(cmd->argv[1]));*/
   if (cmd->argv[1] != NULL)
     shell->beepbeepexit = my_getnbr(cmd->argv[1]);
   else
     shell->beepbeepexit = 0;
+  UNSETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS));
   close(0);
 }
