@@ -40,10 +40,12 @@ char	**cpy_env(char **envp)
   int	size;
 
   size = 0;
+  if (envp == NULL)
+    return (NULL);
   while (envp[size++] != NULL);
   if ((res = malloc(size * sizeof(char*))) == NULL)
     return (NULL);
-  size --;
+  size--;
   while (size >= 0)
     {
       res[size] = my_strdup(envp[size]);
