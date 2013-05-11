@@ -59,7 +59,8 @@ void	rm_env(char **envp, char *env)
   while (envp[0] != NULL)
     {
       if ((env != NULL)
-          && (my_strncmp(envp[0], env, my_strlen(env)) == 0))
+          && (my_strncmp(envp[0], env, my_strlen(env)) == 0)
+          && (envp[0][my_strlen(env)] == '='))
         {
           free(envp[0]);
           envp[0] = envp[1];

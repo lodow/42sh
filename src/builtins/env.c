@@ -19,7 +19,7 @@ int	builtin_env_print(char *path, char **argv, t_sh *shell)
     while (shell->env[i] != NULL)
       {
         my_putstr(shell->env[i], 1, -1);
-        if (argv[0][1] != 'E')
+        if (argv[0][0] != 'E')
           my_putstr("\n", 1, -1);
         i++;
       }
@@ -29,8 +29,10 @@ int	builtin_env_print(char *path, char **argv, t_sh *shell)
 int	builtin_env_exec_opt(char *arg, t_cmd *cmd, char ***env, int *nnewline)
 {
   int	opt;
+  char	*tmp;
 
   opt = 0;
+  tmp = NULL;
   if (!strncmp(arg, "-i", -1) || !strncmp(arg, "--ignore-environment", -1))
     {
       opt = 1;
@@ -42,9 +44,12 @@ int	builtin_env_exec_opt(char *arg, t_cmd *cmd, char ***env, int *nnewline)
       opt = 1;
       *nnewline = 1;
     }
-  if (!strncmp(arg, "-u", -1) || !strncmp(arg, "--unset=", -1))
+  if (!strncmp(arg, "-u", -1)
+      || !strncmp(arg, "--unset=", my_strlen("--unset=")))
     {
-      rm_env(*env, cmd->argv[1]);
+      if (!strncmp(arg, "--unset=", my_strlen("--unset=")))
+        tmp = &(arg[my_strlen("--unset=")]);
+      rm_env(*env, tmp);
       opt = 1;
     }
   return (opt);
