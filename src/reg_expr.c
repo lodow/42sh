@@ -42,23 +42,25 @@ void	expand_reg_epx_on_argv(char ***argv)
   int	i;
   char	**res;
   char	**tmp;
+  char	**tmptfree;
 
-  i = 1;
+  i = 0;
   res = NULL;
   if (((*argv) == NULL) || ((*argv)[0] == NULL))
     return ;
   res = (char**)add_ptr_t_tab((void**)res, (void*)(*argv)[0]);
-  while ((*argv)[i] != NULL)
+  while ((*argv)[++i] != NULL)
     {
       if ((tmp = expand_reg_exp((*argv)[i])) != NULL)
         {
+          tmptfree = res;
           res = (char**)concat_ptr_tab((void**)res, (void**)tmp);
           free((*argv)[i]);
           free(tmp);
+          free(tmptfree);
         }
       else
         res = (char**)add_ptr_t_tab((void**)res, (void*)(*argv)[i]);
-      i++;
     }
   free(*argv);
   (*argv) = res;

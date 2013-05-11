@@ -63,4 +63,5 @@ void	free_cmd(t_cmd *cmd)
   free(cmd->line);
   free_ptr_tab((void**)cmd->argv, &free);
   free(cmd->cmd_fpath);
+  free(cmd);
 }

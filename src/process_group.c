@@ -101,5 +101,7 @@ void	free_process_group(t_grp *grp)
     {
       free(grp->line);
       free_ptr_tab((void**)grp->cmds, (void*)(&free_cmd));
+      free(grp->redirection);
+      free(grp);
     }
 }
