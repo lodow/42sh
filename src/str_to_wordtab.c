@@ -38,7 +38,8 @@ char	**malloc_tab(char *str, char *delim)
 
   len_delim = strlen(delim);
   len_str = strlen(str);
-  i = nbr = 0;
+  i = 0;
+  nbr = 0;
   while (str[i] != 0)
     {
       if (strncmp(delim, &(str[i]), len_delim) == 0)
