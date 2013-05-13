@@ -10,7 +10,32 @@
 
 #include "include.h"
 
-char	*smallest_str_f_triple_tab(char ***tab)
+char	*get_inibiteur(char *line, char **sepa, char **tab, int field)
+{
+  int	i;
+  int	posinstr;
+
+  if (line == NULL || sepa == NULL || tab == NULL || field < 0)
+    return (NULL);
+  posinstr = my_strlen(tab[0]);
+  i = 1;
+  while ((i < field) && (tab[i] != NULL))
+    {
+      posinstr += my_strlen(get_inibiteur(line, sepa, tab, i - 1))
+                  + my_strlen(tab[i]);
+      i++;
+    }
+  i = 0;
+  while (sepa[i] != NULL)
+    {
+      if (!strncmp(&(line[posinstr]), sepa[i], my_strlen(sepa[i])))
+        return (sepa[i]);
+      i++;
+    }
+  return (NULL);
+}
+
+char	*cut_str_f_triple_tab(char ***tab)
 {
 
 }
@@ -35,7 +60,7 @@ char	**mult_str_to__wordtab(char *line, char **sepa, int opt)
       i++;
     }
   tmp[i] = NULL;
-  while ((str = smallest_str_f_triple_tab(tmp)) != NULL)
+  while ((str = cut_str_f_triple_tab(tmp)) != NULL)
     res = (char**)add_ptr_t_tab((void**)res, (void*)str);
   return (res);
 }

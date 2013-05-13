@@ -8,7 +8,6 @@
 ** Last update Tue May  7 14:27:48 2013 maxime lavandier
 */
 
-#include <string.h>
 #include "42sh.h"
 
 /*
