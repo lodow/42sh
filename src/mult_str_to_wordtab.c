@@ -8,9 +8,9 @@
 ** Last update Mon Oct  8 16:20:21 2012 hugues morisset
 */
 
-#include "include.h"
+#include "42sh.h"
 
-char	*get_inibiteur(char *line, char **sepa, char **tab, int field)
+char	*get_inibiteur_f_mult_wt(char *line, char **sepa, char **tab, int field)
 {
   int	i;
   int	posinstr;
@@ -21,14 +21,15 @@ char	*get_inibiteur(char *line, char **sepa, char **tab, int field)
   i = 1;
   while ((i < field) && (tab[i] != NULL))
     {
-      posinstr += my_strlen(get_inibiteur(line, sepa, tab, i - 1))
+      posinstr += my_strlen(get_inibiteur_f_mult_wt(line, sepa, tab, i - 1))
                   + my_strlen(tab[i]);
       i++;
     }
   i = 0;
   while (sepa[i] != NULL)
     {
-      if (!strncmp(&(line[posinstr]), sepa[i], my_strlen(sepa[i])))
+      if ((posinstr < my_strlen(line))
+          && !strncmp(&(line[posinstr]), sepa[i], my_strlen(sepa[i])))
         return (sepa[i]);
       i++;
     }
@@ -37,10 +38,54 @@ char	*get_inibiteur(char *line, char **sepa, char **tab, int field)
 
 char	*cut_str_f_triple_tab(char ***tab)
 {
+  int	i;
+  int	min_len;
+  char	*str;
+  char	*res;
 
+  i = 0;
+  min_len = 0x7fffffff;
+  res = NULL;
+  while (tab[i] != NULL)
+    {
+      str = tab[i][0];
+      if (my_strlen(str) < min_len)
+        {
+          res = str;
+          min_len = my_strlen(str);
+        }
+      i++;
+    }
+  res = my_strdup(res);
+  i = -1;
+  while (tab[++i] != NULL)
+    free_ptr_tab((void**)tab[i], &free);
+  return (res);
 }
 
-char	**mult_str_to__wordtab(char *line, char **sepa, int opt)
+char	*move_str_t_next_sepa(char *str, char **sepa, char *field)
+{
+  int	i;
+  int	lentj;
+
+  i = 0;
+  if ((lentj = my_strlen(field)) >= my_strlen(str))
+    return (NULL);
+  while ((i >= 0) && (sepa[i] != NULL))
+    {
+      if (!strncmp(&(str[lentj]), sepa[i], my_strlen(sepa[i])))
+        {
+          lentj += my_strlen(sepa[i]);
+          i = -2;
+        }
+      i++;
+    }
+  if (lentj >= my_strlen(str))
+    return (NULL);
+  return (&(str[lentj]));
+}
+
+char	**mult_str_to_wordtab(char *line, char **sepa, int opt)
 {
   int	i;
   char	**res;
@@ -48,19 +93,23 @@ char	**mult_str_to__wordtab(char *line, char **sepa, int opt)
   char	*str;
 
   res = NULL;
-  if ((sepa == NULL) || (line == NULL))
+  if ((sepa == NULL) || (line == NULL)
+      || ((tmp = malloc((ptr_tab_size((void**)sepa) + 1)
+                        * sizeof(char**))) == NULL))
     return (NULL);
-  if ((tmp = malloc((ptr_tab_size((void**)sepa) + 1)
-                    * sizeof(char**))) == NULL)
-    return (NULL);
-  i = 0;
-  while (sepa[i] != NULL)
-    {
-      tmp[i] = str_to_wordtab(line, sepa[i], opt);
-      i++;
-    }
+  i = -1;
+  while (sepa[++i] != NULL)
+    tmp[i] = str_to_wordtab(line, sepa[i], opt);
   tmp[i] = NULL;
   while ((str = cut_str_f_triple_tab(tmp)) != NULL)
-    res = (char**)add_ptr_t_tab((void**)res, (void*)str);
+    {
+      res = (char**)add_ptr_t_tab((void**)res, (void*)str);
+      line = move_str_t_next_sepa(line, sepa, str);
+      i = -1;
+      while (sepa[++i] != NULL)
+        tmp[i] = str_to_wordtab(line, sepa[i], opt);
+      tmp[i] = NULL;
+    }
+  free(tmp);
   return (res);
 }

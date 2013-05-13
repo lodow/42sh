@@ -44,6 +44,7 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/tr_str.c				\
 		$(SRCPATH)/shell.c				\
 		$(SRCPATH)/str_to_wordtab.c			\
+		$(SRCPATH)/mult_str_to_wordtab.c		\
 		$(SRCPATH)/signal.c				\
 		$(SRCPATH)/job.c				\
 		$(SRCPATH)/jobs_forground.c			\
