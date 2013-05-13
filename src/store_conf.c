@@ -15,14 +15,16 @@ void	store_history_f(t_sh *shell, int fd)
   t_history	*tmp;
 
   tmp = shell->history;
+  if (tmp == NULL)
+    return ;
   while (tmp->next != NULL)
-    tmp = tmp->next;
+  tmp = tmp->next;
   while (tmp != NULL)
     {
       my_putstr(tmp->cmd, fd, -1);
-      my_putstr("\n", fd, -1);
-      tmp = tmp->back;
-    }
+        my_putstr("\n", fd, -1);
+        tmp = tmp->back;
+      }
 }
 
 void	store_conf_file(char *filename, t_sh *shell,
