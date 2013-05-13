@@ -15,7 +15,7 @@ char	*get_inibiteur(char *line, char **sepa, char **tab, int field)
   int	i;
   int	posinstr;
 
-  if (line == NULL || sepa == NULL || tab == NULL || field < 0)
+  if ((line == NULL) || (sepa == NULL) || (tab == NULL) || (field < 0))
     return (NULL);
   posinstr = my_strlen(tab[0]);
   i = 1;
@@ -48,7 +48,7 @@ char	**mult_str_to__wordtab(char *line, char **sepa, int opt)
   char	*str;
 
   res = NULL;
-  if (sepa == NULL ||  line == NULL)
+  if ((sepa == NULL) || (line == NULL))
     return (NULL);
   if ((tmp = malloc((ptr_tab_size((void**)sepa) + 1)
                     * sizeof(char**))) == NULL)
@@ -64,4 +64,3 @@ char	**mult_str_to__wordtab(char *line, char **sepa, int opt)
     res = (char**)add_ptr_t_tab((void**)res, (void*)str);
   return (res);
 }
-

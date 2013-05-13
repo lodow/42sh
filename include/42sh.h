@@ -74,7 +74,7 @@
 # define REDI_L 1
 # define REDI_DL 2
 
-# define PTRT_PACK 10
+# define PTRT_PACK 32
 
 typedef struct	s_fds
 {
