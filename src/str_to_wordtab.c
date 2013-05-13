@@ -46,7 +46,7 @@ char	**malloc_tab(char *str, char *delim)
 	nbr++;
       i++;
     }
-  if ((tab = malloc((nbr + 2) * sizeof(char *))) == 0)
+  if ((tab = malloc((nbr + 2 + PTRT_PACK) * sizeof(char *))) == 0)
     return (NULL);
   i = -1;
   while (++i < nbr + 1)
