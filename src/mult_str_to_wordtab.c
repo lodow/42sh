@@ -68,21 +68,36 @@ char	*move_str_t_next_sepa(char *str, char **sepa, char *field)
   int	i;
   int	lentj;
 
-  i = 0;
   if ((lentj = my_strlen(field)) >= my_strlen(str))
     return (NULL);
-  while ((i >= 0) && (sepa[i] != NULL))
+  while (str[lentj] != '\0')
     {
-      if (!strncmp(&(str[lentj]), sepa[i], my_strlen(sepa[i])))
+      i = 0;
+      while ((i >= 0) && (sepa[i] != NULL))
         {
-          lentj += my_strlen(sepa[i]);
-          i = -2;
+          if (!strncmp(&(str[lentj]), sepa[i], my_strlen(sepa[i])))
+            {
+              lentj += my_strlen(sepa[i]);
+              return (&(str[lentj]));
+            }
+          i++;
         }
+      lentj++;
+    }
+  return (NULL);
+}
+
+void	mult_wt_fill_all_tab(char ***tab, char *line, char **sepa, int opt)
+{
+  int	i;
+
+  i = 0;
+  while (sepa[i] != NULL)
+    {
+      tab[i] = str_to_wordtab(line, sepa[i], opt);
       i++;
     }
-  if (lentj >= my_strlen(str))
-    return (NULL);
-  return (&(str[lentj]));
+  tab[i] = NULL;
 }
 
 char	**mult_str_to_wordtab(char *line, char **sepa, int opt)
@@ -97,19 +112,16 @@ char	**mult_str_to_wordtab(char *line, char **sepa, int opt)
       || ((tmp = malloc((ptr_tab_size((void**)sepa) + 1)
                         * sizeof(char**))) == NULL))
     return (NULL);
-  i = -1;
-  while (sepa[++i] != NULL)
-    tmp[i] = str_to_wordtab(line, sepa[i], opt);
-  tmp[i] = NULL;
+  mult_wt_fill_all_tab(tmp, line, sepa, opt);
   while ((str = cut_str_f_triple_tab(tmp)) != NULL)
     {
       res = (char**)add_ptr_t_tab((void**)res, (void*)str);
       line = move_str_t_next_sepa(line, sepa, str);
-      i = -1;
-      while (sepa[++i] != NULL)
-        tmp[i] = str_to_wordtab(line, sepa[i], opt);
-      tmp[i] = NULL;
+      mult_wt_fill_all_tab(tmp, line, sepa, opt);
     }
+  i = -1;
+  while (tmp[++i] != NULL)
+    free_ptr_tab((void**)tmp[i], &free);
   free(tmp);
   return (res);
 }
