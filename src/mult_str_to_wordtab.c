@@ -15,6 +15,7 @@ char	*get_inibiteur_f_mult_wt(char *line, char **sepa, char **tab, int field)
   int	i;
   int	posinstr;
 
+  field += 1;
   if ((line == NULL) || (sepa == NULL) || (tab == NULL) || (field < 0))
     return (NULL);
   posinstr = my_strlen(tab[0]);
@@ -25,13 +26,14 @@ char	*get_inibiteur_f_mult_wt(char *line, char **sepa, char **tab, int field)
                   + my_strlen(tab[i]);
       i++;
     }
-  i = 0;
-  while (sepa[i] != NULL)
+  while (line[posinstr] != '\0')
     {
-      if ((posinstr < my_strlen(line))
-          && !strncmp(&(line[posinstr]), sepa[i], my_strlen(sepa[i])))
-        return (sepa[i]);
-      i++;
+      i = -1;
+      while (sepa[++i] != NULL)
+        if ((posinstr < my_strlen(line))
+            && !strncmp(&(line[posinstr]), sepa[i], my_strlen(sepa[i])))
+          return (sepa[i]);
+      posinstr++;
     }
   return (NULL);
 }
