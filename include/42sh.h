@@ -216,6 +216,7 @@ void	free_wordtab(char **tab, int rempli, int lenght_malloc);
 /*
 ** Signals
 */
+void	init_sig();
 t_sh	*get_sh_info(t_sh *sh);
 void	sig_handler(int sig);
 void	call_signal_func(t_sh *shell, int chld_sig);

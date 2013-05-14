@@ -19,6 +19,17 @@ t_sh		*get_sh_info(t_sh *sh)
   return (shell);
 }
 
+void	init_sig()
+{
+  signal(SIGTTOU, &sig_handler);
+  signal(SIGTTIN, &sig_handler);
+  signal(SIGINT, &sig_handler);
+  signal(SIGTSTP, &sig_handler);
+  signal(SIGCHLD, &sig_handler);
+  signal(SIGHUP, &sig_handler);
+  signal(SIGTERM, &sig_handler);
+}
+
 void	sig_handler(int sig)
 {
   t_sh	*shell;
@@ -32,11 +43,7 @@ void	sig_handler(int sig)
     }
   if ((sig == SIGHUP) || (sig == SIGTERM))
     close(0);
-  signal(SIGTTOU, &sig_handler);
-  signal(SIGTTIN, &sig_handler);
-  signal(SIGINT, &sig_handler);
-  signal(SIGTSTP, &sig_handler);
-  signal(SIGCHLD, &sig_handler);
+  init_sig();
 }
 
 void	call_signal_func(t_sh *shell, int chld_sig)

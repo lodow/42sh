@@ -10,17 +10,6 @@
 
 #include "42sh.h"
 
-void	init_sig()
-{
-  signal(SIGTTOU, &sig_handler);
-  signal(SIGTTIN, &sig_handler);
-  signal(SIGINT, &sig_handler);
-  signal(SIGTSTP, &sig_handler);
-  signal(SIGCHLD, &sig_handler);
-  signal(SIGHUP, &sig_handler);
-  signal(SIGTERM, &sig_handler);
-}
-
 int		init_shell(t_sh *shell, char **main_env)
 {
   get_sh_info(shell);
