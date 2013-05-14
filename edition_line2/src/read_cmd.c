@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Fri May 10 08:47:40 2013 remi robert
+** Last update Tue May 14 17:21:45 2013 remi robert
 */
 
 #include "termcap.h"
@@ -50,7 +50,7 @@ char	*init_read_cmd(char *cmd, t_param *param)
   return (cmd);
 }
 
-char	*read_cmd(char *prompt, t_param *param)
+char	*read_cmd(t_param *param)
 {
   int	ret;
   char	buff[10];

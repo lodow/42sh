@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Thu Mar 21 08:21:11 2013 remi
-** Last update Sat May  4 18:43:45 2013 remi robert
+** Last update Tue May 14 16:48:16 2013 remi robert
 */
 
 #include "termcap.h"
@@ -41,15 +41,17 @@ void	get_pos_curser(int *x, int *y)
 {
   char	buff[10];
   int	indice;
+  int	fd;
 
   *x = -1;
   *y = -1;
   my_memset(buff, 10, 0);
+  fd = my_putstr_termcap(-1, NULL);
   while (buff[0] != 27)
     {
       my_memset(buff, 10, 0);
-      write(1, POSCURSEUR, my_strlen(POSCURSEUR));
-      indice = read(1, buff, 10);
+      write(fd, POSCURSEUR, my_strlen(POSCURSEUR));
+      indice = read(fd, buff, 10);
       buff[indice] = '\0';
     }
   assign_value_pos(x, y, buff);

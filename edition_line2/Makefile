@@ -5,7 +5,7 @@
 ## Login   <robert_r@epitech.net>
 ## 
 ## Started on  Fri Nov 30 10:59:19 2012 remi robert
-## Last update Mon May 13 20:58:33 2013 remi robert
+## Last update Tue May 14 16:40:24 2013 remi robert
 ##
 
 CC	=	gcc
@@ -46,6 +46,7 @@ TSRC	=	$(TPATH)coordone.c				\
 		$(TPATH)save_curser.c				\
 		$(TPATH)init_termcap.c				\
 		$(TPATH)apply_termcap.c				\
+		$(TPATH)print_termcap.c				\
 
 LIBSRC	=	$(LIBPATH)my_putstr.c				\
 		$(LIBPATH)my_strlen.c				\

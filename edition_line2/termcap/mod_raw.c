@@ -5,12 +5,12 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 21:58:20 2013 remi robert
-** Last update Sun Apr 28 23:03:01 2013 remi robert
+** Last update Tue May 14 16:29:22 2013 remi robert
 */
 
 #include "termcap.h"
 
-int			reset_save_mod(int type)
+int			reset_save_mod(int type, int fd)
 {
   static struct termios	t;
   static int		pass = 0;
@@ -22,11 +22,11 @@ int			reset_save_mod(int type)
 	  my_putstr("Error mod not save\n");
 	  return (EXIT_FAILURE);
 	}
-      return (reset_mod(t));
+      return (reset_mod(t, fd));
     }
   if (type == SAVE)
     {
-      if (tcgetattr(1, &t) == -1)
+      if (tcgetattr(fd, &t) == -1)
 	{
 	  my_putstr("Erreur getattr reset_save_mod\n");
 	  return (EXIT_FAILURE);
@@ -37,9 +37,9 @@ int			reset_save_mod(int type)
   return (EXIT_FAILURE);
 }
 
-int	reset_mod(struct termios t)
+int	reset_mod(struct termios t, int fd)
 {
-  if (tcsetattr(1, TCSANOW, &t) == -1)
+  if (tcsetattr(fd, TCSANOW, &t) == -1)
     {
       my_putstr("Erreur setattr reset\n");
       return (EXIT_FAILURE);
@@ -47,11 +47,11 @@ int	reset_mod(struct termios t)
   return (EXIT_SUCCESS);
 }
 
-int			mod_raw(void)
+int			mod_raw(int fd)
 {
   struct termios	t;
 
-  if (tcgetattr(1, &t) == -1)
+  if (tcgetattr(fd, &t) == -1)
     {
       my_putstr("Erreur getattr mod_raw\n");
       return (EXIT_FAILURE);
@@ -60,7 +60,7 @@ int			mod_raw(void)
   t.c_lflag = t.c_lflag & ~ECHO;
   t.c_cc[VMIN] = 1;
   t.c_cc[VTIME] = 0;
-  if (tcsetattr(1, TCSANOW, &t) == -1)
+  if (tcsetattr(fd, TCSANOW, &t) == -1)
     {
       my_putstr("Erreur setattr mod_raw\n");
       return (EXIT_FAILURE);
