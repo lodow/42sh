@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Jan 15 20:15:34 2013 remi robert
-** Last update Mon Apr 29 09:05:51 2013 remi robert
+** Last update Tue May 14 16:50:24 2013 remi robert
 */
 
 #include "termcap.h"
@@ -13,8 +13,10 @@
 int			return_x(void)
 {
   struct winsize	ws;
+  int			fd;
 
-  if (ioctl(1, TIOCGWINSZ, &ws) == -1)
+  fd = my_putstr_termcap(-1, NULL);
+  if (ioctl(fd, TIOCGWINSZ, &ws) == -1)
     return (0);
   return (ws.ws_col);
 }
@@ -22,8 +24,10 @@ int			return_x(void)
 int			return_y(void)
 {
   struct winsize	ws;
+  int			fd;
 
-  if (ioctl(1, TIOCGWINSZ, &ws) == -1)
+  fd = my_putstr_termcap(-1, NULL);
+  if (ioctl(fd, TIOCGWINSZ, &ws) == -1)
     return (0);
   return (ws.ws_row - 1);
 }

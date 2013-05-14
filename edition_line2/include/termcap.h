@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed Apr 24 13:46:14 2013 remi robert
-** Last update Fri May 10 18:50:04 2013 remi robert
+** Last update Tue May 14 17:20:24 2013 remi robert
 */
 
 #ifndef TERMCAP_H_
@@ -26,34 +26,6 @@
 # include <signal.h>
 # include <glob.h>
 # include "my_func.h"
-# include "couleur.h"
-# include "mod_raw.h"
-# include "coordone.h"
-# include "curseur.h"
-# include "clear.h"
-# include "lib.h"
-# include "get_pos_curseur.h"
-# include "verif_env.h"
-# include "view_curseur.h"
-# include "write_color.h"
-# include "read_tty.h"
-# include "read_cmd.h"
-# include "save_curser.h"
-# include "my_func.h"
-# include "init_termcap.h"
-# include "apply_termcap.h"
-# include "gere_keyboard.h"
-# include "decal_string.h"
-# include "view.h"
-# include "suppression.h"
-# include "gere_control.h"
-# include "start_end_cmd.h"
-# include "termcap.h"
-# include "signal_cmd.h"
-# include "update_pos.h"
-# include "refresh_view.h"
-# include "gere_window.h"
-# include "globb.h"
 
 # define NOIR		0
 # define ROUGE		1
@@ -63,5 +35,36 @@
 # define MAGENTA	5
 # define CYAN		6
 # define BLANC		7
+# define RESTORE	1
+# define SAVE		0
+# define POSCURSEUR	"\033[6n"
+# define ECRASEPOS	"         "
+# define TTY_OPEN	"/dev/tty"
+# define FAIL_OPEN	-1
+
+int		verif_env(char **env);
+int		save_curser(void);
+int		restor_curser(void);
+int		open_tty(void);
+int		curseur(int x, int y);
+int		up_curser(void);
+int		do_curser(void);
+int		right_curser(void);
+int		left_curser(void);
+int		return_x(void);
+int		return_y(void);
+void		apply_termcap(char *cap, int arg);
+int		putc_termcap(int c);
+void		assign_value_pos(int *x, int *y, char *buff);
+void		get_pos_curser(int *x, int *y);
+int		reset_save_mod(int type, int fd);
+int		reset_mod(struct termios t, int fd);
+int		mod_raw(int fd);
+int		my_putstr_termcap(int flag, char *capaity);
+void		view_string(char *cmd, t_param *param);
+int		view_curser(void);
+int		invisible_curseur(void);
+char		*my_tgetstr(char *cap0);
+void		init_capacity_termcap(t_termcap *termcap);
 
 #endif

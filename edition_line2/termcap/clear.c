@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Feb  5 09:20:03 2013 remi robert
-** Last update Mon Apr 29 09:03:40 2013 remi robert
+** Last update Tue May 14 16:49:32 2013 remi robert
 */
 
 #include "termcap.h"
@@ -16,6 +16,6 @@ int	clear_screem(void)
 
   if ((s = tgetstr("cl", NULL)) == NULL)
     return (EXIT_FAILURE);
-  my_putstr(s);
+  my_putstr_termcap(-1, s);
   return (EXIT_SUCCESS);
 }

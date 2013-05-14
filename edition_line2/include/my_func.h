@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Wed May  8 18:58:14 2013 remi robert
+** Last update Tue May 14 17:22:02 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -39,6 +39,7 @@
 # define BEGIN_STR     	"\x1B\x4F\x48"
 # define END_STR     	"\x1B\x4F\x46"
 # define SIZE_BUFFER	10240
+# define CLOSE_FD_TTY	-2
 
 typedef struct	s_termcap
 {
@@ -66,6 +67,7 @@ typedef struct	s_termcap
 
 typedef struct		s_param
 {
+  int			fd_tty;
   char			*prompt;
   char			buff_copy[SIZE_BUFFER];
   int			begin_pos_x;
@@ -75,5 +77,48 @@ typedef struct		s_param
   int			pos;
   t_termcap		termcap;
 }			t_param;
+
+void		refresh_view(char *cmd, t_param *param);
+void		gere_change_window(int sig);
+void		decal_pointeur(t_param *param);
+void		refresh_view(char *cmd, t_param *param);
+void		gere_delete(char *cmd, t_param *param, char *buff);
+void		update_pos_y(char *cmd, t_param *param, int pos_x, int pos_y);
+int		write_color_number(char *color, int nb);
+int		write_color(char *color, char *string);
+void		view_anti_decalge_window(char *cmd, t_param *param);
+void		view(char *cmd, t_param *param);
+void		begin_cmd(char *cmd, t_param *param);
+void		end_cmd(char *cmd, t_param *param);
+void		my_putchar(char c);
+void		my_putstr(char *str);
+int		my_getnbr(char *str);
+void		my_put_nbr(int nb);
+int		my_strlen(char *str);
+void		my_memset(char *str, int size, int val);
+int		str_cmp(char *str1, char *str2);
+int		occurence_string(char *buff, char *s);
+int		find_currence(char **path, int min, char *buff);
+int		get_min_len(char **str);
+int		get_begin_word(char *cmd, int pos);
+int		get_last_indice(char *cmd, int pos);
+void		view_globb(glob_t *globb, t_param *param);
+void		globb(char *cmd, t_param *param);
+char		*return_globb_str(char *cmd, int indice);
+void		completation(char *cmd, glob_t *globb, t_param *param, char *s);
+int		get_window_size(char *cmd, int add_prompt);
+void		my_putstr_view(char *cmd, int add_prompt, t_param *param);
+void		calc_end_param_x(char *cmd, t_param *param, int *x, int *y);
+void		gere_control_k(char *cmd, t_param *param);
+int		gere_control(char *cmd, t_param * param, char *buff);
+void		gere_control_y(char *cmd, t_param *param);
+int		clear_screem(void);
+void		clear_cmd(char *cmd, t_param *param);
+void		decal_string(char *cmd, int pos, char caractere);
+int		gere_keyboard(char *buff, char *cmd, t_param *param);
+void		gere_change_window(int sig);
+char		*read_cmd(t_param *param);
+void		add_caractere(char *cmd, t_param *param, char caratere);
+char		*init_read_cmd(char *cmd, t_param *param);
 
 #endif

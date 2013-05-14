@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 13:27:00 2013 remi robert
-** Last update Sun May  5 15:52:14 2013 remi robert
+** Last update Tue May 14 17:00:48 2013 remi robert
 */
 
 #include "termcap.h"
@@ -17,7 +17,7 @@ char	*my_tgetstr(char *cap)
   if ((s = tgetstr(cap, NULL)) == NULL)
     {
       my_putstr("Error load capacity : ");
-      my_putstr(cap);
+      my_putstr_termcap(-1, cap);
       my_putstr("\n");
       return (NULL);
     }
