@@ -102,7 +102,6 @@ void	mult_wt_fill_all_tab(char ***tab, char *line, char **sepa, int opt)
 
 char	**mult_str_to_wordtab(char *line, char **sepa, int opt)
 {
-  int	i;
   char	**res;
   char	***tmp;
   char	*str;
@@ -119,9 +118,6 @@ char	**mult_str_to_wordtab(char *line, char **sepa, int opt)
       line = move_str_t_next_sepa(line, sepa, str);
       mult_wt_fill_all_tab(tmp, line, sepa, opt);
     }
-  i = -1;
-  while (tmp[++i] != NULL)
-    free_ptr_tab((void**)tmp[i], &free);
   free(tmp);
   return (res);
 }
