@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu Apr 18 17:21:33 2013 maxime lavandier
+** Last update Wed May 15 16:07:10 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -38,9 +38,12 @@ char	*cd_new_dir(t_cmd *cmd, t_fds *fd, t_sh *shell)
   if (old_pwd != NULL)
     rm_ptr_f_tab((void **) shell->env, (void *) old_pwd - 8);
   path = malloc(my_strlen(temp) + 9);
-  my_strncpy(path, "OLD_PWD=", -1);
-  my_strncpy(&(path[8]), temp, -1);
-  shell->env = (char **) add_ptr_t_tab((void **)shell->env, path);
+  if (path != NULL)
+    {
+      my_strncpy(path, "OLD_PWD=", -1);
+      my_strncpy(&(path[8]), temp, -1);
+      shell->env = (char **) add_ptr_t_tab((void **)shell->env, path);
+    }
   return (path);
 }
 
@@ -60,9 +63,10 @@ void		builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell)
       if (chdir(old_pwd) == -1)
         return ;
       rm_ptr_f_tab((void **) shell->env, (void *) old_pwd - 8);
-      path = malloc(my_strlen(temp) + 9); //malloc non verifié !!!!
+      path = malloc(my_strlen(temp) + 9);
       my_strncpy(path, "OLD_PWD=", -1);
-      my_strncpy(&(path[8]), temp, -1);
+      if (path != NULL)
+	my_strncpy(&(path[8]), temp, -1);
       shell->env = (char **) add_ptr_t_tab((void **)shell->env, path);
     }
   else if (cmd->argv[1] != NULL)
