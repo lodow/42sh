@@ -39,7 +39,8 @@ void	sig_handler(int sig)
   if (sig == SIGINT)
     {
       my_putstr("\n", 1, -1);
-      /* my_putstr(shell->param.str_prompt, 1, -1); */
+      my_putstr(shell->param.str_prompt, 1, -1);
+      refresh_view(my_strdup(""), &(shell->param));
     }
   if ((sig == SIGHUP) || (sig == SIGTERM))
     close(0);
