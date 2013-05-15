@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:31:22 2013 maxime lavandier
-** Last update Wed May 15 10:17:41 2013 remi robert
+** Last update Wed May 15 14:21:31 2013 remi robert
 */
 
 #include "42sh.h"
@@ -41,7 +41,6 @@ void	exit_shell(t_sh *shell)
 {
   if (reset_save_mod(RESTORE, shell->param.fd_tty) == EXIT_FAILURE)
     my_putstr("Error RESTORE termcap\n", 2, -1);
-  /* reset_mod(shell->param.t, shell->param.fd_tty); */
   store_conf_file("${HOME}/.history", shell, store_history_f);
   free_ptr_tab((void**)shell->env, &free);
   free_ptr_tab((void**)shell->path, &free);

@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Wed May 15 13:55:01 2013 remi robert
+** Last update Wed May 15 16:44:29 2013 remi robert
 */
 
 #include "42sh.h"
@@ -76,6 +76,10 @@ char	*read_cmd(t_param *param)
 	  add_caractere(param->cmd, param, buff[0]);
 	  view(param->cmd, param);
 	}
+      curseur(0, 0);
+      printf("[%d] => %d", param->pos, my_strlen(param->cmd));
+      fflush(stdout);
+      curseur(param->x, param->y);
     }
   return (param->cmd);
 }

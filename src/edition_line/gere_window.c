@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri May 10 08:43:23 2013 remi robert
-** Last update Tue May 14 20:47:51 2013 remi robert
+** Last update Wed May 15 14:26:28 2013 remi robert
 */
 
 #include "42sh.h"
@@ -30,7 +30,11 @@ void	my_putstr_view(char *cmd, int add_prompt, t_param *param)
   size_cmd = my_strlen(cmd) + add_prompt;
   size = return_x() * return_y();
   if (size <= size_cmd && size >= my_strlen("Window too small"))
-    my_putstr("Window too small", 1, -1);
+    {
+      curseur(0, 0);
+      apply_termcap(param->termcap.str_cd, 0);
+      my_putstr("Window too small", 1, -1);
+    }
   else
     {
       my_putstr(cmd, 1, -1);
