@@ -156,6 +156,9 @@
 		<Unit filename="src/edition_line/globb/globb.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/edition_line/globb/globb_executable.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/edition_line/globb/init_globb.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -231,6 +234,9 @@
 		<Unit filename="src/edition_line/termcap/mod_raw.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/edition_line/termcap/view_curser.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/edition_line/view_string.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -304,6 +310,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/ptr_tab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/redirection.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/redirection/find_redirection.c">

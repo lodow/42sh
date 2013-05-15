@@ -21,7 +21,7 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
     return (-1);
   if (is_grp_exec(shell, grp) == 0)
     return (-1);
-  rempl_fd_process(grp->redirection, grp);
+  /*open redirection*/
   exec_a_pipe(shell, grp);
   if (MEXIT)
     return (0);
@@ -34,19 +34,6 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
   else
     UNSETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND));
   return (0);
-}
-
-void	detect_redirection(t_redirection *red, char *str)
-{
-  red->red_g = 0;
-  red->red_b = 0;
-  red->file_g = NULL;
-  red->file_b = NULL;
-  return_type_redirection(str, &(red->red_b), &(red->red_g));
-  if (red->red_g != 0)
-    red->file_g = find_name_redirection(red->red_g, str);
-  if (red->red_b != 0)
-    red->file_b = find_name_redirection(red->red_b, str);
 }
 
 t_grp	*create_n_process_group(t_sh *shell, char *lign)
@@ -63,10 +50,8 @@ t_grp	*create_n_process_group(t_sh *shell, char *lign)
   init_stdfd_t_def_val(&(res->fd), 0, 1, 2);
   res->pid.sid = shell->pid.sid;
   res->cmds = NULL;
-  res->redirection = NULL;
   res->flags = 0;
-  res->nb_red = 0;
-  res->line = parse_redirection(res, lign, &(res->nb_red));
+  parse_redirection(&(res->direction), &lign);
   cmd_line = str_to_wordtab(res->line, "|", 1);
   while ((cmd_line != NULL) && (cmd_line[i] != NULL))
     {
@@ -99,9 +84,11 @@ void	free_process_group(t_grp *grp)
 {
   if (grp != NULL)
     {
+      close_fds(&(grp->fd));
       free(grp->line);
       free_ptr_tab((void**)grp->cmds, (void*)(&free_cmd));
-      free(grp->redirection);
+      free(grp->direction.in);
+      free(grp->direction.out);
       free(grp);
     }
 }

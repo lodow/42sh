@@ -69,10 +69,9 @@
 ** Redir defines
 */
 # define REDI_FRIGHT 0666
-# define REDI_R 3
-# define REDI_DR 4
-# define REDI_L 1
-# define REDI_DL 2
+# define REDI_NONE 0
+# define REDI_SIMPLE 1
+# define REDI_DOUBLE 2
 
 # define PTRT_PACK 32
 
@@ -99,24 +98,22 @@ typedef struct	s_cmd
   t_pid		pid;
 }		t_cmd;
 
-typedef struct	s_redirection
+typedef struct	s_direction
 {
-  int		end;
-  int		red_g;
-  int		red_b;
-  char		*file_b;
-  char		*file_g;
-}		t_redirection;
+  int		in_type;
+  char		*in;
+  int		out_type;
+  char		*out;
+}		t_direction;
 
 typedef struct	s_grp
 {
-  int		nb_red;
   t_pid		pid;
   t_fds		fd;
   char		*line;
   t_cmd		**cmds;
   int		flags;
-  t_redirection	*redirection;
+  t_direction	direction;
   int		transition;
   char		*transition_line;
 }		t_grp;
@@ -314,13 +311,7 @@ char	*return_file_redir(char *, int, int);
 /*
 ** redirection
 */
-char	*parse_redirection(t_grp *, char *, int *);
-void	rempl_fd_process(t_redirection *, t_grp *);
-int	find_redirection(char **, char *);
-int	rempl_red(char **, t_redirection *);
-void	rempl_file_redirection(char *, char *);
-void	rempl_new_lign_cmd(char *, char **, int, int);
-char	*reform_lign(char **);
+void	parse_redirection(t_direction *direction, char **line);
 
 /*
 ** Backquotes
