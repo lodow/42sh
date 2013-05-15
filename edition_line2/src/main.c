@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 11:42:47 2013 remi robert
-** Last update Tue May 14 17:22:18 2013 remi robert
+** Last update Wed May 15 09:50:00 2013 remi robert
 */
 
 #include "termcap.h"
@@ -38,6 +38,7 @@ int	init_termcap(char **env, t_param *param)
 int		main(int argc, char **argv, char **env)
 {
   char		*s;
+  char		*tab;
 
   (void)argc;
   (void)argv;

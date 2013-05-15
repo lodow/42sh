@@ -1,90 +1,83 @@
 /*
-** gere_control.c for gere_controle in /home/remi/Projet/edition_line
+** gere_control.c for gere_controle in /home/remi/Dropbox/Projet/edition_ligne_termcap
 **
 ** Made by remi robert
 ** Login   <robert_r@epitech.net>
 **
-** Started on  Fri Apr  5 15:49:00 2013 remi robert
-** Last update Sun Apr 14 16:09:31 2013 remi robert
+** Started on  Mon May  6 09:13:35 2013 remi robert
+** Last update Tue May 14 19:59:31 2013 remi robert
 */
 
-#include "my_func.h"
+#include "42sh.h"
 
-int	get_number_caractere_del(t_string *pcourant)
+void	calc_end_param_x(char *cmd, t_param *param, int *x, int *y)
 {
+  int	size_x;
+  int	size_y;
   int	indice;
 
-  indice = 0;
-  if (pcourant == NULL)
-    return (indice);
-  while (pcourant != NULL)
+  indice = param->pos;
+  size_x = return_x();
+  size_y = return_y();
+  while (cmd[indice] != '\0')
     {
       indice += 1;
-      pcourant = pcourant->next;
+      *x += 1;
+      if (*x == size_x)
+	{
+	  *x = 0;
+	  if (*y < size_y)
+	    *y += 1;
+	}
     }
-  return (indice - 1);
 }
 
-void	delete_all_list(t_param **param)
+void	fct_control(char *cmd, t_param *param, int indice)
 {
-  free_string((*param)->string);
-  (*param)->string = NULL;
+  void	(*t[6])(char *, t_param *);
+
+  t[0] = &gere_control_k;
+  t[1] = &gere_control_y;
+  t[2] = &begin_cmd;
+  t[3] = &end_cmd;
+  t[4] = &clear_cmd;
+  t[5] = &globb;
+  if (indice >= 0 && indice < 6)
+    t[indice](cmd, param);
 }
 
-void		gere_control_u(t_param **param)
+int	return_gere_control_string(char *cmd, t_param *param, char *buff)
 {
-  t_string	*pcourant;
-  t_string	*pcourant_string;
-  int		indice;
-
-  if (*param == NULL || (*param)->string == NULL)
-    return ;
-  indice = get_len_string_with_pos(*param) + 1;
-  if (indice >= (*param)->len_string)
+  if (str_cmp(buff, BEGIN_STR) == 1)
     {
-      delete_all_list(param);
-      return ;
+      fct_control(cmd, param, 2);
+      return (0);
     }
-  if ((pcourant = get_pos_string((*param)->string, indice)) == NULL)
-    return ;
-  pcourant_string = (*param)->string;
-  indice = 0;
-  while (pcourant_string != NULL && pcourant_string != pcourant)
+  if (str_cmp(buff, END_STR) == 1)
     {
-      pcourant_string = pcourant_string->next;
-      free(pcourant_string->back);
-      indice = indice + 1;
+      fct_control(cmd, param, 3);
+      return (0);
     }
-  gere_end_control_u(param, pcourant, indice);
+  return (1);
 }
 
-void		gere_control_k(t_param **param)
+int	gere_control(char *cmd, t_param *param, char *buff)
 {
-  t_string	*pcourant;
+  char	caractere[6];
+  int	indice;
 
-  if (*param == NULL || (*param)->string == NULL)
-    return ;
-  my_memset((*param)->buff_copy, 2048);
-  if ((pcourant = get_pos_string((*param)->string,
-				 get_len_string_with_pos(*param))) == NULL)
-    {
-      set_buff_copy(param, (*param)->string);
-      free_string((*param)->string);
-      (*param)->len_string = 0;
-      (*param)->string = NULL;
-      return ;
-    }
-  set_buff_copy(param, pcourant->next);
-  (*param)->len_string = (*param)->len_string -
-    get_number_caractere_del(pcourant);
-  free_string(pcourant->next);
-  end_str(*param);
-  pcourant->next = NULL;
-}
-
-void		gere_control_y(t_param **param)
-{
-  if (*param == NULL || (*param)->buff_copy[0] == END)
-    return ;
-  get_buff_copy(param);
+  caractere[0] = CTRLK;
+  caractere[1] = CTRLY;
+  caractere[2] = CTRLA;
+  caractere[3] = CTRLE;
+  caractere[4] = CTRLL;
+  caractere[5] = '\t';
+  indice = -1;
+  while (++indice < 6)
+    if (caractere[indice] == buff[0] && buff[1] == '\0')
+      {
+	fct_control(cmd, param, indice);
+	return (0);
+      }
+  return (return_gere_control_string(cmd, param, buff));
 }

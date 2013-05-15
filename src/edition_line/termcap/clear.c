@@ -5,16 +5,17 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Feb  5 09:20:03 2013 remi robert
-** Last update Tue Apr 30 11:33:39 2013 remi robert
+** Last update Tue May 14 20:51:58 2013 remi robert
 */
 
-#include "my_func.h"
+#include "42sh.h"
 
-int	clear_screem(int fd)
+int	clear_screem(void)
 {
   char	*s;
 
-  s = tgetstr("cl", NULL);
-  my_putstr(s, fd, -1);
+  if ((s = tgetstr("cl", NULL)) == NULL)
+    return (EXIT_FAILURE);
+  my_putstr_termcap(-1, s);
   return (EXIT_SUCCESS);
 }

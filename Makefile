@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Thu May  2 22:37:47 2013 remi robert
+## Last update Wed May 15 08:54:01 2013 remi robert
 ##
 
 CC	=	gcc
@@ -28,9 +28,9 @@ CFLAGS	= 	$(COMPILEFLAG) $(INCLUDE)
 
 SRCPATH	=	src
 BUILTINS=	src/builtins
-PATHLINE=	src/edition_line
+PATHLINE=	src/edition_line/
 LIBLINE	=	src/edition_line/lib
-PATHTERMCAP=	src/edition_line/termcap
+PATHTERMCAP=	src/edition_line/termcap/
 PATHENV	=	src/env
 PATHRED	=	src/redirection
 PATHGLOBB=	src/edition_line/globb
@@ -76,7 +76,8 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/delete_history.c			\
 		$(SRCPATH)/history.c				\
 		$(SRCPATH)/and_or.c				\
-		$(SRCPATH)/reg_expr.c			\
+		$(SRCPATH)/reg_expr.c				\
+		$(SRCPATH)/init_edition_line.c			\
 
 ENV	=	$(PATHENV)/env.c				\
 
@@ -96,38 +97,26 @@ SRCBUILTINS=	$(BUILTINS)/builtins.c				\
 		$(BUILTINS)/source.c				\
 		$(BUILTINS)/clear.c				\
 
-SRCLINE	=	$(PATHLINE)/main_line.c				\
-		$(PATHLINE)/add_caractere.c			\
-		$(PATHLINE)/return_string.c			\
-		$(PATHLINE)/read_cmd.c				\
-		$(PATHLINE)/free.c				\
-		$(PATHLINE)/view_string.c			\
-		$(PATHLINE)/get_len_string_with_pos.c		\
-		$(PATHLINE)/gere_keyboard.c			\
-		$(PATHLINE)/suppression.c			\
-		$(PATHLINE)/gere_control.c			\
-		$(PATHLINE)/gere_buff_copy.c			\
-		$(PATHLINE)/gere_buff_feature.c			\
-		$(PATHLINE)/set_pos_curser.c			\
-		$(PATHLINE)/init_struct_param.c			\
-		$(PATHLINE)/print_prompt.c			\
-		$(PATHLINE)/control_clear.c			\
-		$(PATHLINE)/gere_direct_pos_cursor.c		\
-		$(PATHLINE)/gere_valide_saisi.c			\
-		$(PATHLINE)/add_history.c			\
-		$(PATHLINE)/gere_history.c			\
-		$(PATHLINE)/feature_history.c			\
-		$(PATHLINE)/gere_current_history.c		\
-		$(PATHLINE)/get_type_contole.c			\
-
-SRCGLOBB=	$(PATHGLOBB)/globb.c				\
-		$(PATHGLOBB)/genere_globb_str.c			\
-		$(PATHGLOBB)/print_glob.c			\
-		$(PATHGLOBB)/completation.c			\
-		$(PATHGLOBB)/my_select.c			\
-		$(PATHGLOBB)/init_globb.c			\
-		$(PATHGLOBB)/rempl_globb.c			\
-		$(PATHGLOBB)/globb_executable.c			\
+SRCLINE	=	$(PATHLINE)main.c				\
+		$(PATHLINE)read_cmd.c				\
+		$(PATHLINE)gere_keyboard.c			\
+		$(PATHLINE)decal_string.c			\
+		$(PATHLINE)view.c				\
+		$(PATHLINE)suppression.c			\
+		$(PATHLINE)gere_control.c			\
+		$(PATHLINE)start_end_cmd.c			\
+		$(PATHLINE)clear.c				\
+		$(PATHLINE)signal.c				\
+		$(PATHLINE)control_y.c				\
+		$(PATHLINE)control_k.c				\
+		$(PATHLINE)update_pos.c				\
+		$(PATHLINE)refresh_view.c			\
+		$(PATHLINE)gere_window.c			\
+		$(PATHLINE)globb.c				\
+		$(PATHLINE)return_globb_str.c			\
+		$(PATHLINE)view_globb.c				\
+		$(PATHLINE)completation.c			\
+		$(PATHLINE)plus_completation.c			\
 
 SRCRED	=	$(PATHRED)/find_redirection.c			\
 		$(PATHRED)/parse_redirection.c			\
@@ -137,17 +126,18 @@ SRCRED	=	$(PATHRED)/find_redirection.c			\
 		$(PATHRED)/return_type_char.c			\
 
 SRCLIBLINE=	$(LIBLINE)/str_cmp.c				\
-		$(LIBLINE)/my_memset.c				\
 		$(LIBLINE)/my_putstr.c				\
+		$(LIBLINE)/my_memset.c				\
 
-SRCTERMCAP=	$(PATHTERMCAP)/ecrase_text.c			\
-		$(PATHTERMCAP)/coordone.c			\
-		$(PATHTERMCAP)/mod_raw.c			\
-		$(PATHTERMCAP)/curseur.c			\
-		$(PATHTERMCAP)/get_pos_curser.c			\
-		$(PATHTERMCAP)/clear.c				\
-		$(PATHTERMCAP)/dl_current_pos.c			\
-		$(PATHTERMCAP)/view_curser.c			\
+SRCTERMCAP=	$(PATHTERMCAP)coordone.c			\
+		$(PATHTERMCAP)mod_raw.c				\
+		$(PATHTERMCAP)curseur.c				\
+		$(PATHTERMCAP)get_pos_curser.c			\
+		$(PATHTERMCAP)clear.c				\
+		$(PATHTERMCAP)verif_env.c			\
+		$(PATHTERMCAP)init_termcap.c			\
+		$(PATHTERMCAP)apply_termcap.c			\
+		$(PATHTERMCAP)print_termcap.c			\
 
 OBJ	=	$(SRC:.c=.o) 					\
 		$(SRCBUILTINS:.c=.o) 				\

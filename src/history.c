@@ -5,14 +5,14 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr 12 19:14:58 2013 remi robert
-** Last update Sun Apr 14 17:54:58 2013 remi robert
+** Last update Tue May 14 18:54:28 2013 remi robert
 */
 
 #include "42sh.h"
 
 int	load_history_f_file(char *line, t_sh *shell)
 {
-  add_history(&(shell->history), line);
+  /* add_history(&(shell->history), line); */
   return (1);
 }
 
