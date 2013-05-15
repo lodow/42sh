@@ -311,7 +311,7 @@ char	*return_file_redir(char *, int, int);
 /*
 ** redirection
 */
-void	parse_redirection(t_direction *direction, char **line);
+void	parse_redirection(t_direction *direction, char *line);
 
 /*
 ** Backquotes

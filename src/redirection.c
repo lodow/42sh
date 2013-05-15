@@ -21,10 +21,39 @@ void	redirection_init_separator(char **sepa)
   sepa[6] = NULL;
 }
 
-void	parse_redirection(t_direction *direction, char **line)
+char	*parse_file_redirection(char *line, int posinstr, char *sepa)
+{
+  char	*file;
+  int	i;
+  char	*tmpptr;
+
+  i = 0;
+  if ((sepa == NULL) || ((file = my_strdup(&(line[posinstr]))) == NULL))
+    return (NULL);
+  while (file[i] != '\0' && file[i] != '|' && file[i] != ' ')
+    i++;
+  file[i] = '\0';
+  tmpptr = &(line[posinstr - my_strlen(sepa)]);
+  i += my_strlen(sepa);
+  while (--i >= 0)
+    tmpptr[i] = ' ';
+  if (file[0] == ' ')
+    my_strncpy(file, &(file[1]), -1);
+  return (file);
+}
+
+void	redirection_set_param(t_direction *direction, char *sepa, char *file)
+{
+
+}
+
+void	parse_redirection(t_direction *direction, char *line)
 {
   char	**tab;
   char	*sepa[7];
+  int	i;
+  char	*tmp;
+  int	posinstr;
 
   redirection_init_separator(sepa);
   direction->in = NULL;
@@ -32,5 +61,14 @@ void	parse_redirection(t_direction *direction, char **line)
   direction->in_type = REDI_NONE;
   direction->out_type = REDI_NONE;
   tab = mult_str_to_wordtab(*line, sepa, 1);
-
+  i = 0;
+  posinstr = 0;
+  while (tab[i] != NULL)
+    {
+      tmp = get_inibiteur_f_mult_wt(line, sepa, tab, i);
+      posinstr += my_strlen(tab[i]) + my_strlen(tmp);
+      redirection_set_param(direction, sepa,
+                            parse_file_redirection(line, posinstr, sepa));
+      i++;
+    }
 }

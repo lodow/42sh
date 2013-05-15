@@ -99,9 +99,6 @@
 		<Unit filename="src/delete_history.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/detect_redirection.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/edition_line/add_caractere.c">
 			<Option compilerVar="CC" />
 		</Unit>

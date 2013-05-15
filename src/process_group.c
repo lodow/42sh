@@ -17,9 +17,7 @@
 */
 int	exec_process_group(t_sh *shell, t_grp *grp)
 {
-  if (grp == NULL)
-    return (-1);
-  if (is_grp_exec(shell, grp) == 0)
+  if ((grp == NULL) || (is_grp_exec(shell, grp) == 0))
     return (-1);
   /*open redirection*/
   exec_a_pipe(shell, grp);
@@ -51,7 +49,7 @@ t_grp	*create_n_process_group(t_sh *shell, char *lign)
   res->pid.sid = shell->pid.sid;
   res->cmds = NULL;
   res->flags = 0;
-  parse_redirection(&(res->direction), &lign);
+  parse_redirection(&(res->direction), lign);
   cmd_line = str_to_wordtab(res->line, "|", 1);
   while ((cmd_line != NULL) && (cmd_line[i] != NULL))
     {
