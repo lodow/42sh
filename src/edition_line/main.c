@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 11:42:47 2013 remi robert
-** Last update Tue May 14 20:45:38 2013 remi robert
+** Last update Wed May 15 10:39:56 2013 remi robert
 */
 
 #include "42sh.h"
@@ -16,6 +16,7 @@ int	init_termcap(char **env, t_param *param)
 {
   if ((param->fd_tty = open("/dev/tty", O_RDWR)) == -1)
     return (0);
+  param->fd_tty = 1;
   my_putstr_termcap(param->fd_tty, NULL);
   if (verif_env(env) == EXIT_FAILURE)
     {

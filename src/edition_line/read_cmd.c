@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Wed May 15 09:43:39 2013 remi robert
+** Last update Wed May 15 10:49:25 2013 remi robert
 */
 
 #include "42sh.h"
@@ -62,9 +62,11 @@ char	*read_cmd(t_param *param)
   while (ret > 0)
     {
       signal(SIGWINCH, gere_change_window);
-      if ((ret = read(0, buff, 10)) <= 0)
+      if ((ret = read(0, buff, 10)) == -1)
 	return (NULL);
       buff[ret % 10] = '\0';
+      if (buff[0] == CTRLD && buff[1] == '\0')
+	return (NULL);
       if (buff[0] == '\n' && buff[1] == '\0')
 	{
 	  my_putstr("\n", 1, 1);

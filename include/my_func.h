@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Wed May 15 09:09:14 2013 remi robert
+** Last update Wed May 15 13:25:51 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -183,4 +183,5 @@ int		invisible_curseur(void);
 char		*my_tgetstr(char *cap0);
 void		init_capacity_termcap(t_termcap *termcap);
 int		init_edition_line(char **env, t_param *param);
+
 #endif
