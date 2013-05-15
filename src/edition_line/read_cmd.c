@@ -5,12 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Wed May 15 10:49:25 2013 remi robert
+** Last update Wed May 15 13:55:01 2013 remi robert
 */
 
 #include "42sh.h"
-
-char	*g_cmd;
 
 void	insert_caractere(char *cmd, t_param *param, char caratere)
 {
@@ -56,8 +54,8 @@ char	*read_cmd(t_param *param)
   char	buff[10];
 
   my_putstr(param->str_prompt, 1, -1);
-  g_cmd = NULL;
-  g_cmd = init_read_cmd(g_cmd, param);
+  param->cmd = NULL;
+  param->cmd = init_read_cmd(param->cmd, param);
   ret = 1;
   while (ret > 0)
     {
@@ -70,14 +68,14 @@ char	*read_cmd(t_param *param)
       if (buff[0] == '\n' && buff[1] == '\0')
 	{
 	  my_putstr("\n", 1, 1);
-	  return (g_cmd);
+	  return (param->cmd);
 	}
-      if (get_window_size(g_cmd, param->begin_pos_x) == 1 &&
-	  gere_keyboard(buff, g_cmd, param) == 1)
+      if (get_window_size(param->cmd, param->begin_pos_x) == 1 &&
+	  gere_keyboard(buff, param->cmd, param) == 1)
 	{
-	  add_caractere(g_cmd, param, buff[0]);
-	  view(g_cmd, param);
+	  add_caractere(param->cmd, param, buff[0]);
+	  view(param->cmd, param);
 	}
     }
-  return (g_cmd);
+  return (param->cmd);
 }

@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Wed May 15 13:25:51 2013 remi robert
+** Last update Wed May 15 13:49:16 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -99,6 +99,7 @@ typedef struct		s_history
 
 typedef struct		s_param
 {
+  char			*cmd;
   int			fd_tty;
   char			*str_prompt;
   char			buff_copy[SIZE_BUFFER];

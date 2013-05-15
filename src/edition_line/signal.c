@@ -5,15 +5,15 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed May  8 18:42:59 2013 remi robert
-** Last update Tue May 14 19:58:36 2013 remi robert
+** Last update Wed May 15 14:03:30 2013 remi robert
 */
 
 #include "42sh.h"
 
-extern char	*g_cmd;
-extern t_param	*g_param;
-
 void	gere_change_window(int sig)
 {
-  clear_cmd(g_cmd, g_param);
+  t_sh	*sh;
+
+  sh = get_sh_info(NULL);
+  clear_cmd(sh->param.cmd, &(sh->param));
 }

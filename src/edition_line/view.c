@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 17:28:49 2013 remi robert
-** Last update Tue May 14 20:46:48 2013 remi robert
+** Last update Wed May 15 14:14:38 2013 remi robert
 */
 
 #include "42sh.h"
@@ -36,10 +36,11 @@ void	calc_other_decallage(char *cmd, t_param *param)
 void	view(char *cmd, t_param *param)
 {
   refresh_view(cmd, param);
-  calc_other_decallage(cmd, param);
+  if (cmd != NULL)
+    calc_other_decallage(cmd, param);
   curseur(param->begin_pos_x, param->begin_pos_y);
-  update_pos_y(cmd, param, param->begin_pos_x, param->begin_pos_y);
+  if (cmd != NULL)
+    update_pos_y(cmd, param, param->begin_pos_x, param->begin_pos_y);
   curseur(param->begin_pos_x, param->begin_pos_y);
-  /* my_putstr(cmd); */
   my_putstr_view(cmd, param->begin_pos_x, param);
 }
