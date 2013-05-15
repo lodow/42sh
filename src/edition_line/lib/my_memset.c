@@ -1,23 +1,23 @@
 /*
-** my_memset.c for my_memset in /home/remi/Projet/edition_line
+** my_memset.c for my_memset in /home/remi/Projet/new_edition_line
 **
 ** Made by remi robert
 ** Login   <robert_r@epitech.net>
 **
-** Started on  Mon Apr  8 17:22:19 2013 remi robert
-** Last update Sun Apr 14 16:11:49 2013 remi robert
+** Started on  Sat May  4 11:48:25 2013 remi robert
+** Last update Sat May  4 18:44:24 2013 remi robert
 */
 
-#include "my_func.h"
+#include "termcap.h"
 
-void	my_memset(char *buff, int size)
+void	my_memset(char *str, int size, int val)
 {
   int	indice;
 
   indice = 0;
   while (indice < size)
     {
-      buff[indice] = END;
-      indice = indice + 1;
+      str[indice] = val;
+      indice += 1;
     }
 }

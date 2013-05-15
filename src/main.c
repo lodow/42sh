@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:31:22 2013 maxime lavandier
-** Last update Thu May  2 21:11:29 2013 remi robert
+** Last update Wed May 15 09:52:01 2013 remi robert
 */
 
 #include "42sh.h"
@@ -30,9 +30,7 @@ int		init_shell(t_sh *shell, char **main_env)
   if (((shell->env = cpy_env(main_env)) == NULL)
       || ((shell->path = get_path(shell->env)) == NULL))
     return (-1);
-  if ((recup_path(shell->env) == 0) || (init_tab_line(&(shell->param)) == 0))
-    return (-1);
-  if (init_pos_line(&(shell->param)) == 0)
+  if (init_edition_line(main_env, &(shell->param)) == 0)
     return (-1);
   //shell->pid.sid = setsid(); <- not sure if it's a good idea.
   //if it is don't forget to check it
@@ -52,13 +50,15 @@ int		init_shell(t_sh *shell, char **main_env)
 
 void	exit_shell(t_sh *shell)
 {
-  reset_mod(shell->param.t, shell->param.fd_tty);
+  if (reset_save_mod(RESTORE, shell->param.fd_tty) == EXIT_FAILURE)
+    my_putstr("Error RESTORE termcap\n", 2, -1);
+  /* reset_mod(shell->param.t, shell->param.fd_tty); */
   store_conf_file("${HOME}/.history", shell, store_history_f);
   free_ptr_tab((void**)shell->env, &free);
   free_ptr_tab((void**)shell->path, &free);
   free_ptr_tab((void**)shell->alias_tab, &free);
   free_ptr_tab((void**)shell->process_group, (void*)(&free_process_group));
-  clear_history(shell->history);
+  /* clear_history(shell->history); */
   free(shell->param.str_prompt);
   close(shell->param.fd_tty);
   my_putstr("exit\n", 1, -1);
@@ -70,7 +70,7 @@ void	fork_exit_shell(t_sh *shell)
   free_ptr_tab((void**)shell->path, &free);
   free_ptr_tab((void**)shell->alias_tab, &free);
   free_ptr_tab((void**)shell->process_group, (void*)(&free_process_group));
-  clear_history(shell->history);
+  /* clear_history(shell->history); */
   free(shell->param.str_prompt);
 }
 

@@ -5,23 +5,29 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Jan 15 20:15:34 2013 remi robert
-** Last update Sun Apr 14 16:10:44 2013 remi robert
+** Last update Tue May 14 20:52:14 2013 remi robert
 */
 
-#include "my_func.h"
+#include "42sh.h"
 
-int			return_x(int tty)
+int			return_x(void)
 {
   struct winsize	ws;
+  int			fd;
 
-  ioctl(tty, TIOCGWINSZ, &ws);
+  fd = my_putstr_termcap(-1, NULL);
+  if (ioctl(fd, TIOCGWINSZ, &ws) == -1)
+    return (0);
   return (ws.ws_col);
 }
 
-int			return_y(int tty)
+int			return_y(void)
 {
   struct winsize	ws;
+  int			fd;
 
-  ioctl(tty, TIOCGWINSZ, &ws);
+  fd = my_putstr_termcap(-1, NULL);
+  if (ioctl(fd, TIOCGWINSZ, &ws) == -1)
+    return (0);
   return (ws.ws_row - 1);
 }

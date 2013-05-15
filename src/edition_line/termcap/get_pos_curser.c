@@ -5,10 +5,10 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Thu Mar 21 08:21:11 2013 remi
-** Last update Thu May  2 21:03:48 2013 remi robert
+** Last update Tue May 14 20:54:07 2013 remi robert
 */
 
-#include "my_func.h"
+#include "42sh.h"
 
 void	assign_value_pos(int *x, int *y, char *buff)
 {
@@ -37,23 +37,25 @@ void	assign_value_pos(int *x, int *y, char *buff)
   *x = my_getnbr(num) - 1;
 }
 
-void	get_pos_curser(int *x, int *y, int fd)
+void	get_pos_curser(int *x, int *y)
 {
   char	buff[10];
   int	indice;
+  int	fd;
 
   *x = -1;
   *y = -1;
-  my_memset(buff, 10);
+  my_memset(buff, 10, 0);
+  fd = my_putstr_termcap(-1, NULL);
   while (buff[0] != 27)
     {
-      my_memset(buff, 10);
-      write(fd, "\033[6n", my_strlen("\033[6n"));
+      my_memset(buff, 10, 0);
+      write(fd, POSCURSEUR, my_strlen(POSCURSEUR));
       indice = read(fd, buff, 10);
       buff[indice] = '\0';
     }
   assign_value_pos(x, y, buff);
-  curseur(*x, *y, fd);
-  my_put_str("         ");
-  curseur(*x, *y, fd);
+  curseur(*x, *y);
+  my_putstr(ECRASEPOS, 1, -1);
+  curseur(*x, *y);
 }

@@ -1,72 +1,81 @@
 /*
-** read_cmd.c for read_cmd in /home/remi/Projet/edition_line
+** read_cmd.c for read_cmd in /home/remi/Dropbox/Projet/edition_ligne_termcap
 **
 ** Made by remi robert
 ** Login   <robert_r@epitech.net>
 **
-** Started on  Mon Apr  1 12:32:15 2013 remi robert
-** Last update Thu May  2 09:41:22 2013 remi robert
+** Started on  Sun May  5 16:03:47 2013 remi robert
+** Last update Wed May 15 09:43:39 2013 remi robert
 */
 
-#include "my_func.h"
+#include "42sh.h"
 
-void	gere_buff(char *buff, t_param **param, t_history **history, char **env)
+char	*g_cmd;
+
+void	insert_caractere(char *cmd, t_param *param, char caratere)
 {
-  if (buff[1] == '\0' && buff[0] != ESC && buff[0] != DEL && buff[0] != '\t')
+  decal_string(cmd, param->pos, caratere);
+  param->pos += 1;
+}
+
+void	add_caractere(char *cmd, t_param *param, char caratere)
+{
+  int	size;
+
+  size = my_strlen(cmd);
+  if (caratere >= 32 && caratere <= 126)
     {
-      (*param)->len_string += 1;
-      (*param)->current_pos.x += 1;
-      if ((*param)->current_pos.x >= return_x((*param)->fd_tty))
+      if (param->pos == size)
 	{
-	  if ((*param)->current_pos.y >= return_y((*param)->fd_tty))
-	    {
-	      (*param)->begin_pos.y -= 1;
-	      (*param)->current_pos.y -= 1;
-	    }
-	  (*param)->current_pos.x = 0;
-	  (*param)->current_pos.y += 1;
+	  cmd[param->pos % SIZE_BUFFER] = caratere;
+	  cmd[(param->pos + 1) % SIZE_BUFFER] = '\0';
+	  param->pos += 1;
+	  return ;
 	}
-      add_caractere(&((*param)->string), buff[0], *param);
-      return ;
-    }
-  gere_keyboard(param, buff, history, env);
-}
-
-void	gere_null_list(t_param **param)
-{
-  if ((*param)->string == NULL)
-    {
-      dl_current_pos(*param);
-      (*param)->current_pos.x = (*param)->begin_pos.x;
-      (*param)->current_pos.y = (*param)->begin_pos.y;
-      (*param)->len_string = 0;
-      dl_current_pos(*param);
+      else
+	insert_caractere(cmd, param, caratere);
     }
 }
 
-char	*read_cmd(t_param *param, t_history **history, char **env)
+char	*init_read_cmd(char *cmd, t_param *param)
 {
-  char	buff[10];
+  if (SIZE_BUFFER <= 0 ||
+      (cmd = malloc(sizeof(char) * SIZE_BUFFER)) == NULL)
+    return (NULL);
+  cmd[0] = '\0';
+  get_pos_curser(&param->x, &param->y);
+  param->begin_pos_x = param->x;
+  param->begin_pos_y = param->y;
+  param->pos = 0;
+  return (cmd);
+}
+
+char	*read_cmd(t_param *param)
+{
   int	ret;
+  char	buff[10];
 
+  my_putstr(param->str_prompt, 1, -1);
+  g_cmd = NULL;
+  g_cmd = init_read_cmd(g_cmd, param);
   ret = 1;
-  init_struct_param(param);
   while (ret > 0)
     {
-      print_prompt(param);
-      my_memset(buff, 10);
-      if ((ret = read(0, buff, 10)) == -1)
-      	return (NULL);
-      if (buff[0] == CTRLD && buff[1] == '\0')
+      signal(SIGWINCH, gere_change_window);
+      if ((ret = read(0, buff, 10)) <= 0)
 	return (NULL);
-      if (buff[0] == '\n')
-	return (return_saisi(param, history));
-      if (gere_control(buff, &param) == FALSE)
-	gere_buff(buff, &param, history, env);
-      dl_current_pos(param);
-      gere_null_list(&param);
-      view_string(param);
-      curseur(param->current_pos.x, param->current_pos.y, param->fd_tty);
+      buff[ret % 10] = '\0';
+      if (buff[0] == '\n' && buff[1] == '\0')
+	{
+	  my_putstr("\n", 1, 1);
+	  return (g_cmd);
+	}
+      if (get_window_size(g_cmd, param->begin_pos_x) == 1 &&
+	  gere_keyboard(buff, g_cmd, param) == 1)
+	{
+	  add_caractere(g_cmd, param, buff[0]);
+	  view(g_cmd, param);
+	}
     }
-  return (return_string(param->string));
+  return (g_cmd);
 }

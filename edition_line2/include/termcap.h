@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed Apr 24 13:46:14 2013 remi robert
-** Last update Tue May 14 17:20:24 2013 remi robert
+** Last update Tue May 14 18:21:57 2013 remi robert
 */
 
 #ifndef TERMCAP_H_
@@ -19,11 +19,8 @@
 # include <sys/types.h>
 # include <sys/ioctl.h>
 # include <sys/stat.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <curses.h>
-# include <term.h>
 # include <signal.h>
+# include <fcntl.h>
 # include <glob.h>
 # include "my_func.h"
 
@@ -42,6 +39,13 @@
 # define TTY_OPEN	"/dev/tty"
 # define FAIL_OPEN	-1
 
+int		tgetent(char *bp, const char *name);
+int		tgetflag(char *id);
+int		tgetnum(char *id);
+char		*tgetstr(char *id, char **area);
+char		*tgoto(const char *cap, int col, int row);
+int		tputs(const char *str, int affcnt, int (*putc)(int));
+char		*tparm(char *str, ...);
 int		verif_env(char **env);
 int		save_curser(void);
 int		restor_curser(void);

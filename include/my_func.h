@@ -1,11 +1,11 @@
 /*
-** my_fun.c for my_func.h in /home/remi/Projet/alum1
+** edition_line.h for edition in /home/remi/Projet/new_edition_line
 **
 ** Made by remi robert
 ** Login   <robert_r@epitech.net>
 **
-** Started on  Mon Feb  4 09:05:38 2013 remi robert
-** Last update Thu May  2 22:39:21 2013 remi robert
+** Started on  Sat May  4 12:03:49 2013 remi robert
+** Last update Wed May 15 09:09:14 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -19,9 +19,9 @@
 # include <sys/types.h>
 # include <sys/ioctl.h>
 # include <sys/stat.h>
+# include <signal.h>
 # include <fcntl.h>
 # include <glob.h>
-# include "couleur.h"
 
 # define UP		65
 # define DOWN		66
@@ -39,7 +39,7 @@
 # define CTRLD		4
 # define CTRLA		1
 # define CTRLE		5
-# define OK		1
+# define TRUE		1
 # define FALSE		0
 # define END		'\0'
 # define STR_LEFT      	"\x1B\x5B\x44"
@@ -48,18 +48,46 @@
 # define STR_DOWN     	"\x1B\x5B\x42"
 # define BEGIN_STR     	"\x1B\x4F\x48"
 # define END_STR     	"\x1B\x4F\x46"
+# define SIZE_BUFFER	10240
+# define CLOSE_FD_TTY	-2
+# define NOIR		0
+# define ROUGE		1
+# define VERT		2
+# define JAUNE		3
+# define BLEU		4
+# define MAGENTA	5
+# define CYAN		6
+# define BLANC		7
+# define RESTORE	1
+# define SAVE		0
+# define POSCURSEUR	"\033[6n"
+# define ECRASEPOS	"         "
+# define TTY_OPEN	"/dev/tty"
+# define FAIL_OPEN	-1
 
-typedef struct		s_glob
+typedef struct	s_termcap
 {
-  int			fd_tty;
-  int			pos;
-  int			x;
-  int			y;
-  glob_t		glob;
-  int			len_max;
-  int			nb_line;
-  int			nb_colonne;
-}			t_glob;
+  char		*str_cl;
+  char		*str_ku;
+  char		*str_kd;
+  char		*str_kl;
+  char		*str_kr;
+  char		*str_kb;
+  char		*str_do;
+  char		*str_DO;
+  char		*str_up;
+  char		*str_UP;
+  char		*str_le;
+  char		*str_LE;
+  char		*str_nd;
+  char		*str_ri;
+  char		*str_RI;
+  char		*str_ce;
+  char		*str_sc;
+  char		*str_rc;
+  char		*str_cd;
+  char		*str_ks;
+ }		t_termcap;
 
 typedef struct		s_history
 {
@@ -69,125 +97,90 @@ typedef struct		s_history
   struct s_history	*back;
 }			t_history;
 
-typedef struct		s_string
-{
-  char			caractere;
-  struct s_string	*next;
-  struct s_string	*back;
-}			t_string;
-
-typedef struct		s_coordonnee
-{
-  int			x;
-  int			y;
-}			t_coordonnee;
-
 typedef struct		s_param
 {
   int			fd_tty;
-  int			pos_history;
   char			*str_prompt;
-  char			buff_copy[2048];
-  struct termios	t;
-  t_string		*string;
-  int			len_string;
-  t_coordonnee		current_pos;
-  t_coordonnee		begin_pos;
-  t_coordonnee		prompt;
+  char			buff_copy[SIZE_BUFFER];
+  int			begin_pos_x;
+  int			begin_pos_y;
+  int			x;
+  int			y;
+  int			pos;
+  t_termcap		termcap;
 }			t_param;
 
-int			view_curser(int);
-int			invisible_curseur(int);
-int			number_caractere(t_string *);
-char			*return_string(t_string *);
-char			*read_cmd(t_param *, t_history **, char **);
-void			my_putchar(char);
-int			init_tab_line(t_param *);
-void			add_caractere(t_string **, char, t_param *);
-int			depassement(int);
-int			get_number(char *, int, int, int);
-int			my_getnbr(char *);
-int			my_strlen(char *);
-int			clear_screem(int);;
-int			return_x(int tty);
-int			return_y(int tty);
-void			assign_value_pos(int *, int *, char *);
-void			get_pos_curser(int *, int *, int);
-int			reset_mod(struct termios, int tty);
-int			mod_raw(int);
-int			curseur(int, int, int);
-void			ecrase_text(t_coordonnee, int, int);
-void			free_string(t_string *);
-int			init_pos_line(t_param *);
-void			view_string(t_param *);
-int			get_len_string_with_pos(t_param *);
-t_string		*get_pos_string(t_string *, int);
-void			view_string(t_param *);
-void			gere_keyboard(t_param **, char *, t_history **,
-				      char **);
-void			set_pos_left(t_param **);
-void			set_pos_right(t_param **);
-void			gere_delete(t_param **);
-int			alone_caractere_in_string(t_string *, t_param **);
-void			gere_suppr(t_param **);
-char			*get_next_line(int);
-int			gere_control(char *, t_param **);
-void			gere_control_k(t_param **);
-void			gere_control_y(t_param **);
-void			gere_control_u(t_param **);
-void			dl_current_pos(t_param *);
-int			get_number_caractere_del(t_string *);
-void			my_memset(char *, int);
-int			str_cmp(char *, char *);
-void			set_buff_copy(t_param **, t_string *);
-void			get_buff_copy(t_param **);
-void			palce_with_begin(t_string **, t_string **);
-void			place_with_last_list(t_string **, t_string **);
-void			new_copy(t_string **, char);
-void			set_copy_next(t_string **, t_string *);
-t_string		*creat_new_char_conditional(char);
-void			gere_begin_list_buff(t_param **, char);
-void			add_caratere_list_with_buff(t_param **, char);
-void			gere_end_control_u(t_param **, t_string *, int);
-int			str_cmp_env(char *, char *);
-void			init_struct_param(t_param *);
-int			recup_path(char **);
-int			init_tab_line(t_param *);
-int			init_pos_line(t_param *);
-void			my_put_str(char *);
-char			*return_string(t_string *);
-void			print_prompt(t_param *);
-void			control_clear(t_param **);
-void			delete_line_curser(int);
-void			my_putstr(const char *, int, int);
-void			begin_str(t_param *);
-void			end_str(t_param *);
-char			*return_saisi(t_param *, t_history **);
-void			rempl_new_history(t_history **, char *);
-void			add_history(t_history **, char *);
-void			gere_history(t_param **, char *, t_history **);
-char			*return_pos_history(t_history *, int);
-void			add_elem_new_cmd(t_string **, char);
-void			recup_new_string(t_param **, char *);
-int			str_cmp(char *, char *);
-void			add_history_current_cmd(t_param **, t_history **);
-void			add_current_history(t_history **, char *);
-void			my_put_nbr(int);
-void			gere_current_history(t_param **, char *);
-void			gere_globb(t_param **, char **);
-void			clear_history(t_history *);
-char			*return_very_string(char *, char *, int);
-char			*return_str_globb(char *, int);
-int			get_size_glob(glob_t *);
-void			print_glob(t_param **, t_glob *, int);
-void			create_new_cmd_string_with_globb(t_param **,
-							 t_glob *, char *);
-void			my_select_glob(t_param **, char *, t_glob *);
-int			rempl_globb(char *, glob_t *, char **);
-void			init_struct_glob(t_glob *, t_param *);
-void			completation_cmd(char *, char *, t_param **);
-void			view_glob(t_glob *, int, t_param *param);
-void			rempl_str_buff(char *, char *);
-int			globb_executable(char *, glob_t *, char **);
-
-#endif /* MY_FUNC_H_ */
+void		refresh_view(char *cmd, t_param *param);
+void		gere_change_window(int sig);
+void		decal_pointeur(t_param *param);
+void		refresh_view(char *cmd, t_param *param);
+void		gere_delete(char *cmd, t_param *param, char *buff);
+void		update_pos_y(char *cmd, t_param *param, int pos_x, int pos_y);
+int		write_color_number(char *color, int nb);
+int		write_color(char *color, char *string);
+void		view_anti_decalge_window(char *cmd, t_param *param);
+void		view(char *cmd, t_param *param);
+void		begin_cmd(char *cmd, t_param *param);
+void		end_cmd(char *cmd, t_param *param);
+void		my_putchar(char c);
+int		my_getnbr(char *str);
+void		my_put_nbr(int nb);
+int		my_strlen(char *str);
+void		my_memset(char *str, int size, int val);
+int		str_cmp(char *str1, char *str2);
+int		occurence_string(char *buff, char *s);
+int		find_currence(char **path, int min, char *buff);
+int		get_min_len(char **str);
+int		get_begin_word(char *cmd, int pos);
+int		get_last_indice(char *cmd, int pos);
+void		view_globb(glob_t *globb, t_param *param);
+void		globb(char *cmd, t_param *param);
+char		*return_globb_str(char *cmd, int indice);
+void		completation(char *cmd, glob_t *globb, t_param *param, char *s);
+int		get_window_size(char *cmd, int add_prompt);
+void		my_putstr_view(char *cmd, int add_prompt, t_param *param);
+void		calc_end_param_x(char *cmd, t_param *param, int *x, int *y);
+void		gere_control_k(char *cmd, t_param *param);
+int		gere_control(char *cmd, t_param * param, char *buff);
+void		gere_control_y(char *cmd, t_param *param);
+int		clear_screem(void);
+void		clear_cmd(char *cmd, t_param *param);
+void		decal_string(char *cmd, int pos, char caractere);
+int		gere_keyboard(char *buff, char *cmd, t_param *param);
+void		gere_change_window(int sig);
+char		*read_cmd(t_param *param);
+void		add_caractere(char *cmd, t_param *param, char caratere);
+char		*init_read_cmd(char *cmd, t_param *param);
+int		tgetent(char *bp, const char *name);
+int		tgetflag(char *id);
+int		tgetnum(char *id);
+char		*tgetstr(char *id, char **area);
+char		*tgoto(const char *cap, int col, int row);
+int		tputs(const char *str, int affcnt, int (*putc)(int));
+char		*tparm(char *str, ...);
+int		verif_env(char **env);
+int		save_curser(void);
+int		restor_curser(void);
+int		open_tty(void);
+int		curseur(int x, int y);
+int		up_curser(void);
+int		do_curser(void);
+int		right_curser(void);
+int		left_curser(void);
+int		return_x(void);
+int		return_y(void);
+void		apply_termcap(char *cap, int arg);
+int		putc_termcap(int c);
+void		assign_value_pos(int *x, int *y, char *buff);
+void		get_pos_curser(int *x, int *y);
+int		reset_save_mod(int type, int fd);
+int		reset_mod(struct termios t, int fd);
+int		mod_raw(int fd);
+int		my_putstr_termcap(int flag, char *capaity);
+void		view_string(char *cmd, t_param *param);
+int		view_curser(void);
+int		invisible_curseur(void);
+char		*my_tgetstr(char *cap0);
+void		init_capacity_termcap(t_termcap *termcap);
+int		init_edition_line(char **env, t_param *param);
+#endif

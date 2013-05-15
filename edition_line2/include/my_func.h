@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Tue May 14 17:22:02 2013 remi robert
+** Last update Tue May 14 18:02:55 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -64,6 +64,16 @@ typedef struct	s_termcap
   char		*str_cd;
   char		*str_ks;
  }		t_termcap;
+
+
+typedef struct		s_history
+{
+  int			nb_history;
+  char			*cmd;
+  struct s_history	*next;
+  struct s_history	*back;
+}			t_history;
+
 
 typedef struct		s_param
 {
