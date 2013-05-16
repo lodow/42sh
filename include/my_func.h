@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Thu May 16 08:50:05 2013 remi robert
+** Last update Thu May 16 10:30:42 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -145,6 +145,7 @@ void		calc_end_param_x(char *cmd, t_param *param, int *x, int *y);
 void		gere_control_k(char *cmd, t_param *param);
 int		gere_control(char *cmd, t_param * param, char *buff);
 void		gere_control_y(char *cmd, t_param *param);
+void		gere_control_u(char *cmd, t_param *param);
 int		clear_screem(void);
 void		clear_cmd(char *cmd, t_param *param);
 void		decal_string(char *cmd, int pos, char caractere);

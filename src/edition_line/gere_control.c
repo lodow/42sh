@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon May  6 09:13:35 2013 remi robert
-** Last update Tue May 14 19:59:31 2013 remi robert
+** Last update Thu May 16 10:33:56 2013 remi robert
 */
 
 #include "42sh.h"
@@ -34,7 +34,7 @@ void	calc_end_param_x(char *cmd, t_param *param, int *x, int *y)
 
 void	fct_control(char *cmd, t_param *param, int indice)
 {
-  void	(*t[6])(char *, t_param *);
+  void	(*t[7])(char *, t_param *);
 
   t[0] = &gere_control_k;
   t[1] = &gere_control_y;
@@ -42,7 +42,8 @@ void	fct_control(char *cmd, t_param *param, int indice)
   t[3] = &end_cmd;
   t[4] = &clear_cmd;
   t[5] = &globb;
-  if (indice >= 0 && indice < 6)
+  t[6] = &gere_control_u;
+  if (indice >= 0 && indice < 7)
     t[indice](cmd, param);
 }
 
@@ -63,7 +64,7 @@ int	return_gere_control_string(char *cmd, t_param *param, char *buff)
 
 int	gere_control(char *cmd, t_param *param, char *buff)
 {
-  char	caractere[6];
+  char	caractere[7];
   int	indice;
 
   caractere[0] = CTRLK;
@@ -72,8 +73,9 @@ int	gere_control(char *cmd, t_param *param, char *buff)
   caractere[3] = CTRLE;
   caractere[4] = CTRLL;
   caractere[5] = '\t';
+  caractere[6] = CTRLU;
   indice = -1;
-  while (++indice < 6)
+  while (++indice < 7)
     if (caractere[indice] == buff[0] && buff[1] == '\0')
       {
 	fct_control(cmd, param, indice);
