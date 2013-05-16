@@ -72,3 +72,18 @@ char	*my_stradd(char *str, char *add, int size_add)
   free(str);
   return (res);
 }
+
+int	is_in_tab_str(char *str, char **tab)
+{
+  int	i;
+
+  i = 0;
+  if (tab != NULL)
+    while (tab[i] != NULL)
+      {
+        if (!my_strncmp(str, tab[i], my_strlen(tab[i])))
+          return (i);
+        i++;
+      }
+  return (-1);
+}

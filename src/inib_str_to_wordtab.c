@@ -30,7 +30,7 @@ void	del_slash_quote(char **tab)
     while (tab[i] != NULL)
       {
 	j = 0;
-	while (tab[i][j] != 0)
+	while (tab[i][j] != '\0')
 	  {
 	    if (tab[i][j] == '"' && (j == 0 || tab[i][j - 1] != '\\'))
 	      my_strncpy_force(&(tab[i][j]), &(tab[i][j + 1]),

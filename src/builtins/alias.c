@@ -26,7 +26,7 @@ void builtin_alias_find(char **alias, char *tofind)
   tofinde[len] = '\0';
   while ((tmp = alias[i]) != NULL)
     {
-      if (!strncmp(tofinde, tmp, len))
+      if (!my_strncmp(tofinde, tmp, len))
         {
           my_putstr(tmp, 1, -1);
           my_putstr("\n", 1, -1);

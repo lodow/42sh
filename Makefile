@@ -32,7 +32,6 @@ PATHLINE=	src/edition_line
 LIBLINE	=	src/edition_line/lib
 PATHTERMCAP=	src/edition_line/termcap
 PATHENV	=	src/env
-PATHRED	=	src/redirection
 PATHGLOBB=	src/edition_line/globb
 
 SRC	= 	$(SRCPATH)/main.c				\
@@ -70,15 +69,15 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/clean_tab.c				\
 		$(SRCPATH)/error.c				\
 		$(SRCPATH)/my_exit.c				\
-		$(SRCPATH)/detect_redirection.c			\
 		$(SRCPATH)/my_put_nbr.c				\
 		$(SRCPATH)/my_putchar.c				\
 		$(SRCPATH)/delete_history.c			\
 		$(SRCPATH)/history.c				\
 		$(SRCPATH)/and_or.c				\
-		$(SRCPATH)/reg_expr.c			\
+		$(SRCPATH)/redirection.c			\
+		$(SRCPATH)/reg_expr.c
 
-ENV	=	$(PATHENV)/env.c				\
+ENV	=	$(PATHENV)/env.c
 
 SRCBUILTINS=	$(BUILTINS)/builtins.c				\
 		$(BUILTINS)/fg.c				\
@@ -94,7 +93,7 @@ SRCBUILTINS=	$(BUILTINS)/builtins.c				\
 		$(BUILTINS)/history.c				\
 		$(BUILTINS)/alias.c				\
 		$(BUILTINS)/source.c				\
-		$(BUILTINS)/clear.c				\
+		$(BUILTINS)/clear.c
 
 SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/add_caractere.c			\
@@ -118,7 +117,7 @@ SRCLINE	=	$(PATHLINE)/main_line.c				\
 		$(PATHLINE)/gere_history.c			\
 		$(PATHLINE)/feature_history.c			\
 		$(PATHLINE)/gere_current_history.c		\
-		$(PATHLINE)/get_type_contole.c			\
+		$(PATHLINE)/get_type_contole.c
 
 SRCGLOBB=	$(PATHGLOBB)/globb.c				\
 		$(PATHGLOBB)/genere_globb_str.c			\
@@ -127,18 +126,11 @@ SRCGLOBB=	$(PATHGLOBB)/globb.c				\
 		$(PATHGLOBB)/my_select.c			\
 		$(PATHGLOBB)/init_globb.c			\
 		$(PATHGLOBB)/rempl_globb.c			\
-		$(PATHGLOBB)/globb_executable.c			\
-
-SRCRED	=	$(PATHRED)/find_redirection.c			\
-		$(PATHRED)/parse_redirection.c			\
-		$(PATHRED)/redirection.c			\
-		$(PATHRED)/reform_str_cmd.c			\
-		$(PATHRED)/rempl_redirection.c			\
-		$(PATHRED)/return_type_char.c			\
+		$(PATHGLOBB)/globb_executable.c
 
 SRCLIBLINE=	$(LIBLINE)/str_cmp.c				\
 		$(LIBLINE)/my_memset.c				\
-		$(LIBLINE)/my_putstr.c				\
+		$(LIBLINE)/my_putstr.c
 
 SRCTERMCAP=	$(PATHTERMCAP)/ecrase_text.c			\
 		$(PATHTERMCAP)/coordone.c			\
@@ -147,7 +139,7 @@ SRCTERMCAP=	$(PATHTERMCAP)/ecrase_text.c			\
 		$(PATHTERMCAP)/get_pos_curser.c			\
 		$(PATHTERMCAP)/clear.c				\
 		$(PATHTERMCAP)/dl_current_pos.c			\
-		$(PATHTERMCAP)/view_curser.c			\
+		$(PATHTERMCAP)/view_curser.c
 
 OBJ	=	$(SRC:.c=.o) 					\
 		$(SRCBUILTINS:.c=.o) 				\
@@ -156,7 +148,7 @@ OBJ	=	$(SRC:.c=.o) 					\
 		$(SRCLIBLINE:.c=.o) 				\
 		$(SRCTERMCAP:.c=.o) 				\
 		$(SRCRED:.c=.o) 				\
-		$(SRCGLOBB:.c=.o) 				\
+		$(SRCGLOBB:.c=.o)
 
 $(NAME):	$(OBJ)
 		$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LIBS)

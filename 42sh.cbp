@@ -99,9 +99,6 @@
 		<Unit filename="src/delete_history.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/detect_redirection.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/edition_line/add_caractere.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -154,6 +151,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/globb/globb.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/edition_line/globb/globb_executable.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/globb/init_globb.c">
@@ -231,6 +231,9 @@
 		<Unit filename="src/edition_line/termcap/mod_raw.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/edition_line/termcap/view_curser.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/edition_line/view_string.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -306,22 +309,7 @@
 		<Unit filename="src/ptr_tab.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/redirection/find_redirection.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/redirection/parse_redirection.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/redirection/redirection.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/redirection/reform_str_cmd.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/redirection/rempl_redirection.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/redirection/return_type_char.c">
+		<Unit filename="src/redirection.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/reg_expr.c">

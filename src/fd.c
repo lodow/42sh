@@ -23,12 +23,16 @@ void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr)
     fds->stderr = stderr;
 }
 
+int	safe_close(int fd)
+{
+  if (fd > 2)
+    return (close(fd));
+  return (1);
+}
+
 void	close_fds(t_fds *fd)
 {
-  if (fd->stdin != 0)
-    close(fd->stdin);
-  if (fd->stdout != 1)
-    close(fd->stdout);
-  if (fd->stderr != 2)
-    close(fd->stderr);
+  safe_close(fd->stdin);
+  safe_close(fd->stdout);
+  safe_close(fd->stderr);
 }
