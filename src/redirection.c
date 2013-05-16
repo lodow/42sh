@@ -12,12 +12,12 @@
 
 void	redirection_init_separator(char **sepa)
 {
-  sepa[0] = "<";
-  sepa[1] = "<<";
-  sepa[2] = ">";
-  sepa[3] = ">>";
-  sepa[4] = "2>";
-  sepa[5] = "2>>";
+  sepa[0] = "<<";
+  sepa[1] = "<";
+  sepa[2] = ">>";
+  sepa[3] = ">";
+  sepa[4] = "2>>";
+  sepa[5] = "2>";
   sepa[6] = NULL;
 }
 
@@ -79,23 +79,20 @@ void	open_redirection_file(char *file, char *sepa, t_grp *grp)
   int	tmpfd;
   int	*fd;
 
-  fd = NULL;
   if ((file == NULL) || (file[0] == '\0'))
     return ;
   if (!my_strncmp(sepa, "<", -1))
     tmpfd = open(file, O_RDONLY);
+  if (!my_strncmp(sepa, "<<", -1));
   if (!my_strncmp(sepa, ">", -1) || !my_strncmp(sepa, "2>", -1))
     tmpfd = open(file, O_WRONLY | O_CREAT | O_TRUNC, REDI_FRIGHT);
   if (!my_strncmp(sepa, ">>", -1) || !my_strncmp(sepa, "2>>", -1))
     tmpfd = open(file, O_WRONLY | O_CREAT | O_APPEND, REDI_FRIGHT);
   if (tmpfd <= 0)
     my_perror(file);
-  if ((sepa != NULL) && (sepa[0] == '<'))
-    fd = &(grp->fd.stdin);
-  if ((sepa != NULL) && (sepa[0] == '>'))
-    fd = &(grp->fd.stdout);
-  if ((sepa != NULL) && (sepa[0] == '2'))
-    fd = &(grp->fd.stderr);
+  fd = ((sepa == NULL) ? NULL : (sepa[0] == '<') ? (&(grp->fd.stdin)) :
+        (sepa[0] == '>') ? (&(grp->fd.stdout)) :
+        (sepa[0] == '2') ? (&(grp->fd.stderr)) : NULL);
   if ((fd != NULL) && ((tmpfd != -1) || (*fd < 3)))
     {
       safe_close(*fd);
