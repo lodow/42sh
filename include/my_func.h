@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Thu May 16 11:23:08 2013 remi robert
+** Last update Thu May 16 15:17:12 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -99,6 +99,7 @@ typedef struct		s_history
 
 typedef struct		s_param
 {
+  int			pos_history;
   char			*cmd;
   int			fd_tty;
   char			*str_prompt;
@@ -149,9 +150,9 @@ void		gere_control_u(char *cmd, t_param *param);
 int		clear_screem(void);
 void		clear_cmd(char *cmd, t_param *param);
 void		decal_string(char *cmd, int pos, char caractere);
-int		gere_keyboard(char *buff, char *cmd, t_param *param);
+int		gere_keyboard(char *buff, char *cmd, t_param *param, t_history **history);
 void		gere_change_window(int sig);
-char		*read_cmd(t_param *param);
+char		*read_cmd(t_param *param, t_history **history);
 void		add_caractere(char *cmd, t_param *param, char caratere);
 char		*init_read_cmd(char *cmd, t_param *param);
 int		tgetent(char *bp, const char *name);
@@ -186,6 +187,6 @@ int		invisible_curseur(void);
 char		*my_tgetstr(char *cap0);
 void		init_capacity_termcap(t_termcap *termcap);
 int		init_edition_line(char **env, t_param *param);
-char		*return_string(char *cmd, t_param *param);
+char		*return_string(char *cmd, t_param *param, t_history **history);
 
 #endif

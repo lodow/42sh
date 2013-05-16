@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Thu May 16 11:23:38 2013 remi robert
+** Last update Thu May 16 15:22:19 2013 remi robert
 */
 
 #include "42sh.h"
@@ -50,10 +50,11 @@ char	*init_read_cmd(char *cmd, t_param *param)
   param->begin_pos_x = param->x;
   param->begin_pos_y = param->y;
   param->pos = 0;
+  param->pos_history = 0;
   return (cmd);
 }
 
-char	*read_cmd(t_param *param)
+char	*read_cmd(t_param *param, t_history **history)
 {
   int	ret;
   char	buff[10];
@@ -71,9 +72,9 @@ char	*read_cmd(t_param *param)
       if (buff[0] == CTRLD && buff[1] == '\0')
 	return (NULL);
       if (buff[0] == '\n' && buff[1] == '\0')
-	return (return_string(param->cmd, param));
+	return (return_string(param->cmd, param, history));
       if (get_window_size(param->cmd, param->begin_pos_x) == 1 &&
-	  gere_keyboard(buff, param->cmd, param) == 1)
+	  gere_keyboard(buff, param->cmd, param, history) == 1)
 	{
 	  add_caractere(param->cmd, param, buff[0]);
 	  view(param->cmd, param);

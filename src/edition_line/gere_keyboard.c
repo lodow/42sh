@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:20:31 2013 remi robert
-** Last update Thu May 16 10:52:35 2013 remi robert
+** Last update Thu May 16 15:49:42 2013 remi robert
 */
 
 #include "42sh.h"
@@ -49,7 +49,8 @@ void	gere_posleft(char *cmd, t_param *param)
     }
 }
 
-int	gere_keyboard(char *buff, char *cmd, t_param *param)
+int	gere_keyboard(char *buff, char *cmd, t_param *param,
+		      t_history **history)
 {
   if (str_cmp(buff, STR_RIGHT) == 1)
     {
@@ -61,11 +62,18 @@ int	gere_keyboard(char *buff, char *cmd, t_param *param)
       gere_posleft(cmd, param);
       return (0);
     }
+  if (str_cmp(buff, STR_UP) == 1 || str_cmp(buff, STR_DOWN) == 1)
+    {
+      gere_history(cmd, param, *history, buff);
+      return (0);
+    }
   if ((buff[0] == DEL && buff[1] == END) ||
       (buff[0] == ESC && buff[1] == CRO && buff[2] == SUPPR))
     {
       gere_delete(cmd, param, buff);
       return (0);
     }
-  return (gere_control(cmd, param, buff));
+  if (buff[0])
+    return (gere_control(cmd, param, buff));
+  return (1);
 }
