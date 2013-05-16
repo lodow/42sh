@@ -45,7 +45,7 @@ char	*parse_file_redirection(char *line, int posinstr, char *sepa)
 void	parse_redirection(t_grp *grp, char *line)
 {
   char	**tab;
-  char	*sepa[7];
+  char	*sepa[REDI_NB_SEPA];
   int	i;
   char	*tmp;
   char	*file;
@@ -66,4 +66,48 @@ void	parse_redirection(t_grp *grp, char *line)
                          (void*)str_cat(tmp, file));
       i++;
     }
+}
+
+void	open_redirection_file(char *file, char *sepa, t_grp *grp)
+{
+  int	tmpfd;
+
+  if ((file == NULL) || (file[0] == '\0'))
+    return ;
+  if (!my_strncmp(sepa, "<", -1))
+    tmpfd = open(file, O_RDONLY);
+  if (!my_strncmp(sepa, ">", -1) || !my_strncmp(sepa, "2>", -1))
+    tmpfd = open(file, O_WRONLY | O_CREAT | O_TRUNC, REDI_FRIGHT);
+  if (!my_strncmp(sepa, ">>", -1) || !my_strncmp(sepa, "2>>", -1))
+    tmpfd = open(file, O_WRONLY | O_CREAT | O_APPEND, REDI_FRIGHT);
+  if (tmpfd <= 0)
+    my_perror(file);
+  grp->fd.stdout = tmpfd;
+}
+
+int	open_redirection(t_grp *grp)
+{
+  int	i;
+  int	j;
+  char	*sepa[REDI_NB_SEPA];
+
+  i = 0;
+  redirection_init_separator(sepa);
+  if (grp->redirection == NULL)
+    return (0);
+  while (grp->redirection[i] != NULL)
+    {
+      j = 0;
+      while (j < REDI_NB_SEPA)
+        {
+          if (!my_strncmp(grp->redirection[i], sepa[j], my_strlen(sepa[j])))
+            open_redirection_file(&(grp->redirection[i][my_strlen(sepa[j])]),
+                                  sepa[j], grp);
+          j++;
+        }
+      i++;
+    }
+  if (grp->fd.stdin == -1 || grp->fd.stdout == -1 || grp->fd.stderr == -1)
+    return (-1);
+  return (0);
 }

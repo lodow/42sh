@@ -69,6 +69,7 @@
 ** Redir defines
 */
 # define REDI_FRIGHT 0666
+# define REDI_NB_SEPA 7
 
 # define PTRT_PACK 32
 
@@ -270,6 +271,7 @@ int	is_grp_exec(t_sh *shell, t_grp *grp);
 */
 void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr);
 void	close_fds(t_fds *fd);
+int	safe_close(int fd);
 
 /*
 ** Conf file
@@ -301,6 +303,7 @@ char	*return_file_redir(char *, int, int);
 ** redirection
 */
 void	parse_redirection(t_grp *grp, char *line);
+int	open_redirection(t_grp *grp);
 
 /*
 ** Backquotes

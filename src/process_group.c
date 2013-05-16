@@ -19,7 +19,8 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
 {
   if ((grp == NULL) || (is_grp_exec(shell, grp) == 0))
     return (-1);
-  /*open redirection*/
+  if (open_redirection(grp) == -1)
+    return (-1);
   exec_a_pipe(shell, grp);
   if (MEXIT)
     return (0);
