@@ -72,7 +72,9 @@ void	parse_redirection(t_grp *grp, char *line)
 void	open_redirection_file(char *file, char *sepa, t_grp *grp)
 {
   int	tmpfd;
+  int	*fd;
 
+  fd = NULL;
   if ((file == NULL) || (file[0] == '\0'))
     return ;
   if (!my_strncmp(sepa, "<", -1))
@@ -83,7 +85,17 @@ void	open_redirection_file(char *file, char *sepa, t_grp *grp)
     tmpfd = open(file, O_WRONLY | O_CREAT | O_APPEND, REDI_FRIGHT);
   if (tmpfd <= 0)
     my_perror(file);
-  grp->fd.stdout = tmpfd;
+  if ((sepa != NULL) && (sepa[0] == '<'))
+    fd = &(grp->fd.stdin);
+  if ((sepa != NULL) && (sepa[0] == '>'))
+    fd = &(grp->fd.stdout);
+  if ((sepa != NULL) && (sepa[0] == '2'))
+    fd = &(grp->fd.stderr);
+  if (fd != NULL)
+    {
+      safe_close(*fd);
+      *fd = tmpfd;
+    }
 }
 
 int	open_redirection(t_grp *grp)
