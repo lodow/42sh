@@ -177,6 +177,7 @@ void	**concat_ptr_tab(void **tab1, void **tab2);
 /*
 ** Stc
 */
+int	is_in_tab_str(char *str, char **tab);
 void	my_putchar(char c);
 int	my_strlen(char *str);
 void	my_putstr(const char *str, int fd, int strlen);
@@ -294,6 +295,7 @@ void	exit_shell(t_sh *shell);
 /*
 ** detect_type_redirection
 */
+void	redirection_init_separator(char **sepa);
 int	return_type_char(char *);
 void	return_type_redirection(char *, int *, int *);
 char	*find_name_redirection(int, char *);

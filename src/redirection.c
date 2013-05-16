@@ -52,8 +52,8 @@ void	parse_redirection(t_grp *grp, char *line)
   char	**tab;
   char	*sepa[REDI_NB_SEPA];
   int	i;
-  char	*tmp;
   char	*file;
+  char	value[2];
   int	posinstr;
 
   redirection_init_separator(sepa);
@@ -61,13 +61,15 @@ void	parse_redirection(t_grp *grp, char *line)
   tab = mult_str_to_wordtab(line, sepa, 1);
   i = 0;
   posinstr = 0;
+  value[1] = '\0';
   while (tab[i] != NULL)
     {
-      tmp = get_inibiteur_f_mult_wt(line, sepa, tab, i);
-      posinstr += my_strlen(tab[i]) + my_strlen(tmp);
-      file = parse_file_redirection(line, posinstr, tmp);
+      file = get_inibiteur_f_mult_wt(line, sepa, tab, i);
+      value[0] = is_in_tab_str(file, sepa);
+      posinstr += my_strlen(tab[i]) + my_strlen(file);
+      file = parse_file_redirection(line, posinstr, file);
       grp->redirection = (char**)add_ptr_t_tab((void**)grp->redirection,
-                         (void*)str_cat(tmp, file));
+                         (void*)str_cat(value, file));
       i++;
     }
 }
@@ -104,23 +106,18 @@ void	open_redirection_file(char *file, char *sepa, t_grp *grp)
 int	open_redirection(t_grp *grp)
 {
   int	i;
-  int	j;
+  int	red_id;
+  char	*red;
   char	*sepa[REDI_NB_SEPA];
 
   i = 0;
   redirection_init_separator(sepa);
   if (grp->redirection == NULL)
     return (0);
-  while (grp->redirection[i] != NULL)
+  while ((red = grp->redirection[i]) != NULL)
     {
-      j = 0;
-      while (j < REDI_NB_SEPA)
-        {
-          if (!my_strncmp(grp->redirection[i], sepa[j], my_strlen(sepa[j])))
-            open_redirection_file(&(grp->redirection[i][my_strlen(sepa[j])]),
-                                  sepa[j], grp);
-          j++;
-        }
+      if (((red_id = red[0]) != -1) && (my_strlen(red) > 1))
+        open_redirection_file(&(red[1]), sepa[red_id], grp);
       i++;
     }
   if (grp->fd.stdin == -1 || grp->fd.stdout == -1 || grp->fd.stderr == -1)
