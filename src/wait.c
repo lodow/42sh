@@ -70,7 +70,6 @@ void	wait_all_jobs(t_sh *shell)
   while (shell->process_group[++i] != NULL)
     if (wait_son(shell->process_group[i]) == 0)
       {
-        SETFLAG(shell->process_group[i]->flags, FGRP_TERMINATED);
         if (shell->process_group[i] == forground_grp)
           set_forground_pgrp(shell->pid.pgid);
         else
@@ -110,7 +109,8 @@ void	wait_no_fg_grp(t_sh* shell)
       if (WIFCONTINUED(tmp))
         sig = SIGCONT;
       call_signal_func(shell, sig);
+      rm_all_terminated_grp(shell);
     }
-  set_forground_pgrp(shell->pid.pgid);
   rm_all_terminated_grp(shell);
+  set_forground_pgrp(shell->pid.pgid);
 }

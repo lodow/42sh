@@ -14,11 +14,13 @@ int	exec_next_grp(t_grp *grp, t_sh *shell)
 {
   int	fdout;
   int	gobst;
+  int	flags;
   t_grp	*this_grp;
   int	size;
 
   if ((grp == NULL) || (grp->transition == GRP_TRANS_NONE))
     return (0);
+  flags = grp->flags;
   fdout = grp->fd.stdout;
   gobst = global_group_ret_status(grp);
   if (((grp->transition == GRP_TRANS_AND) && (gobst == 0))
@@ -30,7 +32,7 @@ int	exec_next_grp(t_grp *grp, t_sh *shell)
       if (size >= 0)
         {
           this_grp = shell->process_group[size];
-          this_grp->flags = grp->flags;
+          this_grp->flags = flags;
         }
       return (1);
     }
