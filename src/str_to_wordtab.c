@@ -41,7 +41,7 @@ char	**malloc_tab(char *str, char *delim)
   nbr = 0;
   while (str[i] != 0)
     {
-      if (strncmp(delim, &(str[i]), len_delim) == 0)
+      if (my_strncmp(delim, &(str[i]), len_delim) == 0)
 	nbr++;
       i++;
     }
@@ -70,7 +70,7 @@ int	fill_tab_inib(char *str, char *delim, char **tab)
     {
       if (str[max] == '"' && (max == 0 || str[max - 1] != '\\'))
 	quote *= -1;
-      if ((strncmp(&(str[max]), delim, len_delim)) == 0 && quote == -1 &&
+      if ((my_strncmp(&(str[max]), delim, len_delim)) == 0 && quote == -1 &&
 	  (max == 0 || str[max - 1] != '\\'))
 	{
 	  my_strncpy_force(tab[i++], &(str[min]), max - min);
@@ -95,7 +95,7 @@ int	fill_tab(char *str, char *delim, char **tab)
   min = max = i = 0;
   while (str[max] != 0)
     {
-      if ((strncmp(&(str[max]), delim, len_delim)) == 0)
+      if ((my_strncmp(&(str[max]), delim, len_delim)) == 0)
 	{
 	  my_strncpy_force(tab[i], &(str[min]), max - min);
 	  i++;

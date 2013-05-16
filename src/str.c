@@ -81,7 +81,7 @@ int	is_in_tab_str(char *str, char **tab)
   if (tab != NULL)
     while (tab[i] != NULL)
       {
-        if (!strncmp(str, tab[i], my_strlen(str)))
+        if (!my_strncmp(str, tab[i], my_strlen(tab[i])))
           return (i);
         i++;
       }
