@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed May 15 08:47:35 2013 remi robert
-** Last update Thu May 16 08:55:20 2013 remi robert
+** Last update Thu May 16 10:58:39 2013 remi robert
 */
 
 #include "42sh.h"
@@ -13,7 +13,7 @@
 int	init_edition_line(char **env, t_param *param)
 {
   if ((param->fd_tty = open("/dev/tty", O_RDWR)) == -1 ||
-      verif_env(env) == EXIT_FAILURE)
+      get_envvar("TERM", env) == NULL)
     return (0);
   param->cmd = NULL;
   param->str_prompt = NULL;
