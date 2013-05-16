@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Wed May 15 16:44:29 2013 remi robert
+** Last update Thu May 16 08:48:42 2013 remi robert
 */
 
 #include "42sh.h"
@@ -41,7 +41,7 @@ char	*init_read_cmd(char *cmd, t_param *param)
       (cmd = malloc(sizeof(char) * SIZE_BUFFER)) == NULL)
     return (NULL);
   cmd[0] = '\0';
-  get_pos_curser(&param->x, &param->y);
+  get_pos_curser(&param->x, &param->y, param->fd_tty);
   param->begin_pos_x = param->x;
   param->begin_pos_y = param->y;
   param->pos = 0;
@@ -76,10 +76,6 @@ char	*read_cmd(t_param *param)
 	  add_caractere(param->cmd, param, buff[0]);
 	  view(param->cmd, param);
 	}
-      curseur(0, 0);
-      printf("[%d] => %d", param->pos, my_strlen(param->cmd));
-      fflush(stdout);
-      curseur(param->x, param->y);
     }
   return (param->cmd);
 }

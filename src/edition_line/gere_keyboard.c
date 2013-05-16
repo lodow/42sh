@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:20:31 2013 remi robert
-** Last update Tue May 14 19:58:58 2013 remi robert
+** Last update Thu May 16 08:51:03 2013 remi robert
 */
 
 #include "42sh.h"
@@ -16,13 +16,13 @@ void	gere_posright(char *cmd, t_param *param)
     {
       if (param->x + 1 >= return_x())
 	{
-	  apply_termcap(param->termcap.str_do, 0);
+	  apply_termcap(param->termcap.str_do, 0, param->fd_tty);
 	  param->x = 0;
 	  param->y += 1;
 	}
       else
 	{
-	  apply_termcap(param->termcap.str_ri, 0);
+	  apply_termcap(param->termcap.str_ri, 0, param->fd_tty);
 	  param->x += 1;
 	}
       param->pos += 1;
@@ -35,14 +35,14 @@ void	gere_posleft(char *cmd, t_param *param)
     {
       if (param->x <= 0)
 	{
-	  apply_termcap(param->termcap.str_up, 0);
-	  apply_termcap(param->termcap.str_RI, return_x());
+	  apply_termcap(param->termcap.str_up, 0, param->fd_tty);
+	  apply_termcap(param->termcap.str_RI, return_x(), param->fd_tty);
 	  param->x = return_x() - 1;
 	  param->y -= 1;
 	}
       else
 	{
-	  apply_termcap(param->termcap.str_le, 0);
+	  apply_termcap(param->termcap.str_le, 0, param->fd_tty);
 	  param->x -= 1;
 	}
       param->pos -= 1;

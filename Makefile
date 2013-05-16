@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Wed May 15 08:54:01 2013 remi robert
+## Last update Thu May 16 08:42:40 2013 remi robert
 ##
 
 CC	=	gcc
@@ -138,6 +138,7 @@ SRCTERMCAP=	$(PATHTERMCAP)coordone.c			\
 		$(PATHTERMCAP)init_termcap.c			\
 		$(PATHTERMCAP)apply_termcap.c			\
 		$(PATHTERMCAP)print_termcap.c			\
+		$(PATHTERMCAP)read_tty.c			\
 
 OBJ	=	$(SRC:.c=.o) 					\
 		$(SRCBUILTINS:.c=.o) 				\

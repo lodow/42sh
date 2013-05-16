@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Wed May 15 13:49:16 2013 remi robert
+** Last update Thu May 16 08:50:05 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -111,6 +111,7 @@ typedef struct		s_param
   t_termcap		termcap;
 }			t_param;
 
+int		open_tty(void);
 void		refresh_view(char *cmd, t_param *param);
 void		gere_change_window(int sig);
 void		decal_pointeur(t_param *param);
@@ -170,10 +171,10 @@ int		right_curser(void);
 int		left_curser(void);
 int		return_x(void);
 int		return_y(void);
-void		apply_termcap(char *cap, int arg);
+void		apply_termcap(char *cap, int arg, int fd);
 int		putc_termcap(int c);
 void		assign_value_pos(int *x, int *y, char *buff);
-void		get_pos_curser(int *x, int *y);
+void		get_pos_curser(int *x, int *y, int fd);
 int		reset_save_mod(int type, int fd);
 int		reset_mod(struct termios t, int fd);
 int		mod_raw(int fd);
