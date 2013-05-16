@@ -312,24 +312,6 @@
 		<Unit filename="src/redirection.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/redirection/find_redirection.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/redirection/parse_redirection.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/redirection/redirection.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/redirection/reform_str_cmd.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/redirection/rempl_redirection.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/redirection/return_type_char.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/reg_expr.c">
 			<Option compilerVar="CC" />
 		</Unit>

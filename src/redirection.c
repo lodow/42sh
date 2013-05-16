@@ -14,7 +14,7 @@ void	redirection_init_separator(char **sepa)
 {
   sepa[0] = "<";
   sepa[1] = "<<";
-  sepa[2] = ">>";
+  sepa[2] = ">";
   sepa[3] = ">>";
   sepa[4] = "2>";
   sepa[5] = "2>>";
@@ -42,33 +42,28 @@ char	*parse_file_redirection(char *line, int posinstr, char *sepa)
   return (file);
 }
 
-void	redirection_set_param(t_direction *direction, char *sepa, char *file)
-{
-
-}
-
-void	parse_redirection(t_direction *direction, char *line)
+void	parse_redirection(t_grp *grp, char *line)
 {
   char	**tab;
   char	*sepa[7];
   int	i;
   char	*tmp;
+  char	*file;
   int	posinstr;
 
+
   redirection_init_separator(sepa);
-  direction->in = NULL;
-  direction->out = NULL;
-  direction->in_type = REDI_NONE;
-  direction->out_type = REDI_NONE;
-  tab = mult_str_to_wordtab(*line, sepa, 1);
+  grp->redirection = NULL;
+  tab = mult_str_to_wordtab(line, sepa, 1);
   i = 0;
   posinstr = 0;
   while (tab[i] != NULL)
     {
       tmp = get_inibiteur_f_mult_wt(line, sepa, tab, i);
       posinstr += my_strlen(tab[i]) + my_strlen(tmp);
-      redirection_set_param(direction, sepa,
-                            parse_file_redirection(line, posinstr, sepa));
+      file = parse_file_redirection(line, posinstr, tmp);
+      grp->redirection = (char**)add_ptr_t_tab((void**)grp->redirection,
+                         (void*)str_cat(tmp, file));
       i++;
     }
 }

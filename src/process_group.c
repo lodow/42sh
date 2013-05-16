@@ -49,7 +49,7 @@ t_grp	*create_n_process_group(t_sh *shell, char *lign)
   res->pid.sid = shell->pid.sid;
   res->cmds = NULL;
   res->flags = 0;
-  parse_redirection(&(res->direction), lign);
+  parse_redirection(res, lign);
   cmd_line = str_to_wordtab(res->line, "|", 1);
   while ((cmd_line != NULL) && (cmd_line[i] != NULL))
     {
@@ -85,8 +85,7 @@ void	free_process_group(t_grp *grp)
       close_fds(&(grp->fd));
       free(grp->line);
       free_ptr_tab((void**)grp->cmds, (void*)(&free_cmd));
-      free(grp->direction.in);
-      free(grp->direction.out);
+      free_ptr_tab((void**)grp->redirection, &free);
       free(grp);
     }
 }

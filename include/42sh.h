@@ -69,9 +69,6 @@
 ** Redir defines
 */
 # define REDI_FRIGHT 0666
-# define REDI_NONE 0
-# define REDI_SIMPLE 1
-# define REDI_DOUBLE 2
 
 # define PTRT_PACK 32
 
@@ -98,14 +95,6 @@ typedef struct	s_cmd
   t_pid		pid;
 }		t_cmd;
 
-typedef struct	s_direction
-{
-  int		in_type;
-  char		*in;
-  int		out_type;
-  char		*out;
-}		t_direction;
-
 typedef struct	s_grp
 {
   t_pid		pid;
@@ -113,7 +102,7 @@ typedef struct	s_grp
   char		*line;
   t_cmd		**cmds;
   int		flags;
-  t_direction	direction;
+  char		**redirection;
   int		transition;
   char		*transition_line;
 }		t_grp;
@@ -311,7 +300,7 @@ char	*return_file_redir(char *, int, int);
 /*
 ** redirection
 */
-void	parse_redirection(t_direction *direction, char *line);
+void	parse_redirection(t_grp *grp, char *line);
 
 /*
 ** Backquotes
