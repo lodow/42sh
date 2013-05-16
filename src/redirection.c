@@ -30,6 +30,8 @@ char	*parse_file_redirection(char *line, int posinstr, char *sepa)
   i = 0;
   if ((sepa == NULL) || ((file = my_strdup(&(line[posinstr]))) == NULL))
     return (NULL);
+  if (file[0] == ' ')
+    i++;
   while (file[i] != '\0' && file[i] != '|' && file[i] != ' ')
     i++;
   file[i] = '\0';
@@ -50,7 +52,6 @@ void	parse_redirection(t_grp *grp, char *line)
   char	*tmp;
   char	*file;
   int	posinstr;
-
 
   redirection_init_separator(sepa);
   grp->redirection = NULL;
