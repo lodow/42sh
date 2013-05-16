@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed May 15 08:47:35 2013 remi robert
-** Last update Thu May 16 11:16:45 2013 remi robert
+** Last update Thu May 16 11:21:38 2013 remi robert
 */
 
 #include "42sh.h"
@@ -23,11 +23,6 @@ int	init_edition_line(char **env, t_param *param)
   if (reset_save_mod(SAVE, param->fd_tty) == EXIT_FAILURE)
     {
       my_putstr("Error SAVE termcap\n", 2, -1);
-      return (0);
-    }
-  if (mod_raw(param->fd_tty) == EXIT_FAILURE)
-    {
-      my_putstr("Error mod_raw termcap\n", 2, -1);
       return (0);
     }
   init_capacity_termcap(&(param->termcap));

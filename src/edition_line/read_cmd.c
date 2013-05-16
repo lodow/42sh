@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Thu May 16 10:57:49 2013 remi robert
+** Last update Thu May 16 11:23:38 2013 remi robert
 */
 
 #include "42sh.h"
@@ -37,6 +37,11 @@ void	add_caractere(char *cmd, t_param *param, char caratere)
 
 char	*init_read_cmd(char *cmd, t_param *param)
 {
+  if (mod_raw(param->fd_tty) == EXIT_FAILURE)
+    {
+      my_putstr("Error mod_raw termcap\n", 2, -1);
+      return (NULL);
+    }
   if (SIZE_BUFFER <= 0 ||
       (cmd = malloc(sizeof(char) * SIZE_BUFFER)) == NULL)
     return (NULL);
@@ -66,10 +71,7 @@ char	*read_cmd(t_param *param)
       if (buff[0] == CTRLD && buff[1] == '\0')
 	return (NULL);
       if (buff[0] == '\n' && buff[1] == '\0')
-	{
-	  my_putstr("\n", 1, 1);
-	  return (param->cmd);
-	}
+	return (return_string(param->cmd, param));
       if (get_window_size(param->cmd, param->begin_pos_x) == 1 &&
 	  gere_keyboard(buff, param->cmd, param) == 1)
 	{

@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Thu May 16 11:14:10 2013 remi robert
+## Last update Thu May 16 11:22:33 2013 remi robert
 ##
 
 CC	=	gcc
@@ -119,6 +119,7 @@ SRCLINE	=	$(PATHLINE)main.c				\
 		$(PATHLINE)completation.c			\
 		$(PATHLINE)plus_completation.c			\
 		$(PATHLINE)gere_control_u.c			\
+		$(PATHLINE)return_string.c			\
 
 SRCRED	=	$(PATHRED)/find_redirection.c			\
 		$(PATHRED)/parse_redirection.c			\
