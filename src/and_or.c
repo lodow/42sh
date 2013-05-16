@@ -14,6 +14,8 @@ int	exec_next_grp(t_grp *grp, t_sh *shell)
 {
   int	fdout;
   int	gobst;
+  t_grp	*this_grp;
+  int	size;
 
   if ((grp == NULL) || (grp->transition == GRP_TRANS_NONE))
     return (0);
@@ -24,7 +26,12 @@ int	exec_next_grp(t_grp *grp, t_sh *shell)
     {
       parse_user_cmd(shell, grp->transition_line, fdout);
       grp->transition = GRP_TRANS_NONE;
-      ///set last grp to same flag
+      size = ptr_tab_size((void**)(shell->process_group)) - 1;
+      if (size >= 0)
+        {
+          this_grp = shell->process_group[size];
+          this_grp->flags = grp->flags;
+        }
       return (1);
     }
   return (0);
