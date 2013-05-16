@@ -26,21 +26,24 @@ char	*parse_file_redirection(char *line, int posinstr, char *sepa)
   char	*file;
   int	i;
   char	*tmpptr;
+  char	*separa[3];
+  char	**tab;
 
-  i = 0;
-  if ((sepa == NULL) || ((file = my_strdup(&(line[posinstr]))) == NULL))
+  separa[0] = " ";
+  separa[1] = "|";
+  separa[2] = NULL;
+  file = &(line[posinstr]);
+  if ((sepa == NULL) || ((tab = mult_str_to_wordtab(file, separa, 1)) == NULL))
     return (NULL);
-  if (file[0] == ' ')
-    i++;
-  while (file[i] != '\0' && file[i] != '|' && file[i] != ' ')
-    i++;
-  file[i] = '\0';
+  rm_empty_str_f_tab(tab);
+  file = tab[0];
   tmpptr = &(line[posinstr - my_strlen(sepa)]);
-  i += my_strlen(sepa);
+  i = my_strlen(sepa) + my_strlen(file) + 1;
   while (--i >= 0)
     tmpptr[i] = ' ';
-  if (file[0] == ' ')
-    my_strncpy(file, &(file[1]), -1);
+  del_slash_quote(tab);
+  file = my_strdup(file);
+  free_ptr_tab((void**)tab, &free);
   return (file);
 }
 
@@ -91,7 +94,7 @@ void	open_redirection_file(char *file, char *sepa, t_grp *grp)
     fd = &(grp->fd.stdout);
   if ((sepa != NULL) && (sepa[0] == '2'))
     fd = &(grp->fd.stderr);
-  if (fd != NULL)
+  if ((fd != NULL) && ((tmpfd != -1) || (*fd < 3)))
     {
       safe_close(*fd);
       *fd = tmpfd;

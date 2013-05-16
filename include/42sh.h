@@ -313,7 +313,7 @@ char	*check_and_load_backquote(char *line, t_sh *shell);
 /*
 ** my_str_to_wordtab
 */
-void	del_slash_quote(char **);
+void	del_slash_quote(char **tab);
 void	my_strncpy_force(char *, char *, int);
 char	**mult_str_to_wordtab(char *line, char **sepa, int opt);
 char	*get_inibiteur_f_mult_wt(char *line, char **sepa, char **tab, int field);
