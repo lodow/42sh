@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Thu May 16 10:30:42 2013 remi robert
+** Last update Thu May 16 11:09:55 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
