@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Thu May 16 15:18:02 2013 remi robert
+## Last update Fri May 17 08:23:48 2013 remi robert
 ##
 
 CC	=	gcc
@@ -80,6 +80,7 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/init_edition_line.c			\
 		$(SRCPATH)/add_history.c			\
 		$(SRCPATH)/gere_history.c			\
+		$(SRCPATH)/gere_valide_saisi.c			\
 
 ENV	=	$(PATHENV)/env.c				\
 

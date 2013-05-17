@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Thu May 16 15:17:12 2013 remi robert
+** Last update Fri May 17 08:24:36 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -188,5 +188,9 @@ char		*my_tgetstr(char *cap0);
 void		init_capacity_termcap(t_termcap *termcap);
 int		init_edition_line(char **env, t_param *param);
 char		*return_string(char *cmd, t_param *param, t_history **history);
+int		recup_nb_history(char *str);
+char		*return_cmd_history_racourci(char *str, t_history **history);
+char		*check_cmd_history(char *str, t_history **history);
+char		*return_saisi(char *cmd, t_history **history);
 
 #endif
