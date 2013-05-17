@@ -32,6 +32,7 @@ char	*exec_line_a_g_res(char *line, t_sh *shell)
         str = my_stradd(str, buffer, sizeread);
     }
   close(pipefd[PIPE_READ]);
+  wait_no_fg_grp(shell);
   return (str);
 }
 
