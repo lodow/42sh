@@ -21,13 +21,15 @@ t_sh		*get_sh_info(t_sh *sh)
 
 void	init_sig()
 {
-/*  signal(SIGTTOU, &sig_handler);
-  signal(SIGTTIN, &sig_handler);*/
+  /*  signal(SIGTTOU, &sig_handler);
+    signal(SIGTTIN, &sig_handler);*/
   signal(SIGINT, &sig_handler);
   signal(SIGTSTP, &sig_handler);
   signal(SIGCHLD, &sig_handler);
   signal(SIGHUP, &sig_handler);
   signal(SIGTERM, &sig_handler);
+  signal(SIGUSR1, &sig_handler);
+  signal(SIGUSR2, &sig_handler);
 }
 
 void	sig_handler(int sig)

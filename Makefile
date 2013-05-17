@@ -75,6 +75,8 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/history.c				\
 		$(SRCPATH)/and_or.c				\
 		$(SRCPATH)/redirection.c			\
+		$(SRCPATH)/user_input.c			\
+		$(SRCPATH)/cat.c				\
 		$(SRCPATH)/reg_expr.c
 
 ENV	=	$(PATHENV)/env.c

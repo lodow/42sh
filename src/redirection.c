@@ -84,7 +84,8 @@ void	open_redirection_file(char *file, char *sepa, t_grp *grp)
     return ;
   if (!my_strncmp(sepa, "<", -1))
     tmpfd = open(file, O_RDONLY);
-  if (!my_strncmp(sepa, "<<", -1));
+  if (!my_strncmp(sepa, "<<", -1))
+    tmpfd = dred_left(file);
   if (!my_strncmp(sepa, ">", -1) || !my_strncmp(sepa, "2>", -1))
     tmpfd = open(file, O_WRONLY | O_CREAT | O_TRUNC, REDI_FRIGHT);
   if (!my_strncmp(sepa, ">>", -1) || !my_strncmp(sepa, "2>>", -1))

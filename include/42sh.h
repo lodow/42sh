@@ -293,19 +293,13 @@ void	my_exit(int value);
 void	exit_shell(t_sh *shell);
 
 /*
-** detect_type_redirection
-*/
-void	redirection_init_separator(char **sepa);
-int	return_type_char(char *);
-void	return_type_redirection(char *, int *, int *);
-char	*find_name_redirection(int, char *);
-char	*return_file_redir(char *, int, int);
-
-/*
 ** redirection
 */
+int	cat_out_buff(char *buff, char **argv, t_sh *shell);
 void	parse_redirection(t_grp *grp, char *line);
 int	open_redirection(t_grp *grp);
+char	*usr_input_retrieve(t_sh *shell, char *end);
+int	dred_left(char *end);
 
 /*
 ** Backquotes

@@ -87,6 +87,9 @@
 		<Unit filename="src/builtins/unsetenv.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/cat.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/clean_tab.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -340,6 +343,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/tty.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/user_input.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/variable.c">
