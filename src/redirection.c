@@ -33,7 +33,8 @@ char	*parse_file_redirection(char *line, int posinstr, char *sepa)
   separa[1] = "|";
   separa[2] = NULL;
   file = &(line[posinstr]);
-  if ((sepa == NULL) || ((tab = mult_str_to_wordtab(file, separa, 1)) == NULL))
+  if ((sepa == NULL)
+      || ((tab = mult_str_to_wordtab(file, separa, 1)) == NULL))
     return (NULL);
   rm_empty_str_f_tab(tab);
   file = tab[0];
@@ -58,11 +59,10 @@ void	parse_redirection(t_grp *grp, char *line)
 
   redirection_init_separator(sepa);
   grp->redirection = NULL;
-  tab = mult_str_to_wordtab(line, sepa, 1);
   i = 0;
   posinstr = 0;
   value[1] = '\0';
-  if (tab != NULL)
+  if ((tab = mult_str_to_wordtab(line, sepa, 1)) != NULL)
     while (tab[i] != NULL)
       {
         file = get_inibiteur_f_mult_wt(line, sepa, tab, i);
@@ -114,16 +114,15 @@ int	open_redirection(t_grp *grp, t_sh *shell)
 
   i = 0;
   redirection_init_separator(sepa);
-  if (grp->redirection == NULL)
-    return (0);
-  while ((red = grp->redirection[i]) != NULL)
-    {
-      if (((red_id = red[0] - 1) != -1) && (my_strlen(red) > 1))
-        open_redirection_file(&(red[1]), sepa[red_id], grp, shell);
-      if (MEXIT)
-        return (0);
-      i++;
-    }
+  if (grp->redirection != NULL)
+    while ((red = grp->redirection[i]) != NULL)
+      {
+        if (((red_id = red[0] - 1) != -1) && (my_strlen(red) > 1))
+          open_redirection_file(&(red[1]), sepa[red_id], grp, shell);
+        if (MEXIT)
+          return (0);
+        i++;
+      }
   if (grp->fd.stdin == -1 || grp->fd.stdout == -1 || grp->fd.stderr == -1)
     return (-1);
   return (0);

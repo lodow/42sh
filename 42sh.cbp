@@ -108,16 +108,10 @@
 		<Unit filename="src/edition_line/add_caractere.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/edition_line/add_history.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/edition_line/clear.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/completation.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/control_clear.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/control_k.c">
@@ -129,76 +123,19 @@
 		<Unit filename="src/edition_line/decal_string.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/edition_line/feature_history.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/free.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/gere_buff_copy.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/gere_buff_feature.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/edition_line/gere_control.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/gere_control_u.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/edition_line/gere_current_history.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/gere_direct_pos_cursor.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/gere_history.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/edition_line/gere_keyboard.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/gere_valide_saisi.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/gere_window.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/edition_line/get_len_string_with_pos.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/get_type_contole.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/edition_line/globb.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/globb/completation.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/globb/genere_globb_str.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/globb/globb.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/globb/globb_executable.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/globb/init_globb.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/globb/my_select.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/globb/print_glob.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/globb/rempl_globb.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/init_struct_param.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/lib/my_getnbr.c">
@@ -219,16 +156,7 @@
 		<Unit filename="src/edition_line/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/edition_line/main_line.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/my_memset.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/edition_line/plus_completation.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/print_prompt.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/read_cmd.c">
@@ -243,16 +171,10 @@
 		<Unit filename="src/edition_line/return_string.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/edition_line/set_pos_curser.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/edition_line/signal.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/start_end_cmd.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/str_cmp.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/suppression.c">
@@ -268,12 +190,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/termcap/curseur.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/termcap/dl_current_pos.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/termcap/ecrase_text.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/termcap/get_pos_curser.c">
