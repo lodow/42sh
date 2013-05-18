@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Sat May 18 18:59:02 2013 remi robert
+** Last update Sat May 18 19:14:13 2013 remi robert
 */
 
 #include "42sh.h"
@@ -75,8 +75,8 @@ char	*loop_cmd(char *prompt, t_param *param, t_history **history)
 char	*read_cmd(char *prompt, t_param *param, t_history **history)
 {
   if (isatty(0) != 1)
-    param->env = 0;
-  if (param->env == 0)
+    param->fallback = 0;
+  if (param->fallback == 0)
     {
       if (prompt == NULL)
 	my_putstr(">> ", 1, 3);

@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:31:22 2013 maxime lavandier
-** Last update Sat May 18 18:58:15 2013 remi robert
+** Last update Sat May 18 19:13:49 2013 remi robert
 */
 
 #include "42sh.h"
@@ -21,8 +21,8 @@ int		init_shell(t_sh *shell, char **main_env)
   /* if (((shell->env = cpy_env(main_env)) == NULL) */
   /*     || ((shell->path = get_path(shell->env)) == NULL)) */
   /*   return (-1); */
-  shell->param.env = 0;
-  shell->param.env = init_edition_line(main_env, &(shell->param));
+  shell->param.fallback = 0;
+  shell->param.fallback = init_edition_line(main_env, &(shell->param));
   //shell->pid.sid = setsid(); <- not sure if it's a good idea.
   //if it is don't forget to check it
   if (((shell->pid.pid = getpid()) == -1)
@@ -41,7 +41,7 @@ int		init_shell(t_sh *shell, char **main_env)
 
 void	exit_shell(t_sh *shell)
 {
-  if (shell->param.env == 1 &&
+  if (shell->param.fallback == 1 &&
       reset_save_mod(RESTORE, shell->param.fd_tty) == EXIT_FAILURE)
     my_putstr("Error RESTORE termcap\n", 2, -1);
   store_conf_file("${HOME}/.history", shell, store_history_f);
@@ -49,8 +49,8 @@ void	exit_shell(t_sh *shell)
   free_ptr_tab((void**)shell->path, &free);
   free_ptr_tab((void**)shell->alias_tab, &free);
   free_ptr_tab((void**)shell->process_group, (void*)(&free_process_group));
-  /* clear_history(shell->history); */
-  if (shell->param.env == 1)
+  clear_history(shell->history);
+  if (shell->param.fallback == 1)
     {
       free(shell->param.str_prompt);
       close(shell->param.fd_tty);
@@ -64,7 +64,7 @@ void	fork_exit_shell(t_sh *shell)
   free_ptr_tab((void**)shell->path, &free);
   free_ptr_tab((void**)shell->alias_tab, &free);
   free_ptr_tab((void**)shell->process_group, (void*)(&free_process_group));
-  /* clear_history(shell->history); */
+  clear_history(shell->history);
   free(shell->param.str_prompt);
 }
 

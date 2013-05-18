@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Sat May 18 17:52:44 2013 remi robert
+** Last update Sat May 18 19:12:58 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -91,7 +91,7 @@ typedef struct		s_history
 
 typedef struct		s_param
 {
-  int			env;
+  int			fallback;
   int			pos_history;
   char			*cmd;
   int			fd_tty;
