@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Tue May 14 18:45:24 2013 remi robert
+** Last update Thu May 16 15:49:25 2013 remi robert
 */
 
 #ifndef		SH42_H
@@ -341,5 +341,16 @@ char	**get_path(char **envp);
 */
 void	expand_reg_epx_on_argv(char ***argv);
 char	**expand_reg_exp(char *regexp);
+
+/*
+** History
+*/
+int	view_history(char *path, char **argv, t_sh *shell);
+void	clear_history(t_history *ptr);
+int	load_history_f_file(char *line, t_sh *shell);
+void   	rempl_new_history(t_history **elem, char *str);
+void	add_history(t_history **ptete, char *cmd);
+void	gere_history(char *cmd, t_param *param,
+		     t_history *history, char *buff);
 
 #endif
