@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 18 13:25:13 2013 remi robert
+** Last update Sat May 18 13:25:13 2013 fuck you RR
 */
 
 #include "42sh.h"
