@@ -33,6 +33,9 @@
 		<Unit filename="include/get_file.h" />
 		<Unit filename="include/get_next_line.h" />
 		<Unit filename="include/my_func.h" />
+		<Unit filename="src/add_history.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/alias.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -282,7 +285,6 @@
 		<Unit filename="src/edition_line/termcap/mod_raw.c">
 			<Option compilerVar="CC" />
 		</Unit>
-<<<<<<< HEAD
 		<Unit filename="src/edition_line/termcap/print_termcap.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -307,14 +309,6 @@
 		<Unit filename="src/edition_line/view_globb.c">
 			<Option compilerVar="CC" />
 		</Unit>
-=======
-		<Unit filename="src/edition_line/termcap/view_curser.c">
-			<Option compilerVar="CC" />
-		</Unit>
->>>>>>> origin
-		<Unit filename="src/edition_line/view_string.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/env/env.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -327,7 +321,10 @@
 		<Unit filename="src/fd.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/free_history.c">
+		<Unit filename="src/gere_history.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/gere_valide_saisi.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/get_file.c">
@@ -382,6 +379,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/parse_cmd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/parseur_history.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/pipe.c">

@@ -56,18 +56,18 @@ char	*loop_cmd(char *prompt, t_param *param, t_history **history)
     {
       signal(SIGWINCH, gere_change_window);
       if ((ret = read(0, buff, 9)) == -1)
-	return (NULL);
+        return (NULL);
       buff[ret] = '\0';
       if (buff[0] == CTRLD && buff[1] == '\0')
-	return (NULL);
+        return (NULL);
       if (buff[0] == '\n' && buff[1] == '\0')
-	return (return_string(param->cmd, param, history));
+        return (return_string(param->cmd, param, history));
       if (get_window_size(param->cmd, param->begin_pos_x) == 1 &&
-	  gere_keyboard(buff, param->cmd, param, history) == 1)
-	{
-	  add_caractere(param->cmd, param, buff[0]);
-	  view(param->cmd, param);
-	}
+          gere_keyboard(buff, param->cmd, param, history) == 1)
+        {
+          add_caractere(param->cmd, param, buff[0]);
+          view(param->cmd, param);
+        }
     }
   return (param->cmd);
 }
@@ -76,10 +76,7 @@ char	*read_cmd(char *prompt, t_param *param, t_history **history)
 {
   if (param->env == 0)
     {
-      if (prompt == NULL)
-	my_putstr(">> ", 1, 3);
-      else
-	my_putstr(prompt, 1, -1);
+      my_putstr(prompt, 1, -1);
       return (get_next_line(0));
     }
   param->cmd = NULL;
