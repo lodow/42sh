@@ -12,7 +12,7 @@
 
 char	*return_string(char *cmd, t_param *param, t_history **history)
 {
-  cmd = return_saisi(cmd, history);
+  parseur_history(cmd);
   if (cmd[0] != '\0' && cmd[0] != '\n')
     add_history(history, cmd);
   my_putstr("\n", 1, 1);

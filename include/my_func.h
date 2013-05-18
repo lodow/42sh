@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Fri May 17 08:24:36 2013 remi robert
+** Last update Sat May 18 09:48:50 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -99,6 +99,7 @@ typedef struct		s_history
 
 typedef struct		s_param
 {
+  int			env;
   int			pos_history;
   char			*cmd;
   int			fd_tty;
@@ -152,9 +153,9 @@ void		clear_cmd(char *cmd, t_param *param);
 void		decal_string(char *cmd, int pos, char caractere);
 int		gere_keyboard(char *buff, char *cmd, t_param *param, t_history **history);
 void		gere_change_window(int sig);
-char		*read_cmd(t_param *param, t_history **history);
+char		*read_cmd(char *prompt, t_param *param, t_history **history);
 void		add_caractere(char *cmd, t_param *param, char caratere);
-char		*init_read_cmd(char *cmd, t_param *param);
+char		*init_read_cmd(char *prompt, char *cmd, t_param *param);
 int		tgetent(char *bp, const char *name);
 int		tgetflag(char *id);
 int		tgetnum(char *id);
@@ -192,5 +193,7 @@ int		recup_nb_history(char *str);
 char		*return_cmd_history_racourci(char *str, t_history **history);
 char		*check_cmd_history(char *str, t_history **history);
 char		*return_saisi(char *cmd, t_history **history);
-
+void		parseur_history(char *cmd);
+void		add_caractere(char *cmd, t_param *param, char caratere);
+void		insert_caractere(char *cmd, t_param *param, char caratere);
 #endif

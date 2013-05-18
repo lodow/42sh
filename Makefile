@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Fri May 17 08:23:48 2013 remi robert
+## Last update Sat May 18 09:49:11 2013 remi robert
 ##
 
 CC	=	gcc
@@ -81,6 +81,7 @@ SRC	= 	$(SRCPATH)/main.c				\
 		$(SRCPATH)/add_history.c			\
 		$(SRCPATH)/gere_history.c			\
 		$(SRCPATH)/gere_valide_saisi.c			\
+		$(SRCPATH)/parseur_history.c			\
 
 ENV	=	$(PATHENV)/env.c				\
 
@@ -122,6 +123,7 @@ SRCLINE	=	$(PATHLINE)main.c				\
 		$(PATHLINE)plus_completation.c			\
 		$(PATHLINE)gere_control_u.c			\
 		$(PATHLINE)return_string.c			\
+		$(PATHLINE)add_caractere.c			\
 
 SRCRED	=	$(PATHRED)/find_redirection.c			\
 		$(PATHRED)/parse_redirection.c			\

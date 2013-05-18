@@ -5,25 +5,10 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Tue Feb 26 21:19:06 2013 remi
-** Last update Tue Mar 19 14:28:27 2013 remi
+** Last update Sat May 18 09:16:07 2013 remi robert
 */
 
 #include "get_next_line.h"
-
-/*
-**      _    _
-**   ,-(|)--(|)-.
-**   \_   ..   _/
-**     \______/
-**       V  V
-**
-**  ///// GET NEXT LINE (new version); \\\\\
-**
-**   Free les str;
-**
-**   ROBERT Rémi
-**
-*/
 
 void	decale_buff(char *buff, int nb)
 {

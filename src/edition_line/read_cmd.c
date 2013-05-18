@@ -5,43 +5,35 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Thu May 16 15:22:19 2013 remi robert
+** Last update Sat May 18 09:48:52 2013 remi robert
 */
 
 #include "42sh.h"
 
-void	insert_caractere(char *cmd, t_param *param, char caratere)
+void	init_prompt_cmd(char *prompt, char *cmd, t_param *param)
 {
-  decal_string(cmd, param->pos, caratere);
-  param->pos += 1;
+  int	indice;
+
+  free(param->str_prompt);
+  param->str_prompt = NULL;
+  if ((param->str_prompt = malloc(my_strlen(prompt) + 1)) == NULL)
+    return ;
+  indice = -1;
+  while (prompt[++indice] != '\0')
+    param->str_prompt[indice] = prompt[indice];
+  param->str_prompt[indice] = '\0';
 }
 
-void	add_caractere(char *cmd, t_param *param, char caratere)
+char	*init_read_cmd(char *prompt, char *cmd, t_param *param)
 {
-  int	size;
-
-  size = my_strlen(cmd);
-  if (caratere >= 32 && caratere <= 126)
-    {
-      if (param->pos == size)
-	{
-	  cmd[param->pos % SIZE_BUFFER] = caratere;
-	  cmd[(param->pos + 1) % SIZE_BUFFER] = '\0';
-	  param->pos += 1;
-	  return ;
-	}
-      else
-	insert_caractere(cmd, param, caratere);
-    }
-}
-
-char	*init_read_cmd(char *cmd, t_param *param)
-{
+  if (prompt != NULL)
+    init_prompt_cmd(prompt, cmd, param);
   if (mod_raw(param->fd_tty) == EXIT_FAILURE)
     {
       my_putstr("Error mod_raw termcap\n", 2, -1);
       return (NULL);
     }
+  my_putstr(param->str_prompt, 1, -1);
   if (SIZE_BUFFER <= 0 ||
       (cmd = malloc(sizeof(char) * SIZE_BUFFER)) == NULL)
     return (NULL);
@@ -54,14 +46,11 @@ char	*init_read_cmd(char *cmd, t_param *param)
   return (cmd);
 }
 
-char	*read_cmd(t_param *param, t_history **history)
+char	*loop_cmd(char *prompt, t_param *param, t_history **history)
 {
   int	ret;
   char	buff[10];
 
-  my_putstr(param->str_prompt, 1, -1);
-  param->cmd = NULL;
-  param->cmd = init_read_cmd(param->cmd, param);
   ret = 1;
   while (ret > 0)
     {
@@ -81,4 +70,20 @@ char	*read_cmd(t_param *param, t_history **history)
 	}
     }
   return (param->cmd);
+}
+
+char	*read_cmd(char *prompt, t_param *param, t_history **history)
+{
+  if (param->env == 0)
+    {
+      if (prompt == NULL)
+	my_putstr(">> ", 1, 3);
+      else
+	my_putstr(prompt, 1, -1);
+      return (get_next_line(0));
+    }
+  param->cmd = NULL;
+  if ((param->cmd = init_read_cmd(prompt, param->cmd, param)) == NULL)
+    return (NULL);
+  return (loop_cmd(prompt, param, history));
 }
