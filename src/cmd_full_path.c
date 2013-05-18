@@ -15,10 +15,6 @@ char	**get_path(char **envp)
   char	**paths;
 
   paths = str_to_wordtab(get_envvar("PATH", envp), ":", 0);
-  if (paths == NULL)
-    {
-      // if you want to set a default path if none, it's here!
-    }
   return (paths);
 }
 
