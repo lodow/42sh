@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Tue Feb 26 21:19:06 2013 remi
-** Last update Sat May 18 09:16:07 2013 remi robert
+** Last update Sat May 18 20:29:11 2013 remi robert
 */
 
 #include "get_next_line.h"
@@ -66,7 +66,7 @@ char		*get_next_line(int fd)
   int		ret;
 
   ret = READ_SIZE - 1;
-  if (fd == -1)
+  if (fd == -1 || ret == -1)
     return (NULL);
   while (ret != 0 && ret == READ_SIZE - 1 && indice <= READ_SIZE - 1)
     {
