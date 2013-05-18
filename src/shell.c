@@ -10,13 +10,12 @@
 
 #include "42sh.h"
 
-void	recalc_prompt(t_sh *shell)
+char	*recalc_prompt(t_sh *shell)
 {
   char	*prompt;
   char	*ps1;
   char	*tmp;
 
-  free(shell->param.str_prompt);
   prompt = NULL;
   if ((ps1 = get_envvar("PS1", shell->env)) != NULL)
     {
@@ -29,15 +28,16 @@ void	recalc_prompt(t_sh *shell)
     }
   if (prompt == NULL)
     prompt = my_strdup("$ ");
-  shell->param.str_prompt = prompt;
+  return (prompt);
 }
 
 void	user_loop(t_sh *shell)
 {
   char	*lign;
+  char	*prompt;
 
-  recalc_prompt(shell);
-  while ((lign = read_cmd(NULL, &(shell->param), &shell->history)) != NULL)
+  prompt = recalc_prompt(shell);
+  while ((lign = read_cmd(prompt, &(shell->param), &shell->history)) != NULL)
     {
       no_fg_jobs_status(shell);
       call_signal_func(shell, 0);
@@ -46,6 +46,8 @@ void	user_loop(t_sh *shell)
       if (MEXIT)
         return ;
       wait_no_fg_grp(shell);
-      recalc_prompt(shell);
+      free(prompt);
+      prompt = recalc_prompt(shell);
     }
+  free(prompt);
 }

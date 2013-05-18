@@ -10,24 +10,9 @@
 
 #include "42sh.h"
 
-void	init_prompt_cmd(char *prompt, char *cmd, t_param *param)
-{
-  int	indice;
-
-  free(param->str_prompt);
-  param->str_prompt = NULL;
-  if ((param->str_prompt = malloc(my_strlen(prompt) + 1)) == NULL)
-    return ;
-  indice = -1;
-  while (prompt[++indice] != '\0')
-    param->str_prompt[indice] = prompt[indice];
-  param->str_prompt[indice] = '\0';
-}
-
 char	*init_read_cmd(char *prompt, char *cmd, t_param *param)
 {
-  if (prompt != NULL)
-    init_prompt_cmd(prompt, cmd, param);
+  param->str_prompt = prompt;
   if (mod_raw(param->fd_tty) == EXIT_FAILURE)
     {
       my_putstr("Error mod_raw termcap\n", 2, -1);
