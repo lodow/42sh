@@ -18,6 +18,8 @@ void	builtin_bg(t_cmd *cmd, t_fds *fd, t_sh *shell)
 
   i = 0;
   nb = 0;
+  if (shell->process_group == NULL)
+    return ;
   if (cmd->argv[1] != NULL)
     nb =  my_getnbr(cmd->argv[1]) - 1;
   while ((shell->process_group[i] != NULL) && (i < nb))

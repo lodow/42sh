@@ -62,16 +62,17 @@ void	parse_redirection(t_grp *grp, char *line)
   i = 0;
   posinstr = 0;
   value[1] = '\0';
-  while (tab[i] != NULL)
-    {
-      file = get_inibiteur_f_mult_wt(line, sepa, tab, i);
-      value[0] = is_in_tab_str(file, sepa) + 1;
-      posinstr += my_strlen(tab[i]) + my_strlen(file);
-      file = parse_file_redirection(line, posinstr, file);
-      grp->redirection = (char**)add_ptr_t_tab((void**)grp->redirection,
-                         (void*)str_cat(value, file));
-      i++;
-    }
+  if (tab != NULL)
+    while (tab[i] != NULL)
+      {
+        file = get_inibiteur_f_mult_wt(line, sepa, tab, i);
+        value[0] = is_in_tab_str(file, sepa) + 1;
+        posinstr += my_strlen(tab[i]) + my_strlen(file);
+        file = parse_file_redirection(line, posinstr, file);
+        grp->redirection = (char**)add_ptr_t_tab((void**)grp->redirection,
+                           (void*)str_cat(value, file));
+        i++;
+      }
 }
 
 void	open_redirection_file(char *file, char *sepa, t_grp *grp, t_sh *shell)
