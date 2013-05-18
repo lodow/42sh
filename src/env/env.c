@@ -86,12 +86,12 @@ char	**add_change_env(char **env, char *var, char *value)
   rm_env(env, var);
   varlen = my_strlen(var) + my_strlen(value) + 1;
   while ((env)[i++] != NULL);
-  if (!(((varegal = malloc((varlen + 1) * sizeof(char))) != NULL)
+  if (!(((varegal = malloc((varlen + 2) * sizeof(char))) != NULL)
         && ((newenv = malloc((i + 2) * sizeof(char*))) != NULL)))
     return (NULL);
   i = 0;
   my_strncpy(varegal, var, -1);
-  varegal[my_strlen(varegal)] = '=';
+  my_strncpy(&(varegal[my_strlen(varegal)]), "=", -1);
   my_strncpy(&(varegal[my_strlen(var) + 1]), value, -1);
   while ((env)[i] != NULL)
     {

@@ -42,7 +42,6 @@
 # define GETFLAG(x, y) ((x) & (y))
 # define FLAGPOS(x) (1 << (x))
 
-
 # define EXIT_F_POS 31
 # define MEXIT GETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS))
 

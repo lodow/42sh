@@ -10,67 +10,42 @@
 
 #include "42sh.h"
 
-char	*builtin_cd_env(t_sh *shell, char *path, char *temp)
+char		*builtin_cd_getcwd()
 {
-  getcwd(temp, 4095);
-  path = malloc(my_strlen(temp) + 5);
-  my_strncpy(path, "PWD=", -1);
-  my_strncpy(&(path[4]), temp, -1);
-  if (get_envvar("PWD", shell->env) != NULL)
-    rm_ptr_f_tab((void **)shell->env, get_envvar("PWD", shell->env) - 4);
-  shell->env = (char **) add_ptr_t_tab((void **)shell->env, path);
-  return (temp);
-}
+  char	*res;
 
-char	*cd_new_dir(t_cmd *cmd, t_fds *fd, t_sh *shell)
-{
-  char		temp[4096];
-  char		*path;
-  char		*old_pwd;
-
-  getcwd(temp, 4095);
-  old_pwd = get_envvar("OLD_PWD", shell->env);
-  if (chdir(cmd->argv[1]))
+  if ((res = getcwd(NULL, 0)) == NULL)
     {
-      my_perror("cd ");
+      my_perror("Getcwd");
       return (NULL);
     }
-  if (old_pwd != NULL)
-    rm_ptr_f_tab((void **) shell->env, (void *) old_pwd - 8);
-  path = malloc(my_strlen(temp) + 9);
-  if (path != NULL)
-    {
-      my_strncpy(path, "OLD_PWD=", -1);
-      my_strncpy(&(path[8]), temp, -1);
-      shell->env = (char **) add_ptr_t_tab((void **)shell->env, path);
-    }
-  return (path);
+  return (res);
 }
 
 void		builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
-  char		temp[4096];
-  char		*path;
-  char		*old_pwd;
+  char		*cur_path;
+  char		*new_path;
+  char		*tmp_path;
+  char		*usr_path;
 
-  getcwd(temp, 4095);
-  temp[4095] = '\0';
-  path = NULL;
-  old_pwd = get_envvar("OLD_PWD", shell->env);
-  if ((cmd->argv[1] != NULL) && (my_strncmp(cmd->argv[1], "-", -1) == 0)
-      && old_pwd != NULL)
+  if ((usr_path = cmd->argv[1]) == NULL)
+    usr_path = get_envvar("HOME", shell->env);
+  if ((cur_path = builtin_cd_getcwd()) == NULL)
+    return ;
+  if (my_strncmp(usr_path, "-", -1) == 0)
     {
-      if (chdir(old_pwd) == -1)
+      if (((tmp_path = get_envvar("OLD_PWD", shell->env)) == NULL)
+          || (check_perror("cd", chdir(tmp_path)) == -1))
         return ;
-      rm_ptr_f_tab((void **) shell->env, (void *) old_pwd - 8);
-      path = malloc(my_strlen(temp) + 9);
-      my_strncpy(path, "OLD_PWD=", -1);
-      if (path != NULL)
-	my_strncpy(&(path[8]), temp, -1);
-      shell->env = (char **) add_ptr_t_tab((void **)shell->env, path);
     }
-  else if (cmd->argv[1] != NULL)
-    path = cd_new_dir(cmd, fd, shell);
-  if (path != NULL)
-    builtin_cd_env(shell, path, temp);
+  else if ((usr_path != NULL)
+           && (check_perror("cd", chdir(usr_path)) == -1))
+    return ;
+  if ((new_path = builtin_cd_getcwd()) == NULL)
+    return ;
+  shell->env = add_change_env(shell->env, "PWD", new_path);
+  shell->env = add_change_env(shell->env, "OLD_PWD", cur_path);
+  free(new_path);
+  free(cur_path);
 }
