@@ -71,7 +71,7 @@ char		*get_next_line(int fd)
   while (ret > 0 && ret == READ_SIZE - 1 && indice <= READ_SIZE - 1)
     {
       if ((ret = read(fd, &buff[indice], READ_SIZE - indice)) == -1)
-	return (NULL);
+        return (NULL);
       indice = indice + ret;
       buff[indice] = '\0';
     }
