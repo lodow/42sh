@@ -28,7 +28,7 @@ void	recalc_prompt(t_sh *shell)
         }
     }
   if (prompt == NULL)
-    prompt = my_strdup("$ ");;
+    prompt = my_strdup("$ ");
   shell->param.str_prompt = prompt;
 }
 

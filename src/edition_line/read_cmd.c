@@ -78,7 +78,7 @@ char	*read_cmd(char *prompt, t_param *param, t_history **history)
 
   if ((tty = isatty(0)) == 0)
     param->fallback = 0;
-  else if (check_perror("TTY", tty) == -1)
+  else if (check_perror("stdin", tty) == -1)
     return (NULL);
   if (param->fallback == 0)
     {
