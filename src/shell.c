@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 18 19:14:37 2013 remi robert
+** Last update Sat May 18 19:17:23 2013 remi robert
 */
 
 #include "42sh.h"
@@ -17,6 +17,7 @@ void	recalc_prompt(t_sh *shell)
   char	*tmp;
 
   free(shell->param.str_prompt);
+  prompt = NULL;
   if ((ps1 = get_envvar("PS1", shell->env)) != NULL)
     {
       tmp = my_strdup(ps1);
@@ -24,21 +25,17 @@ void	recalc_prompt(t_sh *shell)
         {
           if (prompt != tmp)
             free(tmp);
-          shell->param.str_prompt = prompt;
-        }
-      else
-        {
-          free(tmp);
-          shell->param.str_prompt = NULL;
         }
     }
-  else
-    shell->param.str_prompt = my_strdup("$ ");
+  if (prompt == NULL)
+    prompt = my_strdup("$ ");;
+  shell->param.str_prompt = prompt;
 }
 
-void	user_loop(t_sh *shell)
+void	user_loop(t_sh * shell)
 {
   char	*lign;
+
 
   if (shell->param.fallback == 1)
     recalc_prompt(shell);
