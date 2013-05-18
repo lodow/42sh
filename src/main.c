@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:31:22 2013 maxime lavandier
-** Last update Sat May 18 09:31:26 2013 remi robert
+** Last update Sat May 18 13:25:57 2013 remi robert
 */
 
 #include "42sh.h"
@@ -49,8 +49,11 @@ void	exit_shell(t_sh *shell)
   free_ptr_tab((void**)shell->alias_tab, &free);
   free_ptr_tab((void**)shell->process_group, (void*)(&free_process_group));
   /* clear_history(shell->history); */
-  free(shell->param.str_prompt);
-  close(shell->param.fd_tty);
+  if (shell->param.env == 1)
+    {
+      free(shell->param.str_prompt);
+      close(shell->param.fd_tty);
+    }
   my_putstr("exit\n", 1, -1);
 }
 

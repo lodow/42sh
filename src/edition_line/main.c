@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 11:42:47 2013 remi robert
-** Last update Wed May 15 10:39:56 2013 remi robert
+** Last update Sat May 18 10:00:43 2013 remi robert
 */
 
 #include "42sh.h"
@@ -35,30 +35,3 @@ int	init_termcap(char **env, t_param *param)
     }
   return (1);
 }
-
-/* int		main(int argc, char **argv, char **env) */
-/* { */
-/*   char		*s; */
-/*   char		*tab; */
-
-/*   (void)argc; */
-/*   (void)argv; */
-/*   if ((g_param = malloc(sizeof(t_param))) == NULL || */
-/*       init_termcap(env, g_param) == 0) */
-/*     return (0); */
-/*   init_capacity_termcap(&(g_param->termcap)); */
-/*   g_param->prompt = "PROMPT >> "; */
-/*   g_param->buff_copy[0] = '\0'; */
-/*   s = read_cmd(g_param); */
-/*   my_putstr(g_param->buff_copy); */
-/*   free(s); */
-/*   if (reset_save_mod(RESTORE, g_param->fd_tty) == EXIT_FAILURE) */
-/*     { */
-/*       my_putstr("Error RESTORE termcap\n"); */
-/*       return (0); */
-/*     } */
-/*   /\* printf ("%d %d\n", param.y, return_x()); *\/ */
-/*   /\* printf("%s[%d][%d]%s\n", F_VERT, param.begin_pos_x, param.begin_pos_y, REZ); *\/ */
-/*   /\* printf("%s[%d][%d]%s\n", F_VERT, param.pos, REZ); *\/ */
-/*   return (0); */
-/* } */

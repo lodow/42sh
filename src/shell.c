@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri May 17 12:01:20 2013 remi robert
+** Last update Sat May 18 13:25:13 2013 remi robert
 */
 
 #include "42sh.h"
@@ -40,7 +40,8 @@ void	user_loop(t_sh *shell)
 {
   char	*lign;
 
-  recalc_prompt(shell);
+  if (shell->param.env == 1)
+    recalc_prompt(shell);
   while ((isatty(0) > 0) &&
          ((lign = read_cmd(NULL, &(shell->param), &shell->history/* ,, &shell->history shell->env */))
           != NULL))
@@ -52,6 +53,7 @@ void	user_loop(t_sh *shell)
       if (MEXIT)
         return ;
       wait_no_fg_grp(shell);
-      recalc_prompt(shell);
+      if (shell->param.env == 1)
+	recalc_prompt(shell);
     }
 }
