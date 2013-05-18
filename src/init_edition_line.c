@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed May 15 08:47:35 2013 remi robert
-** Last update Thu May 16 11:21:38 2013 remi robert
+** Last update Sat May 18 20:38:16 2013 remi robert
 */
 
 #include "42sh.h"
@@ -14,11 +14,11 @@ int	init_edition_line(char **env, t_param *param)
 {
   char	*s;
 
+  param->cmd = NULL;
+  param->str_prompt = NULL;
   if ((param->fd_tty = open("/dev/tty", O_RDWR)) == -1 ||
       (s = get_envvar("TERM", env)) == NULL || tgetent(NULL, s) != 1)
     return (0);
-  param->cmd = NULL;
-  param->str_prompt = NULL;
   my_putstr_termcap(param->fd_tty, NULL);
   if (reset_save_mod(SAVE, param->fd_tty) == EXIT_FAILURE)
     {
