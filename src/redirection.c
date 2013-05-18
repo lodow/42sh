@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 18 18:09:24 2013 remi robert
+** Last update Sat May 18 18:38:47 2013 remi robert
 */
 
 #include "42sh.h"
@@ -58,8 +58,7 @@ void	parse_redirection(t_grp *grp, char *line)
 
   redirection_init_separator(sepa);
   grp->redirection = NULL;
-  if ((tab = mult_str_to_wordtab(line, sepa, 1)) == NULL)
-    return ;
+  tab = mult_str_to_wordtab(line, sepa, 1);
   i = 0;
   posinstr = 0;
   value[1] = '\0';
