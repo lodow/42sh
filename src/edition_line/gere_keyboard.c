@@ -1,95 +1,79 @@
 /*
-** gere_keyboard.c for gere_keyboard in /home/remi/Projet/edition_line
+** gere_keyboard.c for gere_èkeyboard in /home/remi/Dropbox/Projet/edition_ligne_termcap
 **
 ** Made by remi robert
 ** Login   <robert_r@epitech.net>
 **
-** Started on  Mon Apr  1 16:58:28 2013 remi robert
-** Last update Thu May  2 09:38:11 2013 remi robert
+** Started on  Sun May  5 16:20:31 2013 remi robert
+** Last update Thu May 16 15:49:42 2013 remi robert
 */
 
-#include "my_func.h"
+#include "42sh.h"
 
-void	set_pos_left(t_param **param)
+void	gere_posright(char *cmd, t_param *param)
 {
-  (*param)->current_pos.x -= 1;
-  if ((*param)->current_pos.y == (*param)->begin_pos.y &&
-      (*param)->current_pos.x < (*param)->begin_pos.x)
+  if (param->pos + 1 <= my_strlen(cmd))
     {
-      (*param)->current_pos.x += 1;
-      return ;
-    }
-  if ((*param)->current_pos.x <= 0)
-    {
-      if ((*param)->current_pos.y > (*param)->begin_pos.y)
+      if (param->x + 1 >= return_x())
 	{
-	  (*param)->current_pos.x = return_x((*param)->fd_tty);
-	  (*param)->current_pos.y -= 1;
+	  apply_termcap(param->termcap.str_do, 0, param->fd_tty);
+	  param->x = 0;
+	  param->y += 1;
 	}
       else
-	(*param)->current_pos.x = 0;
+	{
+	  apply_termcap(param->termcap.str_ri, 0, param->fd_tty);
+	  param->x += 1;
+	}
+      param->pos += 1;
     }
 }
 
-void	set_pos_right(t_param **param)
+void	gere_posleft(char *cmd, t_param *param)
 {
-  (*param)->current_pos.x += 1;
-  if (get_len_string_with_pos(*param) >= (*param)->len_string)
-    (*param)->current_pos.x -= 1;
-  if ((*param)->current_pos.x >= return_x((*param)->fd_tty))
+  if (param->pos - 1 >= 0)
     {
-      if ((*param)->current_pos.y + 1 <= return_y((*param)->fd_tty))
+      if (param->x <= 0)
 	{
-	  (*param)->current_pos.x = 0;
-	  (*param)->current_pos.y += 1;
+	  apply_termcap(param->termcap.str_up, 0, param->fd_tty);
+	  apply_termcap(param->termcap.str_RI, return_x(), param->fd_tty);
+	  param->x = return_x() - 1;
+	  param->y -= 1;
 	}
       else
-      	(*param)->current_pos.x = return_x((*param)->fd_tty);
+	{
+	  apply_termcap(param->termcap.str_le, 0, param->fd_tty);
+	  param->x -= 1;
+	}
+      param->pos -= 1;
     }
 }
 
-int		alone_caractere_in_string(t_string *pcourant,
-					  t_param **param)
+int	gere_keyboard(char *buff, char *cmd, t_param *param,
+		      t_history **history)
 {
-  t_string	*index;
-  int		indice;
-
-  if ((*param)->string == NULL)
-    return (FALSE);
-  index = (*param)->string;
-  indice = 0;
-  while (index->next != NULL)
-    {
-      indice = indice + 1;
-      index = index->next;
-    }
-  if (indice == 0)
-    {
-      (*param)->string = NULL;
-      free(pcourant);
-      return (FALSE);
-    }
-  return (OK);
-}
-
-void	gere_keyboard(t_param **param, char *buff,
-		      t_history **history, char **env)
-{
-  if (buff[0] == 9 && buff[1] == '\0')
-    gere_globb(param, env);
-  if (str_cmp(buff, BEGIN_STR) == 1 || (buff[0] == CTRLA && buff[1] == '\0'))
-    begin_str(*param);
-  if (str_cmp(buff, END_STR) == 1 || buff[0] == CTRLE)
-    end_str(*param);
-  if (str_cmp(buff, STR_LEFT) == 1)
-    set_pos_left(param);
   if (str_cmp(buff, STR_RIGHT) == 1)
-    set_pos_right(param);
+    {
+      gere_posright(cmd, param);
+      return (0);
+    }
+  if (str_cmp(buff, STR_LEFT) == 1)
+    {
+      gere_posleft(cmd, param);
+      return (0);
+    }
   if (str_cmp(buff, STR_UP) == 1 || str_cmp(buff, STR_DOWN) == 1)
-    gere_history(param, buff, history);
-  if (buff[0] == DEL && buff[1] == END)
-    gere_suppr(param);
-  if (buff[0] == ESC && buff[1] == CRO && buff[2] == SUPPR)
-    gere_delete(param);
-  curseur((*param)->current_pos.x, (*param)->current_pos.y, (*param)->fd_tty);
+    {
+      gere_history(cmd, param, *history, buff);
+      return (0);
+    }
+  if ((buff[0] == DEL && buff[1] == END) ||
+      (buff[0] == ESC && buff[1] == CRO && buff[2] == SUPPR))
+    {
+      gere_delete(cmd, param, buff);
+      return (0);
+    }
+  if (buff[0])
+    return (gere_control(cmd, param, buff));
+  return (1);
 }

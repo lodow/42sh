@@ -5,18 +5,43 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Feb  5 08:45:15 2013 remi robert
-** Last update Tue Apr 30 11:33:03 2013 remi robert
+** Last update Sat May 18 17:54:28 2013 remi robert
 */
 
-#include "my_func.h"
+#include "42sh.h"
 
-int	curseur(int x, int y, int fd)
+int	up_curser(void)
+{
+  char	*s;
+
+  if ((s = tgetstr("up", NULL)) == NULL)
+    return (EXIT_FAILURE);
+  my_putstr_termcap(-1, s);
+  return (EXIT_SUCCESS);
+}
+
+int	do_curser(void)
+{
+  char	*s;
+
+  if ((s = tgetstr("do", NULL)) == NULL)
+    return (EXIT_FAILURE);
+  my_putstr_termcap(-1, s);
+  return (EXIT_SUCCESS);
+}
+
+int	curseur(int x, int y)
 {
   char	*s;
   char	*curser;
 
-  s = tgetstr("cm", NULL);
+  if ((s = tgetstr("cm", NULL)) == NULL)
+    return (EXIT_FAILURE);
   curser = tgoto(s, x, y);
-  my_putstr(curser, fd, -1);
-  return (0);
+  printf("%s", ROUGE);
+  fflush(stdout);
+  my_putstr_termcap(-1, curser);
+  printf("%s", REZ);
+  fflush(stdout);
+  return (EXIT_SUCCESS);
 }

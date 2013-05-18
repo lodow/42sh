@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Sat May 18 16:39:50 2013 remi robert
 */
 
 #include "42sh.h"
@@ -20,8 +20,8 @@ char	*usr_input_retrieve(t_sh *shell, char *end)
   res = NULL;
   prompt = shell->param.str_prompt;
   shell->param.str_prompt = ">";
-  while (((tmp = read_cmd(&(shell->param),
-                          &(shell->history), shell->env)) != NULL)
+  while (((tmp = read_cmd(prompt, &(shell->param),
+                          &(shell->history))) != NULL)
          && (my_strncmp(tmp, end, -1)))
     {
       tmp2 = str_cat(tmp, "\n");

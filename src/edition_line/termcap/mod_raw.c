@@ -5,43 +5,64 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 21:58:20 2013 remi robert
-** Last update Thu May  2 21:08:05 2013 remi robert
+** Last update Tue May 14 20:53:46 2013 remi robert
 */
 
-#include "my_func.h"
 #include "42sh.h"
 
-int	reset_mod(struct termios t, int tty)
+int			reset_save_mod(int type, int fd)
 {
-  char	*s;
+  static struct termios	t;
+  static int		pass = 0;
 
-  if ((s = tgetstr("ve", NULL)) == NULL)
-    return (EXIT_FAILURE);
-  my_putstr(s, tty, -1);
-  if (tcsetattr(tty, TCSANOW, &t) == -1)
+  if (type == RESTORE)
     {
-      my_perror("tcsetattr");
+      if (pass == 0)
+	{
+	  my_putstr("Error mod not save\n", 2, -1);
+	  return (EXIT_FAILURE);
+	}
+      return (reset_mod(t, fd));
+    }
+  if (type == SAVE)
+    {
+      if (tcgetattr(fd, &t) == -1)
+	{
+	  my_putstr("Erreur getattr reset_save_mod\n", 2, -1);
+	  return (EXIT_FAILURE);
+	}
+      pass = 1;
+      return (EXIT_SUCCESS);
+    }
+  return (EXIT_FAILURE);
+}
+
+int	reset_mod(struct termios t, int fd)
+{
+  if (tcsetattr(fd, TCSANOW, &t) == -1)
+    {
+      my_putstr("Erreur setattr reset\n", 2, -1);
       return (EXIT_FAILURE);
     }
   return (EXIT_SUCCESS);
 }
 
-int			mod_raw(int tty)
+int			mod_raw(int fd)
 {
   struct termios	t;
 
-  if (tcgetattr(tty, &t) == -1)
+  if (tcgetattr(fd, &t) == -1)
     {
-      my_perror("tcgetattr");
+      my_putstr("Erreur getattr mod_raw\n", 2, -1);
       return (EXIT_FAILURE);
     }
   t.c_lflag = t.c_lflag & ~ICANON;
   t.c_lflag = t.c_lflag & ~ECHO;
   t.c_cc[VMIN] = 1;
   t.c_cc[VTIME] = 0;
-  if (tcsetattr(tty, TCSANOW, &t) == -1)
+  if (tcsetattr(fd, TCSANOW, &t) == -1)
     {
-      my_perror("tcsetattr");
+      my_putstr("Erreur setattr mod_raw\n", 2, -1);
       return (EXIT_FAILURE);
     }
   return (EXIT_SUCCESS);

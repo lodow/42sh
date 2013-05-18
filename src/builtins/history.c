@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr 12 19:14:58 2013 remi robert
-** Last update Sun Apr 14 18:02:25 2013 remi robert
+** Last update Tue May 14 18:54:05 2013 remi robert
 */
 
 #include "42sh.h"
@@ -19,7 +19,7 @@ void	builtin_history(t_cmd *cmd, t_fds *fd, t_sh *shell)
     }
   if (cmd->argv[1] != NULL && str_cmp(cmd->argv[1], "-c") == 1)
     {
-      clear_history((shell->history));
+      /* clear_history((shell->history)); */
       shell->history = NULL;
       return ;
     }

@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Tue May  7 14:28:52 2013 maxime lavandier
+** Last update Sat May 18 17:50:53 2013 remi robert
 */
 
 #ifndef		SH42_H
@@ -28,6 +28,7 @@
 # include <dirent.h>
 # include "get_file.h"
 # include "my_func.h"
+# include "couleur.h"
 
 # define NB_BUILTINS 14
 # define NB_CONFFUNC 2
@@ -168,10 +169,10 @@ char	**add_change_env(char **env, char *var, char *value);
 /*
 ** Ptr tab
 */
-int	ptr_tab_size(void **tab);
-void	rm_ptr_f_tab(void **tab, void *ptr);
-void	**add_ptr_t_tab(void **tab, void *add);
-void	free_ptr_tab(void **tab, void (*f)(void *ptr));
+int	ptr_tab_size(void **char_tab);
+void	rm_ptr_f_tab(void **char_tab, void *ptr);
+void	**add_ptr_t_tab(void **char_tab, void *add);
+void	free_ptr_tab(void **char_tab, void (*f)(void *ptr));
 void	**concat_ptr_tab(void **tab1, void **tab2);
 
 /*
@@ -190,7 +191,7 @@ void	tr_str(char *str, char in, char to);
 char	*my_uint_strbase(unsigned int nb, char * base);
 int	my_getnbr(char *str);
 void	my_strncpy_force(char *str1, char *str2, int size);
-void	del_slash_quote(char **tab);
+void	del_slash_quote(char **char_tab);
 char	*my_stradd(char *str, char *add, int size_add);
 char	*str_cat(char *str1, char *str2);
 
@@ -198,8 +199,8 @@ char	*str_cat(char *str1, char *str2);
 ** Str to wordtab
 */
 char	**str_to_wordtab(char *str, char *delim, char inibiteur);
-void	rm_empty_str_f_tab(char **tab);
-void	free_wordtab(char **tab, int rempli, int lenght_malloc);
+void	rm_empty_str_f_tab(char **char_tab);
+void	free_wordtab(char **char_tab, int rempli, int lenght_malloc);
 
 /*
 ** Signals
@@ -313,7 +314,7 @@ void	check_and_load_backquote(char **line, t_sh *shell);
 void	del_slash_quote(char **tab);
 void	my_strncpy_force(char *, char *, int);
 char	**mult_str_to_wordtab(char *line, char **sepa, int opt);
-char	*get_inibiteur_f_mult_wt(char *line, char **sepa, char **tab, int field);
+char	*get_inibiteur_f_mult_wt(char *line, char **sepa, char **char_tab, int field);
 char	**get_path(char **envp);
 
 /*
@@ -321,5 +322,16 @@ char	**get_path(char **envp);
 */
 void	expand_reg_epx_on_argv(char ***argv);
 char	**expand_reg_exp(char *regexp);
+
+/*
+** History
+*/
+int	view_history(char *path, char **argv, t_sh *shell);
+void	clear_history(t_history *ptr);
+int	load_history_f_file(char *line, t_sh *shell);
+void   	rempl_new_history(t_history **elem, char *str);
+void	add_history(t_history **ptete, char *cmd);
+void	gere_history(char *cmd, t_param *param,
+		     t_history *history, char *buff);
 
 #endif

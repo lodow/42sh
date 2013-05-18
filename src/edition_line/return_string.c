@@ -1,57 +1,22 @@
 /*
-** return_string.c for return_string in /home/remi/Projet/42sh/edition_line
+** return_string.c for return_string in /home/remi/42sh
 **
-** Made by remi
-** Login   <remi@epitech.net>
+** Made by remi robert
+** Login   <robert_r@epitech.net>
 **
-** Started on  Wed Mar 20 16:11:46 2013 remi
-** Last update Sun Apr 14 16:08:10 2013 remi robert
+** Started on  Thu May 16 11:18:24 2013 remi robert
+
 */
 
-#include "my_func.h"
+#include "42sh.h"
 
-int		number_caractere(t_string *ptr)
+char	*return_string(char *cmd, t_param *param, t_history **history)
 {
-  t_string	*pcourant;
-  int		indice;
-
-  if (ptr == NULL)
-    return (FALSE);
-  indice = 0;
-  pcourant = ptr;
-  while (pcourant != NULL)
-    {
-      indice = indice + 1;
-      pcourant = pcourant->next;
-    }
-  return (indice + 1);
-}
-
-char		*return_string(t_string *ptr)
-{
-  char		*str;
-  int		nb_string;
-  int		indice;
-  t_string	*pcourant;
-
-  if (ptr == NULL)
-    {
-      if ((str = malloc(1)) == NULL)
-	return (NULL);
-      str[0] = END;
-      return (str);
-    }
-  if ((nb_string = number_caractere(ptr)) == FALSE ||
-      (str = malloc(nb_string)) == NULL)
-    return (NULL);
-  indice = 0;
-  pcourant = ptr;
-  while (indice < nb_string -1 && pcourant != NULL)
-    {
-      str[indice] = pcourant->caractere;
-      indice = indice + 1;
-      pcourant = pcourant->next;
-    }
-  str[indice] = '\0';
-  return (str);
+  parseur_history(cmd);
+  if (cmd[0] != '\0' && cmd[0] != '\n')
+    add_history(history, cmd);
+  my_putstr("\n", 1, 1);
+  if (reset_save_mod(RESTORE, param->fd_tty) == EXIT_FAILURE)
+    my_putstr("Error SAVE termcap\n", 2, -1);
+  return (cmd);
 }

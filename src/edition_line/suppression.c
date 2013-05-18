@@ -1,84 +1,50 @@
 /*
-** suppression.c for suppression in /home/remi/Projet/edition_line
+** suppression.c for suppression in /home/remi/Dropbox/Projet/edition_ligne_termcap
 **
 ** Made by remi robert
 ** Login   <robert_r@epitech.net>
 **
-** Started on  Wed Apr  3 08:07:53 2013 remi robert
-** Last update Mon Apr 15 08:36:13 2013 remi robert
+** Started on  Mon May  6 08:07:49 2013 remi robert
+** Last update Sat May 18 15:54:14 2013 remi robert
 */
 
-#include "my_func.h"
+#include "42sh.h"
 
-int		gere_first_elem(t_param **param)
+void	decal_pointeur(t_param *param)
 {
-  t_string	*del_elem;
-
-  if (get_len_string_with_pos(*param) != -1)
-    return (0);
-  (*param)->len_string -= 1;
-  if ((*param)->string->next == NULL)
+  if (param->pos == 0)
+    return ;
+  param->pos -= 1;
+  param->x -= 1;
+  if (param->x < 0)
     {
-      free ((*param)->string);
-      (*param)->string = NULL;
-      return (1);
+      param->x = return_x() - 1;
+      if (param->y > 0)
+  	param->y -= 1;
     }
-  del_elem = (*param)->string;
-  (*param)->string = (*param)->string->next;
-  (*param)->string->back = NULL;
-  free(del_elem);
-  return (1);
 }
 
-void		gere_delete(t_param **param)
+void	gere_delete(char *cmd, t_param *param, char *buff)
 {
-  int		indice;
-  t_string	*pcourant;
-  t_string	*del_elem;
+  int	size;
+  int	indice;
 
-  if (*param == NULL || (*param)->string == NULL ||
-      gere_first_elem(param) == 1 ||
-      ((indice = get_len_string_with_pos(*param)) == (*param)->len_string ||
-       (pcourant = get_pos_string((*param)->string, indice)) == NULL) ||
-      pcourant->next == NULL)
+  size = my_strlen(cmd);
+  if (cmd == NULL || cmd[0] == '\0' || size == 0 || param->pos < 0 ||
+      param->pos > size || (param->pos == 0 &&
+			    (buff[0] == DEL && buff[1] == END)))
     return ;
-  del_elem = pcourant->next;
-  (*param)->len_string -= 1;
-  if (pcourant->next->next != NULL)
-    {
-      pcourant->next = pcourant->next->next;
-      pcourant->next->back = pcourant;
-    }
+  if ((buff[0] == DEL && buff[1] == END))
+    indice = param->pos - 1;
   else
-    pcourant->next = NULL;
-  free(del_elem);
-}
-
-void		gere_suppr(t_param **param)
-{
-  int		indice;
-  t_string	*pcourant;
-  t_string	*del_elem;
-
-  indice = get_len_string_with_pos(*param);
-  if ((*param) == NULL || (*param)->string == NULL ||
-      (pcourant = get_pos_string((*param)->string, indice)) == NULL ||
-      alone_caractere_in_string(pcourant, param) == FALSE)
-    return ;
-  del_elem = pcourant;
-  (*param)->len_string -= 1;
-  if (pcourant->next != NULL && pcourant->back != NULL)
+    indice = param->pos;
+  while (indice + 1 < SIZE_BUFFER && cmd[(indice + 1) % SIZE_BUFFER] != '\0')
     {
-      pcourant->back->next = pcourant->next;
-      pcourant->next->back = pcourant->back;
+      cmd[indice] = cmd[indice + 1];
+      indice += 1;
     }
-  if (pcourant->next == NULL)
-    pcourant->back->next = NULL;
-  if (pcourant->back == NULL)
-    {
-      pcourant->next->back = NULL;
-      (*param)->string = pcourant->next;
-    }
-  set_pos_left(param);
-  free(del_elem);
+  cmd[indice % SIZE_BUFFER] = '\0';
+  if ((buff[0] == DEL && buff[1] == END) && param->pos - 1 >= 0)
+    decal_pointeur(param);
+  view(cmd, param);
 }
