@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Sat May 18 17:50:53 2013 remi robert
+** Last update Sat May 18 22:08:47 2013 luc sinet
 */
 
 #ifndef		SH42_H
@@ -36,13 +36,6 @@
 # define PIPE_READ 0
 # define PIPE_WRITE 1
 
-# define ECHO_5(y)	(y == 't' ? '\t' : y == 'v' ? '\v' : -1)
-# define ECHO_4(y)	(y == 'n' ? '\n' : y == 'r' ? '\r' : ECHO_5(y))
-# define ECHO_3(y)	(y == 'e' ? '\e' : y == 'f' ? '\f' : ECHO_4(y))
-# define ECHO_2(y)	(y == 'b' ? '\b' : y == 'c' ? -2 : ECHO_3(y))
-# define ECHO_1(y)	(y == '\\' ? '\\' : y == 'a' ? '\a' : ECHO_2(y))
-
-# define SETFLAG(x, y) ((x) |= (y))
 # define UNSETFLAG(x, y) ((x) &= ~(y))
 # define SWITCHFLAG(x, y) ((x) ^= (y))
 # define GETFLAG(x, y) ((x) & (y))

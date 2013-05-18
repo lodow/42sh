@@ -5,10 +5,26 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Apr 15 21:59:40 2013 maxime lavandier
+** Last update Sat May 18 22:09:11 2013 luc sinet
 */
 
 #include "42sh.h"
+
+char	replace_carac(char carac)
+{
+  char	*comp;
+  int	x;
+
+  comp = "\\\\a\ab\be\ef\fn\nr\rt\tv\v";
+  x = 0;
+  if (carac == 'c')
+    return (-2);
+  while (comp[x] && carac != comp[x])
+    ++x;
+  if (!comp[x])
+    return (-1);
+  return (comp[x + 1]);
+}
 
 void	builtin_echo_putstr(char *str)
 {
@@ -20,7 +36,7 @@ void	builtin_echo_putstr(char *str)
     {
       if (str[i] == '\\')
 	{
-	  temp = ECHO_1(str[i + 1]);
+	  temp = replace_carac(str[i + 1]);
 	  if (temp == -1)
 	    my_putchar('\\');
 	  else
