@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Thu May 16 15:49:25 2013 remi robert
+** Last update Sat May 18 17:50:53 2013 remi robert
 */
 
 #ifndef		SH42_H
@@ -28,6 +28,7 @@
 # include <dirent.h>
 # include "get_file.h"
 # include "my_func.h"
+# include "couleur.h"
 
 # define NB_BUILTINS 14
 # define NB_CONFFUNC 2

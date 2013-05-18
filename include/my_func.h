@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Sat May 18 15:53:49 2013 remi robert
+** Last update Sat May 18 17:52:44 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -50,14 +50,6 @@
 # define END_STR     	"\x1B\x4F\x46"
 # define SIZE_BUFFER	10240
 # define CLOSE_FD_TTY	-2
-# define NOIR		0
-# define ROUGE		1
-# define VERT		2
-# define JAUNE		3
-# define BLEU		4
-# define MAGENTA	5
-# define CYAN		6
-# define BLANC		7
 # define RESTORE	1
 # define SAVE		0
 # define POSCURSEUR	"\033[6n"
