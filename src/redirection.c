@@ -74,7 +74,7 @@ void	parse_redirection(t_grp *grp, char *line)
     }
 }
 
-void	open_redirection_file(char *file, char *sepa, t_grp *grp)
+void	open_redirection_file(char *file, char *sepa, t_grp *grp, t_sh *shell)
 {
   int	tmpfd;
   int	*fd;
@@ -85,7 +85,9 @@ void	open_redirection_file(char *file, char *sepa, t_grp *grp)
   if (!my_strncmp(sepa, "<", -1))
     tmpfd = open(file, O_RDONLY);
   if (!my_strncmp(sepa, "<<", -1))
-    tmpfd = dred_left(file);
+    tmpfd = dred_left(file, shell);
+  if (MEXIT)
+    return ;
   if (!my_strncmp(sepa, ">", -1) || !my_strncmp(sepa, "2>", -1))
     tmpfd = open(file, O_WRONLY | O_CREAT | O_TRUNC, REDI_FRIGHT);
   if (!my_strncmp(sepa, ">>", -1) || !my_strncmp(sepa, "2>>", -1))
@@ -102,7 +104,7 @@ void	open_redirection_file(char *file, char *sepa, t_grp *grp)
     }
 }
 
-int	open_redirection(t_grp *grp)
+int	open_redirection(t_grp *grp, t_sh *shell)
 {
   int	i;
   int	red_id;
@@ -116,7 +118,9 @@ int	open_redirection(t_grp *grp)
   while ((red = grp->redirection[i]) != NULL)
     {
       if (((red_id = red[0] - 1) != -1) && (my_strlen(red) > 1))
-        open_redirection_file(&(red[1]), sepa[red_id], grp);
+        open_redirection_file(&(red[1]), sepa[red_id], grp, shell);
+      if (MEXIT)
+        return (0);
       i++;
     }
   if (grp->fd.stdin == -1 || grp->fd.stdout == -1 || grp->fd.stderr == -1)

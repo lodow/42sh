@@ -21,7 +21,7 @@ int	group_process_group(t_grp *pipeline)
   if ((pipeline->cmds != NULL) && (pipeline->cmds[0] != NULL))
     {
       if ((pgid = pipeline->cmds[0]->pid.pid) != -1)
-        if (setpgid(pgid, pgid) == -1)
+        if (check_perror("Setpgid", setpgid(pgid, pgid)) == -1)
           return (-1);
     }
   else
@@ -29,7 +29,7 @@ int	group_process_group(t_grp *pipeline)
   while (pipeline->cmds[i] != NULL)
     {
       if (((tmppid = pipeline->cmds[i]->pid.pid) != -1) && (pgid != -1))
-        if (setpgid(tmppid, pgid) == -1)
+        if (check_perror("Setpgid", setpgid(tmppid, pgid)) == -1)
           return (-1);
       i++;
     }

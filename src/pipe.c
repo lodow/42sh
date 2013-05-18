@@ -15,7 +15,10 @@ int	create_pipe(t_grp *grp, int ptab[2], t_fds *fd, int i)
   if (grp->cmds[i + 1] != NULL)
     {
       if (pipe(ptab) == -1)
-        return (-1);
+        {
+          my_perror("Pipe");
+          return (-1);
+        }
       fd->stdout = ptab[PIPE_WRITE];
     }
   return (0);

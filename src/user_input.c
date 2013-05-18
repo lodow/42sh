@@ -20,7 +20,8 @@ char	*usr_input_retrieve(t_sh *shell, char *end)
   res = NULL;
   prompt = shell->param.str_prompt;
   shell->param.str_prompt = ">";
-  while (((tmp = read_cmd(&(shell->param), &(shell->history), shell->env)) != NULL)
+  while (((tmp = read_cmd(&(shell->param),
+                          &(shell->history), shell->env)) != NULL)
          && (my_strncmp(tmp, end, -1)))
     {
       tmp2 = str_cat(tmp, "\n");
@@ -31,15 +32,13 @@ char	*usr_input_retrieve(t_sh *shell, char *end)
   return (res);
 }
 
-int	dred_left(char *end)
+int	dred_left(char *end, t_sh *shell)
 {
   int	pipefd[2];
   char	*tpass;
   t_cmd	tmpcmd;
   t_fds	tmpfd;
-  t_sh	*shell;
 
-  shell = get_sh_info(NULL);
   tpass = usr_input_retrieve(shell, end);
   if ((tpass == NULL) || (pipe(pipefd) == -1))
     return (-1);

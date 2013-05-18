@@ -242,6 +242,7 @@ int	exec_a_pipe(t_sh *shell, t_grp *grp);
 ** Error
 */
 void	my_perror(char *str);
+int	check_perror(char *str, int err);
 
 /*
 ** Env var
@@ -297,14 +298,14 @@ void	exit_shell(t_sh *shell);
 */
 int	cat_out_buff(char *buff, char **argv, t_sh *shell);
 void	parse_redirection(t_grp *grp, char *line);
-int	open_redirection(t_grp *grp);
+int	open_redirection(t_grp *grp, t_sh *shell);
 char	*usr_input_retrieve(t_sh *shell, char *end);
-int	dred_left(char *end);
+int	dred_left(char *end, t_sh *shell);
 
 /*
 ** Backquotes
 */
-char	*check_and_load_backquote(char *line, t_sh *shell);
+void	check_and_load_backquote(char **line, t_sh *shell);
 
 /*
 ** my_str_to_wordtab
