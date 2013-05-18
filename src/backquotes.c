@@ -47,7 +47,7 @@ void	check_and_load_backquote(char **line, t_sh *shell)
         {
           if ((str = exec_line_a_g_res(backtab[i], shell)) != NULL)
             {
-              free(backtab[i]);
+              //free(backtab[i]);
               backtab[i] = str;
             }
           if (MEXIT)
