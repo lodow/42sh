@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 18 22:58:23 2013 remi robert
+** Last update Sat May 18 23:28:49 2013 remi robert
 */
 
 #include "42sh.h"
@@ -23,6 +23,7 @@ void	init_sig()
 {
   /*  signal(SIGTTOU, &sig_handler);
     signal(SIGTTIN, &sig_handler);*/
+  signal(SIGWINCH, &sig_handler);
   signal(SIGINT, &sig_handler);
   signal(SIGTSTP, &sig_handler);
   signal(SIGCHLD, &sig_handler);
@@ -53,6 +54,8 @@ void	sig_handler(int sig)
 	  view(shell->param.cmd, &(shell->param));
 	}
     }
+  if (sig == SIGWINCH)
+    gere_change_window(SIGWINCH);
   if ((sig == SIGHUP) || (sig == SIGTERM))
     close(0);
   init_sig();
