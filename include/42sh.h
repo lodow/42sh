@@ -36,6 +36,7 @@
 # define PIPE_READ 0
 # define PIPE_WRITE 1
 
+# define SETFLAG(x, y) ((x) |= (y))
 # define UNSETFLAG(x, y) ((x) &= ~(y))
 # define SWITCHFLAG(x, y) ((x) ^= (y))
 # define GETFLAG(x, y) ((x) & (y))
