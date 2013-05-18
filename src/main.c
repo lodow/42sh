@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:31:22 2013 maxime lavandier
-** Last update Sat May 18 13:25:57 2013 remi robert
+** Last update Sat May 18 15:50:15 2013 remi robert
 */
 
 #include "42sh.h"
@@ -21,6 +21,7 @@ int		init_shell(t_sh *shell, char **main_env)
   /* if (((shell->env = cpy_env(main_env)) == NULL) */
   /*     || ((shell->path = get_path(shell->env)) == NULL)) */
   /*   return (-1); */
+  shell->param.env = 0;
   shell->param.env = init_edition_line(main_env, &(shell->param));
   //shell->pid.sid = setsid(); <- not sure if it's a good idea.
   //if it is don't forget to check it

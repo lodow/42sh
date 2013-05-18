@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon May  6 08:07:49 2013 remi robert
-** Last update Thu May 16 10:52:34 2013 remi robert
+** Last update Sat May 18 15:54:14 2013 remi robert
 */
 
 #include "42sh.h"
@@ -30,19 +30,20 @@ void	gere_delete(char *cmd, t_param *param, char *buff)
   int	indice;
 
   size = my_strlen(cmd);
-  if (cmd == NULL || size == 0 || param->pos < 0 || param->pos > size ||
-      (param->pos == 0 && (buff[0] == DEL && buff[1] == END)))
+  if (cmd == NULL || cmd[0] == '\0' || size == 0 || param->pos < 0 ||
+      param->pos > size || (param->pos == 0 &&
+			    (buff[0] == DEL && buff[1] == END)))
     return ;
   if ((buff[0] == DEL && buff[1] == END))
     indice = param->pos - 1;
   else
     indice = param->pos;
-  while (cmd[indice + 1] != '\0')
+  while (indice + 1 < SIZE_BUFFER && cmd[(indice + 1) % SIZE_BUFFER] != '\0')
     {
       cmd[indice] = cmd[indice + 1];
       indice += 1;
     }
-  cmd[indice] = '\0';
+  cmd[indice % SIZE_BUFFER] = '\0';
   if ((buff[0] == DEL && buff[1] == END) && param->pos - 1 >= 0)
     decal_pointeur(param);
   view(cmd, param);
