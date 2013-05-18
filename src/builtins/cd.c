@@ -5,14 +5,14 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 18 16:24:05 2013 remi robert
+** Last update Sun May 19 00:30:24 2013 maxime lavandier
 */
 
 #include "42sh.h"
 
 char		*builtin_cd_getcwd()
 {
-  char	*res;
+  char		*res;
 
   if ((res = getcwd(NULL, 0)) == NULL)
     {
