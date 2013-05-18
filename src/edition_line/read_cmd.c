@@ -74,8 +74,12 @@ char	*loop_cmd(char *prompt, t_param *param, t_history **history)
 
 char	*read_cmd(char *prompt, t_param *param, t_history **history)
 {
-  if (isatty(0) != 1)
+  int	tty;
+
+  if ((tty = isatty(0)) == 0)
     param->fallback = 0;
+  else if (check_perror("TTY", tty) == -1)
+    return (NULL);
   if (param->fallback == 0)
     {
       my_putstr(prompt, 1, -1);

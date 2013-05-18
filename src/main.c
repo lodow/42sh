@@ -18,15 +18,12 @@ int		init_shell(t_sh *shell, char **main_env)
   init_builtins(shell);
   shell->env = cpy_env(main_env);
   shell->path = get_path(shell->env);
-  /* if (((shell->env = cpy_env(main_env)) == NULL) */
-  /*     || ((shell->path = get_path(shell->env)) == NULL)) */
-  /*   return (-1); */
-  shell->param.fallback = 0;
   shell->param.fallback = init_edition_line(main_env, &(shell->param));
   //shell->pid.sid = setsid(); <- not sure if it's a good idea.
   //if it is don't forget to check it
-  if (((shell->pid.pid = getpid()) == -1)
-      || ((shell->pid.pgid = getpgid(shell->pid.pid)) == -1))
+  if (((shell->pid.pid = check_perror("Getpid", getpid())) == -1)
+      || ((shell->pid.pgid = check_perror("Getpgid",
+                                          getpgid(shell->pid.pid))) == -1))
     return (-1);
   shell->history = NULL;
   shell->process_group = NULL;
@@ -74,8 +71,7 @@ int		main(int ac, char **av, char **main_env)
 
   if (init_shell(&shell, main_env) == -1)
     return (-1);
-  /* if (shell.env != NULL) */
-    user_loop(&shell);
+  user_loop(&shell);
   if (GETFLAG(shell.beepbeepexit, FLAGPOS(EXIT_F_POS)))
     fork_exit_shell(&shell);
   else
