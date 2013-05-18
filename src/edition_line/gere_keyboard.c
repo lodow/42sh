@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:20:31 2013 remi robert
-** Last update Thu May 16 15:49:42 2013 remi robert
+** Last update Sat May 18 22:04:33 2013 remi robert
 */
 
 #include "42sh.h"
@@ -36,9 +36,9 @@ void	gere_posleft(char *cmd, t_param *param)
       if (param->x <= 0)
 	{
 	  apply_termcap(param->termcap.str_up, 0, param->fd_tty);
-	  apply_termcap(param->termcap.str_RI, return_x(), param->fd_tty);
 	  param->x = return_x() - 1;
 	  param->y -= 1;
+	  curseur(param->x, param->y);
 	}
       else
 	{
