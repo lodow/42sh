@@ -91,7 +91,7 @@ char	*check_vars_in_str(char *str, char **envp)
   i = 0;
   if (envp == NULL)
     return (NULL);
-  while (((tmp = replace_var_in_str(str, envp)) != NULL) && (i < 51))
+  while (((tmp = replace_var_in_str(str, envp)) != NULL) && (i < 500))
     {
       if (var)
         free(str);

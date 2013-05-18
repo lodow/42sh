@@ -1,81 +1,71 @@
 /*
-** get_next_line.c for get_next_line in /home/remi/Projet/get_next_line
+** FILE for FILE in /home/moriss_h/projet
 **
-** Made by remi
-** Login   <remi@epitech.net>
+** Made by hugues morisset
+** Login   <moriss_h@epitech.net>
 **
-** Started on  Tue Feb 26 21:19:06 2013 remi
-** Last update Sat May 18 20:57:41 2013 remi robert
+** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
+** Last update Sat May 18 22:07:33 2013 remi robert
 */
 
-#include "get_next_line.h"
+#include "42sh.h"
 
-void	decale_buff(char *buff, int nb)
+int	pos_endl(char *str, int strsize)
 {
-  int	indice;
-  int	indice_loop;
+  int	i;
 
-  indice_loop = 0;
-  while (indice_loop != nb)
+  i = 0;
+  while (str[i] != '\n')
     {
-      indice = 1;
-      while (buff[indice] != '\0')
+      if (i >= (strsize - 1))
+        return (-1);
+      i++;
+    }
+  return (i);
+}
+
+void	my_shiftleft_tab(char *str, int n)
+{
+  int	i;
+  int	len;
+
+  len = my_strlen(str);
+  i = 0;
+  while (i < len)
+    {
+      if ((i + n) > len)
+        str[i] = '\0';
+      else
+        str[i] = str[i + n];
+      i++;
+    }
+}
+
+char		*get_next_line(const int fd)
+{
+  static char	buffer[READ_SIZE];
+  static int	index = 0;
+  int		nbread;
+  char		*res;
+
+  res = NULL;
+  nbread = 1;
+  while (nbread > 0)
+    {
+      if (index != 0)
         {
-          buff[indice - 1] = buff[indice];
-          indice = indice + 1;
+          nbread = pos_endl(buffer, index);
+          if (nbread != -1)
+            {
+              res = my_stradd(res, buffer, nbread);
+              my_shiftleft_tab(buffer, nbread + 1);
+              index = index - nbread - 1;
+              return (res);
+            }
+          res = my_stradd(res, buffer, index);
         }
-      indice_loop = indice_loop + 1;
+      nbread = read(fd, buffer, READ_SIZE);
+      index = nbread;
     }
-  while (indice < READ_SIZE - 1)
-    {
-      buff[indice] = '\0';
-      indice = indice + 1;
-    }
-}
-
-char	*return_str(char *buff, int *indice_buff)
-{
-  int	indice_tab;
-  int	indice;
-  char	*tab;
-
-  indice = 0;
-  while (buff != NULL && buff[indice] != '\0' && buff[indice] != '\n')
-    indice = indice + 1;
-  if (*indice_buff == 0 || (tab = malloc(indice + 1)) == NULL)
-    return (NULL);
-  indice_tab = 0;
-  while (indice_tab != indice && buff[indice_tab] != '\0')
-    {
-      tab[indice_tab] = buff[indice_tab];
-      indice_tab = indice_tab + 1;
-    }
-  if (*indice_buff == indice)
-    *indice_buff = 0;
-  else
-    *indice_buff = *indice_buff - (indice + 1);
-  tab[indice_tab] = '\0';
-  decale_buff(buff, indice + 1);
-  return (tab);
-}
-
-char		*get_next_line(int fd)
-{
-  static char	buff[READ_SIZE];
-  static int	indice = 0;
-  int		ret;
-
-  ret = READ_SIZE - 1;
-  if (fd == -1)
-    return (NULL);
-  while (ret > 0 && ret == READ_SIZE - 1 && indice <= READ_SIZE - 1)
-    {
-      if ((ret = read(fd, &buff[indice], (READ_SIZE - indice) - 1)) == -1)
-	return (NULL);
-      indice = indice + ret;
-      buff[indice] = '\0';
-    }
-  if (indice == 0)
-    return (NULL);
-  return (return_str(buff, &indice));
+  return (res);
 }
