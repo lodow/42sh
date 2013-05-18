@@ -5,12 +5,12 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 18 22:09:11 2013 luc sinet
+** Last update Sat May 18 23:03:31 2013 luc sinet
 */
 
 #include "42sh.h"
 
-char	replace_carac(char carac)
+char	replace_carac(char carac, int *new_line)
 {
   char	*comp;
   int	x;
@@ -18,7 +18,10 @@ char	replace_carac(char carac)
   comp = "\\\\a\ab\be\ef\fn\nr\rt\tv\v";
   x = 0;
   if (carac == 'c')
-    return (-2);
+    {
+      *new_line = 0;
+      return (-2);
+    }
   while (comp[x] && carac != comp[x])
     ++x;
   if (!comp[x])
@@ -26,7 +29,7 @@ char	replace_carac(char carac)
   return (comp[x + 1]);
 }
 
-void	builtin_echo_putstr(char *str)
+void	builtin_echo_putstr(char *str, int *new_line)
 {
   int	i;
   char	temp;
@@ -36,13 +39,14 @@ void	builtin_echo_putstr(char *str)
     {
       if (str[i] == '\\')
 	{
-	  temp = replace_carac(str[i + 1]);
+	  temp = replace_carac(str[i + 1], new_line);
 	  if (temp == -1)
 	    my_putchar('\\');
+	  else if (temp == -2)
+	    return ;
 	  else
 	    {
-	      if (temp != -2)
-		my_putchar(temp);
+	      my_putchar(temp);
 	      i++;
 	    }
 	}
@@ -90,7 +94,7 @@ int	builtins_print_echo(char *path, char **argv, t_sh *shell)
       if (!interpret)
 	my_putstr(argv[i], 1, -1);
       else
-	builtin_echo_putstr(argv[i]);
+	builtin_echo_putstr(argv[i], &new_line);
       first = 0;
       i++;
     }

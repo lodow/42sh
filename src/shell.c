@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 18 20:37:51 2013 remi robert
+** Last update Sat May 18 23:40:58 2013 remi robert
 */
 
 #include "42sh.h"
@@ -31,6 +31,15 @@ char	*recalc_prompt(t_sh *shell)
   return (prompt);
 }
 
+void	add_history_after_line(char *lign, t_history **history)
+{
+  if (history != NULL && *history != NULL &&
+      str_cmp((*history)->cmd, lign) == 1)
+    return ;
+  if (lign[0] != '\0' && lign[0] != '\n')
+    add_history(history, lign);
+}
+
 void	user_loop(t_sh *shell)
 {
   char	*lign;
@@ -39,6 +48,7 @@ void	user_loop(t_sh *shell)
   prompt = recalc_prompt(shell);
   while ((lign = read_cmd(prompt, &(shell->param), &shell->history)) != NULL)
     {
+      add_history_after_line(lign, &shell->history);
       no_fg_jobs_status(shell);
       call_signal_func(shell, 0);
       wait_no_fg_grp(shell);

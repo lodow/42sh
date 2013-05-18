@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Sat May 18 19:14:13 2013 remi robert
+** Last update Sat May 18 23:28:25 2013 remi robert
 */
 
 #include "42sh.h"
@@ -39,7 +39,7 @@ char	*loop_cmd(char *prompt, t_param *param, t_history **history)
   ret = 1;
   while (ret > 0)
     {
-      signal(SIGWINCH, gere_change_window);
+      /* signal(SIGWINCH, gere_change_window); */
       if ((ret = read(0, buff, 9)) == -1)
         return (NULL);
       buff[ret] = '\0';
