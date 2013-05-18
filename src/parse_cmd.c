@@ -84,7 +84,7 @@ void	parse_user_cmd(t_sh *shell, char *line, int def_fdout)
 
   i = 0;
   back = parse_launch_background(&line);
-  line = check_and_load_backquote(line, shell);
+  check_and_load_backquote(&line, shell);
   if (MEXIT)
     return ;
   if ((tmptab = str_to_wordtab(line, ";", 1)) != NULL)

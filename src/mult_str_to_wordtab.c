@@ -31,7 +31,7 @@ char	*get_inibiteur_f_mult_wt(char *line, char **sepa, char **tab, int field)
       i = -1;
       while (sepa[++i] != NULL)
         if ((posinstr < my_strlen(line))
-            && !strncmp(&(line[posinstr]), sepa[i], my_strlen(sepa[i])))
+            && !my_strncmp(&(line[posinstr]), sepa[i], my_strlen(sepa[i])))
           return (sepa[i]);
       posinstr++;
     }
@@ -77,7 +77,7 @@ char	*move_str_t_next_sepa(char *str, char **sepa, char *field)
       i = 0;
       while ((i >= 0) && (sepa[i] != NULL))
         {
-          if (!strncmp(&(str[lentj]), sepa[i], my_strlen(sepa[i])))
+          if (!my_strncmp(&(str[lentj]), sepa[i], my_strlen(sepa[i])))
             {
               lentj += my_strlen(sepa[i]);
               return (&(str[lentj]));

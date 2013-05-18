@@ -33,21 +33,22 @@ int	builtin_env_exec_opt(char *arg, t_cmd *cmd, char ***env, int *nnewline)
 
   opt = 0;
   tmp = NULL;
-  if (!strncmp(arg, "-i", -1) || !strncmp(arg, "--ignore-environment", -1))
+  if (!my_strncmp(arg, "-i", -1)
+      || !my_strncmp(arg, "--ignore-environment", -1))
     {
       opt = 1;
       free_ptr_tab((void**)*env, &free);
       *env = NULL;
     }
-  if (!strncmp(arg, "-0", -1) || !strncmp(arg, "--null", -1))
+  if (!my_strncmp(arg, "-0", -1) || !my_strncmp(arg, "--null", -1))
     {
       opt = 1;
       *nnewline = 1;
     }
-  if (!strncmp(arg, "-u", -1)
-      || !strncmp(arg, "--unset=", my_strlen("--unset=")))
+  if (!my_strncmp(arg, "-u", -1)
+      || !my_strncmp(arg, "--unset=", my_strlen("--unset=")))
     {
-      if (!strncmp(arg, "--unset=", my_strlen("--unset=")))
+      if (!my_strncmp(arg, "--unset=", my_strlen("--unset=")))
         tmp = &(arg[my_strlen("--unset=")]);
       rm_env(*env, tmp);
       opt = 1;

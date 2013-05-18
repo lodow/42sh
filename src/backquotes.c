@@ -26,39 +26,37 @@ char	*exec_line_a_g_res(char *line, t_sh *shell)
   sizeread = 1;
   close(pipefd[PIPE_WRITE]);
   while (sizeread > 0)
-    {
-      wait_all_jobs(shell);
-      if ((sizeread = read(pipefd[PIPE_READ], buffer, READ_SIZE)) > 0)
-        str = my_stradd(str, buffer, sizeread);
-    }
+    if ((sizeread = read(pipefd[PIPE_READ], buffer, READ_SIZE)) > 0)
+      str = my_stradd(str, buffer, sizeread);
   close(pipefd[PIPE_READ]);
+  wait_no_fg_grp(shell);
   return (str);
 }
 
-char	*check_and_load_backquote(char *line, t_sh *shell)
+void	check_and_load_backquote(char **line, t_sh *shell)
 {
   char	**backtab;
   int	i;
   char	*str;
 
   i = 0;
-  backtab = str_to_wordtab(line, "`", 1);
+  backtab = str_to_wordtab(*line, "`", 1);
   while ((backtab != NULL) && (backtab[i] != NULL))
     {
       if ((i % 2) == 1)
         {
           if ((str = exec_line_a_g_res(backtab[i], shell)) != NULL)
             {
-              free(backtab[i]);
+              //free(backtab[i]);
               backtab[i] = str;
             }
           if (MEXIT)
-            return (NULL);
+            return ;
         }
       i++;
     }
   str = tab_file_tstr(backtab, ' ');
   tr_str(str, '\n', ' ');
+  (*line) = str;
   //free(line);
-  return (str);
 }

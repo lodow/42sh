@@ -22,7 +22,8 @@ t_grp	*get_forground_grp(t_sh *shell)
     return (NULL);
   while ((tmp_grp = pr_grp[i]) != NULL)
     {
-      if (GETFLAG(tmp_grp->flags, FLAGPOS(FGRP_FORGROUND)))
+      if (GETFLAG(tmp_grp->flags, FLAGPOS(FGRP_FORGROUND))
+          && !GETFLAG(tmp_grp->flags, FLAGPOS(FGRP_TERMINATED)))
         return (tmp_grp);
       i++;
     }

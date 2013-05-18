@@ -10,17 +10,10 @@
 
 #include "42sh.h"
 
-void	my_perror(char *str)
+int	cat_out_buff(char *buff, char **argv, t_sh *shell)
 {
-  my_putstr(str, 2, -1);
-  my_putstr(": ", 2, -1);
-  my_putstr(strerror(errno), 2, -1);
-  my_putstr("\n", 2, -1);
-}
-
-int	check_perror(char *str, int err)
-{
-  if (err == -1)
-    my_perror(str);
-  return (err);
+  if (buff != NULL)
+    write(1, buff, my_strlen(buff));
+  free(buff);
+  return (0);
 }

@@ -69,10 +69,7 @@
 ** Redir defines
 */
 # define REDI_FRIGHT 0666
-# define REDI_R 3
-# define REDI_DR 4
-# define REDI_L 1
-# define REDI_DL 2
+# define REDI_NB_SEPA 7
 
 # define PTRT_PACK 32
 
@@ -99,24 +96,14 @@ typedef struct	s_cmd
   t_pid		pid;
 }		t_cmd;
 
-typedef struct	s_redirection
-{
-  int		end;
-  int		red_g;
-  int		red_b;
-  char		*file_b;
-  char		*file_g;
-}		t_redirection;
-
 typedef struct	s_grp
 {
-  int		nb_red;
   t_pid		pid;
   t_fds		fd;
   char		*line;
   t_cmd		**cmds;
   int		flags;
-  t_redirection	*redirection;
+  char		**redirection;
   int		transition;
   char		*transition_line;
 }		t_grp;
@@ -190,6 +177,7 @@ void	**concat_ptr_tab(void **tab1, void **tab2);
 /*
 ** Stc
 */
+int	is_in_tab_str(char *str, char **tab);
 void	my_putchar(char c);
 int	my_strlen(char *str);
 void	my_putstr(const char *str, int fd, int strlen);
@@ -254,6 +242,7 @@ int	exec_a_pipe(t_sh *shell, t_grp *grp);
 ** Error
 */
 void	my_perror(char *str);
+int	check_perror(char *str, int err);
 
 /*
 ** Env var
@@ -284,6 +273,7 @@ int	is_grp_exec(t_sh *shell, t_grp *grp);
 */
 void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr);
 void	close_fds(t_fds *fd);
+int	safe_close(int fd);
 
 /*
 ** Conf file
@@ -304,33 +294,23 @@ void	my_exit(int value);
 void	exit_shell(t_sh *shell);
 
 /*
-** detect_type_redirection
-*/
-int	return_type_char(char *);
-void	return_type_redirection(char *, int *, int *);
-char	*find_name_redirection(int, char *);
-char	*return_file_redir(char *, int, int);
-
-/*
 ** redirection
 */
-char	*parse_redirection(t_grp *, char *, int *);
-void	rempl_fd_process(t_redirection *, t_grp *);
-int	find_redirection(char **, char *);
-int	rempl_red(char **, t_redirection *);
-void	rempl_file_redirection(char *, char *);
-void	rempl_new_lign_cmd(char *, char **, int, int);
-char	*reform_lign(char **);
+int	cat_out_buff(char *buff, char **argv, t_sh *shell);
+void	parse_redirection(t_grp *grp, char *line);
+int	open_redirection(t_grp *grp, t_sh *shell);
+char	*usr_input_retrieve(t_sh *shell, char *end);
+int	dred_left(char *end, t_sh *shell);
 
 /*
 ** Backquotes
 */
-char	*check_and_load_backquote(char *line, t_sh *shell);
+void	check_and_load_backquote(char **line, t_sh *shell);
 
 /*
 ** my_str_to_wordtab
 */
-void	del_slash_quote(char **);
+void	del_slash_quote(char **tab);
 void	my_strncpy_force(char *, char *, int);
 char	**mult_str_to_wordtab(char *line, char **sepa, int opt);
 char	*get_inibiteur_f_mult_wt(char *line, char **sepa, char **char_tab, int field);
