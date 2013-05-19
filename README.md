@@ -22,10 +22,19 @@ http://www.catonmat.net/series/bash-one-liners-explained
 
 Liste des bonus :
 -Edition de ligne
+-copier/coller
 -Job control
 -Historique
+-Sauvegarde de l'historique
 -Alias
 -Backquotes
 -Variable
 -Inhibiteurs
 -Fichier de conf
+-Prompt modifiable
+-Clear
+-Globing (tab et {*.c,*.h})
+-evenement (!nbr, !!) (???)
+-table ascii etendu
+-source
+-redirection en choisissant le FD
