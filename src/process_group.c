@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sun Apr 14 23:57:17 2013 remi robert
+** Last update Mon May 20 00:17:01 2013 Hugues
 */
 
 #include "42sh.h"
@@ -23,7 +23,7 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
       || (exec_a_pipe(shell, grp) == -1) || (MEXIT))
     return (-1);
   if (group_process_group(grp) == -1)
-    return (-1);
+    my_putstr("Can't group pipe group\n", 2, -1);
   shell->process_group = (t_grp**)add_ptr_t_tab((void**)shell->process_group,
                          (void*)grp);
   if (GETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND)) && (grp->pid.pgid != -1))
