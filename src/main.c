@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:31:22 2013 maxime lavandier
-** Last update Sat May 18 19:13:49 2013 remi robert
+** Last update Sun May 19 09:43:20 2013 Hugues
 */
 
 #include "42sh.h"
@@ -14,7 +14,7 @@ int		init_shell(t_sh *shell, char **main_env)
 {
   get_sh_info(shell);
   shell->beepbeepexit = 0;
-  init_sig();
+  init_sig(&sig_handler);
   init_builtins(shell);
   shell->env = cpy_env(main_env);
   shell->path = get_path(shell->env);

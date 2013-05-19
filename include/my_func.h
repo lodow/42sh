@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Sat May 18 23:38:11 2013 remi robert
+** Last update Sun May 19 09:55:23 2013 Hugues
 */
 
 #ifndef MY_FUNC_H_
@@ -147,7 +147,7 @@ int		gere_keyboard(char *buff, char *cmd, t_param *param, t_history **history);
 void		gere_change_window(int sig);
 char		*read_cmd(char *prompt, t_param *param, t_history **history);
 void		add_caractere(char *cmd, t_param *param, char caratere);
-char		*init_read_cmd(char *prompt, char *cmd, t_param *param);
+char		*init_read_cmd(char *cmd, t_param *param);
 int		tgetent(char *bp, const char *name);
 int		tgetflag(char *id);
 int		tgetnum(char *id);

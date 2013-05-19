@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Sun May 19 09:44:32 2013 Hugues
 */
 
 #include "42sh.h"
@@ -34,11 +34,7 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
 
   if ((cmd->pid.pid = fork()) == 0)
     {
-      signal(SIGINT, SIG_DFL);
-      signal(SIGTTOU, SIG_DFL);
-      signal(SIGTTIN, SIG_DFL);
-      signal(SIGTSTP, SIG_DFL);
-      signal(SIGCHLD, SIG_DFL);
+      init_sig(SIG_DFL);
       setpgid(0, 0);
       dup2(fd->stdin, 0);
       dup2(fd->stdout, 1);

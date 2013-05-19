@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Sat May 18 22:08:47 2013 luc sinet
+** Last update Sun May 19 09:43:54 2013 Hugues
 */
 
 #ifndef		SH42_H
@@ -198,7 +198,7 @@ void	free_wordtab(char **char_tab, int rempli, int lenght_malloc);
 /*
 ** Signals
 */
-void	init_sig();
+void	init_sig(void *handler);
 t_sh	*get_sh_info(t_sh *sh);
 void	sig_handler(int sig);
 void	call_signal_func(t_sh *shell, int chld_sig);

@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 18 23:28:49 2013 remi robert
+** Last update Sun May 19 09:42:31 2013 Hugues
 */
 
 #include "42sh.h"
@@ -19,18 +19,18 @@ t_sh		*get_sh_info(t_sh *sh)
   return (shell);
 }
 
-void	init_sig()
+void	init_sig(void *handler)
 {
-  /*  signal(SIGTTOU, &sig_handler);
-    signal(SIGTTIN, &sig_handler);*/
-  signal(SIGWINCH, &sig_handler);
-  signal(SIGINT, &sig_handler);
-  signal(SIGTSTP, &sig_handler);
-  signal(SIGCHLD, &sig_handler);
-  signal(SIGHUP, &sig_handler);
-  signal(SIGTERM, &sig_handler);
-  signal(SIGUSR1, &sig_handler);
-  signal(SIGUSR2, &sig_handler);
+  /*  signal(SIGTTOU, handler);
+    signal(SIGTTIN, handler);*/
+  signal(SIGWINCH, handler);
+  signal(SIGINT, handler);
+  signal(SIGTSTP, handler);
+  signal(SIGCHLD, handler);
+  signal(SIGHUP, handler);
+  signal(SIGTERM, handler);
+  signal(SIGUSR1, handler);
+  signal(SIGUSR2, handler);
 }
 
 void	sig_handler(int sig)
@@ -44,21 +44,18 @@ void	sig_handler(int sig)
       my_putstr("\n", 1, -1);
       my_putstr(shell->param.str_prompt, 1, -1);
       if (shell->param.fallback == 1)
-	shell->param.cmd[0] = '\0';
-      else
-	shell->param.cmd = NULL;
-      shell->param.pos = 0;
-      if (shell->param.fallback == 1)
-	{
-	  refresh_view(shell->param.cmd, &(shell->param));
-	  view(shell->param.cmd, &(shell->param));
-	}
+        {
+	  shell->param.cmd[0] = '\0';
+          shell->param.pos = 0;
+          refresh_view(shell->param.cmd, &(shell->param));
+          view(shell->param.cmd, &(shell->param));
+        }
     }
   if (sig == SIGWINCH)
     gere_change_window(SIGWINCH);
   if ((sig == SIGHUP) || (sig == SIGTERM))
     close(0);
-  init_sig();
+  init_sig(&sig_handler);
 }
 
 void	call_signal_func(t_sh *shell, int chld_sig)
