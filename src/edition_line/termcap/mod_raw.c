@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Feb  4 21:58:20 2013 remi robert
-** Last update Tue May 14 20:53:46 2013 remi robert
+** Last update Mon May 20 15:00:55 2013 remi robert
 */
 
 #include "42sh.h"
@@ -28,7 +28,7 @@ int			reset_save_mod(int type, int fd)
     {
       if (tcgetattr(fd, &t) == -1)
 	{
-	  my_putstr("Erreur getattr reset_save_mod\n", 2, -1);
+	  my_perror("tcgetattr");
 	  return (EXIT_FAILURE);
 	}
       pass = 1;
@@ -41,7 +41,7 @@ int	reset_mod(struct termios t, int fd)
 {
   if (tcsetattr(fd, TCSANOW, &t) == -1)
     {
-      my_putstr("Erreur setattr reset\n", 2, -1);
+      my_perror("tcsetattr");
       return (EXIT_FAILURE);
     }
   return (EXIT_SUCCESS);
@@ -53,7 +53,7 @@ int			mod_raw(int fd)
 
   if (tcgetattr(fd, &t) == -1)
     {
-      my_putstr("Erreur getattr mod_raw\n", 2, -1);
+      my_perror("tcgetattr");
       return (EXIT_FAILURE);
     }
   t.c_lflag = t.c_lflag & ~ICANON;
@@ -62,7 +62,7 @@ int			mod_raw(int fd)
   t.c_cc[VTIME] = 0;
   if (tcsetattr(fd, TCSANOW, &t) == -1)
     {
-      my_putstr("Erreur setattr mod_raw\n", 2, -1);
+      my_perror("tcsetattr");
       return (EXIT_FAILURE);
     }
   return (EXIT_SUCCESS);

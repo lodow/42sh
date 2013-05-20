@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Jan 15 20:15:34 2013 remi robert
-** Last update Tue May 14 20:52:14 2013 remi robert
+** Last update Mon May 20 15:02:29 2013 remi robert
 */
 
 #include "42sh.h"
@@ -17,7 +17,10 @@ int			return_x(void)
 
   fd = my_putstr_termcap(-1, NULL);
   if (ioctl(fd, TIOCGWINSZ, &ws) == -1)
-    return (0);
+    {
+      my_perror("ioctl");
+      return (0);
+    }
   return (ws.ws_col);
 }
 
@@ -28,6 +31,9 @@ int			return_y(void)
 
   fd = my_putstr_termcap(-1, NULL);
   if (ioctl(fd, TIOCGWINSZ, &ws) == -1)
-    return (0);
+    {
+      my_perror("ioctl");
+      return (0);
+    }
   return (ws.ws_row - 1);
 }
