@@ -10,30 +10,28 @@
 
 #include "42sh.h"
 
-int	group_process_group(t_grp *pipeline)
+int	group_to_process_group(t_grp *grp, t_cmd *cmd)
 {
-  int	i;
   int	pgid;
   int	tmppid;
 
-  i = 1;
-  pipeline->pid.pgid = -1;
-  if ((pipeline->cmds != NULL) && (pipeline->cmds[0] != NULL))
+  if ((grp == NULL) || (cmd == NULL))
+    return (-1);
+  if (cmd->pid.pid == -1)
+    return (0);
+  if ((pgid = grp->pid.pgid) == -1)
     {
-      if ((pgid = pipeline->cmds[0]->pid.pid) != -1)
+      if ((pgid = cmd->pid.pid) != -1)
         if (check_perror("Setpgid", setpgid(pgid, pgid)) == -1)
           return (-1);
+      grp->pid.pgid = pgid;
     }
   else
-    return (0);
-  while (pipeline->cmds[i] != NULL)
     {
-      if (((tmppid = pipeline->cmds[i]->pid.pid) != -1) && (pgid != -1))
+      if ((tmppid = cmd->pid.pid) != -1)
         if (check_perror("Setpgid", setpgid(tmppid, pgid)) == -1)
           return (-1);
-      i++;
     }
-  pipeline->pid.pgid = pgid;
   return (0);
 }
 

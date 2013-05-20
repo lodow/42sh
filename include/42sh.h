@@ -207,7 +207,7 @@ void	call_signal_func(t_sh *shell, int chld_sig);
 ** Jobs
 */
 void	no_fg_jobs_status(t_sh *shell);
-int	group_process_group(t_grp *pipeline);
+int	group_to_process_group(t_grp *grp, t_cmd *cmd);
 void	set_forground_pgrp(pid_t pgid);
 void	set_forground_process_g(t_sh *shell, t_grp *grp);
 t_grp	*get_forground_grp(t_sh *shell);

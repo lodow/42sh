@@ -22,8 +22,6 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
   if ((open_redirection(grp, shell) == -1) || (MEXIT)
       || (exec_a_pipe(shell, grp) == -1) || (MEXIT))
     return (-1);
-  if (group_process_group(grp) == -1)
-    my_putstr("Can't group pipe group\n", 2, -1);
   shell->process_group = (t_grp**)add_ptr_t_tab((void**)shell->process_group,
                          (void*)grp);
   if (GETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND)) && (grp->pid.pgid != -1))
@@ -46,6 +44,7 @@ t_grp	*create_n_process_group(t_sh *shell, char *lign)
   res->line = lign;
   init_stdfd_t_def_val(&(res->fd), 0, 1, 2);
   res->pid.sid = shell->pid.sid;
+  res->pid.pgid = -1;
   res->cmds = NULL;
   res->flags = 0;
   parse_redirection(res, lign);
