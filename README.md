@@ -27,9 +27,9 @@ Liste des bonus :
 -Historique
 -Sauvegarde de l'historique
 -Alias
--Backquotes
+-Backquotes(`)
 -Variable
--Inhibiteurs
+-Inhibiteurs (")
 -Fichier de conf
 -Prompt modifiable
 -Clear
