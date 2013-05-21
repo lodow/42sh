@@ -54,7 +54,10 @@ void	sig_handler(int sig)
   if (sig == SIGWINCH)
     gere_change_window(SIGWINCH);
   if ((sig == SIGHUP) || (sig == SIGTERM))
-    close(0);
+    {
+      SETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS));
+      close(0);
+    }
   init_sig(&sig_handler);
 }
 

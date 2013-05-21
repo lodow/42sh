@@ -46,6 +46,7 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
       if ((ret_exec = f(cmd->cmd_fpath, cmd->argv, shell)) == -1)
         my_perror(cmd->cmd_fpath);
       my_exit(ret_exec);
+      SETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_FORK));
     }
   return (cmd->pid.pid);
 }

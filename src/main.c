@@ -68,10 +68,11 @@ int		main(int ac, char **av, char **main_env)
   if (init_shell(&shell, main_env) == -1)
     return (-1);
   user_loop(&shell);
-  if (GETFLAG(shell.beepbeepexit, FLAGPOS(EXIT_F_POS)))
+  if (GETFLAG(shell.beepbeepexit, FLAGPOS(EXIT_FORK)))
     fork_exit_shell(&shell);
   else
     exit_shell(&shell);
   UNSETFLAG(shell.beepbeepexit, FLAGPOS(EXIT_F_POS));
+  UNSETFLAG(shell.beepbeepexit, FLAGPOS(EXIT_FORK));
   return (shell.beepbeepexit);
 }

@@ -1,3 +1,6 @@
+#ifndef HEADER_CC7A3106EE0DB449
+#define HEADER_CC7A3106EE0DB449
+
 /*
 ** 42sh.h for 42sh in /home/maxime/Bureau/projet/actu/42sh/include
 **
@@ -43,6 +46,7 @@
 # define FLAGPOS(x) (1 << (x))
 
 # define EXIT_F_POS 31
+# define EXIT_FORK 30
 # define MEXIT GETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS))
 
 /*
@@ -327,3 +331,5 @@ void	gere_history(char *cmd, t_param *param,
 		     t_history *history, char *buff);
 
 #endif
+
+#endif // header guard

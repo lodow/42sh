@@ -17,7 +17,4 @@ void	my_exit(int value)
   shell = get_sh_info(NULL);
   shell->beepbeepexit = *((char*)(&(value)));
   SETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS));
-    /* kill(0, SIGTERM); */
-  /*  exit(value);
-    my_putstr("My exit failed, Now let's do some shit !!\n", 2, -1);*/
 }
