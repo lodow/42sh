@@ -35,7 +35,10 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
   if ((cmd->pid.pid = fork()) == 0)
     {
       init_sig(SIG_DFL);
-	 check_perror("Setpgid", setpgid(0, 0));
+      if (cmd->pid.pgid == -1)
+        check_perror("Setpgid", setpgid(0, 0));
+      else
+        check_perror("Setpgid", setpgid(0, cmd->pid.pgid));
       check_perror("Dup2", dup2(fd->stdin, 0));
       check_perror("Dup2", dup2(fd->stdout, 1));
       check_perror("Dup2", dup2(fd->stderr, 2));
