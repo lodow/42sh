@@ -5,7 +5,7 @@
 ## Login <moriss_h@epitech.net>
 ##
 ## Started on Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Tue May 21 13:11:00 2013 luc sinet
+## Last update Tue May 21 14:31:38 2013 maxime lavandier
 ##
 
 CC		=	gcc -lncurses
@@ -78,7 +78,6 @@ SRC		=	$(SRCPATH)/main.c \
 			$(SRCPATH)/add_history.c \
 			$(SRCPATH)/gere_history.c \
 			$(SRCPATH)/gere_valide_saisi.c \
-			$(SRCPATH)/parseur_history.c \
 			$(SRCPATH)/and_or.c \
 			$(SRCPATH)/redirection.c \
 			$(SRCPATH)/user_input.c \
