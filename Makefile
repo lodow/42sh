@@ -5,7 +5,7 @@
 ## Login <moriss_h@epitech.net>
 ##
 ## Started on Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Sat May 18 17:21:33 2013 remi robert
+## Last update Tue May 21 11:37:33 2013 remi robert
 ##
 
 CC	=	gcc
@@ -126,7 +126,7 @@ SRCLINE	=	$(PATHLINE)main.c \
 	$(PATHLINE)gere_control_u.c \
 	$(PATHLINE)return_string.c \
 	$(PATHLINE)add_caractere.c \
-
+	$(PATHLINE)check_the_directory.c \
 
 SRCLIBLINE=	$(LIBLINE)/str_cmp.c \
 	$(LIBLINE)/my_putstr.c \

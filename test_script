@@ -19,4 +19,5 @@ echo "echo -n test" | ./42SH
 echo "cd .. && ls" | ./42SH
 echo "cd grsf | cat -e" | ./42SH
 echo "env | cat -e" | ./42SH
-echo "echo "Segmentation fault :)" ; exit;" | ./42SH
+echo "echo Segmentation fault (:\) ; exit;" | ./42SH
+echo "dsmflksmflsdkfsdfsd;fsd;fsd;f ;df;d s;fd ;f; f;;; f;f;sd                             ffdsmlkfsdl kfdslfksd lkdmlfsk m|||||||||||>>>>>>>>><<kmlk<<<<<<klm" |./42SH
