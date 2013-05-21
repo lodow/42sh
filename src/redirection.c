@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 18 18:38:47 2013 remi robert
+** Last update Tue May 21 15:17:07 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -99,10 +99,9 @@ void	open_redirection_file(char *file, char *sepa, t_grp *grp, t_sh *shell)
         (sepa[0] == '>') ? (&(grp->fd.stdout)) :
         (sepa[0] == '2') ? (&(grp->fd.stderr)) : NULL);
   if ((fd != NULL) && ((tmpfd != -1) || (*fd < 3)))
-    {
-      safe_close(*fd);
-      *fd = tmpfd;
-    }
+    safe_close(*fd);
+  if ((fd != NULL) && ((tmpfd != -1) || (*fd < 3)))
+    *fd = tmpfd;
 }
 
 int	open_redirection(t_grp *grp, t_sh *shell)
