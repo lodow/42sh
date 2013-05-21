@@ -1,6 +1,3 @@
-#ifndef HEADER_CC7A3106EE0DB449
-#define HEADER_CC7A3106EE0DB449
-
 /*
 ** 42sh.h for 42sh in /home/maxime/Bureau/projet/actu/42sh/include
 **
@@ -331,5 +328,3 @@ void	gere_history(char *cmd, t_param *param,
 		     t_history *history, char *buff);
 
 #endif
-
-#endif // header guard

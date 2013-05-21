@@ -1,6 +1,3 @@
-#ifndef HEADER_AEA3D1FAB4DF97F5
-#define HEADER_AEA3D1FAB4DF97F5
-
 /*
 ** edition_line.h for edition in /home/remi/Projet/new_edition_line
 **
@@ -194,5 +191,3 @@ void		insert_caractere(char *cmd, t_param *param, char caratere);
 void		check_the_directory(char *buff);
 
 #endif
-
-#endif // header guard 
