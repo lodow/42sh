@@ -24,7 +24,7 @@ void	my_putstr(const char *str, int fd, int strlen)
           strlen = len;
         }
       if ((len = write(fd, str, strlen)) == -1)
-        write(2, "Write error\n", 12);
+        my_perror("Write");
     }
 }
 
