@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue May 21 11:30:53 2013 remi robert
-** Last update Tue May 21 14:53:55 2013 remi robert
+** Last update Tue May 21 15:16:20 2013 remi robert
 */
 
 #include "42sh.h"
@@ -40,7 +40,6 @@ void		check_second_directory(char *buff)
 
 void		check_the_directory(char *buff)
 {
-  char		buff_checker[SIZE_BUFFER];
   struct stat	stat_path;
 
   if (lstat(buff, &stat_path) != 0 || stat_path.st_mode == 16893)

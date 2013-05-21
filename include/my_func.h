@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Sun May 19 09:55:23 2013 Hugues
+** Last update Tue May 21 15:15:42 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -188,5 +188,6 @@ char		*return_saisi(char *cmd, t_history **history);
 void		parseur_history(char *cmd);
 void		add_caractere(char *cmd, t_param *param, char caratere);
 void		insert_caractere(char *cmd, t_param *param, char caratere);
+void		check_the_directory(char *buff);
 
 #endif
