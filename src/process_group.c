@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon May 20 00:17:01 2013 Hugues
+** Last update Tue May 21 14:28:59 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -15,6 +15,7 @@
 ** Func that execute a group of command,
 ** It return -1 if not executable or if it has failed
 */
+
 int	exec_process_group(t_sh *shell, t_grp *grp)
 {
   if ((grp == NULL) || (is_grp_exec(shell, grp) == 0))

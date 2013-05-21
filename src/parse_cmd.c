@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Tue May 21 14:18:46 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -33,7 +33,7 @@ t_grp	*parse_grp_a_exec(t_sh *shell, char *line, int def_fdout, int back)
 }
 
 void	parse_linked_grp_process(t_sh *shell, char *line,
-                               int def_fdout, int back)
+				 int def_fdout, int back)
 {
   t_grp	*grp;
   int	type;
@@ -69,7 +69,6 @@ int	parse_launch_background(char **line)
             free(tab[i - 1]);
             tab[i - 1] = NULL;
           }
-      //free((*line));
       (*line) = tab_file_tstr(tab, ' ');
     }
   return (back);

@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 36:20:21 2012 hugues morisset
+** Last update Tue May 21 14:28:33 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -47,7 +47,6 @@ void	check_and_load_backquote(char **line, t_sh *shell)
         {
           if ((str = exec_line_a_g_res(backtab[i], shell)) != NULL)
             {
-              //free(backtab[i]);
               backtab[i] = str;
             }
           if (MEXIT)
@@ -58,5 +57,4 @@ void	check_and_load_backquote(char **line, t_sh *shell)
   str = tab_file_tstr(backtab, ' ');
   tr_str(str, '\n', ' ');
   (*line) = str;
-  //free(line);
 }

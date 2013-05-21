@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sun May 19 09:42:31 2013 Hugues
+** Last update Tue May 21 14:05:03 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -19,10 +19,13 @@ t_sh		*get_sh_info(t_sh *sh)
   return (shell);
 }
 
+/*
+** signal(SIGTTOU, handler);
+** signal(SIGTTIN, handler);
+*/
+
 void	init_sig(void *handler)
 {
-  /*  signal(SIGTTOU, handler);
-    signal(SIGTTIN, handler);*/
   signal(SIGWINCH, handler);
   signal(SIGINT, handler);
   signal(SIGTSTP, handler);

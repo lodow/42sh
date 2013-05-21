@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Tue May 21 14:24:40 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -37,8 +37,9 @@ void	export_set(char *str, t_sh *shell)
 /*
 ** Add your config func here
 */
+
 void	fill_conf_func_tab(char **conf_list,
-                         void (**f)(char *str, t_sh *shell))
+			   void (**f)(char *str, t_sh *shell))
 {
   conf_list[0] = "export ";
   f[0] = &export_set;
@@ -50,7 +51,7 @@ int	new_conf_set(char *str, t_sh *shell)
 {
   int	i;
   char	*conf_list[NB_CONFFUNC];
-  void	(*(f[NB_CONFFUNC]))(char * str, t_sh * shell);
+  void	(*(f[NB_CONFFUNC]))(char *str, t_sh *shell);
   int	mid;
 
   fill_conf_func_tab(conf_list, f);
@@ -73,7 +74,7 @@ int	new_conf_set(char *str, t_sh *shell)
 ** Load your conf file
 */
 int	load_conf_file(char *filename, t_sh *shell,
-                   int (*f)(char *line, t_sh *shell))
+		       int (*f)(char *line, t_sh *shell))
 {
   char	**file;
   char	*path;

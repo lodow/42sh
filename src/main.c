@@ -5,12 +5,12 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:31:22 2013 maxime lavandier
-** Last update Sun May 19 09:43:20 2013 Hugues
+** Last update Tue May 21 14:22:58 2013 maxime lavandier
 */
 
 #include "42sh.h"
 
-int		init_shell(t_sh *shell, char **main_env)
+int	init_shell(t_sh *shell, char **main_env)
 {
   get_sh_info(shell);
   shell->beepbeepexit = 0;
@@ -19,8 +19,6 @@ int		init_shell(t_sh *shell, char **main_env)
   shell->env = cpy_env(main_env);
   shell->path = get_path(shell->env);
   shell->param.fallback = init_edition_line(main_env, &(shell->param));
-  //shell->pid.sid = setsid(); <- not sure if it's a good idea.
-  //if it is don't forget to check it
   if (((shell->pid.pid = check_perror("Getpid", getpid())) == -1)
       || ((shell->pid.pgid = check_perror("Getpgid",
                                           getpgid(shell->pid.pid))) == -1))
