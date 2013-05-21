@@ -5,10 +5,10 @@
 ## Login <moriss_h@epitech.net>
 ##
 ## Started on Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Tue May 21 13:11:00 2013 luc sinet
+## Last update Tue May 21 13:49:08 2013 luc sinet
 ##
 
-CC		=	gcc -lncurses
+CC		=	gcc
 
 RM		=	rm
 
