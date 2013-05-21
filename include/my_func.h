@@ -1,3 +1,6 @@
+#ifndef HEADER_AEA3D1FAB4DF97F5
+#define HEADER_AEA3D1FAB4DF97F5
+
 /*
 ** edition_line.h for edition in /home/remi/Projet/new_edition_line
 **
@@ -140,7 +143,7 @@ void		gere_control_k(char *cmd, t_param *param);
 int		gere_control(char *cmd, t_param * param, char *buff);
 void		gere_control_y(char *cmd, t_param *param);
 void		gere_control_u(char *cmd, t_param *param);
-int		clear_screem(void);
+int		clear_scream(void);
 void		clear_cmd(char *cmd, t_param *param);
 void		decal_string(char *cmd, int pos, char caractere);
 int		gere_keyboard(char *buff, char *cmd, t_param *param, t_history **history);
@@ -191,3 +194,5 @@ void		insert_caractere(char *cmd, t_param *param, char caratere);
 void		check_the_directory(char *buff);
 
 #endif
+
+#endif // header guard 

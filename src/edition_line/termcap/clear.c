@@ -10,7 +10,7 @@
 
 #include "42sh.h"
 
-int	clear_screem(void)
+int	clear_scream(void)
 {
   char	*s;
 

@@ -80,7 +80,6 @@ void	free_process_group(t_grp *grp)
 {
   if (grp != NULL)
     {
-      close_fds(&(grp->fd));
       free(grp->line);
       free_ptr_tab((void**)grp->cmds, (void*)(&free_cmd));
       free_ptr_tab((void**)grp->redirection, &free);
