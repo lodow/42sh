@@ -40,7 +40,7 @@ char	*parse_file_redirection(char *line, int posinstr, char *sepa)
   file = tab[0];
   tmpptr = &(line[posinstr - my_strlen(sepa)]);
   i = my_strlen(sepa) + my_strlen(file) + 1;
-  while (--i >= 0)
+  while ((--i >= 0) && (tmpptr[i] != '\0'))
     tmpptr[i] = ' ';
   del_slash_quote(tab);
   file = my_strdup(file);
