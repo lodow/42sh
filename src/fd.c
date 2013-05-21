@@ -26,7 +26,7 @@ void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr)
 int	safe_close(int fd)
 {
   if (fd > 2)
-    return (close(fd));
+    return (check_perror("Close", close(fd)));
   return (1);
 }
 

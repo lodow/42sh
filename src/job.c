@@ -12,25 +12,19 @@
 
 int	group_to_process_group(t_grp *grp, t_cmd *cmd)
 {
-  int	pgid;
-  int	tmppid;
+  int	i;
+  t_cmd	*tmpcmd;
 
-  if ((grp == NULL) || (cmd == NULL))
-    return (-1);
-  if (cmd->pid.pid == -1)
-    return (0);
-  if ((pgid = grp->pid.pgid) == -1)
+  i = 0;
+  if ((cmd != NULL) && (grp != NULL)
+      && (cmd->pid.pid != -1) && (cmd->pid.pgid == -1))
     {
-      if ((pgid = cmd->pid.pid) != -1)
-        if (check_perror("Setpgid", setpgid(pgid, pgid)) == -1)
-          return (-1);
-      grp->pid.pgid = pgid;
-    }
-  else
-    {
-      if ((tmppid = cmd->pid.pid) != -1)
-        if (check_perror("Setpgid", setpgid(tmppid, pgid)) == -1)
-          return (-1);
+      while ((tmpcmd = grp->cmds[i]) != NULL)
+        {
+          tmpcmd->pid.pgid = cmd->pid.pid;
+          i++;
+        }
+      grp->pid.pgid = cmd->pid.pgid;
     }
   return (0);
 }
