@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue May 21 11:30:53 2013 remi robert
-** Last update Tue May 21 15:16:20 2013 remi robert
+** Last update Tue May 21 16:23:50 2013 remi robert
 */
 
 #include "42sh.h"
@@ -42,6 +42,8 @@ void		check_the_directory(char *buff)
 {
   struct stat	stat_path;
 
+  if (buff == NULL || buff[0] == '\0')
+    return ;
   if (lstat(buff, &stat_path) != 0 || stat_path.st_mode == 16893)
     reformat_buffer_directory(buff);
   else
