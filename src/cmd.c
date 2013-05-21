@@ -45,6 +45,7 @@ t_cmd	*create_n_cmd(t_sh *shell, char *lign)
     return (NULL);
   res->line = lign;
   res->pid.pid = -1;
+  res->pid.pgid = -1;
   res->return_value = 0;
   tr_str(res->line, '\t', ' ');
   res->argv = str_to_wordtab(res->line, " ", 2);
