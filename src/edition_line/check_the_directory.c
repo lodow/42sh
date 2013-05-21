@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue May 21 11:30:53 2013 remi robert
-** Last update Tue May 21 16:23:50 2013 remi robert
+** Last update Tue May 21 21:11:06 2013 remi robert
 */
 
 #include "42sh.h"
@@ -23,29 +23,32 @@ void	reformat_buffer_directory(char *buff)
 
 void		check_second_directory(char *buff)
 {
+  DIR           *dirp;
   char		buff_checker[SIZE_BUFFER];
-  struct stat	stat_path;
   int		indice;
 
   indice = 0;
   buff_checker[indice] = '/';
-  while (++indice < SIZE_BUFFER - 1 && buff[indice] != '\0')
-    buff_checker[indice] = buff[indice];
+  while (++indice < SIZE_BUFFER - 1 && buff[indice - 1] != '\0')
+    buff_checker[indice] = buff[indice - 1];
   buff_checker[indice] = '\0';
-  if (lstat(buff_checker, &stat_path) != 0)
+  if ((dirp = opendir(buff_checker)) == NULL)
     return ;
-  if (stat_path.st_mode == 16893)
-    reformat_buffer_directory(buff);
+  reformat_buffer_directory(buff);
+  closedir(dirp);
 }
 
 void		check_the_directory(char *buff)
 {
-  struct stat	stat_path;
+  DIR           *dirp;
 
   if (buff == NULL || buff[0] == '\0')
     return ;
-  if (lstat(buff, &stat_path) != 0 || stat_path.st_mode == 16893)
-    reformat_buffer_directory(buff);
-  else
-    check_second_directory(buff);
+  if ((dirp = opendir(buff)) == NULL)
+    {
+      check_second_directory(buff);
+      return ;
+    }
+  reformat_buffer_directory(buff);
+  closedir(dirp);
 }
