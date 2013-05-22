@@ -80,9 +80,9 @@ void	wait_all_jobs(t_sh *shell)
                 my_putstr(" -> Done\n", 1, -1);
               }
           }
-        exec_next_grp(shell->process_group[i], shell);
         UNSETFLAG(shell->process_group[i]->flags, FLAGPOS(FGRP_FORGROUND));
         SETFLAG(shell->process_group[i]->flags, FLAGPOS(FGRP_TERMINATED));
+        exec_next_grp(shell->process_group[i], shell);
       }
 }
 
@@ -93,6 +93,7 @@ void	wait_no_fg_grp(t_sh* shell)
   int	sig;
   t_cmd	*cmd;
 
+  rm_all_terminated_grp(shell);
   while ((fg = get_forground_grp(shell)) != NULL)
     {
       sig = 0;
@@ -102,8 +103,6 @@ void	wait_no_fg_grp(t_sh* shell)
             cmd->return_value = tmp;
             aff_special_return_val(cmd);
           }
-      if (WIFSIGNALED(tmp))
-        sig = WTERMSIG(tmp);
       if (WIFSTOPPED(tmp))
         sig = WSTOPSIG(tmp);
       if (WIFCONTINUED(tmp))
