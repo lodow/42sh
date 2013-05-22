@@ -12,28 +12,17 @@
 
 int	exec_next_grp(t_grp *grp, t_sh *shell)
 {
-  int	fdout;
+  t_fds	fd;
   int	gobst;
-  int	flags;
-  t_grp	*this_grp;
-  int	size;
 
   if ((grp == NULL) || (grp->transition == GRP_TRANS_NONE))
     return (0);
-  flags = grp->flags;
-  fdout = grp->fd.stdout;
+  fd = grp->fd;
   gobst = global_group_ret_status(grp);
   if (((grp->transition == GRP_TRANS_AND) && (gobst == 0))
       || ((grp->transition == GRP_TRANS_OR) && (gobst != 0)))
     {
-      parse_user_cmd(shell, grp->transition_line, fdout);
-      grp->transition = GRP_TRANS_NONE;
-      size = ptr_tab_size((void**)(shell->process_group)) - 1;
-      if (size >= 0)
-        {
-          this_grp = shell->process_group[size];
-          this_grp->flags = flags;
-        }
+      parse_user_cmd(shell, grp->transition_line, &fd);
       return (1);
     }
   return (0);

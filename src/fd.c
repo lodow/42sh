@@ -10,11 +10,17 @@
 
 #include "42sh.h"
 
-void	change_fdout_t_def_z(t_grp *grp, int def_fdout)
+void	change_fdout_t_def_z(t_grp *grp, t_fds *def_fd)
 {
   if (grp != NULL)
-    if (grp->fd.stdout == 1)
-      grp->fd.stdout = def_fdout;
+    {
+      if (grp->fd.stdout == 0)
+        grp->fd.stdin = def_fd->stdin;
+      if (grp->fd.stdout == 1)
+        grp->fd.stdout = def_fd->stdout;
+      if (grp->fd.stdout == 2)
+        grp->fd.stderr = def_fd->stderr;
+    }
 }
 
 void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr)

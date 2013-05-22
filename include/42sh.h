@@ -224,7 +224,7 @@ t_cmd	*cmd_f_pid(int pid, t_sh *shell);
 ** User funcs
 */
 void	user_loop(t_sh *shell);
-void	parse_user_cmd(t_sh *shell, char *line, int def_fdout);
+void	parse_user_cmd(t_sh *shell, char *line, t_fds *def_fd);
 
 /*
 ** Pipes
@@ -269,7 +269,7 @@ int	exec_grp_lst(t_grp **grp_lst, t_sh *shell);
 void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr);
 void	close_fds(t_fds *fd);
 int	safe_close(int fd);
-void	change_fdout_t_def_z(t_grp *grp, int def_fdout);
+void	change_fdout_t_def_z(t_grp *grp, t_fds *def_fd);
 
 /*
 ** Conf file

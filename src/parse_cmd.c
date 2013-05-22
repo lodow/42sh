@@ -10,27 +10,27 @@
 
 #include "42sh.h"
 
-t_grp	*parse_grp(t_sh *shell, char *line, int def_fdout, int back)
+t_grp	*parse_grp(t_sh *shell, char *line, t_fds *def_fd, int back)
 {
   t_grp	*grp;
 
   if ((grp = create_n_process_group(shell, my_strdup(line))) == NULL)
     return (NULL);
-  change_fdout_t_def_z(grp, def_fdout);
+  change_fdout_t_def_z(grp, def_fd);
   if (back == 0)
     SETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND));
   return (grp);
 }
 
 t_grp	*parse_linked_grp_process(t_sh *shell, char *line,
-                                int def_fdout, int back)
+                                t_fds *def_fd, int back)
 {
   t_grp	*grp;
   int	type;
   char	*next_line;
 
   next_line = type_next_and_or(line, &type);
-  if ((grp = parse_grp(shell, line, def_fdout, back)) != NULL)
+  if ((grp = parse_grp(shell, line, def_fd, back)) != NULL)
     {
       grp->transition = type;
       grp->transition_line = next_line;
@@ -66,7 +66,7 @@ int	parse_launch_background(char **line)
   return (back);
 }
 
-t_grp	**parse_colon_line(t_sh *shell, char *line, int def_fdout)
+t_grp	**parse_colon_line(t_sh *shell, char *line, t_fds *def_fd)
 {
   char	**tmptab;
   t_grp	**grp_lst;
@@ -82,7 +82,7 @@ t_grp	**parse_colon_line(t_sh *shell, char *line, int def_fdout)
         back = parse_launch_background(&(tmpline));
         grp_lst = (t_grp**)add_ptr_t_tab((void**)grp_lst,
                                          (void*)parse_linked_grp_process
-                                         (shell, tmpline, def_fdout, back));
+                                         (shell, tmpline, def_fd, back));
         if (MEXIT)
           return (NULL);
         i++;
@@ -91,14 +91,14 @@ t_grp	**parse_colon_line(t_sh *shell, char *line, int def_fdout)
   return (grp_lst);
 }
 
-void	parse_user_cmd(t_sh *shell, char *line, int def_fdout)
+void	parse_user_cmd(t_sh *shell, char *line, t_fds *def_fd)
 {
   t_grp	**grp_lst;
 
   check_and_load_backquote(&line, shell);
   if (MEXIT)
     return ;
-  grp_lst = parse_colon_line(shell, line, def_fdout);
+  grp_lst = parse_colon_line(shell, line, def_fd);
   if (MEXIT)
     return ;
   exec_grp_lst(grp_lst, shell);

@@ -44,7 +44,9 @@ void	user_loop(t_sh *shell)
 {
   char	*lign;
   char	*prompt;
+  t_fds	tmpfd;
 
+  init_stdfd_t_def_val(&tmpfd, 0, 1, 2);
   prompt = recalc_prompt(shell);
   while ((lign = read_cmd(prompt, &(shell->param), &shell->history)) != NULL)
     {
@@ -52,7 +54,7 @@ void	user_loop(t_sh *shell)
       no_fg_jobs_status(shell);
       call_signal_func(shell, 0);
       wait_no_fg_grp(shell);
-      parse_user_cmd(shell, lign, 1);
+      parse_user_cmd(shell, lign, &tmpfd);
       if (MEXIT)
         return ;
       wait_no_fg_grp(shell);
