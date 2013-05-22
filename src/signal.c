@@ -66,5 +66,6 @@ void	call_signal_func(t_sh *shell, int chld_sig)
   if (chld_sig == SIGTSTP)
     no_fg_jobs_status(shell);
   wait_all_jobs(shell);
+  rm_all_terminated_grp(shell);
   shell->signal = 0;
 }

@@ -94,6 +94,7 @@ void	wait_no_fg_grp(t_sh* shell)
   t_cmd	*cmd;
 
   rm_all_terminated_grp(shell);
+  call_signal_func(shell, 0);
   while ((fg = get_forground_grp(shell)) != NULL)
     {
       sig = 0;
@@ -108,7 +109,6 @@ void	wait_no_fg_grp(t_sh* shell)
       if (WIFCONTINUED(tmp))
         sig = SIGCONT;
       call_signal_func(shell, sig);
-      rm_all_terminated_grp(shell);
     }
   rm_all_terminated_grp(shell);
   set_forground_pgrp(shell->pid.pgid);
