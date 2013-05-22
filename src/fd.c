@@ -10,6 +10,13 @@
 
 #include "42sh.h"
 
+void	change_fdout_t_def_z(t_grp *grp, int def_fdout)
+{
+  if (grp != NULL)
+    if (grp->fd.stdout == 1)
+      grp->fd.stdout = def_fdout;
+}
+
 void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr)
 {
   fds->stdin = 0;

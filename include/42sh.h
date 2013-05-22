@@ -261,6 +261,7 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
                  int (*f)(char *cmd, char **argv, t_sh *shell));
 void	free_process_group(t_grp *grp);
 int	is_grp_exec(t_sh *shell, t_grp *grp);
+int	exec_grp_lst(t_grp **grp_lst, t_sh *shell);
 
 /*
 ** Fds
@@ -268,6 +269,7 @@ int	is_grp_exec(t_sh *shell, t_grp *grp);
 void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr);
 void	close_fds(t_fds *fd);
 int	safe_close(int fd);
+void	change_fdout_t_def_z(t_grp *grp, int def_fdout);
 
 /*
 ** Conf file
