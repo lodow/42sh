@@ -66,7 +66,8 @@ char	*read_cmd(char *prompt, t_param *param, t_history **history)
     return (NULL);
   if (param->fallback == 0)
     {
-      my_putstr(prompt, 1, -1);
+      if (isatty(0))
+        my_putstr(prompt, 1, -1);
       return (get_next_line(0));
     }
   param->cmd = NULL;
