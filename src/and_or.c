@@ -17,7 +17,7 @@ int	exec_next_grp(t_grp *grp, t_sh *shell)
 
   if ((grp == NULL) || (grp->transition == GRP_TRANS_NONE))
     return (0);
-  fd = grp->fd;
+  init_stdfd_t_def_val(&fd, 0, 1, 2);
   gobst = global_group_ret_status(grp);
   if (((grp->transition == GRP_TRANS_AND) && (gobst == 0))
       || ((grp->transition == GRP_TRANS_OR) && (gobst != 0)))
