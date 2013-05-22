@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May 11 14:05:31 2013 remi robert
-** Last update Tue May 21 14:27:22 2013 remi robert
+** Last update Wed May 22 14:19:23 2013 remi robert
 */
 
 #include "42sh.h"
@@ -86,7 +86,7 @@ void	completation(char *cmd, glob_t *globb, t_param *param, char *s)
   if (nb_caractere == 0)
     return ;
   buff[nb_caractere] = '\0';
-  reformat_buffer(buff);
   check_the_directory(buff);
+  reformat_buffer(buff);
   cmd = decal_string_cmd(cmd, param, s, buff);
 }
