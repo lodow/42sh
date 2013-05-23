@@ -108,6 +108,9 @@
 		<Unit filename="src/edition_line/add_caractere.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/edition_line/check_the_directory.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/edition_line/clear.c">
 			<Option compilerVar="CC" />
 		</Unit>
