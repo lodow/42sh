@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu May 23 13:28:32 2013 remi robert
-** Last update Thu May 23 18:13:16 2013 remi robert
+** Last update Thu May 23 18:49:00 2013 remi robert
 */
 
 #include "42sh.h"
@@ -13,9 +13,17 @@
 char	*rempl_str_inib(char *str, char *ref, char *rempl)
 {
   char	**tab;
+  char	*s;
 
+  tab = NULL;
   if ((tab = str_to_wordtab(str, ref, 0)) == NULL ||
-      (str = str_fille_tstr2(tab, rempl)))
-    return (NULL);
-  return (str);
+      (s = strtab_to_str(tab, rempl)) == NULL)
+    {
+      free(str);
+      free_ptr_tab((void **)tab, &free);
+      return (NULL);
+    }
+  free(str);
+  free_ptr_tab((void **)tab, &free);
+  return (s);
 }
