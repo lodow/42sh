@@ -1,7 +1,7 @@
 Commit 300 !: 42SH
 ====
 
-Repartition fictive: 
+Repartition fictive:
 sinet_l : fichier conf + autocompletation
 
 robert_r : edition de ligne
