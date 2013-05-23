@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Tue May  7 14:27:48 2013 maxime lavandier
+** Last update Thu May 23 15:51:05 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -35,8 +35,8 @@ char	**malloc_tab(char *str, char *delim)
   int	i;
   int	nbr;
 
-  len_delim = strlen(delim);
-  len_str = strlen(str);
+  len_delim = my_strlen(delim);
+  len_str = my_strlen(str);
   i = 0;
   nbr = 0;
   while (str[i] != 0)
@@ -63,7 +63,7 @@ int	fill_tab_inib(char *str, char *delim, char **tab)
   int	len_delim;
   int	quote;
 
-  len_delim = strlen(delim);
+  len_delim = my_strlen(delim);
   min = max = i = 0;
   quote = -1;
   while (str[max] != 0)
@@ -91,7 +91,7 @@ int	fill_tab(char *str, char *delim, char **tab)
   int	i;
   int	len_delim;
 
-  len_delim = strlen(delim);
+  len_delim = my_strlen(delim);
   min = max = i = 0;
   while (str[max] != 0)
     {
@@ -119,10 +119,10 @@ char	**str_to_wordtab(char *str, char *delim, char inibiteur)
   if (str == NULL || delim == NULL)
     return (NULL);
   tab = malloc_tab(str, delim);
-  while (tab[lenght_malloc] != NULL)
-    lenght_malloc++;
   if (tab == NULL)
     return (NULL);
+  while (tab[lenght_malloc] != NULL)
+    lenght_malloc++;
   if (inibiteur)
     rempli = fill_tab_inib(str, delim, tab);
   else
