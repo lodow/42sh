@@ -5,10 +5,19 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu May 16 14:59:38 2013 remi robert
-** Last update Fri May 24 00:46:47 2013 remi robert
+** Last update Fri May 24 01:06:14 2013 remi robert
 */
 
 #include "42sh.h"
+
+void	add_history_after_line(char *lign, t_history **history)
+{
+  if (history != NULL && *history != NULL &&
+      str_cmp((*history)->cmd, lign) == 1)
+    return ;
+  if (lign[0] != '\0' && lign[0] != '\n')
+    add_history(history, lign);
+}
 
 int             nb_max_history(t_history *history)
 {
