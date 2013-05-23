@@ -202,7 +202,7 @@ void	free_wordtab(char **char_tab, int rempli, int lenght_malloc);
 void	init_sig(void *handler);
 t_sh	*get_sh_info(t_sh *sh);
 void	sig_handler(int sig);
-void	call_signal_func(t_sh *shell, int chld_sig);
+void	call_signal_func(t_sh *shell, int chld_sig, t_cmd *chld_cmd);
 
 /*
 ** Jobs

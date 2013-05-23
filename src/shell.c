@@ -52,7 +52,7 @@ void	user_loop(t_sh *shell)
     {
       add_history_after_line(lign, &shell->history);
       no_fg_jobs_status(shell);
-      call_signal_func(shell, 0);
+      call_signal_func(shell, 0, NULL);
       wait_no_fg_grp(shell);
       parse_user_cmd(shell, lign, &tmpfd);
       if (MEXIT)
