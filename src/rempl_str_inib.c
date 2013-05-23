@@ -14,8 +14,8 @@ char	*rempl_str_inib(char *str, char *ref, char *rempl)
 {
   char	**tab;
 
-  if ((tab = str_to_wordtab(str, ref, 0)) == NULL ||
-      (str = str_fille_tstr2(tab, rempl)))
+  if ((tab = str_to_wordtab(str, ref, 2)) == NULL ||
+      (str = str_fille_tstr2(tab, rempl)) == NULL)
     return (NULL);
   return (str);
 }
