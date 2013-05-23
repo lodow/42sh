@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Thu May 23 16:05:54 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -17,7 +17,7 @@ void	alias_set(char *str, t_sh *shell)
   if ((tmp = my_strdup(str)) != NULL)
     {
       shell->alias_tab = (char**)add_ptr_t_tab((void**)shell->alias_tab,
-                         (void*)tmp);
+					       (void*)tmp);
     }
 }
 
@@ -73,7 +73,7 @@ int	new_conf_set(char *str, t_sh *shell)
 ** Load your conf file
 */
 int	load_conf_file(char *filename, t_sh *shell,
-                   int (*f)(char *line, t_sh *shell))
+		       int (*f)(char *line, t_sh *shell))
 {
   char	**file;
   char	*path;

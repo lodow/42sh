@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr 12 19:14:58 2013 remi robert
-** Last update Thu May 16 11:09:08 2013 remi robert
+** Last update Thu May 23 16:07:04 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -37,7 +37,7 @@ int		view_history(char *path, char **argv, t_sh *shell)
   return (0);
 }
 
-void		clear_history(t_history *ptr)
+void	clear_history(t_history *ptr)
 {
   if (ptr == NULL)
     return ;

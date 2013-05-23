@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Apr 10 10:26:02 2013 remi robert
+** Last update Thu May 23 15:43:09 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -30,7 +30,7 @@ void	aff_special_return_val(t_cmd *cmd)
   if (WIFEXITED(cmd->return_value))
     {
       cmd->return_value = WEXITSTATUS(cmd->return_value);
-      cmd->pid.pid = -1 ;
+      cmd->pid.pid = -1;
     }
 }
 
@@ -53,7 +53,7 @@ int	wait_son(t_grp *grp)
           else
             aff_special_return_val(cmd);
         }
-      i++;
+      ++i;
     }
   return (0);
 }

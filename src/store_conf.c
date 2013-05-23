@@ -5,12 +5,12 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Thu May 23 15:55:09 2013 maxime lavandier
 */
 
 #include "42sh.h"
 
-void	store_history_f(t_sh *shell, int fd)
+void		store_history_f(t_sh *shell, int fd)
 {
   t_history	*tmp;
 
@@ -22,9 +22,9 @@ void	store_history_f(t_sh *shell, int fd)
   while (tmp != NULL)
     {
       my_putstr(tmp->cmd, fd, -1);
-        my_putstr("\n", fd, -1);
-        tmp = tmp->back;
-      }
+      my_putstr("\n", fd, -1);
+      tmp = tmp->back;
+    }
 }
 
 void	store_conf_file(char *filename, t_sh *shell,

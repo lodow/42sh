@@ -5,14 +5,14 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Thu May 23 16:00:35 2013 maxime lavandier
 */
 
 #include "42sh.h"
 
 char		**expand_reg_exp(char *regexp)
 {
-  glob_t		res;
+  glob_t	res;
   char		**tab;
   char		*tmp;
   int		flags;

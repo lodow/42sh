@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon May 20 00:17:01 2013 Hugues
+** Last update Thu May 23 16:08:21 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -23,7 +23,7 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
       || (exec_a_pipe(shell, grp) == -1) || (MEXIT))
     return (-1);
   shell->process_group = (t_grp**)add_ptr_t_tab((void**)shell->process_group,
-                         (void*)grp);
+						(void*)grp);
   if (GETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND)) && (grp->pid.pgid != -1))
     set_forground_process_g(shell, grp);
   else
