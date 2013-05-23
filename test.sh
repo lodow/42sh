@@ -67,6 +67,9 @@ check_diff | less
 COMMAND="env | cat -e"
 check_diff | less
 
+COMMAND="ls | wc -l > toto; cat -e << abc | wc -l >> toto; cat -e toto"
+check_diff | less
+
 rm -f ${OUT} ${OUTB}
 
 
