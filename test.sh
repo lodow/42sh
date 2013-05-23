@@ -67,6 +67,9 @@ check_diff | less
 COMMAND="env | cat -e"
 check_diff | less
 
+COMMAND="env env env env env env ls && env env env ls && env ls && ls && env env env env env env env env env env env env `echo ls` && ls && env env env env env env env env env env env env env env env ls"
+check_diff | less
+
 rm -f ${OUT} ${OUTB}
 
 

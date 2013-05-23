@@ -95,6 +95,8 @@ void	parse_user_cmd(t_sh *shell, char *line, t_fds *def_fd)
 {
   t_grp	**grp_lst;
 
+  if ((shell->too_much_parsing)++ > 1000)
+    return ;
   check_and_load_backquote(&line, shell);
   if (MEXIT)
     return ;

@@ -121,6 +121,7 @@ typedef struct	s_sh
   t_grp		**process_group;
   int		signal;
   int		beepbeepexit;
+  int		too_much_parsing;
 }		t_sh;
 
 /*
