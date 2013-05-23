@@ -5,11 +5,11 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Sun May 19 09:43:54 2013 Hugues
+** Last update Thu May 23 13:47:52 2013 luc sinet
 */
 
 #ifndef		SH42_H
-# define		SH42_H
+# define       	SH42_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -29,6 +29,9 @@
 # include "get_file.h"
 # include "my_func.h"
 # include "couleur.h"
+
+# define MASK 0170000
+# define ISDIR 0040000
 
 # define NB_BUILTINS 14
 # define NB_CONFFUNC 2
