@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue May 21 11:30:53 2013 remi robert
-** Last update Thu May 23 13:48:17 2013 luc sinet
+** Last update Thu May 23 20:40:02 2013 remi robert
 */
 
 #include "42sh.h"
@@ -42,21 +42,18 @@ void		check_second_directory(char *buff)
   while (++indice < SIZE_BUFFER - 1 && buff[indice - 1] != '\0')
     buff_checker[indice] = buff[indice - 1];
   buff_checker[indice] = '\0';
-  if (check_if_folder(buff_checker))
+  if (check_if_folder(buff_checker) == 1)
     reformat_buffer_directory(buff);
 }
 
 void		check_the_directory(char *buff)
 {
-  DIR           *dirp;
-
   if (buff == NULL || buff[0] == '\0')
     return ;
-  if ((dirp = opendir(buff)) == NULL)
+  if (check_if_folder(buff) != 1)
     {
       check_second_directory(buff);
       return ;
     }
   reformat_buffer_directory(buff);
-  closedir(dirp);
 }

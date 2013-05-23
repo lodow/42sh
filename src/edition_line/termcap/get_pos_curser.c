@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Thu Mar 21 08:21:11 2013 remi
-** Last update Thu May 23 12:11:51 2013 remi robert
+** Last update Thu May 23 19:15:44 2013 remi robert
 */
 
 #include "42sh.h"
@@ -41,15 +41,19 @@ void	get_pos_curser(int *x, int *y, int fd)
 {
   char	buff[10];
   int	indice;
+  int	secu;
 
   *x = -1;
   *y = -1;
-  buff[0] = '\0';
-  while (buff[0] != 27)
+  my_memset(buff, 10, 0);
+  buff[0] = ESC;
+  if (write(fd, POSCURSEUR, my_strlen(POSCURSEUR)) == -1)
+    return ;
+  indice = 0;
+  secu = 0;
+  while (++secu < 10 && indice < 3)
     {
-      my_memset(buff, 10, 0);
-      if (write(fd, POSCURSEUR, my_strlen(POSCURSEUR)) == -1 ||
-  	  (indice = read(fd, buff, 9)) == -1)
+      if ((indice = read(fd, &buff[0], 8)) == -1)
   	return ;
       buff[indice] = '\0';
     }
