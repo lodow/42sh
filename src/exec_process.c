@@ -41,7 +41,6 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
       check_perror("Dup2", dup2(fd->stdin, 0));
       check_perror("Dup2", dup2(fd->stdout, 1));
       check_perror("Dup2", dup2(fd->stderr, 2));
-      close_fds(fd);
       if ((ret_exec = f(cmd->cmd_fpath, cmd->argv, shell)) == -1)
         my_perror(cmd->cmd_fpath);
       my_exit(ret_exec);
