@@ -24,7 +24,9 @@ char	*recalc_prompt(t_sh *shell)
         {
           if (prompt != tmp)
             free(tmp);
-          prompt = rempl_str_inib(prompt, "\\033", "\033");
+          tmp = rempl_str_inib(prompt, "\\033", "\033");
+          free(prompt);
+          prompt = tmp;
         }
     }
   if (prompt == NULL)

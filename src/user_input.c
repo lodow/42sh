@@ -19,8 +19,7 @@ char	*usr_input_retrieve(t_sh *shell, char *end)
 
   res = NULL;
   prompt = ">";
-  while (((tmp = read_cmd(prompt, &(shell->param),
-                          &(shell->history))) != NULL)
+  while (((tmp = read_cmd(prompt, &(shell->param), NULL)) != NULL)
          && (my_strncmp(tmp, end, -1)))
     {
       tmp2 = str_cat(tmp, "\n");
