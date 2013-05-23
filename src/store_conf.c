@@ -33,7 +33,7 @@ void	store_conf_file(char *filename, t_sh *shell,
   char	*path;
   int	fd;
 
-  if (((path = check_vars_in_str(filename, shell->env)) == NULL)
+  if (((path = check_vars_in_str(filename, shell->env, 0)) == NULL)
       || ((fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, REDI_FRIGHT)) == -1))
     {
       my_perror(path);

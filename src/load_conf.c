@@ -81,7 +81,7 @@ int	load_conf_file(char *filename, t_sh *shell,
   int	i;
 
   i = 0;
-  if (((path = check_vars_in_str(filename, shell->env)) == NULL)
+  if (((path = check_vars_in_str(filename, shell->env, 0)) == NULL)
       || ((fd = open(path, O_RDONLY)) == -1))
     {
       my_perror(path);

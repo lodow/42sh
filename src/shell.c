@@ -20,7 +20,7 @@ char	*recalc_prompt(t_sh *shell)
   if ((ps1 = get_envvar("PS1", shell->env)) != NULL)
     {
       tmp = my_strdup(ps1);
-      if ((prompt = check_vars_in_str(tmp, shell->env)) != NULL)
+      if ((prompt = check_vars_in_str(tmp, shell->env, 1)) != NULL)
         {
           if (prompt != tmp)
             free(tmp);
