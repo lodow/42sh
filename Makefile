@@ -5,11 +5,7 @@
 ## Login <moriss_h@epitech.net>
 ##
 ## Started on Mon Oct 22 09:20:28 2012 hugues morisset
-<<<<<<< HEAD
-## Last update Tue May 21 14:43:27 2013 maxime lavandier
-=======
-## Last update Tue May 21 20:15:27 2013 remi robert
->>>>>>> master
+## Last update Thu May 23 16:26:23 2013 maxime lavandier
 ##
 
 CC		=	gcc
