@@ -5,7 +5,7 @@
 ## Login <moriss_h@epitech.net>
 ##
 ## Started on Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Tue May 21 20:15:27 2013 remi robert
+## Last update Thu May 23 18:11:14 2013 remi robert
 ##
 
 CC		=	gcc
@@ -83,7 +83,9 @@ SRC		=	$(SRCPATH)/main.c \
 			$(SRCPATH)/redirection.c \
 			$(SRCPATH)/user_input.c \
 			$(SRCPATH)/cat.c \
-			$(SRCPATH)/reg_expr.c
+			$(SRCPATH)/reg_expr.c \
+			$(SRCPATH)/rempl_str_inib.c \
+			$(SRCPATH)/str_fille_tstr.c
 
 ENV		=	$(PATHENV)/env.c
 

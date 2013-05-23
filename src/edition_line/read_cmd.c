@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Wed May 22 13:29:38 2013 remi robert
+** Last update Thu May 23 13:44:22 2013 remi robert
 */
 
 #include "42sh.h"
@@ -21,6 +21,7 @@ char	*init_read_cmd(char *cmd, t_param *param)
   if (SIZE_BUFFER <= 0 ||
       (cmd = malloc(sizeof(char) * SIZE_BUFFER)) == NULL)
     return (NULL);
+  my_memset(cmd, SIZE_BUFFER, '\0');
   cmd[0] = '\0';
   get_pos_curser(&param->x, &param->y, param->fd_tty);
   param->begin_pos_x = param->x;
