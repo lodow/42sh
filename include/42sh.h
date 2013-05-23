@@ -301,6 +301,7 @@ void	parse_redirection(t_grp *grp, char *line);
 int	open_redirection(t_grp *grp, t_sh *shell);
 char	*usr_input_retrieve(t_sh *shell, char *end);
 int	dred_left(char *end, t_sh *shell);
+int	check_if_folder(char *file);
 
 /*
 ** Backquotes
