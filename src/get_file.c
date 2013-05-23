@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Sat Dec  8 14:09:50 2012 Hugues
-** Last update Sat Dec 15 17:28:23 2012 Hugues
+** Last update Thu May 23 15:39:16 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -18,7 +18,8 @@ char	**add_line_ttab(char **tab, char **linetab, int tab_size)
 
   j = 0;
   i = 0;
-  while ((tab != NULL) && ((tab[i++]) != NULL));
+  while ((tab != NULL) && ((tab[i++]) != NULL))
+    ;
   if (((ntab = malloc((i + tab_size + 1 + PTRT_PACK)
                       * sizeof(char*))) == NULL))
     return (NULL);
