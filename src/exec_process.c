@@ -28,7 +28,7 @@ void	cmd_execution(t_cmd *cmd, t_fds *fd, t_sh *shell)
 }
 
 int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
-		     int (*f)(char *cmd, char **argv, t_sh *shell))
+                 int (*f)(char *cmd, char **argv, t_sh *shell))
 {
   int	ret_exec;
 
