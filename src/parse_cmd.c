@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Thu May 23 16:08:22 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -23,7 +23,7 @@ t_grp	*parse_grp(t_sh *shell, char *line, t_fds *def_fd, int back)
 }
 
 t_grp	*parse_linked_grp_process(t_sh *shell, char *line,
-                                t_fds *def_fd, int back)
+				  t_fds *def_fd, int back)
 {
   t_grp	*grp;
   int	type;

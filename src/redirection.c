@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 18 18:38:47 2013 remi robert
+** Last update Thu May 23 16:01:42 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -70,7 +70,7 @@ void	parse_redirection(t_grp *grp, char *line)
         posinstr += my_strlen(tab[i]) + my_strlen(file);
         file = parse_file_redirection(line, posinstr, file);
         grp->redirection = (char**)add_ptr_t_tab((void**)grp->redirection,
-                           (void*)str_cat(value, file));
+						 (void*)str_cat(value, file));
         i++;
       }
 }
