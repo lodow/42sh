@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Wed May 22 13:49:20 2013 remi robert
+** Last update Thu May 23 18:11:39 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -189,5 +189,7 @@ void		parseur_history(char *cmd);
 void		add_caractere(char *cmd, t_param *param, char caratere);
 void		insert_caractere(char *cmd, t_param *param, char caratere);
 void		check_the_directory(char *buff);
+char		*rempl_str_inib(char *str, char *ref, char *rempl);
+char		*str_fille_tstr2(char **tab, char *rempl);
 
 #endif

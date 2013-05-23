@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Thu Mar 21 08:21:11 2013 remi
-** Last update Wed May 22 13:44:59 2013 remi robert
+** Last update Thu May 23 12:11:51 2013 remi robert
 */
 
 #include "42sh.h"
@@ -36,31 +36,6 @@ void	assign_value_pos(int *x, int *y, char *buff)
   num[indice - 2] = '\0';
   *x = my_getnbr(num) - 1;
 }
-
-/* int	rempl_buff_get_pos_curser(char *buff) */
-/* { */
-/*   int	ret; */
-/*   int	pipefd[2]; */
-/*   int	pid; */
-
-/*   if (pipe(pipefd) == -1 || (pid = fork()) == -1) */
-/*     return (0); */
-/*   if (pid == 0) */
-/*     { */
-/*       if (close(pipefd[0]) == -1 || */
-/* 	  write(pipefd[1], POSCURSEUR, my_strlen(POSCURSEUR)) == -1) */
-/* 	return (0); */
-/*     } */
-/*   else */
-/*     { */
-/*       waitpid(pid, NULL, 0); */
-/*       if (close(pipefd[1]) == -1 || */
-/* 	  (ret = read(pipefd[0], buff, 9) == -1)) */
-/* 	return (0); */
-/*       buff[ret] = '\0'; */
-/*     } */
-/*   return (1); */
-/* } */
 
 void	get_pos_curser(int *x, int *y, int fd)
 {
