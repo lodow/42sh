@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu May 23 18:10:10 2013 remi robert
-** Last update Thu May 23 18:44:08 2013 remi robert
+** Last update Thu May 23 18:55:02 2013 remi robert
 */
 
 #include "42sh.h"
@@ -30,9 +30,9 @@ char	*strtab_to_str(char **tab, char *rempl)
     {
       my_strncpy(&str[pos_string], tab[indice], -1);
       pos_string += my_strlen(tab[indice]);
-      if (rempl != NULL)
+      if (tab[indice] != NULL && tab[indice + 1] != NULL && rempl != NULL)
 	my_strncpy(&str[pos_string], rempl, -1);
-      if (rempl != NULL)
+      if (tab[indice] != NULL && tab[indice + 1] != NULL && rempl != NULL)
 	pos_string += my_strlen(rempl);
     }
   str[pos_string] = '\0';
