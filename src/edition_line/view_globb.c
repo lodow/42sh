@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri May 10 19:24:14 2013 remi robert
-** Last update Tue May 14 20:49:10 2013 remi robert
+** Last update Thu May 23 22:33:53 2013 remi robert
 */
 
 #include "42sh.h"
@@ -19,10 +19,12 @@ int	get_strlen_anti_back(char *str)
   indice = -1;
   while (str[++indice] != '\0')
     if (str[indice] == '/')
-      mark = 1;
-  if (mark == 0)
+      mark += 1;
+  if (mark == 0 || (mark == 1 && str[my_strlen(str) - 1] == '/'))
     return (my_strlen(str));
   indice = my_strlen(str);
+  if (str[indice - 1] == '/')
+    indice -= 1;
   while (indice >= 0 && str[indice] != '/')
     indice -= 1;
   return (my_strlen(str) - (indice + 1));
@@ -50,7 +52,6 @@ void	print_globb(char **path, int size, int large, int *end)
 
   x = 0;
   indice = -1;
-  my_putstr("\n", 1, 1);
   while (path[++indice] != NULL)
     {
       x += 1;
@@ -61,13 +62,14 @@ void	print_globb(char **path, int size, int large, int *end)
 	  x = 0;
 	}
       indice_tab = my_strlen(path[indice]) + 1;
+      if (path[indice][my_strlen(path[indice]) - 1] == '/')
+	indice_tab -= 2;
       while (--indice_tab >= 0 && path[indice][indice_tab] != '/');
       my_putstr(&path[indice][indice_tab + 1], 1, -1);
       indice_tab = my_strlen(&path[indice][indice_tab + 1]) - 1;
       while (++indice_tab < large)
 	my_putstr(" ", 1, 1);
     }
-  my_putstr("\n", 1, 1);
 }
 
 void	view_globb(glob_t *globb, t_param *param)
@@ -77,6 +79,8 @@ void	view_globb(glob_t *globb, t_param *param)
 
   end = 2;
   size = get_other_large(globb->gl_pathv);
+  my_putstr("\n", 1, 1);
   print_globb(globb->gl_pathv, (return_x() - 2) / size, size, &end);
+  my_putstr("\n", 1, 1);
   param->begin_pos_y += end;
 }

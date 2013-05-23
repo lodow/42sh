@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri May 10 08:43:23 2013 remi robert
-** Last update Tue May 21 20:13:45 2013 remi robert
+** Last update Thu May 23 22:15:56 2013 remi robert
 */
 
 #include "42sh.h"
@@ -31,10 +31,19 @@ void	my_putstr_view(char *cmd, int add_prompt, t_param *param)
   size = return_x() * return_y();
   if (size <= size_cmd && size >= my_strlen("Window too small"))
     {
+      /* param->x = 0; */
+      /* param->y = 0; */
       curseur(0, 0);
+      /* printf("%s", F_ROUGE); */
+      /* printf("size : %d str : %d => calc : %d \n", size, my_strlen(cmd), my_strlen(cmd) - size); */
+      /* fflush(stdout); */
+      /* my_putstr(&cmd[(my_strlen(cmd) - size) - 1], 1, -1); */
+      /* printf("%s", REZ); */
+      /* get_pos_curser(&param->x, &param->y - 1, param->fd_tty); */
+      /* curseur(param->x, param->y); */
       apply_termcap(param->termcap.str_cd, 0, param->fd_tty);
       my_putstr("Window too small", 1, -1);
-      curseur(0, 0);
+      /* curseur(0, 0); */
     }
   else
     {
