@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue May 21 13:53:40 2013 maxime lavandier
+** Last update Thu May 23 16:19:19 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -53,7 +53,7 @@ int	wait_son(t_grp *grp)
           else
             aff_special_return_val(cmd);
         }
-      i++;
+      ++i;
     }
   return (0);
 }
@@ -80,9 +80,9 @@ void	wait_all_jobs(t_sh *shell)
                 my_putstr(" -> Done\n", 1, -1);
               }
           }
-        exec_next_grp(shell->process_group[i], shell);
         UNSETFLAG(shell->process_group[i]->flags, FLAGPOS(FGRP_FORGROUND));
         SETFLAG(shell->process_group[i]->flags, FLAGPOS(FGRP_TERMINATED));
+        exec_next_grp(shell->process_group[i], shell);
       }
 }
 
@@ -93,23 +93,22 @@ void	wait_no_fg_grp(t_sh* shell)
   int	sig;
   t_cmd	*cmd;
 
+  rm_all_terminated_grp(shell);
+  call_signal_func(shell, 0, NULL);
   while ((fg = get_forground_grp(shell)) != NULL)
     {
       sig = 0;
-      if ((cmd = cmd_f_pid(waitpid(-1, &tmp, WUNTRACED), shell)) != NULL)
-        if (WIFEXITED(tmp))
+      if ((cmd = cmd_f_pid(waitpid(WAIT_ANY, &tmp, WUNTRACED), shell)) != NULL)
+        if (WIFEXITED(tmp) || WIFSIGNALED(tmp))
           {
             cmd->return_value = tmp;
             aff_special_return_val(cmd);
           }
-      if (WIFSIGNALED(tmp))
-        sig = WTERMSIG(tmp);
       if (WIFSTOPPED(tmp))
         sig = WSTOPSIG(tmp);
       if (WIFCONTINUED(tmp))
         sig = SIGCONT;
-      call_signal_func(shell, sig);
-      rm_all_terminated_grp(shell);
+      call_signal_func(shell, sig, cmd);
     }
   rm_all_terminated_grp(shell);
   set_forground_pgrp(shell->pid.pgid);

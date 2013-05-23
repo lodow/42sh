@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May 11 14:05:31 2013 remi robert
-** Last update Sat May 18 10:01:10 2013 remi robert
+** Last update Wed May 22 17:08:37 2013 remi robert
 */
 
 #include "42sh.h"
@@ -60,7 +60,11 @@ void	reformat_buffer(char *buff)
   int	indice;
 
   indice = (my_strlen(buff) + 1) % SIZE_BUFFER;
-  while (buff[--indice] != '/' && indice >= 0);
+  if (indice <= 0 || indice >= SIZE_BUFFER)
+    return ;
+  if (buff[indice - 2] == '/')
+    indice = indice - 2;
+  while (--indice >= 0 && buff[indice] != '/');
   indice_buff = -1;
   while (buff[++indice] != '\0' && ++indice_buff < SIZE_BUFFER &&
   	 indice_buff <= indice + 1)
@@ -86,6 +90,10 @@ void	completation(char *cmd, glob_t *globb, t_param *param, char *s)
   if (nb_caractere == 0)
     return ;
   buff[nb_caractere] = '\0';
+  if (buff[my_strlen(buff) - 1] != '/')
+    check_the_directory(buff);
+  if (my_strlen(buff) == my_strlen(s) - 1)
+    return ;
   reformat_buffer(buff);
   cmd = decal_string_cmd(cmd, param, s, buff);
 }

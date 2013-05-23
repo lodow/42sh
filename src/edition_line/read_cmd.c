@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Mon May 20 15:06:34 2013 remi robert
+** Last update Wed May 22 13:29:38 2013 remi robert
 */
 
 #include "42sh.h"
@@ -66,7 +66,8 @@ char	*read_cmd(char *prompt, t_param *param, t_history **history)
     return (NULL);
   if (param->fallback == 0)
     {
-      my_putstr(prompt, 1, -1);
+      if (isatty(0))
+        my_putstr(prompt, 1, -1);
       return (get_next_line(0));
     }
   param->cmd = NULL;

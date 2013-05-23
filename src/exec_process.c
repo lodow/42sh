@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue May 21 14:27:32 2013 maxime lavandier
+** Last update Thu May 23 16:16:41 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -35,17 +35,16 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
   if ((cmd->pid.pid = fork()) == 0)
     {
       init_sig(SIG_DFL);
-      if (cmd->pid.pgid == -1)
-        check_perror("Setpgid", setpgid(0, 0));
-      else
+      check_perror("Setpgid", setpgid(0, 0));
+      if (cmd->pid.pgid != -1)
         check_perror("Setpgid", setpgid(0, cmd->pid.pgid));
       check_perror("Dup2", dup2(fd->stdin, 0));
       check_perror("Dup2", dup2(fd->stdout, 1));
       check_perror("Dup2", dup2(fd->stderr, 2));
-      close_fds(fd);
       if ((ret_exec = f(cmd->cmd_fpath, cmd->argv, shell)) == -1)
         my_perror(cmd->cmd_fpath);
       my_exit(ret_exec);
+      SETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_FORK));
     }
   return (cmd->pid.pid);
 }

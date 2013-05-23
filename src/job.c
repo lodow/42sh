@@ -10,6 +10,29 @@
 
 #include "42sh.h"
 
+int	exec_grp_lst(t_grp **grp_lst, t_sh *shell)
+{
+  int	i;
+  int	exec;
+  t_grp	*tmpgrp;
+
+  i = 0;
+  if ((grp_lst == NULL) || (shell == NULL))
+    return (-1);
+  while ((tmpgrp = grp_lst[i]) != NULL)
+    {
+      exec = exec_process_group(shell, tmpgrp);
+      if (MEXIT)
+        return (0);
+      if (exec == -1)
+        free_process_group(tmpgrp);
+      else
+        wait_no_fg_grp(shell);
+      i++;
+    }
+  return (0);
+}
+
 int	group_to_process_group(t_grp *grp, t_cmd *cmd)
 {
   int	i;

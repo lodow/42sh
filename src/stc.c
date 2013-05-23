@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 18 23:10:03 2013 remi robert
+** Last update Tue May 21 14:48:45 2013 remi robert
 */
 
 #include "42sh.h"
@@ -24,7 +24,7 @@ void	my_putstr(const char *str, int fd, int strlen)
           strlen = len;
         }
       if ((len = write(fd, str, strlen)) == -1)
-        write(2, "Write error\n", 12);
+        my_perror("Write");
     }
 }
 

@@ -5,11 +5,11 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Sun May 19 09:43:54 2013 Hugues
+** Last update Thu May 23 13:47:52 2013 luc sinet
 */
 
 #ifndef		SH42_H
-# define		SH42_H
+# define       	SH42_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -30,6 +30,9 @@
 # include "my_func.h"
 # include "couleur.h"
 
+# define MASK 0170000
+# define ISDIR 0040000
+
 # define NB_BUILTINS 14
 # define NB_CONFFUNC 2
 
@@ -43,6 +46,7 @@
 # define FLAGPOS(x) (1 << (x))
 
 # define EXIT_F_POS 31
+# define EXIT_FORK 30
 # define MEXIT GETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS))
 
 /*
@@ -120,6 +124,7 @@ typedef struct	s_sh
   t_grp		**process_group;
   int		signal;
   int		beepbeepexit;
+  int		too_much_parsing;
 }		t_sh;
 
 /*
@@ -201,7 +206,7 @@ void	free_wordtab(char **char_tab, int rempli, int lenght_malloc);
 void	init_sig(void *handler);
 t_sh	*get_sh_info(t_sh *sh);
 void	sig_handler(int sig);
-void	call_signal_func(t_sh *shell, int chld_sig);
+void	call_signal_func(t_sh *shell, int chld_sig, t_cmd *chld_cmd);
 
 /*
 ** Jobs
@@ -223,7 +228,7 @@ t_cmd	*cmd_f_pid(int pid, t_sh *shell);
 ** User funcs
 */
 void	user_loop(t_sh *shell);
-void	parse_user_cmd(t_sh *shell, char *line, int def_fdout);
+void	parse_user_cmd(t_sh *shell, char *line, t_fds *def_fd);
 
 /*
 ** Pipes
@@ -260,6 +265,7 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
                  int (*f)(char *cmd, char **argv, t_sh *shell));
 void	free_process_group(t_grp *grp);
 int	is_grp_exec(t_sh *shell, t_grp *grp);
+int	exec_grp_lst(t_grp **grp_lst, t_sh *shell);
 
 /*
 ** Fds
@@ -267,6 +273,7 @@ int	is_grp_exec(t_sh *shell, t_grp *grp);
 void	init_stdfd_t_def_val(t_fds *fds, int stdin, int stdout, int stderr);
 void	close_fds(t_fds *fd);
 int	safe_close(int fd);
+void	change_fdout_t_def_z(t_grp *grp, t_fds *def_fd);
 
 /*
 ** Conf file
@@ -294,6 +301,7 @@ void	parse_redirection(t_grp *grp, char *line);
 int	open_redirection(t_grp *grp, t_sh *shell);
 char	*usr_input_retrieve(t_sh *shell, char *end);
 int	dred_left(char *end, t_sh *shell);
+int	check_if_folder(char *file);
 
 /*
 ** Backquotes

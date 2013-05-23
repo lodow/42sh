@@ -15,10 +15,7 @@ char		*builtin_cd_getcwd()
   char		*res;
 
   if ((res = getcwd(NULL, 0)) == NULL)
-    {
-      my_perror("Getcwd");
-      return (NULL);
-    }
+    my_perror("Getcwd");
   return (res);
 }
 

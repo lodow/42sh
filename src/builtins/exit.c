@@ -16,6 +16,6 @@ void	builtin_exit(t_cmd *cmd, t_fds *fd, t_sh *shell)
     shell->beepbeepexit = my_getnbr(cmd->argv[1]);
   else
     shell->beepbeepexit = 0;
-  UNSETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS));
-  close(0);
+  SETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS));
+  UNSETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_FORK));
 }

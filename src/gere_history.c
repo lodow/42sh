@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu May 16 14:59:38 2013 remi robert
-** Last update Tue May 21 14:52:22 2013 maxime lavandier
+** Last update Thu May 23 16:19:17 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -85,6 +85,7 @@ void	gere_history(char *cmd, t_param *param,
     {
       if (current_pos == -1)
 	{
+	  param->pos_history = 0;
 	  param->pos = 0;
 	  cmd[0] = '\0';
 	  view(cmd, param);

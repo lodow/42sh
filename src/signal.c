@@ -57,14 +57,26 @@ void	sig_handler(int sig)
   if (sig == SIGWINCH)
     gere_change_window(SIGWINCH);
   if ((sig == SIGHUP) || (sig == SIGTERM))
-    close(0);
+    {
+      SETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS));
+      close(0);
+    }
   init_sig(&sig_handler);
 }
 
-void	call_signal_func(t_sh *shell, int chld_sig)
+void	call_signal_func(t_sh *shell, int chld_sig, t_cmd *chld_cmd)
 {
-  if (chld_sig == SIGTSTP)
-    no_fg_jobs_status(shell);
+  if ((chld_sig == SIGTSTP) || (chld_sig == SIGSTOP)
+      || (chld_sig == SIGTTIN) || (chld_sig == SIGTTOU))
+    {
+      if (chld_cmd != NULL)
+        {
+          my_putstr(chld_cmd->line, 1, -1);
+          my_putstr(" -> Stopped\n", 1, -1);
+        }
+      no_fg_jobs_status(shell);
+    }
   wait_all_jobs(shell);
+  rm_all_terminated_grp(shell);
   shell->signal = 0;
 }

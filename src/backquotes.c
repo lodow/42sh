@@ -16,11 +16,13 @@ char	*exec_line_a_g_res(char *line, t_sh *shell)
   int	sizeread;
   int	pipefd[2];
   char	buffer[READ_SIZE];
+  t_fds	tmpfd;
 
   str = NULL;
   if (pipe(pipefd) == -1)
     return (my_strdup(""));
-  parse_user_cmd(shell, line, pipefd[PIPE_WRITE]);
+  init_stdfd_t_def_val(&tmpfd, 0, pipefd[PIPE_WRITE], 2);
+  parse_user_cmd(shell, line, &tmpfd);
   if (MEXIT)
     return (NULL);
   sizeread = 1;

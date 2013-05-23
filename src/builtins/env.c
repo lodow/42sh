@@ -87,7 +87,7 @@ void	builtin_env(t_cmd *cmd, t_fds *fd, t_sh *shell)
     {
       tmptab = cpy_env(&(cmd->argv[1]));
       line = tab_file_tstr(tmptab, ' ');
-      parse_user_cmd(shell, line, fd->stdout);
+      parse_user_cmd(shell, line, fd);
     }
   else if (cmd->argv != NULL)
     {

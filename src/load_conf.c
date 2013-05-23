@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue May 21 14:24:40 2013 maxime lavandier
+** Last update Thu May 23 16:19:17 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -17,7 +17,7 @@ void	alias_set(char *str, t_sh *shell)
   if ((tmp = my_strdup(str)) != NULL)
     {
       shell->alias_tab = (char**)add_ptr_t_tab((void**)shell->alias_tab,
-                         (void*)tmp);
+					       (void*)tmp);
     }
 }
 

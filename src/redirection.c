@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue May 21 15:17:07 2013 maxime lavandier
+** Last update Thu May 23 16:19:18 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -40,7 +40,7 @@ char	*parse_file_redirection(char *line, int posinstr, char *sepa)
   file = tab[0];
   tmpptr = &(line[posinstr - my_strlen(sepa)]);
   i = my_strlen(sepa) + my_strlen(file) + 1;
-  while (--i >= 0)
+  while ((--i >= 0) && (tmpptr[i] != '\0'))
     tmpptr[i] = ' ';
   del_slash_quote(tab);
   file = my_strdup(file);
@@ -70,7 +70,7 @@ void	parse_redirection(t_grp *grp, char *line)
         posinstr += my_strlen(tab[i]) + my_strlen(file);
         file = parse_file_redirection(line, posinstr, file);
         grp->redirection = (char**)add_ptr_t_tab((void**)grp->redirection,
-                           (void*)str_cat(value, file));
+						 (void*)str_cat(value, file));
         i++;
       }
 }

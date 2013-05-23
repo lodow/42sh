@@ -5,48 +5,39 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue May 21 14:18:46 2013 maxime lavandier
+** Last update Thu May 23 16:19:17 2013 maxime lavandier
 */
 
 #include "42sh.h"
 
-void	change_fdout_t_def_z(t_grp *grp, int def_fdout)
-{
-  if (grp != NULL)
-    if (grp->fd.stdout == 1)
-      grp->fd.stdout = def_fdout;
-}
-
-t_grp	*parse_grp_a_exec(t_sh *shell, char *line, int def_fdout, int back)
+t_grp	*parse_grp(t_sh *shell, char *line, t_fds *def_fd, int back)
 {
   t_grp	*grp;
 
-  grp = create_n_process_group(shell, my_strdup(line));
-  change_fdout_t_def_z(grp, def_fdout);
+  if ((grp = create_n_process_group(shell, my_strdup(line))) == NULL)
+    return (NULL);
+  change_fdout_t_def_z(grp, def_fd);
   if (back == 0)
     SETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND));
-  if (exec_process_group(shell, grp) == -1)
-    free_process_group(grp);
-  else
-    return (grp);
-  return (NULL);
+  return (grp);
 }
 
-void	parse_linked_grp_process(t_sh *shell, char *line,
-				 int def_fdout, int back)
+t_grp	*parse_linked_grp_process(t_sh *shell, char *line,
+				  t_fds *def_fd, int back)
 {
   t_grp	*grp;
   int	type;
   char	*next_line;
 
   next_line = type_next_and_or(line, &type);
-  if ((grp = parse_grp_a_exec(shell, line, def_fdout, back)) != NULL)
+  if ((grp = parse_grp(shell, line, def_fd, back)) != NULL)
     {
       grp->transition = type;
       grp->transition_line = next_line;
     }
   if (MEXIT)
-    return ;
+    return (NULL);
+  return (grp);
 }
 
 int	parse_launch_background(char **line)
@@ -74,28 +65,44 @@ int	parse_launch_background(char **line)
   return (back);
 }
 
-void	parse_user_cmd(t_sh *shell, char *line, int def_fdout)
+t_grp	**parse_colon_line(t_sh *shell, char *line, t_fds *def_fd)
 {
   char	**tmptab;
+  t_grp	**grp_lst;
   char	*tmpline;
   int	i;
   int	back;
 
   i = 0;
-  back = parse_launch_background(&line);
-  check_and_load_backquote(&line, shell);
-  if (MEXIT)
-    return ;
+  grp_lst = NULL;
   if ((tmptab = str_to_wordtab(line, ";", 1)) != NULL)
     while ((tmpline = tmptab[i]) != NULL)
       {
-        parse_linked_grp_process(shell, tmpline, def_fdout, back);
+        back = parse_launch_background(&(tmpline));
+        grp_lst = (t_grp**)add_ptr_t_tab((void**)grp_lst,
+                                         (void*)parse_linked_grp_process
+                                         (shell, tmpline, def_fd, back));
         if (MEXIT)
-          return ;
+          return (NULL);
         i++;
       }
-  if (back == 1)
-    no_fg_jobs_status(shell);
   free_ptr_tab((void**)tmptab, &free);
+  return (grp_lst);
+}
+
+void	parse_user_cmd(t_sh *shell, char *line, t_fds *def_fd)
+{
+  t_grp	**grp_lst;
+
+  if ((shell->too_much_parsing)++ > 1000)
+    return ;
+  check_and_load_backquote(&line, shell);
+  if (MEXIT)
+    return ;
+  grp_lst = parse_colon_line(shell, line, def_fd);
+  if (MEXIT)
+    return ;
+  exec_grp_lst(grp_lst, shell);
+  free(grp_lst);
   free(line);
 }

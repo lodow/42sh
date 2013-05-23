@@ -18,8 +18,7 @@ char	*usr_input_retrieve(t_sh *shell, char *end)
   char	*prompt;
 
   res = NULL;
-  prompt = shell->param.str_prompt;
-  shell->param.str_prompt = ">";
+  prompt = ">";
   while (((tmp = read_cmd(prompt, &(shell->param),
                           &(shell->history))) != NULL)
          && (my_strncmp(tmp, end, -1)))
@@ -28,7 +27,6 @@ char	*usr_input_retrieve(t_sh *shell, char *end)
       free(tmp);
       res = my_stradd(res, tmp2, my_strlen(tmp2));
     }
-  shell->param.str_prompt = prompt;
   return (res);
 }
 
@@ -46,6 +44,8 @@ int	dred_left(char *end, t_sh *shell)
   tmpcmd.cmd_fpath = tpass;
   tmpcmd.argv = NULL;
   tmpcmd.line = NULL;
+  tmpcmd.pid.pid = -1;
+  tmpcmd.pid.pgid = shell->pid.pgid;
   exec_process(&tmpcmd, &tmpfd, shell, &cat_out_buff);
   if (MEXIT)
     return (-2);

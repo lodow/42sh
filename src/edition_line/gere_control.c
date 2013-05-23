@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon May  6 09:13:35 2013 remi robert
-** Last update Thu May 16 10:33:56 2013 remi robert
+** Last update Wed May 22 13:47:37 2013 remi robert
 */
 
 #include "42sh.h"
@@ -44,7 +44,10 @@ void	fct_control(char *cmd, t_param *param, int indice)
   t[5] = &globb;
   t[6] = &gere_control_u;
   if (indice >= 0 && indice < 7)
-    t[indice](cmd, param);
+    {
+      t[indice](cmd, param);
+      param->pos_history = 0;
+    }
 }
 
 int	return_gere_control_string(char *cmd, t_param *param, char *buff)
@@ -52,11 +55,13 @@ int	return_gere_control_string(char *cmd, t_param *param, char *buff)
   if (str_cmp(buff, BEGIN_STR) == 1)
     {
       fct_control(cmd, param, 2);
+      param->pos_history = 0;
       return (0);
     }
   if (str_cmp(buff, END_STR) == 1)
     {
       fct_control(cmd, param, 3);
+      param->pos_history = 0;
       return (0);
     }
   return (1);

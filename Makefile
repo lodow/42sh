@@ -5,7 +5,11 @@
 ## Login <moriss_h@epitech.net>
 ##
 ## Started on Mon Oct 22 09:20:28 2012 hugues morisset
+<<<<<<< HEAD
 ## Last update Tue May 21 14:43:27 2013 maxime lavandier
+=======
+## Last update Tue May 21 20:15:27 2013 remi robert
+>>>>>>> master
 ##
 
 CC		=	gcc
@@ -124,7 +128,8 @@ SRCLINE		=	$(PATHLINE)main.c \
 			$(PATHLINE)plus_completation.c \
 			$(PATHLINE)gere_control_u.c \
 			$(PATHLINE)return_string.c \
-			$(PATHLINE)add_caractere.c
+			$(PATHLINE)add_caractere.c \
+			$(PATHLINE)check_the_directory.c
 
 
 SRCLIBLINE	=	$(LIBLINE)/str_cmp.c \
@@ -151,15 +156,15 @@ OBJ		=	$(SRC:.c=.o) \
 			$(SRCRED:.c=.o) \
 			$(SRCGLOBB:.c=.o)
 
-$(NAME):	$(OBJ)
-	$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LIBS)
+$(NAME):		$(OBJ)
+			$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LIBS)
 
-all:	$(NAME)
+all:			$(NAME)
 
 clean:
-	$(RM) -f $(OBJ)
+			$(RM) -f $(OBJ)
 
-fclean:	clean
-	$(RM) -f $(NAME)
+fclean:			clean
+			$(RM) -f $(NAME)
 
-re:	fclean all
+re:			fclean all

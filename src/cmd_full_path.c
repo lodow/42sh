@@ -37,7 +37,8 @@ char	*exec_full_path(char *exec, char **paths)
       my_strncpy(fpaths, paths[0], -1);
       my_strncpy(&(fpaths[my_strlen(paths[0])]), "/", -1);
       my_strncpy(&(fpaths[my_strlen(paths[0]) + 1]), exec, -1);
-      if ((access(fpaths, F_OK) == 0) && access(fpaths, X_OK) == 0)
+      if ((access(fpaths, F_OK) == 0) && (access(fpaths, X_OK) == 0)
+          && (check_if_folder(fpaths) == 0))
         return (fpaths);
       free(fpaths);
       paths = &paths[1];
