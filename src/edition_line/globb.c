@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri May 10 18:29:05 2013 remi robert
-** Last update Thu May 23 22:32:51 2013 remi robert
+** Last update Thu May 23 22:51:36 2013 remi robert
 */
 
 #include "42sh.h"
@@ -42,4 +42,5 @@ void		globb(char *cmd, t_param *param)
   my_putstr(param->str_prompt, 1, -1);
   view(cmd, param);
   free(s);
+  globfree(&globb);
 }
