@@ -69,6 +69,9 @@
 # define REDI_FRIGHT 0666
 # define REDI_NB_SEPA 7
 
+/*
+** PTR_TAB defines
+*/
 # define PTRT_PACK 32
 
 typedef struct	s_fds
@@ -246,7 +249,7 @@ int	check_perror(char *str, int err);
 ** Env var
 */
 char	*get_envvar(char *var, char **env);
-char	*check_vars_in_str(char *str, char **envp);
+char	*check_vars_in_str(char *str, char **envp, int null_it);
 void	replace_var_in_argv(char **argv, char **envp);
 
 /*

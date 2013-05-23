@@ -46,5 +46,7 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
       my_exit(ret_exec);
       SETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_FORK));
     }
+  if ((cmd->pid.pid > 0) && (cmd->pid.pgid > 0))
+    setpgid(cmd->pid.pid, cmd->pid.pgid);
   return (cmd->pid.pid);
 }

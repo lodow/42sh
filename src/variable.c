@@ -10,7 +10,7 @@
 
 #include "42sh.h"
 
-char	*new_str_f_var(char *str, int check, char **envp)
+char	*new_str_f_var(char *str, int check, char **envp, int null_it)
 {
   int	i;
   char	*tmp;
@@ -26,7 +26,7 @@ char	*new_str_f_var(char *str, int check, char **envp)
   tmp[i] = '\0';
   var = get_envvar(tmp, envp);
   free(tmp);
-  if (var == NULL)
+  if ((null_it == 0) && (var == NULL))
     return (NULL);
   if (str[i] != '\0')
     str = &(str[i + 1]);
@@ -47,20 +47,19 @@ char	*add_var_t_str(char *str, char *var, int pos)
   if ((res = malloc(size * sizeof(char))) == NULL)
     return (NULL);
   my_strncpy(res, str, pos);
+  res[pos] = '\0';
   my_strncpy(&(res[pos]), var, -1);
   free(var);
   return (res);
 }
 
-char	*replace_var_in_str(char *str, char **envp)
+char	*replace_var_in_str(char *str, char **envp, int null_it)
 {
   int	i;
-  char	*res;
   int	check;
   char	*tmp;
 
   i = 0;
-  res = NULL;
   while (str[i] != '\0')
     {
       if ((str[i] == '$') && (str[i + 1] != '\0'))
@@ -73,15 +72,15 @@ char	*replace_var_in_str(char *str, char **envp)
               tmp = &(tmp[1]);
             }
           if ((check == 1)
-              && ((tmp = new_str_f_var(tmp, check, envp)) != NULL))
+              && ((tmp = new_str_f_var(tmp, check, envp, null_it)) != NULL))
             return (add_var_t_str(str, tmp, i));
         }
       i++;
     }
-  return (res);
+  return (NULL);
 }
 
-char	*check_vars_in_str(char *str, char **envp)
+char	*check_vars_in_str(char *str, char **envp, int null_it)
 {
   char	*tmp;
   int	var;
@@ -91,7 +90,7 @@ char	*check_vars_in_str(char *str, char **envp)
   i = 0;
   if (envp == NULL)
     return (NULL);
-  while (((tmp = replace_var_in_str(str, envp)) != NULL) && (i < 500))
+  while (((tmp = replace_var_in_str(str, envp, null_it)) != NULL) && (i < 500))
     {
       if (var)
         free(str);
@@ -110,7 +109,7 @@ void	replace_var_in_argv(char **argv, char **envp)
     return ;
   while (argv[0] != NULL)
     {
-      if ((str = check_vars_in_str(argv[0], envp)) != NULL)
+      if ((str = check_vars_in_str(argv[0], envp, 1)) != NULL)
         {
           if (str != argv[0])
             free(argv[0]);
