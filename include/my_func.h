@@ -79,7 +79,7 @@ typedef struct	s_termcap
   char		*str_rc;
   char		*str_cd;
   char		*str_ks;
- }		t_termcap;
+}		t_termcap;
 
 typedef struct		s_history
 {
@@ -143,8 +143,8 @@ void		gere_control_u(char *cmd, t_param *param);
 int		clear_scream(void);
 void		clear_cmd(char *cmd, t_param *param);
 void		decal_string(char *cmd, int pos, char caractere);
-int		gere_keyboard(char *buff, char *cmd, t_param *param, t_history **history);
-void		gere_change_window(int sig);
+int		gere_keyboard(char *buff, char *cmd, t_param *param
+                    , t_history **history);
 char		*read_cmd(char *prompt, t_param *param, t_history **history);
 void		add_caractere(char *cmd, t_param *param, char caratere);
 char		*init_read_cmd(char *cmd, t_param *param);

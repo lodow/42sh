@@ -44,11 +44,8 @@ void	user_loop(t_sh *shell)
   prompt = recalc_prompt(shell);
   while ((lign = read_cmd(prompt, &(shell->param), &shell->history)) != NULL)
     {
-      if (lign != NULL)
-	{
-	  lign = parseur_history(lign, shell->history);
-	  add_history_after_line(lign, &shell->history);
-	}
+      lign = parseur_history(lign, shell->history);
+      add_history_after_line(lign, &shell->history);
       no_fg_jobs_status(shell);
       call_signal_func(shell, 0, NULL);
       wait_no_fg_grp(shell);

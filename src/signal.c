@@ -52,8 +52,8 @@ void	sig_handler(int sig)
           view(shell->param.cmd, &(shell->param));
         }
     }
-  if (sig == SIGWINCH)
-    gere_change_window(SIGWINCH);
+  if (sig == SIGWINCH && shell->param.fallback == 1)
+    clear_cmd(shell->param.cmd, &(shell->param));
   if ((sig == SIGHUP) || (sig == SIGTERM))
     {
       SETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS));
