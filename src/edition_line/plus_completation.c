@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon May 13 20:57:08 2013 remi robert
-** Last update Tue May 14 19:58:46 2013 remi robert
+** Last update Fri May 24 21:48:18 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -16,7 +16,9 @@ int	get_min_len(char **str)
   int	size;
 
   indice = -1;
-  size = 2147483647;
+  if (str[0] == NULL)
+    return (0);
+  size = my_strlen(str[0]);
   while (str[++indice] != NULL)
     if (size > my_strlen(str[indice]))
       size = my_strlen(str[indice]);
@@ -30,7 +32,7 @@ int	find_currence(char **path, int min, char *buff)
   char	c;
 
   caractere = -1;
-  while (++caractere != min + 1)
+  while (++caractere != min + 1 && path != NULL && path[0] != NULL)
     {
       indice = -1;
       c = path[0][caractere];
