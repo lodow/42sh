@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:20:31 2013 remi robert
-** Last update Sat May 18 22:04:33 2013 remi robert
+** Last update Fri May 24 09:44:40 2013 remi robert
 */
 
 #include "42sh.h"
@@ -62,7 +62,8 @@ int	gere_keyboard(char *buff, char *cmd, t_param *param,
       gere_posleft(cmd, param);
       return (0);
     }
-  if (str_cmp(buff, STR_UP) == 1 || str_cmp(buff, STR_DOWN) == 1)
+  if (history != NULL && (str_cmp(buff, STR_UP) == 1 ||
+			  str_cmp(buff, STR_DOWN) == 1))
     {
       gere_history(cmd, param, *history, buff);
       return (0);

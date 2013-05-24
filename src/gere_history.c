@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu May 16 14:59:38 2013 remi robert
-** Last update Fri May 24 01:06:14 2013 remi robert
+** Last update Fri May 24 09:34:34 2013 remi robert
 */
 
 #include "42sh.h"
@@ -87,6 +87,8 @@ void	gere_history(char *cmd, t_param *param,
   char	*s;
 
   current_pos = 0;
+  if (history == NULL)
+    return ;
   if ((current_pos =
        gere_pos_history(buff, param->pos_history,
 			nb_max_history(history))) == -1 ||
