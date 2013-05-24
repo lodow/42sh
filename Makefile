@@ -115,7 +115,6 @@ SRCLINE		=	$(PATHLINE)main.c \
 			$(PATHLINE)gere_control.c \
 			$(PATHLINE)start_end_cmd.c \
 			$(PATHLINE)clear.c \
-			$(PATHLINE)signal.c \
 			$(PATHLINE)control_y.c \
 			$(PATHLINE)control_k.c \
 			$(PATHLINE)update_pos.c \

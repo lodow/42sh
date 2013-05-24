@@ -174,9 +174,6 @@
 		<Unit filename="src/edition_line/return_string.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/edition_line/signal.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/edition_line/start_end_cmd.c">
 			<Option compilerVar="CC" />
 		</Unit>

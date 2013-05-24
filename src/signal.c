@@ -53,7 +53,7 @@ void	sig_handler(int sig)
         }
     }
   if (sig == SIGWINCH)
-    gere_change_window(SIGWINCH);
+    clear_cmd(shell->param.cmd, &(shell->param));
   if ((sig == SIGHUP) || (sig == SIGTERM))
     {
       SETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS));
