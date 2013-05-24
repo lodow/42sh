@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May 11 14:05:31 2013 remi robert
-** Last update Thu May 23 22:37:15 2013 remi robert
+** Last update Fri May 24 22:46:11 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -44,7 +44,7 @@ int	check_verif(glob_t *globb, char *s)
   if (globb->gl_pathc != 1)
     return (0);
   while (globb->gl_pathv[0][++indice] != '\0' &&
-	 s[++indice] != '\0' && globb->gl_pathv[0][indice] == s[indice]);
+	 s[indice] != '\0' && globb->gl_pathv[0][indice] == s[indice]);
   if (my_strlen(globb->gl_pathv[0]) != my_strlen(s) - 1)
     return (0);
   if (s[indice] != '\0' && s[indice] == '*' &&
@@ -60,16 +60,16 @@ void	reformat_buffer(char *buff)
   int	indice;
 
   indice = (my_strlen(buff) + 1) % SIZE_BUFFER;
-  if (indice <= 0 || indice >= SIZE_BUFFER)
+  if (indice <= 0)
     return ;
-  if (buff[indice - 2] == '/')
+  if (indice - 2 >= 0 && buff[indice - 2] == '/')
     indice = indice - 2;
   while (--indice >= 0 && buff[indice] != '/');
-  indice_buff = -1;
-  while (buff[++indice] != '\0' && ++indice_buff < SIZE_BUFFER &&
+  indice_buff = 0;
+  while (buff[++indice] != '\0' && indice_buff < SIZE_BUFFER &&
   	 indice_buff <= indice + 1)
-    buff_second[indice_buff] = buff[indice];
-  buff_second[++indice_buff] = '\0';
+    buff_second[indice_buff++] = buff[indice];
+  buff_second[indice_buff] = '\0';
   indice = -1;
   while (buff_second[++indice] != '\0' && indice < SIZE_BUFFER)
     buff[indice] = buff_second[indice];
