@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon May  6 08:07:49 2013 remi robert
-** Last update Sat May 18 15:54:14 2013 remi robert
+** Last update Fri May 24 21:07:27 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -30,7 +30,7 @@ void	gere_delete(char *cmd, t_param *param, char *buff)
   int	indice;
 
   size = my_strlen(cmd);
-  if (cmd == NULL || cmd[0] == '\0' || size == 0 || param->pos < 0 ||
+  if (cmd == NULL || size == 0 || param->pos < 0 ||
       param->pos > size || (param->pos == 0 &&
 			    (buff[0] == DEL && buff[1] == END)))
     return ;
