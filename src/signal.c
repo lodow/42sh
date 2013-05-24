@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sun May 19 09:42:31 2013 Hugues
+** Last update Fri May 24 13:55:40 2013 luc sinet
 */
 
 #include "42sh.h"
@@ -45,7 +45,7 @@ void	sig_handler(int sig)
       my_putstr(shell->param.str_prompt, 1, -1);
       if (shell->param.fallback == 1)
         {
-          if (cmd->param.cmd != NULL)
+          if (shell->param.cmd != NULL)
             shell->param.cmd[0] = '\0';
           shell->param.pos = 0;
           refresh_view(shell->param.cmd, &(shell->param));
