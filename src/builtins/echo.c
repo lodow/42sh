@@ -35,25 +35,27 @@ void	builtin_echo_putstr(char *str, int *new_line)
   char	temp;
 
   i = 0;
-  while (str[i] != 0)
-    {
-      if (str[i] == '\\')
-        {
-          temp = replace_carac(str[i + 1], new_line);
-          if (temp == -1)
-            my_putchar('\\');
-          else if (temp == -2)
-            return ;
-          else
-            {
-              my_putchar(temp);
-              i++;
-            }
-        }
-      else
-        my_putstr(&(str[i]), 1, 1);
-      i++;
-    }
+  if (str != NULL)
+    while (str[i] != '\0')
+      {
+        if (str[i] == '\\')
+          {
+            temp = replace_carac(str[i + 1], new_line);
+            if (temp == -1)
+              my_putstr("\\", 1, 1);
+            else if (temp == -2)
+              return ;
+            else
+              {
+                my_putstr(&(temp), 1, 1);
+                i++;
+              }
+          }
+        else
+          my_putstr(&(str[i]), 1, 1);
+        i++;
+      }
+  free(str);
 }
 
 int	builtin_echo_option(char **argv, int *new_line, int *interpret)
@@ -94,7 +96,8 @@ int	builtins_print_echo(char *path, char **argv, t_sh *shell)
       if (!interpret)
         my_putstr(argv[i], 1, -1);
       else
-        builtin_echo_putstr(argv[i], &new_line);
+        builtin_echo_putstr(rempl_str_inib(argv[i], "\\033", "\033"),
+                            &new_line);
       first = 0;
       i++;
     }
