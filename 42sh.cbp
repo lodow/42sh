@@ -93,6 +93,9 @@
 		<Unit filename="src/cat.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/check_if_folder.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/clean_tab.c">
 			<Option compilerVar="CC" />
 		</Unit>

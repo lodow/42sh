@@ -31,9 +31,9 @@ char	*strtab_to_str(char **tab, char *rempl)
       my_strncpy(&str[pos_string], tab[indice], -1);
       pos_string += my_strlen(tab[indice]);
       if (tab[indice] != NULL && tab[indice + 1] != NULL && rempl != NULL)
-	my_strncpy(&str[pos_string], rempl, -1);
+        my_strncpy(&str[pos_string], rempl, -1);
       if (tab[indice] != NULL && tab[indice + 1] != NULL && rempl != NULL)
-	pos_string += my_strlen(rempl);
+        pos_string += my_strlen(rempl);
     }
   str[pos_string] = '\0';
   return (str);
