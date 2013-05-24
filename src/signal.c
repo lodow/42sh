@@ -21,8 +21,6 @@ t_sh		*get_sh_info(t_sh *sh)
 
 void	init_sig(void *handler)
 {
-  /*  signal(SIGTTOU, handler);
-    signal(SIGTTIN, handler);*/
   signal(SIGWINCH, handler);
   signal(SIGINT, handler);
   signal(SIGTSTP, handler);
