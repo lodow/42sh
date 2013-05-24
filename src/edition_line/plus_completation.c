@@ -16,7 +16,7 @@ int	get_min_len(char **str)
   int	size;
 
   indice = -1;
-  if (str[0] == NULL)
+  if ((str == NULL) || (str[0] == NULL))
     return (0);
   size = my_strlen(str[0]);
   while (str[++indice] != NULL)

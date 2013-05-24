@@ -340,5 +340,6 @@ void	add_history(t_history **ptete, char *cmd);
 void	gere_history(char *cmd, t_param *param,
                    t_history *history, char *buff);
 void		add_history_after_line(char *lign, t_history **history);
+char	*parseur_history(char *cmd, t_history *history);
 
 #endif

@@ -21,12 +21,15 @@ t_sh		*get_sh_info(t_sh *sh)
 
 void	init_sig(void *handler)
 {
+  signal(SIGTTIN, handler);
+  signal(SIGTTOU, handler);
   signal(SIGWINCH, handler);
   signal(SIGINT, handler);
   signal(SIGTSTP, handler);
   signal(SIGCHLD, handler);
   signal(SIGHUP, handler);
   signal(SIGTERM, handler);
+  signal(SIGQUIT, handler);
   signal(SIGUSR1, handler);
   signal(SIGUSR2, handler);
 }
@@ -52,7 +55,7 @@ void	sig_handler(int sig)
     }
   if (sig == SIGWINCH && shell->param.fallback == 1)
     clear_cmd(shell->param.cmd, &(shell->param));
-  if ((sig == SIGHUP) || (sig == SIGTERM))
+  if ((sig == SIGHUP) || (sig == SIGTERM) || (sig == SIGQUIT))
     {
       SETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_F_POS));
       close(0);
