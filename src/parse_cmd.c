@@ -23,7 +23,7 @@ t_grp	*parse_grp(t_sh *shell, char *line, t_fds *def_fd, int back)
 }
 
 t_grp	*parse_linked_grp_process(t_sh *shell, char *line,
-				  t_fds *def_fd, int back)
+                                t_fds *def_fd, int back)
 {
   t_grp	*grp;
   int	type;
@@ -51,8 +51,7 @@ int	parse_launch_background(char **line)
   tab = str_to_wordtab((*line), " ", 1);
   if (tab != NULL)
     {
-      while (tab[i] != NULL)
-        i++;
+      i = ptr_tab_size((void**)tab);
       if (i > 0)
         if (!(my_strncmp(tab[i - 1], "&", -1)))
           {
@@ -60,7 +59,7 @@ int	parse_launch_background(char **line)
             free(tab[i - 1]);
             tab[i - 1] = NULL;
           }
-      //free((*line));
+      free((*line));
       (*line) = strtab_to_str(tab, " ");
       free_ptr_tab((void**)tab, &free);
     }
@@ -71,19 +70,19 @@ t_grp	**parse_colon_line(t_sh *shell, char *line, t_fds *def_fd)
 {
   char	**tmptab;
   t_grp	**grp_lst;
-  char	*tmpline;
+  char	**tmpline;
   int	i;
   int	back;
 
   i = 0;
   grp_lst = NULL;
   if ((tmptab = str_to_wordtab(line, ";", 1)) != NULL)
-    while ((tmpline = tmptab[i]) != NULL)
+    while ((*(tmpline = &(tmptab[i]))) != NULL)
       {
-        back = parse_launch_background(&(tmpline));
+        back = parse_launch_background(tmpline);
         grp_lst = (t_grp**)add_ptr_t_tab((void**)grp_lst,
                                          (void*)parse_linked_grp_process
-                                         (shell, tmpline, def_fd, back));
+                                         (shell, (*tmpline), def_fd, back));
         if (MEXIT)
           return (NULL);
         i++;

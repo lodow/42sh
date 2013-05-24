@@ -55,6 +55,7 @@ void	user_loop(t_sh *shell)
         return ;
       wait_no_fg_grp(shell);
       free(prompt);
+      free(lign);
       prompt = recalc_prompt(shell);
     }
   free(prompt);
