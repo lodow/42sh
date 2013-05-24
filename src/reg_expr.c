@@ -20,7 +20,7 @@ char		**expand_reg_exp(char *regexp)
 
   flags = GLOB_MARK | GLOB_NOCHECK | GLOB_BRACE | GLOB_TILDE;
   tab = NULL;
-  if (regex == NULL)
+  if (regexp == NULL)
     return (NULL);
   if (glob(regexp, flags, NULL, &res) != 0)
     {
