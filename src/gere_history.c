@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu May 16 14:59:38 2013 remi robert
-** Last update Fri May 24 17:57:02 2013 maxime lavandier
+** Last update Fri May 24 18:08:52 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -20,10 +20,10 @@ void	add_history_after_line(char *lign, t_history **history)
     add_history(history, lign);
 }
 
-int             nb_max_history(t_history *history)
+int		nb_max_history(t_history *history)
 {
-  t_history     *pcourant;
-  int           indice;
+  t_history	*pcourant;
+  int		indice;
 
   if (history == NULL)
     return (0);
@@ -37,7 +37,7 @@ int             nb_max_history(t_history *history)
   return (indice);
 }
 
-int     gere_pos_history(char *buff, int current_pos, int nb_max)
+int	gere_pos_history(char *buff, int current_pos, int nb_max)
 {
   if (str_cmp(buff, STR_UP) == 1)
     {
@@ -59,10 +59,10 @@ int     gere_pos_history(char *buff, int current_pos, int nb_max)
   return (-1);
 }
 
-char            *return_pos_history(t_history *ptete, int pos)
+char		*return_pos_history(t_history *ptete, int pos)
 {
-  int           indice;
-  t_history     *pcourant;
+  int		indice;
+  t_history	*pcourant;
 
   if (ptete == NULL)
     return (NULL);
