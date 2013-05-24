@@ -76,13 +76,13 @@ char	*parseur_history(char *cmd, t_history *history)
       cmd[size + 1] = '\0';
     }
   if (history == NULL ||
-      (cmd = rempl_str_inib(cmd, "!!", history->cmd)) == NULL)
+      (cmd = rempl_str_inib(cmd, "!!", history->cmd, 1)) == NULL)
     return (cmd);
   var_secu = -1;
   while (++var_secu < 100 && extract_cmd_history(cmd, history, nb, str) == 1)
     {
       if ((cmd = rempl_str_inib(cmd, str,
-				get_cmd_history(history, my_getnbr(nb))))
+				get_cmd_history(history, my_getnbr(nb)), 1))
 	  == NULL)
 	return (NULL);
     }

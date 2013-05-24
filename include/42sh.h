@@ -320,7 +320,7 @@ void	my_strncpy_force(char *, char *, int);
 char	**mult_str_to_wordtab(char *line, char **sepa, int opt);
 char	*get_inibiteur_f_mult_wt(char *line, char **sepa, char **char_tab, int field);
 char	**get_path(char **envp);
-char	*rempl_str_inib(char *str, char *ref, char *rempl);
+char	*rempl_str_inib(char *str, char *ref, char *rempl, int inib);
 char	*strtab_to_str(char **tab, char *rempl);
 
 /*
