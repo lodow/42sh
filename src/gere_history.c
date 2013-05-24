@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu May 16 14:59:38 2013 remi robert
-** Last update Fri May 24 09:34:34 2013 remi robert
+** Last update Fri May 24 11:09:34 2013 remi robert
 */
 
 #include "42sh.h"
@@ -13,7 +13,8 @@
 void	add_history_after_line(char *lign, t_history **history)
 {
   if (history != NULL && *history != NULL &&
-      str_cmp((*history)->cmd, lign) == 1)
+      str_cmp((*history)->cmd, lign) == 1 &&
+      (my_strlen(lign) == 1 && lign[0] == ' '))
     return ;
   if (lign[0] != '\0' && lign[0] != '\n')
     add_history(history, lign);

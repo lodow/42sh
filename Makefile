@@ -5,7 +5,7 @@
 ## Login <moriss_h@epitech.net>
 ##
 ## Started on Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Thu May 23 23:53:33 2013 remi robert
+## Last update Fri May 24 09:55:28 2013 remi robert
 ##
 
 CC		=	gcc
@@ -85,7 +85,8 @@ SRC		=	$(SRCPATH)/main.c \
 			$(SRCPATH)/reg_expr.c \
 			$(SRCPATH)/rempl_str_inib.c \
 			$(SRCPATH)/str_fille_tstr.c \
-			$(SRCPATH)/check_if_folder.c
+			$(SRCPATH)/check_if_folder.c \
+			$(SRCPATH)/parseur_history.c
 
 ENV		=	$(PATHENV)/env.c
 

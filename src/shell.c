@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri May 24 09:45:27 2013 remi robert
+** Last update Fri May 24 11:05:38 2013 remi robert
 */
 
 #include "42sh.h"
@@ -44,6 +44,7 @@ void	user_loop(t_sh *shell)
   prompt = recalc_prompt(shell);
   while ((lign = read_cmd(prompt, &(shell->param), &shell->history)) != NULL)
     {
+      lign = parseur_history(lign, shell->history);
       add_history_after_line(lign, &shell->history);
       no_fg_jobs_status(shell);
       call_signal_func(shell, 0, NULL);
