@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Fri May 24 21:23:43 2013 maxime lavandier
+** Last update Fri May 24 21:28:37 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -39,7 +39,7 @@ char	*loop_cmd(char *prompt, t_param *param, t_history **history)
   ret = 1;
   while (ret > 0)
     {
-      if ((ret = read(0, buff, 1)) == -1)
+      if ((ret = read(0, buff, 9)) == -1)
         return (NULL);
       buff[ret] = '\0';
       if (buff[0] == CTRLD && buff[1] == '\0')
