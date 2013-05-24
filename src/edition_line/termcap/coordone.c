@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Jan 15 20:15:34 2013 remi robert
-** Last update Mon May 20 15:02:29 2013 remi robert
+** Last update Fri May 24 20:43:42 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -19,7 +19,7 @@ int			return_x(void)
   if (ioctl(fd, TIOCGWINSZ, &ws) == -1)
     {
       my_perror("ioctl");
-      return (0);
+      return (1);
     }
   return (ws.ws_col);
 }
@@ -33,7 +33,7 @@ int			return_y(void)
   if (ioctl(fd, TIOCGWINSZ, &ws) == -1)
     {
       my_perror("ioctl");
-      return (0);
+      return (1);
     }
   return (ws.ws_row - 1);
 }
