@@ -73,6 +73,7 @@ void	parse_redirection(t_grp *grp, char *line)
                            (void*)str_cat(value, file));
         i++;
       }
+  free_ptr_tab((void**)tab, &free);
 }
 
 void	open_redirection_file(char *file, char *sepa, t_grp *grp, t_sh *shell)

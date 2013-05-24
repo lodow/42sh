@@ -14,17 +14,24 @@ int	exec_next_grp(t_grp *grp, t_sh *shell)
 {
   t_fds	fd;
   int	gobst;
+  char	*line;
+  char	*tmp;
 
   if ((grp == NULL) || (grp->transition == GRP_TRANS_NONE))
     return (0);
   init_stdfd_t_def_val(&fd, 0, 1, 2);
   gobst = global_group_ret_status(grp);
+  line = my_strdup(grp->transition_line);
+  tmp = line;
   if (((grp->transition == GRP_TRANS_AND) && (gobst == 0))
       || ((grp->transition == GRP_TRANS_OR) && (gobst != 0)))
     {
-      parse_user_cmd(shell, grp->transition_line, &fd);
+      parse_user_cmd(shell, &line, &fd);
+      if (line != tmp)
+        free(line);
       return (1);
     }
+  free(line);
   return (0);
 }
 

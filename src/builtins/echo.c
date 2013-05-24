@@ -96,7 +96,7 @@ int	builtins_print_echo(char *path, char **argv, t_sh *shell)
       if (!interpret)
         my_putstr(argv[i], 1, -1);
       else
-        builtin_echo_putstr(rempl_str_inib(argv[i], "\\033", "\033"),
+        builtin_echo_putstr(rempl_str_inib(argv[i], "\\033", "\033", 2),
                             &new_line);
       first = 0;
       i++;

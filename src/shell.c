@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri May 24 11:17:15 2013 remi robert
+** Last update Fri May 24 17:27:21 2013 remi robert
 */
 
 #include "42sh.h"
@@ -24,7 +24,7 @@ char	*recalc_prompt(t_sh *shell)
         {
           if (prompt != tmp)
             free(tmp);
-          tmp = rempl_str_inib(prompt, "\\033", "\033");
+          tmp = rempl_str_inib(prompt, "\\033", "\033", 1);
           free(prompt);
           prompt = tmp;
         }
@@ -44,17 +44,21 @@ void	user_loop(t_sh *shell)
   prompt = recalc_prompt(shell);
   while ((lign = read_cmd(prompt, &(shell->param), &shell->history)) != NULL)
     {
-      lign = parseur_history(lign, shell->history);
-      add_history_after_line(lign, &shell->history);
+      if (lign != NULL)
+	{
+	  lign = parseur_history(lign, shell->history);
+	  add_history_after_line(lign, &shell->history);
+	}
       no_fg_jobs_status(shell);
       call_signal_func(shell, 0, NULL);
       wait_no_fg_grp(shell);
       shell->too_much_parsing = 0;
-      parse_user_cmd(shell, lign, &tmpfd);
+      parse_user_cmd(shell, &lign, &tmpfd);
       if (MEXIT)
         return ;
       wait_no_fg_grp(shell);
       free(prompt);
+      free(lign);
       prompt = recalc_prompt(shell);
     }
   free(prompt);
