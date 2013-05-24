@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri May 10 19:24:14 2013 remi robert
-** Last update Thu May 23 22:33:53 2013 remi robert
+** Last update Fri May 24 20:36:59 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -80,7 +80,8 @@ void	view_globb(glob_t *globb, t_param *param)
   end = 2;
   size = get_other_large(globb->gl_pathv);
   my_putstr("\n", 1, 1);
-  print_globb(globb->gl_pathv, (return_x() - 2) / size, size, &end);
+  if (size != 0)
+    print_globb(globb->gl_pathv, (return_x() - 2) / size, size, &end);
   my_putstr("\n", 1, 1);
   param->begin_pos_y += end;
 }
