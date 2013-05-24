@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:20:31 2013 remi robert
-** Last update Fri May 24 09:44:40 2013 remi robert
+** Last update Fri May 24 21:53:03 2013 Adrien Della Maggiora
 */
 
 #include "42sh.h"
@@ -52,29 +52,20 @@ void	gere_posleft(char *cmd, t_param *param)
 int	gere_keyboard(char *buff, char *cmd, t_param *param,
 		      t_history **history)
 {
+  if (buff[0] == END)
+    return (1);
   if (str_cmp(buff, STR_RIGHT) == 1)
-    {
-      gere_posright(cmd, param);
-      return (0);
-    }
-  if (str_cmp(buff, STR_LEFT) == 1)
-    {
-      gere_posleft(cmd, param);
-      return (0);
-    }
-  if (history != NULL && (str_cmp(buff, STR_UP) == 1 ||
-			  str_cmp(buff, STR_DOWN) == 1))
-    {
-      gere_history(cmd, param, *history, buff);
-      return (0);
-    }
-  if ((buff[0] == DEL && buff[1] == END) ||
-      (buff[0] == ESC && buff[1] == CRO && buff[2] == SUPPR))
-    {
-      gere_delete(cmd, param, buff);
-      return (0);
-    }
-  if (buff[0])
+    gere_posright(cmd, param);
+  else if (str_cmp(buff, STR_LEFT) == 1)
+    gere_posleft(cmd, param);
+  else if (history != NULL && (str_cmp(buff, STR_UP) == 1 ||
+			       str_cmp(buff, STR_DOWN) == 1))
+    gere_history(cmd, param, *history, buff);
+  else if ((buff[0] == DEL && buff[1] == END) ||
+	   (buff[0] == ESC && buff[1] == CRO && buff[2] == SUPPR
+	    && buff[3] == END))
+    gere_delete(cmd, param, buff);
+  else
     return (gere_control(cmd, param, buff));
-  return (1);
+  return (0);
 }
