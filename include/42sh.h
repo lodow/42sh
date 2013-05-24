@@ -231,7 +231,7 @@ t_cmd	*cmd_f_pid(int pid, t_sh *shell);
 ** User funcs
 */
 void	user_loop(t_sh *shell);
-void	parse_user_cmd(t_sh *shell, char *line, t_fds *def_fd);
+void	parse_user_cmd(t_sh *shell, char **line, t_fds *def_fd);
 
 /*
 ** Pipes
