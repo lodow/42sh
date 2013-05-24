@@ -47,10 +47,6 @@ int	curseur(int x, int y)
       return (EXIT_FAILURE);
     }
   curser = tgoto(s, x, y);
-  printf("%s", ROUGE);
-  fflush(stdout);
   my_putstr_termcap(-1, curser);
-  printf("%s", REZ);
-  fflush(stdout);
   return (EXIT_SUCCESS);
 }

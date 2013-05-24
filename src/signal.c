@@ -52,7 +52,7 @@ void	sig_handler(int sig)
           view(shell->param.cmd, &(shell->param));
         }
     }
-  if (sig == SIGWINCH)
+  if (sig == SIGWINCH && shell->param.fallback == 1)
     clear_cmd(shell->param.cmd, &(shell->param));
   if ((sig == SIGHUP) || (sig == SIGTERM))
     {
