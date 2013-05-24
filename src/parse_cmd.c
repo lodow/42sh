@@ -61,7 +61,8 @@ int	parse_launch_background(char **line)
             tab[i - 1] = NULL;
           }
       //free((*line));
-      (*line) = tab_file_tstr(tab, ' ');
+      (*line) = strtab_to_str(tab, " ");
+      free_ptr_tab((void**)tab, &free);
     }
   return (back);
 }

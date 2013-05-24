@@ -73,7 +73,6 @@ void	builtin_env_get_flags(t_cmd *cmd, char ***env, int *nnewline)
 void	builtin_env(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
   char	**tmpenv;
-  char	**tmptab;
   char	**env;
   char	*line;
   int	nnewlin;
@@ -85,8 +84,7 @@ void	builtin_env(t_cmd *cmd, t_fds *fd, t_sh *shell)
   shell->env = tmpenv;
   if (cmd->argv != NULL && cmd->argv[1] != NULL)
     {
-      tmptab = cpy_env(&(cmd->argv[1]));
-      line = tab_file_tstr(tmptab, ' ');
+      line = strtab_to_str(&(cmd->argv[1]), " ");
       parse_user_cmd(shell, line, fd);
     }
   else if (cmd->argv != NULL)
