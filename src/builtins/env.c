@@ -85,7 +85,7 @@ void	builtin_env(t_cmd *cmd, t_fds *fd, t_sh *shell)
   if (cmd->argv != NULL && cmd->argv[1] != NULL)
     {
       line = strtab_to_str(&(cmd->argv[1]), " ");
-      parse_user_cmd(shell, line, fd);
+      parse_user_cmd(shell, &line, fd);
     }
   else if (cmd->argv != NULL)
     {

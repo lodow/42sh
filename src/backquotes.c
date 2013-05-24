@@ -10,7 +10,7 @@
 
 #include "42sh.h"
 
-char	*exec_line_a_g_res(char *line, t_sh *shell)
+char	*exec_line_a_g_res(char **line, t_sh *shell)
 {
   char	*str;
   int	sizeread;
@@ -42,24 +42,24 @@ void	check_and_load_backquote(char **line, t_sh *shell)
   char	*str;
 
   i = 0;
-  backtab = str_to_wordtab(*line, "`", 1);
-  while ((backtab != NULL) && (backtab[i] != NULL))
-    {
-      if ((i % 2) == 1)
-        {
-          if ((str = exec_line_a_g_res(backtab[i], shell)) != NULL)
-            {
-              //free(backtab[i]);
-              backtab[i] = str;
-            }
-          if (MEXIT)
-            return ;
-        }
-      i++;
-    }
+  if ((backtab = str_to_wordtab((*line), "`", 1)) != NULL)
+    while (backtab[i] != NULL)
+      {
+        if ((i % 2) == 1)
+          {
+            if ((str = exec_line_a_g_res(&(backtab[i]), shell)) != NULL)
+              {
+                free(backtab[i]);
+                backtab[i] = str;
+              }
+            if (MEXIT)
+              return ;
+          }
+        i++;
+      }
   str = strtab_to_str(backtab, " ");
   free_ptr_tab((void**)backtab, &free);
   tr_str(str, '\n', ' ');
+  free((*line));
   (*line) = str;
-  //free(line);
 }
