@@ -23,7 +23,7 @@ int	exec_process_group(t_sh *shell, t_grp *grp)
       || (exec_a_pipe(shell, grp) == -1) || (MEXIT))
     return (-1);
   shell->process_group = (t_grp**)add_ptr_t_tab((void**)shell->process_group,
-						(void*)grp);
+                         (void*)grp);
   if (GETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND)) && (grp->pid.pgid != -1))
     set_forground_process_g(shell, grp);
   else

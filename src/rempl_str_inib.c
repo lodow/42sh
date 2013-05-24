@@ -15,8 +15,6 @@ char	*rempl_str_inib(char *str, char *ref, char *rempl)
   char	**tab;
   char	*s;
 
-  if (str == NULL || ref == NULL)
-    return (NULL);
   if ((tab = str_to_wordtab(str, ref, 2)) == NULL ||
       (s = strtab_to_str(tab, rempl)) == NULL)
     {
