@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May 11 14:05:31 2013 remi robert
-** Last update Wed May 22 17:08:37 2013 remi robert
+** Last update Thu May 23 22:37:15 2013 remi robert
 */
 
 #include "42sh.h"
@@ -90,8 +90,6 @@ void	completation(char *cmd, glob_t *globb, t_param *param, char *s)
   if (nb_caractere == 0)
     return ;
   buff[nb_caractere] = '\0';
-  if (buff[my_strlen(buff) - 1] != '/')
-    check_the_directory(buff);
   if (my_strlen(buff) == my_strlen(s) - 1)
     return ;
   reformat_buffer(buff);

@@ -5,10 +5,20 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu May 16 14:59:38 2013 remi robert
-** Last update Thu May 23 16:19:17 2013 maxime lavandier
+** Last update Fri May 24 17:57:02 2013 maxime lavandier
 */
 
 #include "42sh.h"
+
+void	add_history_after_line(char *lign, t_history **history)
+{
+  if (history != NULL && *history != NULL &&
+      str_cmp((*history)->cmd, lign) == 1 &&
+      (my_strlen(lign) == 1 && lign[0] == ' '))
+    return ;
+  if (lign[0] != '\0' && lign[0] != '\n')
+    add_history(history, lign);
+}
 
 int             nb_max_history(t_history *history)
 {
@@ -78,6 +88,8 @@ void	gere_history(char *cmd, t_param *param,
   char	*s;
 
   current_pos = 0;
+  if (history == NULL)
+    return ;
   if ((current_pos =
        gere_pos_history(buff, param->pos_history,
 			nb_max_history(history))) == -1 ||

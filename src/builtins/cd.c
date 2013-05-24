@@ -28,7 +28,8 @@ void		builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell)
 
   if ((usr_path = cmd->argv[1]) == NULL)
     usr_path = get_envvar("HOME", shell->env);
-  if ((cur_path = builtin_cd_getcwd()) == NULL)
+  if (((cur_path = builtin_cd_getcwd()) == NULL)
+      || (fd->stdin != 0) || (fd->stdout != 1))
     return ;
   if (my_strncmp(usr_path, "-", -1) == 0)
     {

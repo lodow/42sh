@@ -16,12 +16,12 @@
 					<Add option="-g" />
 				</Compiler>
 				<MakeCommands>
-					<Build command="$make -f $makefile $target" />
-					<CompileFile command="$make -f $makefile $file" />
+					<Build command="$make -f $makefile $target -j8" />
+					<CompileFile command="$make -f $makefile $file -j8" />
 					<Clean command="$make -f $makefile clean" />
 					<DistClean command="$make -f $makefile distclean$target" />
 					<AskRebuildNeeded command="$make -q -f $makefile $target" />
-					<SilentBuild command="$make -s -f $makefile $target" />
+					<SilentBuild command="$make -f $makefile $target -j8 &gt; $(CMD_NULL)" />
 				</MakeCommands>
 			</Target>
 		</Build>
@@ -91,6 +91,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/cat.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/check_if_folder.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/clean_tab.c">
@@ -318,6 +321,9 @@
 		<Unit filename="src/reg_expr.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/rempl_str_inib.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/shell.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -331,6 +337,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/str.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/str_fille_tstr.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/str_to_wordtab.c">

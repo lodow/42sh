@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed May 15 08:47:35 2013 remi robert
-** Last update Mon May 20 15:00:54 2013 remi robert
+** Last update Thu May 23 13:45:34 2013 remi robert
 */
 
 #include "42sh.h"
@@ -19,6 +19,7 @@ int	init_edition_line(char **env, t_param *param)
   if ((param->fd_tty = open("/dev/tty", O_RDWR)) == -1 ||
       (s = get_envvar("TERM", env)) == NULL || tgetent(NULL, s) != 1)
     return (0);
+  my_memset(param->buff_copy, SIZE_BUFFER, '\0');
   my_putstr_termcap(param->fd_tty, NULL);
   if (reset_save_mod(SAVE, param->fd_tty) == EXIT_FAILURE)
     return (0);

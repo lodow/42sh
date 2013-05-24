@@ -69,6 +69,9 @@
 # define REDI_FRIGHT 0666
 # define REDI_NB_SEPA 7
 
+/*
+** PTR_TAB defines
+*/
 # define PTRT_PACK 32
 
 typedef struct	s_fds
@@ -246,7 +249,7 @@ int	check_perror(char *str, int err);
 ** Env var
 */
 char	*get_envvar(char *var, char **env);
-char	*check_vars_in_str(char *str, char **envp);
+char	*check_vars_in_str(char *str, char **envp, int null_it);
 void	replace_var_in_argv(char **argv, char **envp);
 
 /*
@@ -283,8 +286,9 @@ int	new_conf_set(char *str, t_sh *shell);
 void	store_conf_file(char *filename, t_sh *shell,
                       void (*f)(t_sh *shell, int fd));
 int	load_conf_file(char *filename, t_sh *shell,
-                     int (*f)(char *line, t_sh *shell));
+                   int (*f)(char *line, t_sh *shell));
 void	alias_replace(char ***argv, char **alias);
+void	alias_multiple_replace(char ***argv, char **aliastab);
 void	free_history(t_history *ptete);
 
 /*
@@ -316,6 +320,8 @@ void	my_strncpy_force(char *, char *, int);
 char	**mult_str_to_wordtab(char *line, char **sepa, int opt);
 char	*get_inibiteur_f_mult_wt(char *line, char **sepa, char **char_tab, int field);
 char	**get_path(char **envp);
+char	*rempl_str_inib(char *str, char *ref, char *rempl);
+char	*strtab_to_str(char **tab, char *rempl);
 
 /*
 ** Glob
@@ -332,6 +338,7 @@ int	load_history_f_file(char *line, t_sh *shell);
 void   	rempl_new_history(t_history **elem, char *str);
 void	add_history(t_history **ptete, char *cmd);
 void	gere_history(char *cmd, t_param *param,
-		     t_history *history, char *buff);
+                   t_history *history, char *buff);
+void		add_history_after_line(char *lign, t_history **history);
 
 #endif

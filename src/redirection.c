@@ -70,7 +70,7 @@ void	parse_redirection(t_grp *grp, char *line)
         posinstr += my_strlen(tab[i]) + my_strlen(file);
         file = parse_file_redirection(line, posinstr, file);
         grp->redirection = (char**)add_ptr_t_tab((void**)grp->redirection,
-						 (void*)str_cat(value, file));
+                           (void*)str_cat(value, file));
         i++;
       }
 }
@@ -123,6 +123,10 @@ int	open_redirection(t_grp *grp, t_sh *shell)
         i++;
       }
   if (grp->fd.stdin == -1 || grp->fd.stdout == -1 || grp->fd.stderr == -1)
-    return (-1);
+    {
+      if ((grp->cmds != NULL) && (grp->cmds[0] != NULL))
+        (grp->cmds[0])->return_value = 1;
+      return (-1);
+    }
   return (0);
 }

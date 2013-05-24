@@ -18,8 +18,8 @@ char	**add_line_ttab(char **tab, char **linetab, int tab_size)
 
   j = 0;
   i = 0;
-  while ((tab != NULL) && ((tab[i++]) != NULL))
-    ;
+  while ((tab != NULL) && ((tab[i]) != NULL))
+    i++;
   if (((ntab = malloc((i + tab_size + 1 + PTRT_PACK)
                       * sizeof(char*))) == NULL))
     return (NULL);

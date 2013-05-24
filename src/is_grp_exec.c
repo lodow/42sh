@@ -35,6 +35,7 @@ int	is_grp_exec(t_sh *shell, t_grp *grp)
         {
           if (tmpcmd->argv != NULL)
             my_putstr(tmpcmd->argv[0], 2, -1);
+          tmpcmd->return_value = 1;
           my_putstr(": command not found\n", 2, -1);
           return (0);
         }

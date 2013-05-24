@@ -18,13 +18,19 @@
 
 int	exec_process_group(t_sh *shell, t_grp *grp)
 {
-  if ((grp == NULL) || (is_grp_exec(shell, grp) == 0))
+  int	tmp;
+
+  if (grp == NULL)
     return (-1);
-  if ((open_redirection(grp, shell) == -1) || (MEXIT)
-      || (exec_a_pipe(shell, grp) == -1) || (MEXIT))
-    return (-1);
+  if ((tmp = (is_grp_exec(shell, grp) - 1)) != -1)
+    tmp = open_redirection(grp, shell);
+  if (MEXIT)
+    return (0);
+  if (tmp != -1)
+    if ((exec_a_pipe(shell, grp) == -1) || (MEXIT))
+      return (-1);
   shell->process_group = (t_grp**)add_ptr_t_tab((void**)shell->process_group,
-						(void*)grp);
+                         (void*)grp);
   if (GETFLAG(grp->flags, FLAGPOS(FGRP_FORGROUND)) && (grp->pid.pgid != -1))
     set_forground_process_g(shell, grp);
   else

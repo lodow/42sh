@@ -5,7 +5,7 @@
 ## Login <moriss_h@epitech.net>
 ##
 ## Started on Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Thu May 23 16:26:23 2013 maxime lavandier
+## Last update Fri May 24 17:56:53 2013 maxime lavandier
 ##
 
 CC		=	gcc
@@ -82,7 +82,11 @@ SRC		=	$(SRCPATH)/main.c \
 			$(SRCPATH)/redirection.c \
 			$(SRCPATH)/user_input.c \
 			$(SRCPATH)/cat.c \
-			$(SRCPATH)/reg_expr.c
+			$(SRCPATH)/reg_expr.c \
+			$(SRCPATH)/rempl_str_inib.c \
+			$(SRCPATH)/str_fille_tstr.c \
+			$(SRCPATH)/check_if_folder.c \
+			$(SRCPATH)/parseur_history.c
 
 ENV		=	$(PATHENV)/env.c
 
@@ -125,8 +129,6 @@ SRCLINE		=	$(PATHLINE)main.c \
 			$(PATHLINE)gere_control_u.c \
 			$(PATHLINE)return_string.c \
 			$(PATHLINE)add_caractere.c \
-			$(PATHLINE)check_the_directory.c
-
 
 SRCLIBLINE	=	$(LIBLINE)/str_cmp.c \
 			$(LIBLINE)/my_putstr.c \

@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu May 23 16:19:17 2013 maxime lavandier
+** Last update Fri May 24 17:56:24 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -60,7 +60,8 @@ int	parse_launch_background(char **line)
             free(tab[i - 1]);
             tab[i - 1] = NULL;
           }
-      (*line) = tab_file_tstr(tab, ' ');
+      (*line) = strtab_to_str(tab, " ");
+      free_ptr_tab((void**)tab, &free);
     }
   return (back);
 }

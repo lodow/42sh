@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu May 23 16:16:41 2013 maxime lavandier
+** Last update Fri May 24 17:56:43 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -28,7 +28,7 @@ void	cmd_execution(t_cmd *cmd, t_fds *fd, t_sh *shell)
 }
 
 int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
-		     int (*f)(char *cmd, char **argv, t_sh *shell))
+                 int (*f)(char *cmd, char **argv, t_sh *shell))
 {
   int	ret_exec;
 
@@ -46,5 +46,7 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
       my_exit(ret_exec);
       SETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_FORK));
     }
+  if ((cmd->pid.pid > 0) && (cmd->pid.pgid > 0))
+    setpgid(cmd->pid.pid, cmd->pid.pgid);
   return (cmd->pid.pid);
 }

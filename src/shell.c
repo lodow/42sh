@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 18 23:40:58 2013 remi robert
+** Last update Fri May 24 11:17:15 2013 remi robert
 */
 
 #include "42sh.h"
@@ -20,24 +20,18 @@ char	*recalc_prompt(t_sh *shell)
   if ((ps1 = get_envvar("PS1", shell->env)) != NULL)
     {
       tmp = my_strdup(ps1);
-      if ((prompt = check_vars_in_str(tmp, shell->env)) != NULL)
+      if ((prompt = check_vars_in_str(tmp, shell->env, 1)) != NULL)
         {
           if (prompt != tmp)
             free(tmp);
+          tmp = rempl_str_inib(prompt, "\\033", "\033");
+          free(prompt);
+          prompt = tmp;
         }
     }
   if (prompt == NULL)
     prompt = my_strdup("$ ");
   return (prompt);
-}
-
-void	add_history_after_line(char *lign, t_history **history)
-{
-  if (history != NULL && *history != NULL &&
-      str_cmp((*history)->cmd, lign) == 1)
-    return ;
-  if (lign[0] != '\0' && lign[0] != '\n')
-    add_history(history, lign);
 }
 
 void	user_loop(t_sh *shell)
@@ -50,6 +44,7 @@ void	user_loop(t_sh *shell)
   prompt = recalc_prompt(shell);
   while ((lign = read_cmd(prompt, &(shell->param), &shell->history)) != NULL)
     {
+      lign = parseur_history(lign, shell->history);
       add_history_after_line(lign, &shell->history);
       no_fg_jobs_status(shell);
       call_signal_func(shell, 0, NULL);
