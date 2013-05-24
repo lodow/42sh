@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri May 24 09:54:35 2013 remi robert
-** Last update Fri May 24 17:26:56 2013 remi robert
+** Last update Fri May 24 18:30:09 2013 remi robert
 */
 
 #include "42sh.h"
@@ -62,21 +62,34 @@ int	extract_cmd_history(char *cmd, t_history *history,
   return (0);
 }
 
+char	*cmd_copy_hist(char *cmd)
+{
+  char	*s;
+  int	indice;
+
+  if (cmd == NULL || (s = malloc(SIZE_BUFFER + 1)) == NULL)
+    return (NULL);
+  indice = -1;
+  while (++indice < SIZE_BUFFER - 1 && cmd[indice] != '\0')
+    s[indice] = cmd[indice];
+  if (indice < SIZE_BUFFER - 3)
+    {
+      s[indice] = ' ';
+      s[++indice] = '\0';
+    }
+  else
+    s[++indice] = '\0';
+  free(cmd);
+  return (s);
+}
+
 char	*parseur_history(char *cmd, t_history *history)
 {
-  int	size;
   int	var_secu;
   char	nb[10];
   char	str[10];
 
-  size = my_strlen(cmd);
-  if (size < SIZE_BUFFER - 2)
-    {
-      if (size - 1 >= 0)
-	cmd[size - 1] = ' ';
-      cmd[(size) % SIZE_BUFFER] = '\0';
-    }
-  if (history == NULL ||
+  if ((cmd = cmd_copy_hist(cmd)) == NULL || history == NULL ||
       (cmd = rempl_str_inib(cmd, "!!", history->cmd, 1)) == NULL)
     return (cmd);
   var_secu = -1;
