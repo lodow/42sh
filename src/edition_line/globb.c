@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri May 10 18:29:05 2013 remi robert
-** Last update Thu May 23 22:51:36 2013 remi robert
+** Last update Fri May 24 21:17:28 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -34,6 +34,8 @@ void		globb(char *cmd, t_param *param)
   char		*s;
 
   s = return_globb_str(cmd, param->pos);
+  if (s == NULL)
+    return ;
   if (init_globb(s, &globb) == 0)
     return ;
   completation(cmd, &globb, param, s);

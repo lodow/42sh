@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 17:28:49 2013 remi robert
-** Last update Tue May 21 11:27:34 2013 remi robert
+** Last update Fri May 24 20:47:32 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -21,7 +21,7 @@ void	calc_other_decallage(char *cmd, t_param *param)
   size_y = (size / return_x()) + 1;
   current_size = (return_y() - param->begin_pos_y) + 1;
   if ((size_y - current_size) <= 0 ||
-      current_size > size_y || size_y == return_x())
+      size_y == return_x())
     return ;
   indice = 0;
   curseur(param->begin_pos_x, param->begin_pos_y);
