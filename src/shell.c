@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri May 24 11:05:38 2013 remi robert
+** Last update Fri May 24 11:17:15 2013 remi robert
 */
 
 #include "42sh.h"
@@ -55,6 +55,7 @@ void	user_loop(t_sh *shell)
         return ;
       wait_no_fg_grp(shell);
       free(prompt);
+      free(lign);
       prompt = recalc_prompt(shell);
     }
   free(prompt);
