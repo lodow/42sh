@@ -45,7 +45,8 @@ void	sig_handler(int sig)
       my_putstr(shell->param.str_prompt, 1, -1);
       if (shell->param.fallback == 1)
         {
-          shell->param.cmd[0] = '\0';
+          if (cmd->param.cmd != NULL)
+            shell->param.cmd[0] = '\0';
           shell->param.pos = 0;
           refresh_view(shell->param.cmd, &(shell->param));
           view(shell->param.cmd, &(shell->param));
