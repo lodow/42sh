@@ -286,7 +286,7 @@ int	new_conf_set(char *str, t_sh *shell);
 void	store_conf_file(char *filename, t_sh *shell,
                       void (*f)(t_sh *shell, int fd));
 int	load_conf_file(char *filename, t_sh *shell,
-                     int (*f)(char *line, t_sh *shell));
+                   int (*f)(char *line, t_sh *shell));
 void	alias_replace(char ***argv, char **alias);
 void	free_history(t_history *ptete);
 
@@ -337,6 +337,7 @@ int	load_history_f_file(char *line, t_sh *shell);
 void   	rempl_new_history(t_history **elem, char *str);
 void	add_history(t_history **ptete, char *cmd);
 void	gere_history(char *cmd, t_param *param,
-		     t_history *history, char *buff);
+                   t_history *history, char *buff);
+void		add_history_after_line(char *lign, t_history **history);
 
 #endif
