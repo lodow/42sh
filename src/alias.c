@@ -33,3 +33,27 @@ void	alias_replace(char ***argv, char **aliastab)
   free(tmp_tab[0]);
   free(tmp_tab);
 }
+
+void	alias_multiple_replace(char ***argv, char **aliastab)
+{
+  int	i;
+  char	*lcmd;
+  char	*ncmd;
+
+  i = 0;
+  ncmd = NULL;
+  if (((*argv) == NULL) || ((*argv)[0] == NULL))
+    return ;
+  lcmd = my_strdup((*argv)[0]);
+  while ((i < 500) && (my_strncmp(lcmd, ncmd, -1)))
+    {
+      free(lcmd);
+      lcmd = my_strdup((*argv)[0]);
+      alias_replace(argv, aliastab);
+      free(ncmd);
+      ncmd = my_strdup((*argv)[0]);
+      i++;
+    }
+  free(ncmd);
+  free(lcmd);
+}

@@ -50,7 +50,7 @@ t_cmd	*create_n_cmd(t_sh *shell, char *lign)
   tr_str(res->line, '\t', ' ');
   res->argv = str_to_wordtab(res->line, " ", 2);
   rm_empty_str_f_tab(res->argv);
-  alias_replace(&(res->argv), shell->alias_tab);
+  alias_multiple_replace(&(res->argv), shell->alias_tab);
   replace_var_in_argv(res->argv, shell->env);
   expand_reg_epx_on_argv(&(res->argv));
   res->cmd_fpath = exec_full_path(res->argv[0], shell->path);

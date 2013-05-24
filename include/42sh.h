@@ -288,6 +288,7 @@ void	store_conf_file(char *filename, t_sh *shell,
 int	load_conf_file(char *filename, t_sh *shell,
                    int (*f)(char *line, t_sh *shell));
 void	alias_replace(char ***argv, char **alias);
+void	alias_multiple_replace(char ***argv, char **aliastab);
 void	free_history(t_history *ptete);
 
 /*
