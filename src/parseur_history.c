@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri May 24 09:54:35 2013 remi robert
-** Last update Fri May 24 11:10:29 2013 remi robert
+** Last update Fri May 24 17:26:56 2013 remi robert
 */
 
 #include "42sh.h"
@@ -70,10 +70,11 @@ char	*parseur_history(char *cmd, t_history *history)
   char	str[10];
 
   size = my_strlen(cmd);
-  if (size < SIZE_BUFFER - 1)
+  if (size < SIZE_BUFFER - 2)
     {
-      cmd[size] = ' ';
-      cmd[size + 1] = '\0';
+      if (size - 1 >= 0)
+	cmd[size - 1] = ' ';
+      cmd[(size) % SIZE_BUFFER] = '\0';
     }
   if (history == NULL ||
       (cmd = rempl_str_inib(cmd, "!!", history->cmd, 1)) == NULL)
