@@ -35,6 +35,8 @@ t_grp	*parse_linked_grp_process(t_sh *shell, char *line,
       grp->transition = type;
       grp->transition_line = next_line;
     }
+  else
+    free(next_line);
   if (MEXIT)
     return (NULL);
   return (grp);
@@ -91,19 +93,18 @@ t_grp	**parse_colon_line(t_sh *shell, char *line, t_fds *def_fd)
   return (grp_lst);
 }
 
-void	parse_user_cmd(t_sh *shell, char *line, t_fds *def_fd)
+void	parse_user_cmd(t_sh *shell, char **line, t_fds *def_fd)
 {
   t_grp	**grp_lst;
 
   if ((shell->too_much_parsing)++ > 1000)
     return ;
-  check_and_load_backquote(&line, shell);
+  check_and_load_backquote(line, shell);
   if (MEXIT)
     return ;
-  grp_lst = parse_colon_line(shell, line, def_fd);
+  grp_lst = parse_colon_line(shell, (*line), def_fd);
   if (MEXIT)
     return ;
   exec_grp_lst(grp_lst, shell);
   free(grp_lst);
-  free(line);
 }

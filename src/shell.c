@@ -50,7 +50,7 @@ void	user_loop(t_sh *shell)
       call_signal_func(shell, 0, NULL);
       wait_no_fg_grp(shell);
       shell->too_much_parsing = 0;
-      parse_user_cmd(shell, lign, &tmpfd);
+      parse_user_cmd(shell, &lign, &tmpfd);
       if (MEXIT)
         return ;
       wait_no_fg_grp(shell);

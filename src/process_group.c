@@ -89,6 +89,7 @@ void	free_process_group(t_grp *grp)
       free(grp->line);
       free_ptr_tab((void**)grp->cmds, (void*)(&free_cmd));
       free_ptr_tab((void**)grp->redirection, &free);
+      free(grp->transition_line);
       free(grp);
     }
 }
