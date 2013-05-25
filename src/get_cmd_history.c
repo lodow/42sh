@@ -32,7 +32,7 @@ char		*get_last_cmd_history(t_history *history,
 	    return (pcurrent->cmd);
 	  indice += 1;
 	}
-      free_prt_tab((void *)tab, free);
+      free_ptr_tab((void *)tab, free);
       pcurrent = pcurrent->next;
     }
   return (NULL);

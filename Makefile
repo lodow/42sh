@@ -74,6 +74,7 @@ SRC		=	$(SRCPATH)/main.c \
 			$(SRCPATH)/my_putchar.c \
 			$(SRCPATH)/delete_history.c \
 			$(SRCPATH)/history.c \
+			$(SRCPATH)/get_cmd_history.c \
 			$(SRCPATH)/init_edition_line.c \
 			$(SRCPATH)/add_history.c \
 			$(SRCPATH)/gere_history.c \

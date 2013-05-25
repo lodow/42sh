@@ -243,6 +243,9 @@
 		<Unit filename="src/gere_valide_saisi.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/get_cmd_history.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/get_file.c">
 			<Option compilerVar="CC" />
 		</Unit>

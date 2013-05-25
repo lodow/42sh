@@ -191,7 +191,7 @@ void	swap_ptr(void **ptr1, void **ptr2);
 void	tr_str(char *str, char in, char to);
 char	*my_uint_strbase(unsigned int nb, char * base);
 int	my_getnbr(char *str);
-void	my_strncpy_force(char *str1, char *str2, int size);
+void	my_spe_strncpy(char *str1, char *str2, int size);
 void	del_slash_quote(char **char_tab);
 char	*my_stradd(char *str, char *add, int size_add);
 char	*str_cat(char *str1, char *str2);
@@ -338,11 +338,14 @@ char	**expand_reg_exp(char *regexp);
 int	view_history(char *path, char **argv, t_sh *shell);
 void	clear_history(t_history *ptr);
 int	load_history_f_file(char *line, t_sh *shell);
-void   	rempl_new_history(t_history **elem, char *str);
+void	rempl_new_history(t_history **elem, char *str);
 void	add_history(t_history **ptete, char *cmd);
 void	gere_history(char *cmd, t_param *param,
                    t_history *history, char *buff);
-void		add_history_after_line(char *lign, t_history **history);
+void	add_history_after_line(char *lign, t_history **history);
 void	parseur_history(char **cmd, t_history *history);
+char	*get_cmd_history(t_history *history, int nb);
+char	*get_last_cmd_history(t_history *history, char *cmd, int nb);
+int	nb_max_history(t_history *history);
 
 #endif
