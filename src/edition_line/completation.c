@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May 11 14:05:31 2013 remi robert
-** Last update Fri May 24 22:46:11 2013 maxime lavandier
+** Last update Sat May 25 20:10:57 2013 Adrien Della Maggiora
 */
 
 #include "42sh.h"
@@ -32,7 +32,7 @@ char	*decal_string_cmd(char *cmd, t_param *param,
   indice_buff = occurence_string(buff, s);
   while (buff[++indice_buff] != '\0')
     if (buff[indice_buff] != cmd[param->pos])
-      add_caractere(cmd, param, buff[indice_buff]);
+      add_character(cmd, param, buff[indice_buff]);
   return (cmd);
 }
 

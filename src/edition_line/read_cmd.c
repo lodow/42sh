@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Sat May 25 18:39:44 2013 remi robert
+** Last update Sat May 25 20:10:39 2013 Adrien Della Maggiora
 */
 
 #include "42sh.h"
@@ -58,7 +58,7 @@ char	*loop_cmd(char *prompt, t_param *param, t_history **history)
       if (get_window_size(param->cmd, param->begin_pos_x) == 1 &&
           gere_keyboard(buff, param->cmd, param, history) == 1)
         {
-          add_caractere(param->cmd, param, buff[0]);
+          add_character(param->cmd, param, buff[0]);
           view(param->cmd, param);
         }
     }

@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon May 13 20:57:08 2013 remi robert
-** Last update Fri May 24 21:48:18 2013 maxime lavandier
+** Last update Sat May 25 23:04:32 2013 Adrien Della Maggiora
 */
 
 #include "42sh.h"
@@ -28,20 +28,20 @@ int	get_min_len(char **str)
 int	find_currence(char **path, int min, char *buff)
 {
   int	indice;
-  int	caractere;
+  int	character;
   char	c;
 
-  caractere = -1;
-  while (++caractere != min + 1 && path != NULL && path[0] != NULL)
+  character = -1;
+  while (++character != min + 1 && path != NULL && path[0] != NULL)
     {
       indice = -1;
-      c = path[0][caractere];
+      c = path[0][character];
       while (path[++indice] != NULL)
-	if (c != path[indice][caractere])
-	  return (caractere);
-      buff[caractere] = c;
+	if (c != path[indice][character])
+	  return (character);
+      buff[character] = c;
     }
-  return (caractere);
+  return (character);
 }
 
 int	occurence_string(char *buff, char *s)
