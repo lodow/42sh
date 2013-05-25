@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr 12 12:53:40 2013 remi robert
-** Last update Sat May 25 13:26:06 2013 Adrien Della Maggiora
+** Last update Sat May 25 23:52:58 2013 remi robert
 */
 
 #include "my_func.h"
@@ -14,7 +14,7 @@ void	rempl_new_history(t_history **elem, char *str)
 {
   int	indice;
 
-  if (*elem == NULL || str == NULL ||
+  if (*elem == NULL || str == NULL || str[0] == '\0' ||
       ((*elem)->cmd = malloc(my_strlen(str) + 1)) == NULL)
     return ;
   indice = 0;
@@ -42,7 +42,8 @@ void		add_history(t_history **phead, char *cmd)
       (*phead)->next = NULL;
       return ;
     }
-  if ((new_history = malloc(sizeof(t_history))) == NULL)
+  if (cmd == NULL || str_cmp(cmd, (*phead)->cmd) == 1 ||
+      (new_history = malloc(sizeof(t_history))) == NULL)
     return ;
   (*phead)->back = new_history;
   new_history->back = NULL;
