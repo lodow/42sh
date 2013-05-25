@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Sat May 25 13:00:17 2013 remi robert
+** Last update Sat May 25 13:03:51 2013 remi robert
 */
 
 #include "42sh.h"
@@ -30,6 +30,7 @@ char	*init_read_cmd(char *cmd, t_param *param)
 
 void	actu_begin_pos(t_param *param)
 {
+  printf("OKOKOK\n");
   get_pos_curser(&param->x, &param->y, param->fd_tty);
   param->begin_pos_x = param->x;
   param->begin_pos_y = param->y;
@@ -52,7 +53,7 @@ char	*loop_cmd(char *prompt, t_param *param, t_history **history)
         return (NULL);
       if (buff[0] == '\n' && buff[1] == '\0')
         return (return_string(param->cmd, param, history));
-      if (start == 0)
+      if (buff[0] != '\n' && start == 0)
 	actu_begin_pos(param);
       if (get_window_size(param->cmd, param->begin_pos_x) == 1 &&
           gere_keyboard(buff, param->cmd, param, history) == 1)
