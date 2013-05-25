@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 13:27:00 2013 remi robert
-** Last update Sat May 25 11:07:00 2013 remi robert
+** Last update Sat May 25 12:52:45 2013 remi robert
 */
 
 #include "42sh.h"
@@ -17,7 +17,7 @@ char	*my_tgetstr(char *cap)
   if ((s = tgetstr(cap, NULL)) == NULL)
     {
       my_putstr("Error load capacity : ", 2, -1);
-      my_putstr_termcap(-1, cap);
+      my_putstr(cap, 2, -1);
       my_putstr("\n", 2, -1);
       return (NULL);
     }
