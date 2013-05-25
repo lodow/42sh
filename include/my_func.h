@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Fri May 24 10:41:20 2013 remi robert
+** Last update Sat May 25 11:12:35 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -60,25 +60,12 @@
 typedef struct	s_termcap
 {
   char		*str_cl;
-  char		*str_ku;
-  char		*str_kd;
-  char		*str_kl;
-  char		*str_kr;
-  char		*str_kb;
   char		*str_do;
-  char		*str_DO;
   char		*str_up;
-  char		*str_UP;
   char		*str_le;
-  char		*str_LE;
-  char		*str_nd;
   char		*str_ri;
-  char		*str_RI;
   char		*str_ce;
-  char		*str_sc;
-  char		*str_rc;
   char		*str_cd;
-  char		*str_ks;
 }		t_termcap;
 
 typedef struct		s_history
@@ -132,7 +119,8 @@ int		get_last_indice(char *cmd, int pos);
 void		view_globb(glob_t *globb, t_param *param);
 void		globb(char *cmd, t_param *param);
 char		*return_globb_str(char *cmd, int indice);
-void		completation(char *cmd, glob_t *globb, t_param *param, char *s);
+void		completation(char *cmd, glob_t *globb,
+			     t_param *param, char *s);
 int		get_window_size(char *cmd, int add_prompt);
 void		my_putstr_view(char *cmd, int add_prompt, t_param *param);
 void		calc_end_param_x(char *cmd, t_param *param, int *x, int *y);

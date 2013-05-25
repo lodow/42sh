@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:20:31 2013 remi robert
-** Last update Fri May 24 21:53:03 2013 Adrien Della Maggiora
+** Last update Sat May 25 11:42:22 2013 remi robert
 */
 
 #include "42sh.h"
@@ -62,8 +62,8 @@ int	gere_keyboard(char *buff, char *cmd, t_param *param,
 			       str_cmp(buff, STR_DOWN) == 1))
     gere_history(cmd, param, *history, buff);
   else if ((buff[0] == DEL && buff[1] == END) ||
-	   (buff[0] == ESC && buff[1] == CRO && buff[2] == SUPPR
-	    && buff[3] == END))
+	   (buff[0] == 0x1B && buff[1] == 0x5B && buff[2] == 0x33
+	    && buff[3] == 0x7E && buff[4] == '\0'))
     gere_delete(cmd, param, buff);
   else
     return (gere_control(cmd, param, buff));

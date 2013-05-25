@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri May 10 18:30:25 2013 remi robert
-** Last update Tue May 14 19:59:54 2013 remi robert
+** Last update Sat May 25 10:55:23 2013 remi robert
 */
 
 #include "42sh.h"
@@ -30,13 +30,11 @@ int	get_last_indice(char *cmd, int pos)
 
 char	*return_globb_str(char *cmd, int pos)
 {
-  int	star;
   int	begin_indice;
   int	last_indice;
   int	indice;
   char	*s;
 
-  star = 0;
   begin_indice = get_begin_word(cmd, pos);
   last_indice = get_last_indice(cmd, pos);
   if ((s = malloc((last_indice - begin_indice) + 3)) == NULL)
@@ -45,18 +43,11 @@ char	*return_globb_str(char *cmd, int pos)
   while (cmd[indice] != '\0' && cmd[begin_indice] != '\0' &&
 	 begin_indice <= last_indice)
     {
-      if (cmd[begin_indice] == '*')
-	star = 1;
       s[indice] = cmd[begin_indice];
       indice += 1;
       begin_indice += 1;
     }
-  if (star == 0)
-    {
-      s[indice] = '*';
-      s[indice + 1] = '\0';
-    }
-  else
-    s[indice] = '\0';
+  s[indice] = '*';
+  s[indice + 1] = '\0';
   return (s);
 }

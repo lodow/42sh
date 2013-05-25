@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Thu May 23 13:47:52 2013 luc sinet
+** Last update Sat May 25 11:13:53 2013 remi robert
 */
 
 #ifndef		SH42_H
@@ -318,7 +318,8 @@ void	check_and_load_backquote(char **line, t_sh *shell);
 void	del_slash_quote(char **tab);
 void	my_strncpy_force(char *, char *, int);
 char	**mult_str_to_wordtab(char *line, char **sepa, int opt);
-char	*get_inibiteur_f_mult_wt(char *line, char **sepa, char **char_tab, int field);
+char	*get_inibiteur_f_mult_wt(char *line, char **sepa,
+				 char **char_tab, int field);
 char	**get_path(char **envp);
 char	*rempl_str_inib(char *str, char *ref, char *rempl, int inib);
 char	*strtab_to_str(char **tab, char *rempl);

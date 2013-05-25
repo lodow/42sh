@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Thu Mar 21 08:21:11 2013 remi
-** Last update Sat May 25 10:29:26 2013 remi robert
+** Last update Sat May 25 10:54:01 2013 remi robert
 */
 
 #include "42sh.h"
@@ -47,7 +47,6 @@ void	get_pos_curser(int *x, int *y, int fd)
   *y = -1;
   my_memset(buff, 10, 0);
   buff[0] = ESC;
-  fd = open("/dev/tty", O_RDWR);
   if (write(fd, POSCURSEUR, my_strlen(POSCURSEUR)) == -1)
     return ;
   indice = 0;
