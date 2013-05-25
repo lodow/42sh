@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Sat May 25 13:03:51 2013 remi robert
+** Last update Sat May 25 13:08:12 2013 remi robert
 */
 
 #include "42sh.h"
@@ -30,7 +30,6 @@ char	*init_read_cmd(char *cmd, t_param *param)
 
 void	actu_begin_pos(t_param *param)
 {
-  printf("OKOKOK\n");
   get_pos_curser(&param->x, &param->y, param->fd_tty);
   param->begin_pos_x = param->x;
   param->begin_pos_y = param->y;
