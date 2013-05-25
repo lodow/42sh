@@ -31,11 +31,7 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
                  int (*f)(char *cmd, char **argv, t_sh *shell))
 {
   int	ret_exec;
-  int	tmpgid;
 
-//  tmpgid = shell->pid.pgid;
-//  if (cmd->pid.pgid != -1)
-//    check_perror("Setpgid", setpgid(0, cmd->pid.pgid));
   if ((cmd->pid.pid = check_perror("Fork", fork())) == 0)
     {
       if (cmd->pid.pgid != -1)
@@ -49,13 +45,11 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
       check_perror("Dup2", dup2(fd->stdin, 0));
       check_perror("Dup2", dup2(fd->stdout, 1));
       check_perror("Dup2", dup2(fd->stderr, 2));
-      close_fds(fd);
       if ((ret_exec = f(cmd->cmd_fpath, cmd->argv, shell)) == -1)
         my_perror(cmd->cmd_fpath);
       my_exit(ret_exec);
       SETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_FORK));
     }
-  //check_perror("Setpgid", setpgid(0, tmpgid));
   if ((cmd->pid.pid > 0) && (cmd->pid.pgid > 0))
     setpgid(cmd->pid.pid, cmd->pid.pgid);
   return (cmd->pid.pid);
