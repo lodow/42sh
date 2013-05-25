@@ -216,7 +216,7 @@ void	call_signal_func(t_sh *shell, int chld_sig, t_cmd *chld_cmd);
 */
 void	no_fg_jobs_status(t_sh *shell);
 int	group_to_process_group(t_grp *grp, t_cmd *cmd);
-void	set_forground_pgrp(pid_t pgid);
+int	set_forground_pgrp(pid_t pgid);
 void	set_forground_process_g(t_sh *shell, t_grp *grp);
 t_grp	*get_forground_grp(t_sh *shell);
 
@@ -340,6 +340,6 @@ void	add_history(t_history **ptete, char *cmd);
 void	gere_history(char *cmd, t_param *param,
                    t_history *history, char *buff);
 void		add_history_after_line(char *lign, t_history **history);
-char	*parseur_history(char *cmd, t_history *history);
+void	parseur_history(char **cmd, t_history *history);
 
 #endif

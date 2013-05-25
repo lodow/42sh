@@ -10,95 +10,32 @@
 
 #include "42sh.h"
 
-char		*get_cmd_history(t_history *history, int nb)
+char	*pars_history_option(char *str)
 {
-  t_history	*pcourant;
+  char	**tab;
 
-  if (history == NULL)
+  if ((tab = str_to_wordtab(str, " ", 1)) == NULL)
     return (NULL);
-  pcourant = history;
-  while (pcourant != NULL)
-    {
-      if (pcourant->nb_history == nb)
-	return (pcourant->cmd);
-      pcourant = pcourant->next;
-    }
-  return (NULL);
 }
 
-void	init_loop_parser(int *indice_nb, char *nb, char *str)
+void	parseur_history(char **cmd, t_history *history)
 {
-  *indice_nb = -1;
-  nb[0] = '\0';
-  str[0] = '!';
-  str[1] = '\0';
-}
+  char	*res;
+  char	**tab;
+  int	i;
 
-int	extract_cmd_history(char *cmd, t_history *history,
-			    char nb[10], char str[10])
-{
-  int	indice;
-  int	indice_nb;
-
-  indice = -1;
-  while (cmd != NULL && history != NULL &&
-	 cmd[++indice] != '\0')
+  i = 0;
+  if (((tab = str_to_wordtab((*cmd), "!", 1)) == NULL) || (history == NULL))
+    return ;
+  while (tab[i] != NULL)
     {
-      if (cmd[indice] == '!')
-	{
-	  init_loop_parser(&indice_nb, nb, str);
-	  while (cmd[++indice] != '\0' && cmd[indice] >= '0' &&
-		 cmd[indice] <= '9')
-	    {
-	      nb[++indice_nb % 9] = cmd[indice];
-	      str[(indice_nb + 1) % 9] = cmd[indice];
-	    }
-	  nb[++indice_nb % 9] = '\0';
-	  str[(indice_nb + 1) % 9] = '\0';
-	  if (nb[0] != '\0')
-	    return (1);
-	}
+      res = pars_history_option(tab[i]);
+      free(tab[i]);
+      tab[i] = res;
+      i++;
     }
-  return (0);
-}
-
-char	*cmd_copy_hist(char *cmd)
-{
-  char	*s;
-  int	indice;
-
-  if (cmd == NULL || (s = malloc(my_strlen(cmd) + 3)) == NULL)
-    return (NULL);
-  indice = 0;
-  while (cmd[indice] != '\0')
-    {
-      s[indice] = cmd[indice];
-      ++indice;
-    }
-  s[indice] = ' ';
-  s[++indice] = '\0';
-  free(cmd);
-  return (s);
-}
-
-char	*parseur_history(char *cmd, t_history *history)
-{
-  int	var_secu;
-  char	nb[10];
-  char	str[10];
-
-  if ((cmd = cmd_copy_hist(cmd)) == NULL || history == NULL ||
-      (cmd = rempl_str_inib(cmd, "!!", history->cmd, 1)) == NULL)
-    return (cmd);
-  var_secu = -1;
-  while (++var_secu < 100 &&
-	 extract_cmd_history(cmd, history, nb, str) == 1)
-    {
-      if ((cmd = rempl_str_inib(cmd, str,
-				get_cmd_history(history, my_getnbr(nb)), 1))
-	  == NULL)
-	return (NULL);
-    }
-  cmd[my_strlen(cmd) - 1] = '\0';
-  return (cmd);
+  res = strtab_to_str(tab, NULL);
+  free_ptr_tab((void**)tab, &free);
+  free(*cmd);
+  (*cmd) = res;
 }

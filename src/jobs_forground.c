@@ -43,7 +43,8 @@ void	set_forground_process_g(t_sh *shell, t_grp *grp)
       if (tmp_grp == grp)
         {
           SETFLAG(tmp_grp->flags, FLAGPOS(FGRP_FORGROUND));
-          set_forground_pgrp(grp->pid.pgid);
+          if (set_forground_pgrp(grp->pid.pgid) == -1)
+            set_forground_pgrp(shell->pid.pgid);
         }
       else
         UNSETFLAG(tmp_grp->flags, FLAGPOS(FGRP_FORGROUND));

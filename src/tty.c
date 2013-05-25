@@ -10,7 +10,7 @@
 
 #include "42sh.h"
 
-void	set_forground_pgrp(pid_t pgid)
+int	set_forground_pgrp(pid_t pgid)
 {
   int	err;
 
@@ -30,4 +30,5 @@ void	set_forground_pgrp(pid_t pgid)
       signal(SIGTTOU, SIG_DFL);
       signal(SIGTTIN, SIG_DFL);
     }
+  return (err);
 }

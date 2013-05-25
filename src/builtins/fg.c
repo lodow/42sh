@@ -31,7 +31,8 @@ void	builtin_fg(t_cmd *cmd, t_fds *fd, t_sh *shell)
         {
           SETFLAG(shell->process_group[i]->flags, FLAGPOS(FGRP_FORGROUND));
           SETFLAG(shell->process_group[i]->flags, FLAGPOS(FGRP_RUNNING));
-          set_forground_pgrp(pgid);
+          if (set_forground_pgrp(pgid) == -1)
+            set_forground_pgrp(shell->pid.pgid);
           kill(-pgid, SIGCONT);
         }
     }

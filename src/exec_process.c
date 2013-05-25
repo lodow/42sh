@@ -32,7 +32,7 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
 {
   int	ret_exec;
 
-  if ((cmd->pid.pid = fork()) == 0)
+  if ((cmd->pid.pid = check_perror("Fork", fork())) == 0)
     {
       if (cmd->pid.pgid != -1)
         {

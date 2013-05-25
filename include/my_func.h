@@ -188,7 +188,5 @@ char		*return_saisi(char *cmd, t_history **history);
 void		add_caractere(char *cmd, t_param *param, char caratere);
 void		insert_caractere(char *cmd, t_param *param, char caratere);
 void		check_the_directory(char *buff);
-char		*parseur_history(char *cmd, t_history *history);
-char		*return_pos_history(t_history *ptete, int pos);
 
 #endif
