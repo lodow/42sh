@@ -5,23 +5,12 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Thu May 23 15:51:05 2013 maxime lavandier
+** Last update Sat May 25 13:23:09 2013 luc sinet
 */
 
 #include "42sh.h"
 
-/*
-** malloc_tab() retourne le tableau **tab malloc
-** avec lespace sufisant pour le remplir
-**
-** tab		= tableau à malloc
-** len_str	= taille de str
-** len_delim	= taile de delim
-** i		= indice
-** nbr		= nbr de fois que la chaine delim apparait
-*/
-
-void	my_strncpy_force(char *str1, char *str2, int size)
+void	my_spe_strncpy(char *str1, char *str2, int size)
 {
   my_strncpy(str1, str2, size);
   str1[size] = 0;
@@ -73,14 +62,14 @@ int	fill_tab_inib(char *str, char *delim, char **tab)
       if ((my_strncmp(&(str[max]), delim, len_delim)) == 0 && quote == -1 &&
 	  (max == 0 || str[max - 1] != '\\'))
 	{
-	  my_strncpy_force(tab[i++], &(str[min]), max - min);
+	  my_spe_strcpy(tab[i++], &(str[min]), max - min);
 	  min = max = max + len_delim;
 	}
       else
 	max++;
     }
   if (max != min)
-    my_strncpy_force(tab[i++], &(str[min]), max - min);
+    my_spe_strcpy(tab[i++], &(str[min]), max - min);
   return (i);
 }
 
@@ -97,7 +86,7 @@ int	fill_tab(char *str, char *delim, char **tab)
     {
       if ((my_strncmp(&(str[max]), delim, len_delim)) == 0)
 	{
-	  my_strncpy_force(tab[i], &(str[min]), max - min);
+	  my_spe_strcpy(tab[i], &(str[min]), max - min);
 	  i++;
 	  min = max = max + len_delim;
 	}
@@ -105,7 +94,7 @@ int	fill_tab(char *str, char *delim, char **tab)
 	max++;
     }
   if (max != min)
-    my_strncpy_force(tab[i++], &(str[min]), max - min);
+    my_spe_strcpy(tab[i++], &(str[min]), max - min);
   return (i);
 }
 
@@ -113,7 +102,7 @@ char	**str_to_wordtab(char *str, char *delim, char inibiteur)
 {
   char	**tab;
   int	lenght_malloc;
-  int	rempli;
+  int	filler;
 
   lenght_malloc = 0;
   if (str == NULL || delim == NULL)
@@ -124,10 +113,10 @@ char	**str_to_wordtab(char *str, char *delim, char inibiteur)
   while (tab[lenght_malloc] != NULL)
     lenght_malloc++;
   if (inibiteur)
-    rempli = fill_tab_inib(str, delim, tab);
+    filler = fill_tab_inib(str, delim, tab);
   else
-    rempli = fill_tab(str, delim, tab);
-  free_wordtab(tab, rempli, lenght_malloc);
+    filler = fill_tab(str, delim, tab);
+  free_wordtab(tab, filler, lenght_malloc);
   if (inibiteur == 2)
     del_slash_quote(tab);
   return (tab);
