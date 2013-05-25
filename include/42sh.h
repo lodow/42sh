@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Sat May 25 16:47:35 2013 Adrien Della Maggiora
+** Last update Sat May 25 18:29:55 2013 remi robert
 */
 
 #ifndef		SH42_H_
@@ -343,7 +343,7 @@ void	add_history(t_history **ptete, char *cmd);
 void	gere_history(char *cmd, t_param *param,
                    t_history *history, char *buff);
 void	add_history_after_line(char *lign, t_history **history);
-void	parseur_history(char **cmd, t_history *history);
+char	*parseur_history(char *cmd, t_history *history);
 char	*get_cmd_history(t_history *history, int nb);
 char	*get_last_cmd_history(t_history *history, char *cmd, int nb);
 int	nb_max_history(t_history *history);
