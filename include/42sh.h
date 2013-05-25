@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Sat May 25 11:13:53 2013 remi robert
+** Last update Sat May 25 15:46:13 2013 maxime lavandier
 */
 
 #ifndef		SH42_H
@@ -191,7 +191,7 @@ void	swap_ptr(void **ptr1, void **ptr2);
 void	tr_str(char *str, char in, char to);
 char	*my_uint_strbase(unsigned int nb, char * base);
 int	my_getnbr(char *str);
-void	my_strncpy_force(char *str1, char *str2, int size);
+void	my_spe_strncpy(char *str1, char *str2, int size);
 void	del_slash_quote(char **char_tab);
 char	*my_stradd(char *str, char *add, int size_add);
 char	*str_cat(char *str1, char *str2);
