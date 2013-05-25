@@ -232,6 +232,8 @@ t_cmd	*cmd_f_pid(int pid, t_sh *shell);
 */
 void	user_loop(t_sh *shell);
 void	parse_user_cmd(t_sh *shell, char **line, t_fds *def_fd);
+t_grp	*parse_linked_grp_process(t_sh *shell, char *line,
+                                t_fds *def_fd, int back);
 
 /*
 ** Pipes
