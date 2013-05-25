@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue May 21 14:48:45 2013 remi robert
+** Last update Sat May 25 14:10:20 2013 luc sinet
 */
 
 #include "42sh.h"
@@ -42,7 +42,6 @@ void	my_strncpy(char *dest, char *src, int n)
               dest[i] = src[i];
               i++;
             }
-          dest[i] = '\0';
         }
       else
         {
@@ -52,6 +51,7 @@ void	my_strncpy(char *dest, char *src, int n)
               i++;
             }
         }
+      dest[i] = '\0';
     }
 }
 

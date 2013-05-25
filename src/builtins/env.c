@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu Apr 18 16:54:58 2013 maxime lavandier
+** Last update Sat May 25 15:52:35 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -45,8 +45,7 @@ int	builtin_env_exec_opt(char *arg, t_cmd *cmd, char ***env, int *nnewline)
       opt = 1;
       *nnewline = 1;
     }
-  if (!my_strncmp(arg, "-u", -1)
-      || !my_strncmp(arg, "--unset=", my_strlen("--unset=")))
+  if (!my_strncmp(arg, "--unset=", my_strlen("--unset=")))
     {
       if (!my_strncmp(arg, "--unset=", my_strlen("--unset=")))
         tmp = &(arg[my_strlen("--unset=")]);

@@ -5,7 +5,7 @@
 ** Login   <izissise@morissh>
 **
 ** Started on  Sat Dec 15 14:50:55 2012 Hugues
-** Last update Sat Dec 15 14:55:38 2012 Hugues
+** Last update Sat May 25 16:02:49 2013 Adrien Della Maggiora
 */
 
 #ifndef GET_FILE_H_
@@ -29,4 +29,4 @@ char	*get_file(const char *file);
 char	**get_data_ffile(int fd);
 char	*tab_file_tstr(char **tab_file, char sepa);
 
-#endif
+#endif /* !GET_FILE_H */

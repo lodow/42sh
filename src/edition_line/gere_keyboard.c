@@ -5,10 +5,30 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:20:31 2013 remi robert
-** Last update Sat May 25 11:42:22 2013 remi robert
+** Last update Sat May 25 14:03:25 2013 luc sinet
 */
 
 #include "42sh.h"
+
+int	my_spe_strlen(char *str)
+{
+  int	i;
+  int	size;
+
+  i = 0;
+  size = 0;
+  if (str == NULL)
+    return (0);
+  while (str[i])
+    {
+      if (str[i] == -61)
+	++i;
+      if (str[i])
+	++i;
+      ++size;
+    }
+  return (size);
+}
 
 void	gere_posright(char *cmd, t_param *param)
 {
