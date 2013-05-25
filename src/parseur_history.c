@@ -10,12 +10,20 @@
 
 #include "42sh.h"
 
-char	*pars_history_option(char *str)
+char	*pars_history_option(char *str, t_history *history)
 {
   char	**tab;
+  char	*opt;
+  char	*nline;
 
-  if ((tab = str_to_wordtab(str, " ", 1)) == NULL)
+  if (((tab = str_to_wordtab(str, " ", 1)) == NULL) || (tab[0] == NULL))
     return (NULL);
+  opt = tab[0];
+  nline = str;
+  if (!my_strncmp(opt, "!", -1))
+    nline = history->cmd;
+  free_ptr_tab((void**)tab, &free);
+  return (nline);
 }
 
 void	parseur_history(char **cmd, t_history *history)
@@ -29,8 +37,9 @@ void	parseur_history(char **cmd, t_history *history)
     return ;
   while (tab[i] != NULL)
     {
-      res = pars_history_option(tab[i]);
-      free(tab[i]);
+      res = pars_history_option(tab[i], history);
+      if (tab[i] != res)
+        free(tab[i]);
       tab[i] = res;
       i++;
     }
