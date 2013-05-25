@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 11:04:35 2013 maxime lavandier
-** Last update Thu May 23 14:02:13 2013 remi robert
+** Last update Fri May 24 17:58:57 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -30,7 +30,7 @@ void	**add_ptr_t_tab(void **tab, void *add)
   if (i % PTRT_PACK == 0)
     {
       if ((newtab = malloc((i + 3 + (PTRT_PACK - ((i + 2) % PTRT_PACK)))
-                           * sizeof(void*))) == NULL)
+                           * sizeof(void *))) == NULL)
         return (NULL);
     }
   else
@@ -62,7 +62,7 @@ void	**concat_ptr_tab(void **tab1, void **tab2)
   tlen += ptr_tab_size(tab1);
   tlen += ptr_tab_size(tab2);
   if ((final_tab = malloc((tlen + 2 + (PTRT_PACK - ((tlen + 1) % PTRT_PACK)))
-                          * sizeof(void*))) == NULL)
+                          * sizeof(void *))) == NULL)
     return (NULL);
   tlen = -1;
   while (tab1[++tlen] != NULL)
