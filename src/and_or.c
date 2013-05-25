@@ -15,6 +15,8 @@ void	exec_next_i_fail(t_sh *shell, char *line, int back)
   t_grp	*tmpgrp;
   t_fds	fd;
 
+  if (++(shell->too_much_parsing) <= 1000)
+    return ;
   line = my_strdup(line);
   init_stdfd_t_def_val(&fd, 0, 1, 2);
   if ((tmpgrp = parse_linked_grp_process(shell, line, &fd, back)) != NULL)
