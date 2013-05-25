@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Tue May 21 14:27:59 2013 maxime lavandier
 */
 
 #include "42sh.h"
@@ -22,6 +22,7 @@ char	**get_path(char **envp)
 ** Return the full path of a command , return the command if didn't find it
 ** for trying to execute it from the current directory
 */
+
 char	*exec_full_path(char *exec, char **paths)
 {
   char	*fpaths;

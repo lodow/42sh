@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Sat May 25 10:29:20 2013 remi robert
+** Last update Sat May 25 13:10:02 2013 remi robert
 */
 
 #include "42sh.h"
@@ -18,25 +18,32 @@ char	*init_read_cmd(char *cmd, t_param *param)
       return (NULL);
     }
   my_putstr(param->str_prompt, 1, -1);
-  get_pos_curser(&param->x, &param->y, param->fd_tty);
   if (SIZE_BUFFER <= 0 ||
       (cmd = malloc(sizeof(char) * SIZE_BUFFER)) == NULL)
     return (NULL);
   my_memset(cmd, SIZE_BUFFER, '\0');
   cmd[0] = '\0';
-  param->begin_pos_x = param->x;
-  param->begin_pos_y = param->y;
   param->pos = 0;
   param->pos_history = 0;
   return (cmd);
 }
 
+void	actu_begin_pos(t_param *param, int *start)
+{
+  *start = 1;
+  get_pos_curser(&param->x, &param->y, param->fd_tty);
+  param->begin_pos_x = param->x;
+  param->begin_pos_y = param->y;
+}
+
 char	*loop_cmd(char *prompt, t_param *param, t_history **history)
 {
+  int	start;
   int	ret;
   char	buff[10];
 
   ret = 1;
+  start = 0;
   while (ret > 0)
     {
       if ((ret = read(0, buff, 9)) == -1)
@@ -46,6 +53,8 @@ char	*loop_cmd(char *prompt, t_param *param, t_history **history)
         return (NULL);
       if (buff[0] == '\n' && buff[1] == '\0')
         return (return_string(param->cmd, param, history));
+      if (buff[0] != '\n' && start == 0)
+	actu_begin_pos(param, &start);
       if (get_window_size(param->cmd, param->begin_pos_x) == 1 &&
           gere_keyboard(buff, param->cmd, param, history) == 1)
         {
