@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Sat May 25 16:41:12 2013 remi robert
+** Last update Sat May 25 18:38:42 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -134,7 +134,7 @@ void		decal_string(char *cmd, int pos, char caractere);
 int		gere_keyboard(char *buff, char *cmd, t_param *param
                     , t_history **history);
 char		*read_cmd(char *prompt, t_param *param, t_history **history);
-void		add_caractere(char *cmd, t_param *param, char *caratere);
+void		add_caractere(char *cmd, t_param *param, char caratere);
 char		*init_read_cmd(char *cmd, t_param *param);
 int		tgetent(char *bp, const char *name);
 int		tgetflag(char *id);
