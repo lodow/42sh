@@ -5,11 +5,11 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat Dec 15 15:58:05 2012 Hugues
+** Last update Sat May 25 16:02:35 2013 Adrien Della Maggiora
 */
 
-#ifndef __GET_NEXT_LINE_H__
-# define __GET_NEXT_LINE_H__
+#ifndef GET_NEXT_LINE_H_
+# define GET_NEXT_LINE_H_
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -22,4 +22,4 @@
 
 char	*get_next_line(const int fd);
 
-#endif
+#endif /* !GET_NEXT_LINE_H */

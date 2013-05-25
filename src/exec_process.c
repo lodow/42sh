@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri May 24 17:56:43 2013 maxime lavandier
+** Last update Sat May 25 16:28:40 2013 luc sinet
 */
 
 #include "42sh.h"
@@ -45,6 +45,7 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
       check_perror("Dup2", dup2(fd->stdin, 0));
       check_perror("Dup2", dup2(fd->stdout, 1));
       check_perror("Dup2", dup2(fd->stderr, 2));
+      close_fds(fd);
       if ((ret_exec = f(cmd->cmd_fpath, cmd->argv, shell)) == -1)
         my_perror(cmd->cmd_fpath);
       my_exit(ret_exec);

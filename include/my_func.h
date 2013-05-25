@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Sat May 25 14:10:57 2013 remi robert
+** Last update Sat May 25 16:41:12 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -176,4 +176,4 @@ char		*return_saisi(char *cmd, t_history **history);
 void		insert_caractere(char *cmd, t_param *param, char caratere);
 void		check_the_directory(char *buff);
 
-#endif
+#endif /* !MY_FUNC_H_ */
