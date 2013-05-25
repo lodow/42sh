@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Sat Dec  8 14:09:50 2012 Hugues
-** Last update Thu May 23 15:39:16 2013 maxime lavandier
+** Last update Sat May 25 12:59:07 2013 Adrien Della Maggiora
 */
 
 #include "42sh.h"
@@ -61,16 +61,16 @@ char	*tab_file_tstr(char **tab_file, char sepa)
   char	*str;
   char	*tmpstr;
   int	i;
-  int	ii;
+  int	j;
   int	tlen;
 
   tlen = i = 0;
   if ((tab_file == NULL))
     return (NULL);
-  while (tab_file[i] != NULL && ((ii = 0) == 0))
+  while (tab_file[i] != NULL && ((j = 0) == 0))
     {
-      while (tab_file[i][ii++] != '\0');
-      tlen += ii;
+      while (tab_file[i][j++] != '\0');
+      tlen += j;
       i++;
     }
   if (!(MAFS != NULL && ((tmpstr = str) == str) && ((i = 0) == 0)))

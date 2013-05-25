@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Sat May 25 13:28:16 2013 Adrien Della Maggiora
 */
 
 #include "42sh.h"
@@ -25,7 +25,7 @@ void	exec_next_i_fail(t_sh *shell, char *line, int back)
 int	exec_next_grp(t_grp *grp, t_sh *shell)
 {
   t_fds	fd;
-  int	gobst;
+  int	globst;
   char	*line;
   char	*tmp;
   int	back;
@@ -33,12 +33,12 @@ int	exec_next_grp(t_grp *grp, t_sh *shell)
   if ((grp == NULL) || (grp->transition == GRP_TRANS_NONE))
     return (0);
   init_stdfd_t_def_val(&fd, 0, 1, 2);
-  gobst = global_group_ret_status(grp);
+  globst = global_group_ret_status(grp);
   line = my_strdup(grp->transition_line);
   tmp = line;
   back = GETFLAG(grp->flags, FLAGPOS(FGRP_RUNNING));
-  if (((grp->transition == GRP_TRANS_AND) && (gobst == 0))
-      || ((grp->transition == GRP_TRANS_OR) && (gobst != 0)))
+  if (((grp->transition == GRP_TRANS_AND) && (globst == 0))
+      || ((grp->transition == GRP_TRANS_OR) && (globst != 0)))
     {
       parse_user_cmd(shell, &line, &fd);
       if (line != tmp)

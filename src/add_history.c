@@ -5,14 +5,14 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr 12 12:53:40 2013 remi robert
-** Last update Thu May 16 14:29:19 2013 remi robert
+** Last update Sat May 25 13:26:06 2013 Adrien Della Maggiora
 */
 
 #include "my_func.h"
 
-void   	rempl_new_history(t_history **elem, char *str)
+void	rempl_new_history(t_history **elem, char *str)
 {
-  int  	indice;
+  int	indice;
 
   if (*elem == NULL || str == NULL ||
       ((*elem)->cmd = malloc(my_strlen(str) + 1)) == NULL)
@@ -26,29 +26,29 @@ void   	rempl_new_history(t_history **elem, char *str)
   (*elem)->cmd[indice] = '\0';
 }
 
-void		add_history(t_history **ptete, char *cmd)
+void		add_history(t_history **phead, char *cmd)
 {
   t_history	*new_history;
   static int	nb_history = 0;
 
-  if (*ptete == NULL)
+  if (*phead == NULL)
     {
-      if ((*ptete = malloc(sizeof(t_history))) == NULL)
+      if ((*phead = malloc(sizeof(t_history))) == NULL)
 	return ;
-      rempl_new_history(ptete, cmd);
-      (*ptete)->nb_history = nb_history;
+      rempl_new_history(phead, cmd);
+      (*phead)->nb_history = nb_history;
       nb_history = nb_history + 1;
-      (*ptete)->back = NULL;
-      (*ptete)->next = NULL;
+      (*phead)->back = NULL;
+      (*phead)->next = NULL;
       return ;
     }
   if ((new_history = malloc(sizeof(t_history))) == NULL)
     return ;
-  (*ptete)->back = new_history;
+  (*phead)->back = new_history;
   new_history->back = NULL;
-  new_history->next = *ptete;
+  new_history->next = *phead;
   new_history->nb_history = nb_history;
   nb_history = nb_history + 1;
   rempl_new_history(&new_history, cmd);
-  *ptete = new_history;
+  *phead = new_history;
 }

@@ -5,39 +5,39 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu May 16 14:59:38 2013 remi robert
-** Last update Fri May 24 17:27:39 2013 remi robert
+** Last update Sat May 25 13:06:45 2013 Adrien Della Maggiora
 */
 
 #include "42sh.h"
 
-void	add_history_after_line(char *lign, t_history **history)
+void	add_history_after_line(char *line, t_history **history)
 {
   if (history != NULL && *history != NULL &&
-      str_cmp((*history)->cmd, lign) == 1 &&
-      (my_strlen(lign) == 1 && lign[0] == ' '))
+      str_cmp((*history)->cmd, line) == 1 &&
+      (my_strlen(line) == 1 && line[0] == ' '))
     return ;
-  if (lign != NULL && lign[0] != '\0' && lign[0] != '\n')
-    add_history(history, lign);
+  if (line != NULL && line[0] != '\0' && line[0] != '\n')
+    add_history(history, line);
 }
 
-int             nb_max_history(t_history *history)
+int		nb_max_history(t_history *history)
 {
-  t_history     *pcourant;
-  int           indice;
+  t_history	*pcurrent;
+  int		indice;
 
   if (history == NULL)
     return (0);
   indice = 0;
-  pcourant = history;
-  while (pcourant != NULL)
+  pcurrent = history;
+  while (pcurrent != NULL)
     {
       indice = indice + 1;
-      pcourant = pcourant->next;
+      pcurrent = pcurrent->next;
     }
   return (indice);
 }
 
-int     gere_pos_history(char *buff, int current_pos, int nb_max)
+int	gere_pos_history(char *buff, int current_pos, int nb_max)
 {
   if (str_cmp(buff, STR_UP) == 1)
     {
@@ -59,22 +59,22 @@ int     gere_pos_history(char *buff, int current_pos, int nb_max)
   return (-1);
 }
 
-char            *return_pos_history(t_history *ptete, int pos)
+char		*return_pos_history(t_history *phead, int pos)
 {
-  int           indice;
-  t_history     *pcourant;
+  int		indice;
+  t_history	*pcurrent;
 
-  if (ptete == NULL)
+  if (phead == NULL)
     return (NULL);
   indice = 0;
-  pcourant = ptete;
+  pcurrent = phead;
   if (pos == indice)
-    return (ptete->cmd);
-  while (pcourant != NULL && indice != pos)
+    return (phead->cmd);
+  while (pcurrent != NULL && indice != pos)
     {
       if (indice + 1 == pos)
-	return (pcourant->cmd);
-      pcourant = pcourant->next;
+	return (pcurrent->cmd);
+      pcurrent = pcurrent->next;
       indice = indice + 1;
     }
   return (NULL);
@@ -88,14 +88,12 @@ void	gere_history(char *cmd, t_param *param,
   char	*s;
 
   current_pos = 0;
-  if (history == NULL)
-    return ;
-  if ((current_pos =
-       gere_pos_history(buff, param->pos_history,
-			nb_max_history(history))) == -1 ||
-      (s = return_pos_history(history, current_pos)) == NULL)
+  if (history == NULL ||
+      ((current_pos = gere_pos_history(buff, param->pos_history,
+				      nb_max_history(history))) == -1 ||
+       (s = return_pos_history(history, current_pos)) == NULL))
     {
-      if (current_pos == -1)
+      if (history != NULL && current_pos == -1)
 	{
 	  param->pos_history = 0;
 	  param->pos = 0;
