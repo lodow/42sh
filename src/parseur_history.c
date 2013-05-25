@@ -5,46 +5,101 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri May 24 09:54:35 2013 remi robert
-** Last update Fri May 24 20:05:58 2013 remi robert
+** Last update Fri May 24 18:30:09 2013 remi robert
 */
 
 #include "42sh.h"
 
-char	*pars_history_option(char *str, t_history *history)
+char		*get_cmd_history(t_history *history, int nb)
 {
-  char	**tab;
-  char	*opt;
-  char	*nline;
+  t_history	*pcourant;
 
-  if (((tab = str_to_wordtab(str, " ", 1)) == NULL) || (tab[0] == NULL))
+  if (history == NULL)
     return (NULL);
-  opt = tab[0];
-  nline = str;
-  if (!my_strncmp(opt, "!", -1))
-    nline = history->cmd;
-  free_ptr_tab((void**)tab, &free);
-  return (nline);
+  pcourant = history;
+  while (pcourant != NULL)
+    {
+      if (pcourant->nb_history == nb)
+	return (pcourant->cmd);
+      pcourant = pcourant->next;
+    }
+  return (NULL);
 }
 
-void	parseur_history(char **cmd, t_history *history)
+void	init_loop_parser(int *indice_nb, char nb[10], char str[10])
 {
-  char	*res;
-  char	**tab;
-  int	i;
+  *indice_nb = -1;
+  nb[0] = '\0';
+  str[0] = '!';
+  str[1] = '\0';
+}
 
-  i = 0;
-  if (((tab = str_to_wordtab((*cmd), "!", 1)) == NULL) || (history == NULL))
-    return ;
-  while (tab[i] != NULL)
+int	extract_cmd_history(char *cmd, t_history *history,
+			    char nb[10], char str[10])
+{
+  int	indice;
+  int	indice_nb;
+
+  indice = -1;
+  while (cmd != NULL && history != NULL &&
+	 ++indice < (SIZE_BUFFER - 1) && cmd[indice] != '\0')
     {
-      res = pars_history_option(tab[i], history);
-      if (tab[i] != res)
-        free(tab[i]);
-      tab[i] = res;
-      i++;
+      if (cmd[indice] == '!')
+	{
+	  init_loop_parser(&indice_nb, nb, str);
+	  while (cmd[++indice] != '\0' && cmd[indice] >= '0' &&
+		 cmd[indice] <= '9')
+	    {
+	      nb[++indice_nb % 9] = cmd[indice];
+	      str[(indice_nb + 1) % 9] = cmd[indice];
+	    }
+	  nb[++indice_nb % 9] = '\0';
+	  str[(indice_nb + 1) % 9] = '\0';
+	  if (nb[0] != '\0')
+	    return (1);
+	}
     }
-  res = strtab_to_str(tab, NULL);
-  free_ptr_tab((void**)tab, &free);
-  free(*cmd);
-  (*cmd) = res;
+  return (0);
+}
+
+char	*cmd_copy_hist(char *cmd)
+{
+  char	*s;
+  int	indice;
+
+  if (cmd == NULL || (s = malloc(SIZE_BUFFER + 1)) == NULL)
+    return (NULL);
+  indice = -1;
+  while (++indice < SIZE_BUFFER - 1 && cmd[indice] != '\0')
+    s[indice] = cmd[indice];
+  if (indice < SIZE_BUFFER - 3)
+    {
+      s[indice] = ' ';
+      s[++indice] = '\0';
+    }
+  else
+    s[++indice] = '\0';
+  free(cmd);
+  return (s);
+}
+
+char	*parseur_history(char *cmd, t_history *history)
+{
+  int	var_secu;
+  char	nb[10];
+  char	str[10];
+
+  if ((cmd = cmd_copy_hist(cmd)) == NULL || history == NULL ||
+      (cmd = rempl_str_inib(cmd, "!!", history->cmd, 1)) == NULL)
+    return (cmd);
+  var_secu = -1;
+  while (++var_secu < 100 && extract_cmd_history(cmd, history, nb, str) == 1)
+    {
+      if ((cmd = rempl_str_inib(cmd, str,
+				get_cmd_history(history, my_getnbr(nb)), 1))
+	  == NULL)
+	return (NULL);
+    }
+  cmd[my_strlen(cmd) - 1] = '\0';
+  return (cmd);
 }
