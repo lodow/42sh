@@ -5,11 +5,11 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Sat May 25 15:46:13 2013 maxime lavandier
+** Last update Sat May 25 16:00:46 2013 Adrien Della Maggiora
 */
 
-#ifndef		SH42_H
-# define       	SH42_H
+#ifndef		42SH_H_
+# define       	42SH_H_
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -345,4 +345,4 @@ void	gere_history(char *cmd, t_param *param,
 void		add_history_after_line(char *lign, t_history **history);
 void	parseur_history(char **cmd, t_history *history);
 
-#endif
+#endif /* !42SH_H_ */

@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Oct 12 07:45:54 2012 remi robert
-** Last update Wed Feb 27 23:53:18 2013 remi
+** Last update Sat May 25 16:03:01 2013 Adrien Della Maggiora
 */
 
 #ifndef COULEUR_H_
@@ -32,4 +32,4 @@
 # define CLIGNE		"\033[05m"
 # define INTENSITE	"\033[01m"
 
-#endif
+#endif /* !COULEUR_H */

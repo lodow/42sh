@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Sat May 25 11:12:35 2013 remi robert
+** Last update Sat May 25 16:02:09 2013 Adrien Della Maggiora
 */
 
 #ifndef MY_FUNC_H_
@@ -177,4 +177,4 @@ void		add_caractere(char *cmd, t_param *param, char caratere);
 void		insert_caractere(char *cmd, t_param *param, char caratere);
 void		check_the_directory(char *buff);
 
-#endif
+#endif /* !MY_FUNC_H_ */
