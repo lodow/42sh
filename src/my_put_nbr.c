@@ -5,83 +5,83 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed Oct  3 14:28:01 2012 remi robert
-** Last update Sat Apr 13 07:59:27 2013 remi robert
+** Last update Sat May 25 12:59:05 2013 luc sinet
 */
 
 #include "42sh.h"
 
-int	number_digit(int nb, int nombre_chiffre, int multiplicateur)
+int	number_digit(int nb, int number_digit, int multiplier)
 {
-  multiplicateur = 1;
+  multiplier = 1;
   while (nb != 0)
     {
       nb = nb / 10;
-      nombre_chiffre = nombre_chiffre + 1;
-      multiplicateur = multiplicateur * 10;
+      number_digit = number_digit + 1;
+      multiplier = multiplier * 10;
     }
-  multiplicateur = multiplicateur / 10;
-  return (multiplicateur);
+  multiplier = multiplier / 10;
+  return (multiplier);
 }
 
-int	nombre_geant(int nombre)
+int	giant_number(int number)
 {
   char	caractere;
-  int	nombre2;
+  int	number2;
 
-  nombre2 = (nombre / 1000000000) * 1000000000;
-  caractere = (nombre2 / 1000000000) + 48;
-  nombre2 = nombre - nombre2;
+  number2 = (number / 1000000000) * 1000000000;
+  caractere = (number2 / 1000000000) + 48;
+  number2 = number - number2;
   my_putchar(caractere);
-  return (nombre2);
+  return (number2);
 }
 
-int	 specification(int nombre)
+int	specification(int number)
 {
-  int	resultat;
+  int	result;
 
-  if (nombre > 1000000000)
+  if (number > 1000000000)
     {
-      resultat = nombre_geant(nombre);
-      return (resultat);
+      result = giant_number(number);
+      return (result);
     }
-  if (nombre < 0)
+  if (number < 0)
     {
       my_putchar('-');
-      resultat = (~nombre);
-      if (resultat > 1000000000)
+      result = (~number);
+      if (result > 1000000000)
 	{
-	  resultat = nombre_geant(resultat);
-	  return (resultat + 1);
+	  result = giant_number(result);
+	  return (result + 1);
 	}
-      return (resultat + 1);
+      return (result + 1);
     }
-  if (nombre == 0)
+  if (number == 0)
     {
       my_putchar('0');
       return (0);
     }
-  return (nombre);
+  return (number);
 }
 
-void		my_put_nbr(int nombre)
+void		my_put_nbr(int number)
 {
-  int		multiplicateur;
+  int		multiplier;
   unsigned int	nb_temp;
   unsigned int	nb;
-  char		chiffre;
+  char		digit;
 
-  nb = specification(nombre);
+  nb = specification(number);
   if (nb == 0)
     return ;
-  multiplicateur = number_digit(nb, 0, 0);
-  while (multiplicateur != 1)
+  multiplier = number_digit(nb, 0, 0);
+  while (multiplier != 1)
     {
-      nb_temp = (nb / multiplicateur) * multiplicateur;
-      chiffre = ((nb / multiplicateur) + 48);
-      my_putchar(chiffre);
+      nb_temp = (nb / multiplier) * multiplier;
+      digit = ((nb / multiplier) + 48);
+      my_putchar(digit);
       nb = nb - nb_temp;
-      multiplicateur = multiplicateur / 10;
+      multiplier = multiplier / 10;
     }
-  chiffre = (nb % 10) + 48;
-  my_putchar(chiffre);
+  digit = (nb % 10) + 48;
+  my_putchar(digit);
 }
