@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Sat May 25 13:23:09 2013 luc sinet
+** Last update Sat May 25 13:30:57 2013 luc sinet
 */
 
 #include "42sh.h"
@@ -62,14 +62,14 @@ int	fill_tab_inib(char *str, char *delim, char **tab)
       if ((my_strncmp(&(str[max]), delim, len_delim)) == 0 && quote == -1 &&
 	  (max == 0 || str[max - 1] != '\\'))
 	{
-	  my_spe_strcpy(tab[i++], &(str[min]), max - min);
+	  my_spe_strncpy(tab[i++], &(str[min]), max - min);
 	  min = max = max + len_delim;
 	}
       else
 	max++;
     }
   if (max != min)
-    my_spe_strcpy(tab[i++], &(str[min]), max - min);
+    my_spe_strncpy(tab[i++], &(str[min]), max - min);
   return (i);
 }
 
@@ -86,7 +86,7 @@ int	fill_tab(char *str, char *delim, char **tab)
     {
       if ((my_strncmp(&(str[max]), delim, len_delim)) == 0)
 	{
-	  my_spe_strcpy(tab[i], &(str[min]), max - min);
+	  my_spe_strncpy(tab[i], &(str[min]), max - min);
 	  i++;
 	  min = max = max + len_delim;
 	}
@@ -94,7 +94,7 @@ int	fill_tab(char *str, char *delim, char **tab)
 	max++;
     }
   if (max != min)
-    my_spe_strcpy(tab[i++], &(str[min]), max - min);
+    my_spe_strncpy(tab[i++], &(str[min]), max - min);
   return (i);
 }
 
