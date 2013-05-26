@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:31:22 2013 maxime lavandier
-** Last update Tue May 21 14:22:58 2013 maxime lavandier
+** Last update Sun May 26 03:17:28 2013 luc sinet
 */
 
 #include "42sh.h"
@@ -28,6 +28,8 @@ int	init_shell(t_sh *shell, char **main_env)
   shell->env = add_change_env(shell->env, "PS1", "${LOGNAME} ${PWD} $ ");
   shell->alias_tab = NULL;
   shell->signal = 0;
+  shell->param.begin_pos_x = 0;
+  shell->param.begin_pos_y = 0;
   if (load_conf_file("${HOME}/.42conf", shell, &new_conf_set) == -1)
     load_conf_file(".42conf", shell, &new_conf_set);
   load_conf_file("${HOME}/.history", shell, &load_history_f_file);
