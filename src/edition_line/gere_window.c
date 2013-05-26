@@ -32,7 +32,7 @@ void	my_putstr_view(char *cmd, int add_prompt, t_param *param)
   if (size <= size_cmd && size >= my_strlen("Window too small"))
     {
       curseur(0, 0);
-      apply_termcap(param->termcap.str_cd, 0, param->fd_tty);
+      my_putstr(param->termcap.str_cd, param->fd_tty, -1);
       my_putstr("Window too small", 1, -1);
     }
   else

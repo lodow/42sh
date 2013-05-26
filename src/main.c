@@ -59,7 +59,7 @@ void	fork_exit_shell(t_sh *shell)
   clear_history(shell->history);
 }
 
-int		main(int ac, char **av, char **main_env)
+int		main(UNSEDP int ac, UNSEDP char **av, char **main_env)
 {
   t_sh		shell;
 

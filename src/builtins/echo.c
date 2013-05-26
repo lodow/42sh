@@ -78,7 +78,7 @@ int	builtin_echo_option(char **argv, int *new_line, int *interpret)
   return (i);
 }
 
-int	builtins_print_echo(char *path, char **argv, t_sh *shell)
+int	builtins_print_echo(UNSEDP char *path, char **argv, UNSEDP t_sh *shell)
 {
   int	i;
   int	first;

@@ -29,6 +29,6 @@ void	gere_control_k(char *cmd, t_param *param)
     }
   cmd[param->pos] = '\0';
   param->buff_copy[indice_buff] = '\0';
-  refresh_view(cmd, param);
+  refresh_view(param);
   view(cmd, param);
 }

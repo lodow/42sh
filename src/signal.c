@@ -49,7 +49,7 @@ void	sig_handler(int sig)
           if (shell->param.cmd != NULL)
             shell->param.cmd[0] = '\0';
           shell->param.pos = 0;
-          refresh_view(shell->param.cmd, &(shell->param));
+          refresh_view(&(shell->param));
           view(shell->param.cmd, &(shell->param));
         }
     }

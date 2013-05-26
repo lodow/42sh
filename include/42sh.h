@@ -29,6 +29,8 @@
 # include "get_file.h"
 # include "my_func.h"
 
+# define UNSEDP __attribute__((unused))
+
 # define MASK 0170000
 # define ISDIR 0040000
 

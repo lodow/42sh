@@ -10,7 +10,7 @@
 
 #include "42sh.h"
 
-void	builtin_unsetenv(t_cmd *cmd, t_fds *fd, t_sh *shell)
+void	builtin_unsetenv(t_cmd *cmd, UNSEDP t_fds *fd, t_sh *shell)
 {
   if (cmd->argv[1] == NULL)
     my_putstr("Unsetenv: missing argument\n", 2, -1);

@@ -14,10 +14,10 @@ void	clear_cmd(char *cmd, t_param *param)
 {
   if (param == NULL)
     return ;
-  apply_termcap(param->termcap.str_cl, 0, param->fd_tty);
+  my_putstr(param->termcap.str_cl, param->fd_tty, -1);
   curseur(0, 0);
   my_putstr(param->str_prompt, 1, -1);
   param->begin_pos_y = 0;
-  refresh_view(cmd, param);
+  refresh_view(param);
   view(cmd, param);
 }

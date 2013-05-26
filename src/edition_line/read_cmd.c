@@ -36,7 +36,7 @@ void	actu_begin_pos(t_param *param, int *start)
   param->begin_pos_y = param->y;
 }
 
-char	*loop_cmd(char *prompt, t_param *param, t_history **history)
+char	*loop_cmd(t_param *param, t_history **history)
 {
   int	start;
   int	ret;
@@ -52,7 +52,7 @@ char	*loop_cmd(char *prompt, t_param *param, t_history **history)
       if (buff[0] == CTRLD && buff[1] == '\0')
         return (NULL);
       if (buff[0] == '\n' && buff[1] == '\0')
-        return (return_string(param->cmd, param, history));
+        return (return_string(param->cmd, param));
       if (buff[0] != '\n' && start == 0)
 	actu_begin_pos(param, &start);
       if (get_window_size(param->cmd, param->begin_pos_x) == 1 &&
@@ -83,5 +83,5 @@ char	*read_cmd(char *prompt, t_param *param, t_history **history)
   param->cmd = NULL;
   if ((param->cmd = init_read_cmd(param->cmd, param)) == NULL)
     return (NULL);
-  return (loop_cmd(prompt, param, history));
+  return (loop_cmd(param, history));
 }

@@ -10,7 +10,7 @@
 
 #include "42sh.h"
 
-void	builtin_fg(t_cmd *cmd, t_fds *fd, t_sh *shell)
+void	builtin_fg(t_cmd *cmd, UNSEDP t_fds *fd, t_sh *shell)
 {
   int	pgid;
   int	i;

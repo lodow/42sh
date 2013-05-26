@@ -10,7 +10,7 @@
 
 #include "42sh.h"
 
-int	builtin_env_print(char *path, char **argv, t_sh *shell)
+int	builtin_env_print(UNSEDP char *path, char **argv, t_sh *shell)
 {
   int	i;
 
@@ -26,7 +26,8 @@ int	builtin_env_print(char *path, char **argv, t_sh *shell)
   return (0);
 }
 
-int	builtin_env_exec_opt(char *arg, t_cmd *cmd, char ***env, int *nnewline)
+int	builtin_env_exec_opt(char *arg, UNSEDP t_cmd *cmd,
+                         char ***env, int *nnewline)
 {
   int	opt;
   char	*tmp;

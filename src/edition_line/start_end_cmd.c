@@ -10,7 +10,7 @@
 
 #include "42sh.h"
 
-void	begin_cmd(char *cmd, t_param *param)
+void	begin_cmd(UNSEDP char *cmd, t_param *param)
 {
   param->x = param->begin_pos_x;
   param->y = param->begin_pos_y;

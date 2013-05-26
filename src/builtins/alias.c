@@ -36,7 +36,7 @@ void builtin_alias_find(char **alias, char *tofind)
   free(tofinde);
 }
 
-int	builtin_alias_print(char *path, char **argv, t_sh *shell)
+int	builtin_alias_print(UNSEDP char *path, char **argv, t_sh *shell)
 {
   int	i;
   char	**alias;

@@ -35,7 +35,7 @@ void	calc_other_decallage(char *cmd, t_param *param)
 
 void	view(char *cmd, t_param *param)
 {
-  refresh_view(cmd, param);
+  refresh_view(param);
   if (cmd != NULL)
     calc_other_decallage(cmd, param);
   curseur(param->begin_pos_x, param->begin_pos_y);

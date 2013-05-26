@@ -14,11 +14,7 @@ RM		=	rm
 
 NAME		=	42SH
 
-COMPILEFLAG	=	-ggdb3 -Wall -Wfloat-equal -Wmissing-include-dirs \
-			-Wclobbered -Wempty-body -Wignored-qualifiers \
-			-Wmissing-field-initializers -Wmissing-parameter-type \
-			-Wold-style-declaration -Woverride-init -Wsign-compare \
-			-Wtype-limits -Wuninitialized
+COMPILEFLAG	=	-ggdb3 -Wall -Wextra
 
 INCLUDE		=	-Iinclude/
 
@@ -140,7 +136,6 @@ SRCTERMCAP	=	$(PATHTERMCAP)coordone.c \
 			$(PATHTERMCAP)clear.c \
 			$(PATHTERMCAP)verif_env.c \
 			$(PATHTERMCAP)init_termcap.c \
-			$(PATHTERMCAP)apply_termcap.c \
 			$(PATHTERMCAP)print_termcap.c \
 			$(PATHTERMCAP)read_tty.c
 

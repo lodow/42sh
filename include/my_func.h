@@ -93,10 +93,9 @@ typedef struct		s_param
 }			t_param;
 
 int		open_tty(void);
-void		refresh_view(char *cmd, t_param *param);
 void		gere_change_window(int sig);
 void		decal_pointeur(t_param *param);
-void		refresh_view(char *cmd, t_param *param);
+void		refresh_view(t_param *param);
 void		gere_delete(char *cmd, t_param *param, char *buff);
 void		update_pos_y(char *cmd, t_param *param, int pos_x, int pos_y);
 int		write_color_number(char *color, int nb);
@@ -161,7 +160,7 @@ int		invisible_curseur(void);
 char		*my_tgetstr(char *cap0);
 void		init_capacity_termcap(t_termcap *termcap);
 int		init_edition_line(char **env, t_param *param);
-char		*return_string(char *cmd, t_param *param, t_history **history);
+char		*return_string(char *cmd, t_param *param);
 int		recup_nb_history(char *str);
 char		*return_cmd_history_racourci(char *str, t_history **history);
 char		*check_cmd_history(char *str, t_history **history);

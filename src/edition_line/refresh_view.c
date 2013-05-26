@@ -10,8 +10,8 @@
 
 #include "42sh.h"
 
-void	refresh_view(char *cmd, t_param *param)
+void	refresh_view(t_param *param)
 {
   curseur(param->begin_pos_x, param->begin_pos_y);
-  apply_termcap(param->termcap.str_cd, 0, param->fd_tty);
+  my_putstr(param->termcap.str_cd, param->fd_tty, -1);
 }

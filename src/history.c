@@ -16,7 +16,7 @@ int	load_history_f_file(char *line, t_sh *shell)
   return (1);
 }
 
-int		view_history(char *path, char **argv, t_sh *shell)
+int		view_history(UNSEDP char *path, UNSEDP char **argv, t_sh *shell)
 {
   t_history	*pcourant;
 
