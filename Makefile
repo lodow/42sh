@@ -5,7 +5,7 @@
 ## Login <moriss_h@epitech.net>
 ##
 ## Started on Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Fri May 24 17:56:53 2013 maxime lavandier
+## Last update Sun May 26 14:47:14 2013 luc sinet
 ##
 
 CC		=	gcc
@@ -80,7 +80,6 @@ SRC		=	$(SRCPATH)/main.c \
 			$(SRCPATH)/user_input.c \
 			$(SRCPATH)/cat.c \
 			$(SRCPATH)/reg_expr.c \
-			$(SRCPATH)/rempl_str_inib.c \
 			$(SRCPATH)/str_fille_tstr.c \
 			$(SRCPATH)/check_if_folder.c \
 			$(SRCPATH)/my_memset.c \

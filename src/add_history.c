@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr 12 12:53:40 2013 remi robert
-** Last update Sat May 25 23:52:58 2013 remi robert
+** Last update Sun May 26 15:55:43 2013 luc sinet
 */
 
 #include "my_func.h"
@@ -40,6 +40,7 @@ void		add_history(t_history **phead, char *cmd)
       nb_history = nb_history + 1;
       (*phead)->back = NULL;
       (*phead)->next = NULL;
+      (*phead)->cmd = NULL;
       return ;
     }
   if (cmd == NULL || str_cmp(cmd, (*phead)->cmd) == 1 ||
