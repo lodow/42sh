@@ -226,6 +226,7 @@ t_grp	*get_forground_grp(t_sh *shell);
 void	wait_all_jobs(t_sh *shell);
 void	wait_no_fg_grp(t_sh* shell);
 t_cmd	*cmd_f_pid(int pid, t_sh *shell);
+void	aff_special_return_val(t_cmd *cmd);
 
 /*
 ** User funcs

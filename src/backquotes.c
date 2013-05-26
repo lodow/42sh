@@ -10,15 +10,24 @@
 
 #include "42sh.h"
 
-void	empty_back_buffer(int fd)
+int	wait_background(t_grp *grp, t_sh *shell)
 {
-  int	sizeread;
-  char	buffer[READ_SIZE];
-  int	i;
+  int	tmp;
+  t_cmd	*cmd;
 
-  i = 0;
-  while ((sizeread = read(fd, buffer, READ_SIZE)) > 0)
-    i++;
+  if (grp != NULL)
+    if ((cmd = cmd_f_pid(waitpid(-grp->pid.pgid, &tmp, WUNTRACED), shell))
+        != NULL)
+      {
+        if (WIFEXITED(tmp) || WIFSIGNALED(tmp))
+          {
+            cmd->return_value = tmp;
+            aff_special_return_val(cmd);
+          }
+        if (WIFSTOPPED(tmp))
+          kill(-grp->pid.pgid, SIGCONT);
+      }
+  return (1);
 }
 
 char	*exec_line_a_g_res(char **line, t_sh *shell)
@@ -38,12 +47,10 @@ char	*exec_line_a_g_res(char **line, t_sh *shell)
   exec_process_group(shell, grp);
   if (MEXIT)
     return (NULL);
-  sizeread = 1;
   close(pipefd[PIPE_WRITE]);
-  while (((sizeread = read(pipefd[PIPE_READ], buffer, READ_SIZE)) > 0)
-         && (my_strlen(str) < 5000))
-    str = my_stradd(str, buffer, sizeread);
-  empty_back_buffer(pipefd[PIPE_READ]);
+  while ((sizeread = read(pipefd[PIPE_READ], buffer, READ_SIZE)) > 0)
+    if (wait_background(grp, shell) && (my_strlen(str) < 2000))
+      str = my_stradd(str, buffer, sizeread);
   close(pipefd[PIPE_READ]);
   str = my_stradd(str, "\"", 1);
   wait_no_fg_grp(shell);
