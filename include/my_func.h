@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Sat May 25 23:24:06 2013 remi robert
+** Last update Sun May 26 01:26:15 2013 Adrien Della Maggiora
 */
 
 #ifndef MY_FUNC_H_
@@ -134,15 +134,8 @@ void		decal_string(char *cmd, int pos, char caractere);
 int		gere_keyboard(char *buff, char *cmd, t_param *param
                     , t_history **history);
 char		*read_cmd(char *prompt, t_param *param, t_history **history);
-void		add_caractere(char *cmd, t_param *param, char caratere);
+void		add_character(char *cmd, t_param *param, char caratere);
 char		*init_read_cmd(char *cmd, t_param *param);
-int		tgetent(char *bp, const char *name);
-int		tgetflag(char *id);
-int		tgetnum(char *id);
-char		*tgetstr(char *id, char **area);
-char		*tgoto(const char *cap, int col, int row);
-int		tputs(const char *str, int affcnt, int (*putc)(int));
-char		*tparm(char *str, ...);
 int		verif_env(char **env);
 int		save_curser(void);
 int		restor_curser(void);
@@ -173,7 +166,7 @@ int		recup_nb_history(char *str);
 char		*return_cmd_history_racourci(char *str, t_history **history);
 char		*check_cmd_history(char *str, t_history **history);
 char		*return_saisi(char *cmd, t_history **history);
-void		insert_caractere(char *cmd, t_param *param, char caratere);
+void		insert_character(char *cmd, t_param *param, char caratere);
 void		check_the_directory(char *buff);
 
 #endif /* !MY_FUNC_H_ */

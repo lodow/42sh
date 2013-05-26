@@ -5,53 +5,53 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Mon Mar 11 09:18:32 2013 remi
-** Last update Fri Mar 29 10:29:54 2013 remi
+** Last update Sat May 25 20:02:09 2013 Adrien Della Maggiora
 */
 
 #include <stdlib.h>
 #include "lib.h"
 #include "vm.h"
 
-t_proc	*suppr_elem_list(t_proc **ptete, t_proc **pcourant)
+t_proc	*suppr_elem_list(t_proc **phead, t_proc **pcurrent)
 {
-  if ((*pcourant)->back == NULL && (*pcourant)->next == NULL)
+  if ((*pcurrent)->back == NULL && (*pcurrent)->next == NULL)
     {
-      free(*pcourant);
+      free(*pcurrent);
       return (NULL);
     }
-  if ((*pcourant)->back == NULL)
+  if ((*pcurrent)->back == NULL)
     {
-      *ptete = (*pcourant)->next;
-      (*ptete)->back = NULL;
-      return (*ptete);
+      *phead = (*pcurrent)->next;
+      (*phead)->back = NULL;
+      return (*phead);
     }
-  if ((*pcourant)->next == NULL)
+  if ((*pcurrent)->next == NULL)
     {
-      (*pcourant)->back->next = NULL;
-      free(*pcourant);
-      return (*ptete);
+      (*pcurrent)->back->next = NULL;
+      free(*pcurrent);
+      return (*phead);
     }
-  (*pcourant)->back->next = (*pcourant)->next;
-  (*pcourant)->next->back = (*pcourant)->back;
-  free(*pcourant);
-  return (*ptete);
+  (*pcurrent)->back->next = (*pcurrent)->next;
+  (*pcurrent)->next->back = (*pcurrent)->back;
+  free(*pcurrent);
+  return (*phead);
 }
 
 int		free_elem_prog(t_proc **proc, int prg)
 {
-  t_proc	*pcourant;
+  t_proc	*pcurrent;
 
   if (*proc == NULL)
     return (0);
-  pcourant = *proc;
-  while (pcourant != NULL)
+  pcurrent = *proc;
+  while (pcurrent != NULL)
     {
-      if (pcourant->reg[0] == prg)
+      if (pcurrent->reg[0] == prg)
 	{
-	  *proc = suppr_elem_list(proc, &pcourant);
+	  *proc = suppr_elem_list(proc, &pcurrent);
 	  return (1);
 	}
-      pcourant = pcourant->next;
+      pcurrent = pcurrent->next;
     }
   return (0);
 }
@@ -74,7 +74,7 @@ void		init_elem(t_proc **new_elem, int pc, int cid, int nb_proc)
 */
 void		add_to_list(t_proc **proc, int pc , int cid)
 {
-  t_proc	*pcourant;
+  t_proc	*pcurrent;
   t_proc	*elem;
 
   if ((*proc) == NULL)
@@ -88,11 +88,11 @@ void		add_to_list(t_proc **proc, int pc , int cid)
     }
   if ((elem = malloc(sizeof(t_proc))) == NULL)
     return ;
-  pcourant = (*proc);
-  while (pcourant->next != NULL)
-    pcourant = pcourant->next;
+  pcurrent = (*proc);
+  while (pcurrent->next != NULL)
+    pcurrent = pcurrent->next;
   init_elem(&elem, pc, cid, nb_proc);
   elem->next = NULL;
-  elem->back = pcourant;
-  pcourant->next = elem;
+  elem->back = pcurrent;
+  pcurrent->next = elem;
 }
