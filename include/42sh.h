@@ -28,7 +28,6 @@
 # include <dirent.h>
 # include "get_file.h"
 # include "my_func.h"
-# include "couleur.h"
 
 # define MASK 0170000
 # define ISDIR 0040000
