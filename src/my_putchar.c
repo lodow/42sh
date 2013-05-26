@@ -5,12 +5,13 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat Apr 13 18:44:42 2013 remi robert
-** Last update Sat Apr 13 18:45:13 2013 remi robert
+** Last update Sun May 26 04:57:03 2013 maxime lavandier
 */
 
 #include "42sh.h"
 
 void	my_putchar(char caractere)
 {
-  write(1, &caractere, 1);
+  if (write(1, &caractere, 1) == -1)
+    my_perror("write");
 }
