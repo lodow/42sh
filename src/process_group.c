@@ -55,13 +55,13 @@ t_grp	*create_n_process_group(t_sh *shell, char *lign)
   res->cmds = NULL;
   res->flags = 0;
   parse_redirection(res, lign);
-  cmd_line = str_to_wordtab(res->line, "|", 1);
-  while ((cmd_line != NULL) && (cmd_line[i] != NULL))
-    {
-      tmp_cmd = create_n_cmd(shell, cmd_line[i]);
-      res->cmds = (t_cmd**)add_ptr_t_tab((void**)res->cmds, (void*)tmp_cmd);
-      i++;
-    }
+  if ((cmd_line = str_to_wordtab(res->line, "|", 1)) != NULL)
+    while (cmd_line[i] != NULL)
+      {
+        tmp_cmd = create_n_cmd(shell, cmd_line[i]);
+        res->cmds = (t_cmd**)add_ptr_t_tab((void**)res->cmds, (void*)tmp_cmd);
+        i++;
+      }
   free(cmd_line);
   return (res);
 }

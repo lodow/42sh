@@ -27,6 +27,15 @@ void	cmd_execution(t_cmd *cmd, t_fds *fd, t_sh *shell)
   close_fds(fd);
 }
 
+void	check_grp_set(int pid, int pgid)
+{
+  int	i;
+
+  i = 0;
+  while ((i < 100000000) && (pgid != check_perror("getpgid", getpgid(pid))))
+    ++i;
+}
+
 int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
                  int (*f)(char *cmd, char **argv, t_sh *shell))
 {
@@ -41,7 +50,6 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
         }
       else
         check_perror("Setpgid", setpgid(0, 0));
-      init_sig(SIG_DFL);
       check_perror("Dup2", dup2(fd->stdin, 0));
       check_perror("Dup2", dup2(fd->stdout, 1));
       check_perror("Dup2", dup2(fd->stderr, 2));
@@ -50,7 +58,8 @@ int	exec_process(t_cmd *cmd, t_fds *fd, t_sh *shell,
       my_exit(ret_exec);
       SETFLAG(shell->beepbeepexit, FLAGPOS(EXIT_FORK));
     }
-  if ((cmd->pid.pid > 0) && (cmd->pid.pgid > 0))
-    setpgid(cmd->pid.pid, cmd->pid.pgid);
+  else if (cmd->pid.pid != -1)
+    check_grp_set(cmd->pid.pid,
+                  (cmd->pid.pgid == -1) ? cmd->pid.pid : cmd->pid.pgid);
   return (cmd->pid.pid);
 }
