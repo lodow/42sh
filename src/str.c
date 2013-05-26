@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu May  2 16:21:07 2013 remi robert
+** Last update Sun May 26 03:51:32 2013 luc sinet
 */
 
 #include "42sh.h"
@@ -38,13 +38,14 @@ char	*str_cat(char *str1, char *str2)
 
 int	my_strlen(char *str)
 {
-  char	*tmp;
+  int	i;
 
-  tmp = str;
-  if (tmp != NULL)
-    while (tmp[0] != '\0')
-      tmp++;
-  return (tmp - str);
+  i = 0;
+  if (str == NULL)
+    return (0);
+  while (str[i])
+    ++i;
+  return (i);
 }
 
 char	*my_stradd(char *str, char *add, int size_add)
