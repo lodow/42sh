@@ -12,22 +12,11 @@
 
 int	verif_env(char **env)
 {
-  int	indice;
+  char	*term;
 
-  indice = 0;
-  if (env == NULL)
+  if ((term = get_envvar("TERM", env)) == NULL)
     return (EXIT_FAILURE);
-  while (env[indice] != NULL)
-    {
-      if (env[indice][0] == 'T' && env[indice][1] == 'E'
-	  && env[indice][2] == 'R' && env[indice][3] == 'M'
-	  && env[indice][4] == '=')
-	{
-	  if (tgetent(NULL, &env[indice][5]) != 1)
-	    return (EXIT_FAILURE);
-	  return (EXIT_SUCCESS);
-	}
-      indice = indice + 1;
-    }
-  return (EXIT_FAILURE);
+  if (tgetent(NULL, term) != 1)
+    return (EXIT_FAILURE);
+  return (EXIT_SUCCESS);
 }

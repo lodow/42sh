@@ -109,7 +109,7 @@ void		my_putchar(char c);
 int		my_getnbr(char *str);
 void		my_put_nbr(int nb);
 int		my_strlen(char *str);
-void		my_memset(char *str, int size, int val);
+void		my_memset(void *str, int size, char val);
 int		str_cmp(char *str1, char *str2);
 int		occurence_string(char *buff, char *s);
 int		find_currence(char **path, int min, char *buff);

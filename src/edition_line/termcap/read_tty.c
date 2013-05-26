@@ -10,7 +10,7 @@
 
 #include "42sh.h"
 
-int	open_tty(void)
+int	open_tty()
 {
   int	fd;
 

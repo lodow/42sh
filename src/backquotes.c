@@ -19,7 +19,7 @@ char	*exec_line_a_g_res(char **line, t_sh *shell)
   t_fds	tmpfd;
   t_grp	*grp;
 
-  str = NULL;
+  str = my_strdup("\"");
   if (pipe(pipefd) == -1)
     return (my_strdup(""));
   init_stdfd_t_def_val(&tmpfd, 0, pipefd[PIPE_WRITE], 2);
@@ -33,6 +33,7 @@ char	*exec_line_a_g_res(char **line, t_sh *shell)
     if ((sizeread = read(pipefd[PIPE_READ], buffer, READ_SIZE)) > 0)
       str = my_stradd(str, buffer, sizeread);
   close(pipefd[PIPE_READ]);
+  str = my_stradd(str, "\"", 1);
   wait_no_fg_grp(shell);
   return (str);
 }

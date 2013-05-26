@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Feb  5 08:45:15 2013 remi robert
-** Last update Mon May 20 15:03:31 2013 remi robert
+** Last update Sun May 26 02:51:35 2013 luc sinet
 */
 
 #include "42sh.h"
@@ -46,7 +46,8 @@ int	curseur(int x, int y)
       my_perror("tgetstr");
       return (EXIT_FAILURE);
     }
-  curser = tgoto(s, x, y);
+  if ((curser = tgoto(s, x, y)) == NULL)
+    return (EXIT_FAILURE);
   my_putstr_termcap(-1, curser);
   return (EXIT_SUCCESS);
 }

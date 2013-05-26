@@ -10,8 +10,6 @@
 
 #include "42sh.h"
 
-t_param	*g_param;
-
 int	init_termcap(char **env, t_param *param)
 {
   if ((param->fd_tty = open("/dev/tty", O_RDWR)) == -1)

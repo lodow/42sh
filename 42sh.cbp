@@ -141,18 +141,6 @@
 		<Unit filename="src/edition_line/globb.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/edition_line/lib/my_getnbr.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/lib/my_memset.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/lib/my_putstr.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/lib/my_strlen.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/edition_line/lib/str_cmp.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -211,9 +199,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/termcap/view_curser.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/termcap/write_color.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/update_pos.c">
