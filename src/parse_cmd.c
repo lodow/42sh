@@ -99,7 +99,6 @@ void	parse_user_cmd(t_sh *shell, char **line, t_fds *def_fd)
 
   if ((shell->too_much_parsing)++ > 1000)
     return ;
- // check_and_load_backquote(line, shell);
   if (MEXIT)
     return ;
   grp_lst = parse_colon_line(shell, (*line), def_fd);
