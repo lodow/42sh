@@ -14,8 +14,8 @@ int	init_edition_line(char **env, t_param *param)
 {
   char	*s;
 
-  shell->param.begin_pos_x = 0;
-  shell->param.begin_pos_y = 0;
+  param->begin_pos_x = 0;
+  param->begin_pos_y = 0;
   param->cmd = NULL;
   param->str_prompt = NULL;
   if ((param->fd_tty = open("/dev/tty", O_RDWR)) == -1 ||

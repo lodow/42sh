@@ -150,7 +150,6 @@ void	builtin_alias(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_source(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_clear(t_cmd *cmd, t_fds *fd, t_sh *shell);
 
-
 /*
 ** History
 */
