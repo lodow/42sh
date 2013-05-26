@@ -131,8 +131,7 @@ SRCLINE		=	$(PATHLINE)main.c \
 			$(PATHLINE)return_string.c \
 			$(PATHLINE)add_caractere.c \
 
-SRCLIBLINE	=	$(LIBLINE)/str_cmp.c \
-			$(LIBLINE)/my_putstr.c
+SRCLIBLINE	=	$(LIBLINE)/str_cmp.c
 
 SRCTERMCAP	=	$(PATHTERMCAP)coordone.c \
 			$(PATHTERMCAP)mod_raw.c \
