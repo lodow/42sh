@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sun May 19 00:30:24 2013 maxime lavandier
+** Last update Sun May 26 20:25:29 2013 luc sinet
 */
 
 #include "42sh.h"
@@ -19,7 +19,21 @@ char		*builtin_cd_getcwd()
   return (res);
 }
 
-void		builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell)
+int	builtin_cd_return_value(int *return_value, int ret_val, int val)
+{
+  *return_value = val;
+  return (ret_val);
+}
+
+void	builtin_cd_change_var(t_sh *shell, char *new_path, char *cur_path)
+{
+  shell->env = add_change_env(shell->env, "PWD", new_path);
+  shell->env = add_change_env(shell->env, "OLD_PWD", cur_path);
+  free(new_path);
+  free(cur_path);
+}
+
+int		builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell)
 {
   char		*cur_path;
   char		*new_path;
@@ -30,20 +44,18 @@ void		builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell)
     usr_path = get_envvar("HOME", shell->env);
   if (((cur_path = builtin_cd_getcwd()) == NULL)
       || (fd->stdin != 0) || (fd->stdout != 1))
-    return ;
+    return (builtin_cd_return_value(&cmd->return_value, 1, 1));
   if (my_strncmp(usr_path, "-", -1) == 0)
     {
       if (((tmp_path = get_envvar("OLD_PWD", shell->env)) == NULL)
           || (check_perror("cd", chdir(tmp_path)) == -1))
-        return ;
+	return (builtin_cd_return_value(&cmd->return_value, 1, 1));
     }
   else if ((usr_path != NULL)
            && (check_perror("cd", chdir(usr_path)) == -1))
-    return ;
+    return (builtin_cd_return_value(&cmd->return_value, 1, 1));
   if ((new_path = builtin_cd_getcwd()) == NULL)
-    return ;
-  shell->env = add_change_env(shell->env, "PWD", new_path);
-  shell->env = add_change_env(shell->env, "OLD_PWD", cur_path);
-  free(new_path);
-  free(cur_path);
+    return (builtin_cd_return_value(&cmd->return_value, 1, 1));
+  builtin_cd_change_var(shell, new_path, cur_path);
+  return (builtin_cd_return_value(&cmd->return_value, 0, 0));
 }

@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Mar 19 10:39:43 2013 maxime lavandier
-** Last update Sat May 25 18:54:28 2013 remi robert
+** Last update Sun May 26 20:26:10 2013 luc sinet
 */
 
 #ifndef		SH42_H_
@@ -136,8 +136,8 @@ typedef struct	s_sh
 */
 int	is_cmd_a_builtin(t_cmd *cmd, t_fds *fd, t_sh *shell, int exec);
 void	init_builtins(t_sh *shell);
+int	builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_exit(t_cmd *cmd, t_fds *fd, t_sh *shell);
-void	builtin_cd(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_env(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_unsetenv(t_cmd *cmd, t_fds *fd, t_sh *shell);
 void	builtin_setenv(t_cmd *cmd, t_fds *fd, t_sh *shell);
