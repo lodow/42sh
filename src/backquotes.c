@@ -10,6 +10,17 @@
 
 #include "42sh.h"
 
+void	empty_back_buffer(int fd)
+{
+  int	sizeread;
+  char	buffer[READ_SIZE];
+  int	i;
+
+  i = 0;
+  while ((sizeread = read(fd, buffer, READ_SIZE)) > 0)
+    i++;
+}
+
 char	*exec_line_a_g_res(char **line, t_sh *shell)
 {
   char	*str;
@@ -29,9 +40,10 @@ char	*exec_line_a_g_res(char **line, t_sh *shell)
     return (NULL);
   sizeread = 1;
   close(pipefd[PIPE_WRITE]);
-  while (sizeread > 0)
-    if ((sizeread = read(pipefd[PIPE_READ], buffer, READ_SIZE)) > 0)
-      str = my_stradd(str, buffer, sizeread);
+  while (((sizeread = read(pipefd[PIPE_READ], buffer, READ_SIZE)) > 0)
+         && (my_strlen(str) < 5000))
+    str = my_stradd(str, buffer, sizeread);
+  empty_back_buffer(pipefd[PIPE_READ]);
   close(pipefd[PIPE_READ]);
   str = my_stradd(str, "\"", 1);
   wait_no_fg_grp(shell);
