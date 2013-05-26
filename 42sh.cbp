@@ -297,9 +297,6 @@
 		<Unit filename="src/reg_expr.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/rempl_str_inib.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/shell.c">
 			<Option compilerVar="CC" />
 		</Unit>

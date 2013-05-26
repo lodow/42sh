@@ -14,7 +14,7 @@ RM		=	rm
 
 NAME		=	42SH
 
-COMPILEFLAG	=	-ggdb3 -Wall -Wextra
+COMPILEFLAG	=	-g -Wall -Wextra
 
 INCLUDE		=	-Iinclude/
 
