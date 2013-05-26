@@ -255,9 +255,6 @@
 		<Unit filename="src/jobs_forground.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/list/dlist.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/load_conf.c">
 			<Option compilerVar="CC" />
 		</Unit>
