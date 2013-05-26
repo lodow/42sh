@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu May 23 18:10:10 2013 remi robert
-** Last update Fri May 24 18:07:32 2013 remi robert
+** Last update Sun May 26 14:35:05 2013 luc sinet
 */
 
 #include "42sh.h"
@@ -37,4 +37,19 @@ char	*strtab_to_str(char **tab, char *rempl)
     }
   str[pos_string] = '\0';
   return (str);
+}
+
+char	*rempl_str_inib(char *str, char *ref, char *rempl, int inib)
+{
+  char	**tab;
+  char	*s;
+
+  if ((tab = str_to_wordtab(str, ref, inib)) == NULL ||
+      (s = strtab_to_str(tab, rempl)) == NULL)
+    {
+      free_ptr_tab((void**)tab, &free);
+      return (NULL);
+    }
+  free_ptr_tab((void**)tab, &free);
+  return (s);
 }
