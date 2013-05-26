@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Apr 12 19:14:58 2013 remi robert
-** Last update Sat May 25 23:41:13 2013 remi robert
+** Last update Sun May 26 14:10:54 2013 luc sinet
 */
 
 #include "42sh.h"
@@ -32,7 +32,6 @@ int		view_history(UNSEDP char *path, UNSEDP char **argv, t_sh *shell)
       my_putstr("  ", 1, -1);
       my_putstr(pcourant->cmd, 1, my_strlen(pcourant->cmd));
       my_putstr("\n", 1, -1);
-
       pcourant = pcourant->back;
     }
   return (0);
