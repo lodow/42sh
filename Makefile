@@ -87,6 +87,7 @@ SRC		=	$(SRCPATH)/main.c \
 			$(SRCPATH)/rempl_str_inib.c \
 			$(SRCPATH)/str_fille_tstr.c \
 			$(SRCPATH)/check_if_folder.c \
+			$(SRCPATH)/my_memset.c \
 			$(SRCPATH)/parseur_history.c
 
 ENV		=	$(PATHENV)/env.c
@@ -131,8 +132,7 @@ SRCLINE		=	$(PATHLINE)main.c \
 			$(PATHLINE)add_caractere.c \
 
 SRCLIBLINE	=	$(LIBLINE)/str_cmp.c \
-			$(LIBLINE)/my_putstr.c \
-			$(LIBLINE)/my_memset.c
+			$(LIBLINE)/my_putstr.c
 
 SRCTERMCAP	=	$(PATHTERMCAP)coordone.c \
 			$(PATHTERMCAP)mod_raw.c \

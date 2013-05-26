@@ -144,13 +144,7 @@
 		<Unit filename="src/edition_line/lib/my_getnbr.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/edition_line/lib/my_memset.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/edition_line/lib/my_putstr.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/edition_line/lib/my_strlen.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/edition_line/lib/str_cmp.c">
