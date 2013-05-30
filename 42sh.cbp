@@ -267,6 +267,9 @@
 		<Unit filename="src/my_getnbr.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/my_memset.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/my_put_nbr.c">
 			<Option compilerVar="CC" />
 		</Unit>

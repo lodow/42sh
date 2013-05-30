@@ -23,8 +23,17 @@ void	my_putstr(const char *str, int fd, int strlen)
             len++;
           strlen = len;
         }
-      if ((len = write(fd, str, strlen)) == -1)
-        my_perror("Write");
+      while ((len = write(fd, str, strlen)) != strlen)
+        {
+          if (len == -1)
+            {
+              my_perror("Write");
+              return ;
+            }
+          str = &(str[len]);
+          strlen -= len;
+        }
+
     }
 }
 
