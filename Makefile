@@ -1,13 +1,3 @@
-##
-## Makefile for Make in /home/moriss_h//afs/rendu/lib/my
-##
-## Made by hugues morisset
-## Login <moriss_h@epitech.net>
-##
-## Started on Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Sun May 26 20:33:34 2013 Hugues
-##
-
 CC		=	gcc
 
 RM		=	rm

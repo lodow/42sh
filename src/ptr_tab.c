@@ -1,13 +1,3 @@
-/*
-** free_env.c for 42sh in /home/maxime/Bureau/projet/actu/42sh/src/env
-**
-** Made by maxime lavandier
-** Login   <lavand_m@epitech.net>
-**
-** Started on  Tue Mar 19 11:04:35 2013 maxime lavandier
-** Last update Fri May 24 17:58:57 2013 maxime lavandier
-*/
-
 #include "42sh.h"
 
 int	ptr_tab_size(void **tab)

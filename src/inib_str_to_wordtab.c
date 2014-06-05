@@ -1,13 +1,3 @@
-/*
-** str_to_wordtab2.c for 42sh in /home/maxime/Bureau/projet/actu/42sh/src
-**
-** Made by maxime lavandier
-** Login   <lavand_m@epitech.net>
-**
-** Started on  Sun Apr 14 17:31:53 2013 maxime lavandier
-** Last update Sat May 25 13:30:59 2013 Adrien Della Maggiora
-*/
-
 #include "42sh.h"
 
 void	free_wordtab(char **tab, int fill, int lenght_malloc)

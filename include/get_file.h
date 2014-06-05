@@ -1,13 +1,3 @@
-/*
-** get_file.h for get_file in /home/izissise/work/get_next_line
-**
-** Made by Hugues
-** Login   <izissise@morissh>
-**
-** Started on  Sat Dec 15 14:50:55 2012 Hugues
-** Last update Sat May 25 16:02:49 2013 Adrien Della Maggiora
-*/
-
 #ifndef GET_FILE_H_
 # define GET_FILE_H_
 

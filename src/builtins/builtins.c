@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri Apr 12 19:14:19 2013 remi robert
-*/
-
 #include "42sh.h"
 
 void	init_builtins2(t_sh *shell)

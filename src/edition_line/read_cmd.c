@@ -1,13 +1,3 @@
-/*
-** read_cmd.c for read_cmd in /home/remi/Dropbox/Projet/edition_ligne_termcap
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Sun May  5 16:03:47 2013 remi robert
-** Last update Sun May 26 01:26:39 2013 Adrien Della Maggiora
-*/
-
 #include "42sh.h"
 
 char	*init_read_cmd(char *cmd, t_param *param)

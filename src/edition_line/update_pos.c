@@ -1,13 +1,3 @@
-/*
-** update_pos.c for update in /home/remi/Dropbox/Projet/edition_ligne_termcap
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Thu May  9 12:24:10 2013 remi robert
-** Last update Wed May 15 17:41:17 2013 remi robert
-*/
-
 #include "42sh.h"
 
 void	update_pos_y(char *cmd, t_param *param, int pos_x, int pos_y)

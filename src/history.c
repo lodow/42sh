@@ -1,13 +1,3 @@
-/*
-** history.c for history.c in /home/remi/42sh
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Fri Apr 12 19:14:58 2013 remi robert
-** Last update Sun May 26 15:52:48 2013 luc sinet
-*/
-
 #include "42sh.h"
 
 int	load_history_f_file(char *line, t_sh *shell)

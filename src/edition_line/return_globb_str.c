@@ -1,13 +1,3 @@
-/*
-** return_globb_str.c for return_globb_str in /home/remi/Dropbox/Projet/edition_ligne_termcap
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Fri May 10 18:30:25 2013 remi robert
-** Last update Sat May 25 10:55:23 2013 remi robert
-*/
-
 #include "42sh.h"
 
 int	get_begin_word(char *cmd, int pos)

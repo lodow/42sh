@@ -1,13 +1,3 @@
-/*
-** str_fille_tstr.c for str_fill in /home/remi/42sh
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Thu May 23 18:10:10 2013 remi robert
-** Last update Sun May 26 14:35:05 2013 luc sinet
-*/
-
 #include "42sh.h"
 
 char	*strtab_to_str(char **tab, char *rempl)

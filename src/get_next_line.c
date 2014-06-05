@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 18 22:52:41 2013 remi robert
-*/
-
 #include "42sh.h"
 
 int	pos_endl(char *str, int strsize)

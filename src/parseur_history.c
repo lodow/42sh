@@ -1,13 +1,3 @@
-/*
-** parseur_history.c for parseur_history in /home/remi/42sh
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Fri May 24 09:54:35 2013 remi robert
-** Last update Sun May 26 16:54:48 2013 luc sinet
-*/
-
 #include "42sh.h"
 
 void	parseur_history(char **cmd, t_history *history)

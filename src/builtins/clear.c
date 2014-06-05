@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sun May 26 03:46:46 2013 maxime lavandier
-*/
-
 #include "42sh.h"
 
 void	builtin_clear(UNSEDP t_cmd *cmd, UNSEDP t_fds *fd, t_sh *shell)
@@ -22,4 +12,3 @@ void	builtin_clear(UNSEDP t_cmd *cmd, UNSEDP t_fds *fd, t_sh *shell)
     }
   my_putstr(str, shell->param.fd_tty, -1);
 }
-

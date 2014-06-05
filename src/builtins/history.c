@@ -1,13 +1,3 @@
-/*
-** history.c for history.c in /home/remi/42sh
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Fri Apr 12 19:14:58 2013 remi robert
-** Last update Sat May 25 17:22:52 2013 remi
-*/
-
 #include "42sh.h"
 
 void	builtin_history(t_cmd *cmd, t_fds *fd, t_sh *shell)

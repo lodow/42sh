@@ -1,13 +1,3 @@
-/*
-** gere_window.c for gere_window in /home/remi/Dropbox/Projet/edition_ligne_termcap
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Fri May 10 08:43:23 2013 remi robert
-** Last update Sun May 26 03:12:25 2013 luc sinet
-*/
-
 #include "42sh.h"
 
 int	get_window_size(char *cmd, int add_prompt)

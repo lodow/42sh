@@ -1,13 +1,3 @@
-/*
-** gere_history.c for gere_history in /home/remi/42sh
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Thu May 16 14:59:38 2013 remi robert
-** Last update Sat May 25 23:06:23 2013 remi robert
-*/
-
 #include "42sh.h"
 
 void	add_history_after_line(char *line, t_history **history)

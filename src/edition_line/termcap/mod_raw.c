@@ -1,13 +1,3 @@
-/*
-** mod_raw.c for mod_raw in /home/remi/Projet/alum1/ALLUM
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Mon Feb  4 21:58:20 2013 remi robert
-** Last update Mon May 20 15:00:55 2013 remi robert
-*/
-
 #include "42sh.h"
 
 int			reset_save_mod(int type, int fd)

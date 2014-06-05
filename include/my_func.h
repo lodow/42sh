@@ -1,13 +1,3 @@
-/*
-** edition_line.h for edition in /home/remi/Projet/new_edition_line
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Sat May  4 12:03:49 2013 remi robert
-** Last update Sun May 26 01:26:15 2013 Adrien Della Maggiora
-*/
-
 #ifndef MY_FUNC_H_
 # define MY_FUNC_H_
 

@@ -1,13 +1,3 @@
-/*
-** add_history.c for add_history in /home/remi/42sh
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Fri Apr 12 12:53:40 2013 remi robert
-** Last update Sun May 26 15:55:43 2013 luc sinet
-*/
-
 #include "my_func.h"
 
 void	rempl_new_history(t_history **elem, char *str)

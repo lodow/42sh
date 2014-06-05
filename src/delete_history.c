@@ -1,13 +1,3 @@
-/*
-** delete_history.c for deleteèhistory in /home/remi/42sh
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Sat Apr 13 08:46:11 2013 remi robert
-** Last update Tue May 21 14:27:49 2013 maxime lavandier
-*/
-
 #include "42sh.h"
 
 t_history	*suppr_elem_list(t_history **ptete, t_history **pcourant)

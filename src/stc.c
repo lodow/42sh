@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 25 14:10:20 2013 luc sinet
-*/
-
 #include "42sh.h"
 
 void	my_putstr(const char *str, int fd, int strlen)

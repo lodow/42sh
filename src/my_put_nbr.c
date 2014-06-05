@@ -1,13 +1,3 @@
-/*
-** my_put_nbr.c for my_put_nbr in /home/robert_r//Jour03
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Wed Oct  3 14:28:01 2012 remi robert
-** Last update Sat May 25 12:59:05 2013 luc sinet
-*/
-
 #include "42sh.h"
 
 int	number_digit(int nb, int number_digit, int multiplier)

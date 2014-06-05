@@ -1,13 +1,3 @@
-/*
-** curseur.c for curser in /home/remi/Projet/alum1/ALLUM
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Tue Feb  5 08:45:15 2013 remi robert
-** Last update Sun May 26 02:51:35 2013 luc sinet
-*/
-
 #include "42sh.h"
 
 int	up_curser(void)

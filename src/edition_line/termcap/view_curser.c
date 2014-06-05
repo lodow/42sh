@@ -1,13 +1,3 @@
-/*
-** view_curser.c for view_curser in /home/remi/Projet/libtermcap
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Wed Apr 24 14:16:47 2013 remi robert
-** Last update Mon May 20 15:01:38 2013 remi robert
-*/
-
 #include "42sh.h"
 
 int	view_curser(void)

@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 25 16:02:35 2013 Adrien Della Maggiora
-*/
-
 #ifndef GET_NEXT_LINE_H_
 # define GET_NEXT_LINE_H_
 

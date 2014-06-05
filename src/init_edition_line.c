@@ -1,13 +1,3 @@
-/*
-** init_edition_line.c for init_edition_line in /home/remi/42sh
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Wed May 15 08:47:35 2013 remi robert
-** Last update Sat May 25 23:24:31 2013 remi robert
-*/
-
 #include "42sh.h"
 
 int	init_edition_line(char **env, t_param *param)

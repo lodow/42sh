@@ -1,13 +1,3 @@
-/*
-** print_termcap.c for print_termcap in /home/remi/42sh/edition_line2
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Tue May 14 16:31:54 2013 remi robert
-** Last update Sun May 26 04:54:58 2013 maxime lavandier
-*/
-
 #include "42sh.h"
 
 int		my_putstr_termcap(int flag, char *capaity)

@@ -1,13 +1,3 @@
-/*
-** main.c for main in /home/remi/Projet/new_edition_line/src
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Sat May  4 11:42:47 2013 remi robert
-** Last update Fri May 24 22:04:41 2013 maxime lavandier
-*/
-
 #include "42sh.h"
 
 int	init_termcap(char **env, t_param *param)

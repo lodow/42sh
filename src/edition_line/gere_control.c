@@ -1,13 +1,3 @@
-/*
-** gere_control.c for gere_controle in /home/remi/Dropbox/Projet/edition_ligne_termcap
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Mon May  6 09:13:35 2013 remi robert
-** Last update Wed May 22 13:47:37 2013 remi robert
-*/
-
 #include "42sh.h"
 
 void	calc_end_param_x(char *cmd, t_param *param, int *x, int *y)

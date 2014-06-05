@@ -1,13 +1,3 @@
-/*
-** gere_keyboard.c for gere_èkeyboard in /home/remi/Dropbox/Projet/edition_ligne_termcap
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Sun May  5 16:20:31 2013 remi robert
-** Last update Sat May 25 14:03:25 2013 luc sinet
-*/
-
 #include "42sh.h"
 
 int	my_spe_strlen(char *str)

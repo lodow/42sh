@@ -1,13 +1,3 @@
-/*
-** return_pos.c for return_pos in /home/remi/Projet/42sh/edition_line
-**
-** Made by remi
-** Login   <remi@epitech.net>
-**
-** Started on  Thu Mar 21 08:21:11 2013 remi
-** Last update Sun May 26 01:52:24 2013 maxime lavandier
-*/
-
 #include "42sh.h"
 
 void	assign_value_pos(int *x, int *y, char *buff)

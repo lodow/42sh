@@ -1,13 +1,3 @@
-/*
-** control_y.c for control_y in /home/remi/Dropbox/Projet/edition_ligne_termcap
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Thu May  9 12:22:50 2013 remi robert
-** Last update Thu May 23 13:41:53 2013 remi robert
-*/
-
 #include "42sh.h"
 
 void	gere_control_y(char *cmd, t_param *param)

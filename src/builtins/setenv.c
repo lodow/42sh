@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Apr 10 02:23:18 2013 maxime lavandier
-*/
-
 #include "42sh.h"
 
 void	builtin_setenv(t_cmd *cmd, t_fds *fd, t_sh *shell)

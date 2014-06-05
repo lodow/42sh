@@ -1,13 +1,3 @@
-/*
-** gere_valide_saisi.c for gere_valid_saisi in /home/remi/42sh
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Fri Apr 12 12:46:34 2013 remi robert
-** Last update Fri May 17 09:59:26 2013 remi robert
-*/
-
 #include "my_func.h"
 
 int	recup_nb_history(char *str)

@@ -1,13 +1,3 @@
-/*
-** init_termcap.c for init_termcap in /home/remi/Dropbox/Projet/new_edition_line
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Sun May  5 13:27:00 2013 remi robert
-** Last update Sat May 25 12:52:45 2013 remi robert
-*/
-
 #include "42sh.h"
 
 char	*my_tgetstr(char *cap)

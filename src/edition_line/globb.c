@@ -1,13 +1,3 @@
-/*
-** globb.c for globb in /home/remi/Dropbox/Projet/edition_ligne_termcap
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Fri May 10 18:29:05 2013 remi robert
-** Last update Fri May 24 21:17:28 2013 maxime lavandier
-*/
-
 #include "42sh.h"
 
 int	init_globb(char *path, glob_t *globb)

@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu May 23 16:19:19 2013 maxime lavandier
-*/
-
 #include "42sh.h"
 
 char		**expand_reg_exp(char *regexp)

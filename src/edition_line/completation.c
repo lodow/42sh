@@ -1,13 +1,3 @@
-/*
-** completation.c for completation in /home/remi/Dropbox/Projet/edition_ligne_termcap
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Sat May 11 14:05:31 2013 remi robert
-** Last update Sat May 25 20:10:57 2013 Adrien Della Maggiora
-*/
-
 #include "42sh.h"
 
 char	*decal_string_cmd(char *cmd, t_param *param,

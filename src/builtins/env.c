@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat May 25 15:52:35 2013 maxime lavandier
-*/
-
 #include "42sh.h"
 
 int	builtin_env_print(UNSEDP char *path, char **argv, t_sh *shell)

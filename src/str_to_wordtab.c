@@ -1,13 +1,3 @@
-/*
-** main.c for 42sh in /home/maxime/strtomegatab
-**
-** Made by maxime lavandier
-** Login   <lavand_m@epitech.net>
-**
-** Started on  Fri Mar 29 13:01:38 2013 maxime lavandier
-** Last update Sat May 25 13:30:57 2013 luc sinet
-*/
-
 #include "42sh.h"
 
 void	my_spe_strncpy(char *str1, char *str2, int size)

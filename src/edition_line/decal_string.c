@@ -1,13 +1,3 @@
-/*
-** decal_string.c for decal_string.c in /home/remi/Dropbox/Projet/edition_ligne_termcap
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Sun May  5 17:01:53 2013 remi robert
-** Last update Tue May 14 19:59:03 2013 remi robert
-*/
-
 #include "42sh.h"
 
 void	decal_string(char *cmd, int pos, char caractere)

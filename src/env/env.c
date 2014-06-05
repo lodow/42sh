@@ -1,13 +1,3 @@
-/*
-** env.c for 42sh in /home/maxime/Bureau/projet/actu/42sh/src/env
-**
-** Made by maxime lavandier
-** Login   <lavand_m@epitech.net>
-**
-** Started on  Tue Mar 19 10:44:01 2013 maxime lavandier
-** Last update Wed Mar 20 16:11:18 2013 maxime lavandier
-*/
-
 #include "42sh.h"
 
 char	*get_envvar(char *var, char **env)

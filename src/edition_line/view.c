@@ -1,13 +1,3 @@
-/*
-** view.c for view in /home/remi/Dropbox/Projet/edition_ligne_termcap
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Sun May  5 17:28:49 2013 remi robert
-** Last update Fri May 24 20:47:32 2013 maxime lavandier
-*/
-
 #include "42sh.h"
 
 void	calc_other_decallage(char *cmd, t_param *param)

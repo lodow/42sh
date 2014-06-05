@@ -1,13 +1,3 @@
-/*
-** plus_completation.c for plus_completation in /home/remi/Dropbox/Projet/edition_ligne_termcap
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Mon May 13 20:57:08 2013 remi robert
-** Last update Sat May 25 23:04:32 2013 Adrien Della Maggiora
-*/
-
 #include "42sh.h"
 
 int	get_min_len(char **str)

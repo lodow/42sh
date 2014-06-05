@@ -1,13 +1,3 @@
-/*
-** view_globb.c for viewx_globb in /home/remi/Dropbox/Projet/edition_ligne_termcap
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Fri May 10 19:24:14 2013 remi robert
-** Last update Sun May 26 14:13:12 2013 luc sinet
-*/
-
 #include "42sh.h"
 
 int	get_strlen_anti_back(char *str)

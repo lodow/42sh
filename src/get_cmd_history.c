@@ -1,13 +1,3 @@
-/*
-** get_cmd_history.c for get_cmd_history in /home/remi/42sh
-**
-** Made by remi robert
-** Login   <robert_r@epitech.net>
-**
-** Started on  Sat May 25 13:14:38 2013 remi robert
-** Last update Sun May 26 16:51:29 2013 luc sinet
-*/
-
 #include "42sh.h"
 
 char		*get_last_cmd_history(t_history *history,
