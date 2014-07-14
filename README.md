@@ -1,20 +1,5 @@
-Commit 300 !: 42SH
+42SH
 ====
-
-sinet_l : fichier conf + autocompletation
-
-robert_r : edition de ligne
-
-lavand_m : partie obligatoire
-
-dellam_a : historique
-
-moriss_h job controle
-
-
----------------------------------------
-
-Liste des bonus :
 
 -Edition de ligne
 
