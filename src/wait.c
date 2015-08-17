@@ -85,21 +85,25 @@ void	wait_no_fg_grp(t_sh* shell)
 
   rm_all_terminated_grp(shell);
   call_signal_func(shell, 0, NULL);
-  while ((fg = get_forground_grp(shell)) != NULL)
-    {
-      sig = 0;
-      if ((cmd = cmd_f_pid(waitpid(WAIT_ANY, &tmp, WUNTRACED), shell)) != NULL)
-        if (WIFEXITED(tmp) || WIFSIGNALED(tmp))
-          {
-            cmd->return_value = tmp;
-            aff_special_return_val(cmd);
-          }
-      if (WIFSTOPPED(tmp))
-        sig = WSTOPSIG(tmp);
-      if (WIFCONTINUED(tmp))
-        sig = SIGCONT;
-      call_signal_func(shell, sig, cmd);
-    }
-  rm_all_terminated_grp(shell);
-  set_forground_pgrp(shell->pid.pgid);
+  if (shell->jobcontrol)
+  {
+	  while ((fg = get_forground_grp(shell)) != NULL)
+		{
+		  sig = 0;
+		  if ((cmd = cmd_f_pid(waitpid(WAIT_ANY, &tmp, WUNTRACED),
+								shell)) != NULL)
+			if (WIFEXITED(tmp) || WIFSIGNALED(tmp))
+			  {
+				cmd->return_value = tmp;
+				aff_special_return_val(cmd);
+			  }
+		  if (WIFSTOPPED(tmp))
+			sig = WSTOPSIG(tmp);
+		  if (WIFCONTINUED(tmp))
+			sig = SIGCONT;
+		  call_signal_func(shell, sig, cmd);
+		}
+	  rm_all_terminated_grp(shell);
+	  set_forground_pgrp(shell->pid.pgid);
+  }
 }

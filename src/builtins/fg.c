@@ -8,7 +8,7 @@ void	builtin_fg(t_cmd *cmd, UNSEDP t_fds *fd, t_sh *shell)
 
   i = 0;
   nb = 0;
-  if (shell->process_group == NULL)
+  if (shell->process_group == NULL || !shell->jobcontrol)
     return ;
   if (cmd->argv[1] != NULL)
     nb = my_getnbr(cmd->argv[1]) - 1;

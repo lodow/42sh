@@ -116,6 +116,7 @@ typedef struct	s_sh
   char		**env;
   char		**alias_tab;
   t_grp		**process_group;
+  int		jobcontrol;
   int		signal;
   int		beepbeepexit;
   int		too_much_parsing;
@@ -204,6 +205,7 @@ void	call_signal_func(t_sh *shell, int chld_sig, t_cmd *chld_cmd);
 /*
 ** Jobs
 */
+void	try_job_control(t_sh *sh);
 void	no_fg_jobs_status(t_sh *shell);
 int	group_to_process_group(t_grp *grp, t_cmd *cmd);
 int	set_forground_pgrp(pid_t pgid);

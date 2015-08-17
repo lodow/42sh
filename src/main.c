@@ -21,6 +21,7 @@ int	init_shell(t_sh *shell, char **main_env)
   if (load_conf_file("${HOME}/.42conf", shell, &new_conf_set) == -1)
     load_conf_file(".42conf", shell, &new_conf_set);
   load_conf_file("${HOME}/.history", shell, &load_history_f_file);
+  try_job_control(shell);
   return (0);
 }
 

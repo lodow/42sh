@@ -4,7 +4,7 @@ RM		=	rm
 
 NAME		=	42SH
 
-COMPILEFLAG	=	-g -Wall -Wextra
+COMPILEFLAG	=	-O2 -Wall -Wextra -static
 
 INCLUDE		=	-Iinclude/
 

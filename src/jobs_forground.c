@@ -26,7 +26,7 @@ void	set_forground_process_g(t_sh *shell, t_grp *grp)
   t_grp	*tmp_grp;
 
   i = 0;
-  if (shell->process_group == NULL)
+  if (shell->process_group == NULL || !shell->jobcontrol)
     return ;
   while ((tmp_grp = shell->process_group[i]) != NULL)
     {

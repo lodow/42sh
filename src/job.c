@@ -46,6 +46,9 @@ void	no_fg_jobs_status(t_sh *shell)
 {
   t_grp	*fg_grp;
 
+  if (!shell->jobcontrol)
+	return ;
+
   if ((fg_grp = get_forground_grp(shell)) != NULL)
     {
       UNSETFLAG(fg_grp->flags, FLAGPOS(FGRP_RUNNING));
