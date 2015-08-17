@@ -78,10 +78,16 @@
 		<Unit filename="src/builtins/jobs.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/builtins/pwd.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/builtins/robert.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/builtins/setenv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/builtins/sleep.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/builtins/source.c">

@@ -6,6 +6,10 @@ void	init_builtins2(t_sh *shell)
   shell->builtins[12].str = "source";
   shell->builtins[13].func = &builtin_clear;
   shell->builtins[13].str = "clear";
+  shell->builtins[14].func = &builtin_sleep;
+  shell->builtins[14].str = "sleep";
+  shell->builtins[15].func = &builtin_pwd;
+  shell->builtins[15].str = "pwd";
 }
 
 void	init_builtins(t_sh *shell)

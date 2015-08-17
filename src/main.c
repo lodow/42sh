@@ -50,13 +50,28 @@ void	fork_exit_shell(t_sh *shell)
   clear_history(shell->history);
 }
 
-int		main(UNSEDP int ac, UNSEDP char **av, char **main_env)
+void argcmdline(char *lignarg, t_sh *shell)
+{
+  char* line;
+  t_fds	tmpfd;
+
+  init_stdfd_t_def_val(&tmpfd, 0, 1, 2);
+  line = my_strdup(lignarg);
+  check_and_load_backquote(&line, shell);
+  parse_user_cmd(shell, &line, &tmpfd);
+  free(line);
+}
+
+int		main(UNSEDP int ac, char **av, char **main_env)
 {
   t_sh		shell;
 
   if (init_shell(&shell, main_env) == -1)
     return (-1);
-  user_loop(&shell);
+  if (av[1] != NULL)
+	argcmdline(av[1], &shell);
+  else
+    user_loop(&shell);
   if (GETFLAG(shell.beepbeepexit, FLAGPOS(EXIT_FORK)))
     fork_exit_shell(&shell);
   else

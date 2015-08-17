@@ -91,7 +91,9 @@ SRCBUILTINS	=	$(BUILTINS)/builtins.c \
 			$(BUILTINS)/history.c \
 			$(BUILTINS)/alias.c \
 			$(BUILTINS)/source.c \
-			$(BUILTINS)/clear.c
+			$(BUILTINS)/clear.c \
+			$(BUILTINS)/sleep.c \
+			$(BUILTINS)/pwd.c
 
 SRCLINE		=	$(PATHLINE)main.c \
 			$(PATHLINE)read_cmd.c \
