@@ -59,6 +59,7 @@ void argcmdline(char *lignarg, t_sh *shell)
   line = my_strdup(lignarg);
   check_and_load_backquote(&line, shell);
   parse_user_cmd(shell, &line, &tmpfd);
+  wait_no_fg_grp(shell);
   free(line);
 }
 
